@@ -1,0 +1,29 @@
+@font-face {
+  font-family: 'sarial';
+  src: url('../fonts/sarial.ttf')  format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+body{
+  color:black;
+}
+
+.title-font{
+  font-family:"sarial";
+}
+
+.tweet-list{
+  list-style:none;
+  padding: 0 10%;
+  max-width:500px;
+  margin:20px auto;
+}
+.tweet-list-item{
+  padding: 10px 0;
+}
+
+a{
+  color:black;
+  text-decoration:none;
+}
