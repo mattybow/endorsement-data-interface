@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "start": "DEBUG=endorsement-data-interface:* node ./server/index.js",
-    "build": "babel ./server/index.js -o ./server/prodServer.js && babel-node ./server/build.js"
+    "build": "babel ./server/index.js -o ./server/prodServer.js && babel-node ./server/build.js",
+    "deploy": "DEBUG=endorsement-data-interface:* pm2 start ./server/index.js --name dataInterface"
   },
   "dependencies": {
     "axios": "^0.8.0",
