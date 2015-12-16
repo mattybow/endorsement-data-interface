@@ -1,9 +1,15 @@
 import app from './app';
 import http from 'http';
-import './startWpDevServer';
+
+const { PORT, NODE_ENV } = process.env;
+
+//START WEBPACK DEV SERVER FOR DEVELOPMENT
+if( NODE_ENV !== 'production'){
+  require('./startWpDevServer');
+}
 
 let debug = require('debug')('endorsement-data-interface:server');
-const port = normalizePort(process.env.PORT || '3000');
+const port = normalizePort(PORT || '3000');
 app.set('port', port);
 
 var server = http.createServer(app);
@@ -18,17 +24,14 @@ server.on('listening', onListening);
 
 function normalizePort(val) {
   var port = parseInt(val, 10);
-
   if (isNaN(port)) {
     // named pipe
     return val;
   }
-
   if (port >= 0) {
     // port number
     return port;
   }
-
   return false;
 }
 
@@ -40,11 +43,9 @@ function onError(error) {
   if (error.syscall !== 'listen') {
     throw error;
   }
-
   var bind = typeof port === 'string'
     ? 'Pipe ' + port
     : 'Port ' + port;
-
   // handle specific listen errors with friendly messages
   switch (error.code) {
     case 'EACCES':
