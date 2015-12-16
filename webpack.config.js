@@ -30,6 +30,8 @@ function makeOutputConfig(env){
   }
   if(env!=='production'){
     output.publicPath = 'http://localhost:5000/static/';
+  } else {
+    output.publicPath = '/static/';
   }
   return {output};
 }
