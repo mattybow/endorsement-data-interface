@@ -14,7 +14,7 @@ class TweetListView extends Component{
     this.props.dispatch(fetchTweetsIfNeeded());
   }
   render(){
-    console.log(this.props);
+    //console.log(this.props);
     const {tweets} = this.props;
     const tweetItems = tweets.map((tweet, i) => <TweetListItem tweet={tweet} key={i} />);
     return <ul className="tweet-list">

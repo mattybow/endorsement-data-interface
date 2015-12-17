@@ -4,7 +4,7 @@ const router = express.Router();
 
 
 router.get('/data',(req,res) => {
-  mongodb.twStream.find({},null,{limit: 1000},(err,data)=>{
+  mongodb.twStream.find({},null,{sort:{created_at:-1}, limit: 1000},(err,data)=>{
     res.json(data);
   });
 });

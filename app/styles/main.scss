@@ -4,9 +4,11 @@
   font-weight: normal;
   font-style: normal;
 }
+@import url(https://fonts.googleapis.com/css?family=Source+Code+Pro:400,300);
 
 body{
   color:black;
+  font-family:'Source Code Pro';
 }
 
 .title-font{
@@ -26,4 +28,16 @@ body{
 a{
   color:black;
   text-decoration:none;
+}
+
+.flex-parent-row{
+  display:flex;
+  flex-flow:row nowrap;
+  align-items:center;
+}
+.flex-child-expand{
+  flex:1 1 auto;
+}
+.flex-child-end{
+  align-self:flex-end;
 }
