@@ -3,6 +3,8 @@ import TweetListItem from './tweetListItem';
 import * as tweetActions from '../actions/tweetActions';
 import {connect} from 'react-redux';
 
+import '../styles/tweetList.scss'
+
 function selectTweets(state){
   const {tweets} = state;
   return {tweets};

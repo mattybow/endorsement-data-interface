@@ -16,10 +16,10 @@ class LoginButton extends Component{
   }
   getLoginInfoFromCookies(){
     let loginInfo = {};
-    const cookies = document.cookie;
-    const loginCookie = cookies.match(/userInfo=.*;?/);
+    const cookies = document.cookie + ';';
+    const loginCookie = cookies.match(/userInfo=[^;]*/);
     if(loginCookie){
-      const encodedInfo = loginCookie[0].replace(/;/,'').replace(/userInfo=/,'');
+      const encodedInfo = loginCookie[0].replace(/userInfo=/,'');
       loginInfo = JSON.parse(decodeURIComponent(encodedInfo));
     }
     return loginInfo;
