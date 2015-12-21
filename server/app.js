@@ -7,10 +7,12 @@ import bodyParser   from 'body-parser';
 import passport     from 'passport';
 import { Strategy } from 'passport-twitter';
 import session      from 'express-session';
+const MongoStore = require('connect-mongo')(session);
 
 import routes from './routes/index';
 import api from './routes/api';
 import auth from './routes/auth';
+import mongodb from './mongoAccess';
 
 const isProduction = process.env.NODE_ENV === 'production';
 
@@ -21,13 +23,22 @@ passport.use(new Strategy({
     consumerSecret: process.env.CONSUMER_SECRET,
     callbackURL: `${callbackBaseUrl}auth/twitter/return`
   },
-  function(token, tokenSecret, profile, cb) {
+  function(token, tokenSecret, profile, next) {
     // In this example, the user's Twitter profile is supplied as the user
     // record.  In a production-quality application, the Twitter profile should
     // be associated with a user record in the application's database, which
     // allows for account linking and authentication with other identity
     // providers.
-    return cb(null, profile);
+    const {username} = profile;
+    mongodb.twWhitelist.findOne({username}, (err, doc) => {
+      console.log({username}, err,doc)
+      if(doc){
+        return next(null, profile);
+      } else {
+        console.log(err);
+        return next(null, false, {message:'not authorized'});
+      }
+    });
   }));
 passport.serializeUser(function(user, cb) {
   cb(null, user);
@@ -44,7 +55,12 @@ app.use(logger('dev'));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(cookieParser());
-app.use(session({ secret: process.env.SESSION_SECRET, resave: true, saveUninitialized: true}));
+app.use(session({
+  secret: process.env.SESSION_SECRET,
+  resave: true,
+  saveUninitialized: true,
+  store: new MongoStore({db:mongodb})
+}));
 app.use(passport.initialize());
 app.use(passport.session());
 app.use('/static', express.static(path.join(__dirname, '../dist')));
