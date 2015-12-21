@@ -10,7 +10,7 @@ var TweetListItem = (props) => {
         <span className="icon-plus"></span>
       </div>
       <a href={link}>
-        <div>{text}</div>
+        <div style={{wordWrap: 'break-word'}}>{text}</div>
         <div style={{color:"#A06CD5"}}>{time}</div>
       </a>
       <div className="remove-tweet-holder flex-child-start" style={{fontSize:'2em', padding:'0 0 0 1em', color:'#8F2CD8'}}>

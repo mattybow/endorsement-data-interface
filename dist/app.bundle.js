@@ -26577,7 +26577,7 @@
 	        { href: link },
 	        _react2.default.createElement(
 	          'div',
-	          null,
+	          { style: { wordWrap: 'break-word' } },
 	          text
 	        ),
 	        _react2.default.createElement(
@@ -39231,7 +39231,7 @@
 
 
 	// module
-	exports.push([module.id, ".tweet-list {\n  list-style: none;\n  padding: 0 10%;\n  max-width: 600px;\n  margin: 20px auto;\n}\n\n.tweet-list-item {\n  padding: 10px 0;\n}\n", ""]);
+	exports.push([module.id, ".tweet-list-item {\n  padding: 10px 0;\n}\n", ""]);
 
 	// exports
 
