@@ -12,6 +12,10 @@ class Cray extends React.Component{
 export default (
   <Route path="/" component={App}>
     <IndexRoute component={TweetList}/>
-    <Route path="cray" component={Cray}></Route>
+    <Route path="/tweets" component={TweetList}></Route>
+    <Route path="/candidates" component={Cray}></Route>
+    <Route path="/endorsers" component={Cray}></Route>
+    <Route path="/endorsements" component={Cray}></Route>
+    <Route path="/tags" component={Cray}></Route>
   </Route>
 );

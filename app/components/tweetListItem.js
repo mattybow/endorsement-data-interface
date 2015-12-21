@@ -9,7 +9,7 @@ var TweetListItem = (props) => {
       <div className="add-endorsement-holder flex-child-start" style={{fontSize:'2em', padding:'0 1em 0 0', color:'#8F2CD8'}}>
         <span className="icon-plus"></span>
       </div>
-      <a href={link}>
+      <a href={link} className="flex-child-expand">
         <div style={{wordWrap: 'break-word'}}>{text}</div>
         <div style={{color:"#A06CD5"}}>{time}</div>
       </a>

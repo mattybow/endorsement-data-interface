@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import LoginButton from './login';
 import '../styles/nav.scss';
 
-export default class MainNav extends Component{
+export default class TopBar extends Component{
   render(){
     return <div>
       <nav>
