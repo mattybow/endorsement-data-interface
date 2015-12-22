@@ -2,26 +2,33 @@ import React, { Component } from 'react';
 import { Link } from 'react-router';
 import cx from 'classnames';
 
+import '../styles/navbar.scss';
+
 const links = [
   {
     route:'/tweets',
-    text:'Tweets'
+    text:'Tweets',
+    iconClass: 'icon-chat'
   },
   {
     route:'/candidates',
-    text:'Candidates'
+    text:'Candidates',
+    iconClass: 'icon-star'
   },
   {
     route:'/endorsers',
-    text:'Endorsers'
+    text:'Endorsers',
+    iconClass: 'icon-pencil'
   },
   {
     route:'/endorsements',
-    text:'Endorsements'
+    text:'Endorsements',
+    iconClass: 'icon-empty-blank'
   },
   {
     route:'/tags',
-    text:'Tags'
+    text:'Tags',
+    iconClass: 'icon-label'
   }
 ];
 
@@ -38,27 +45,26 @@ export default class NavBar extends Component{
   render(){
     console.log(this.state.route);
     const activeRoute = this.state.route || window.location.pathname;
-    const style = {
-      textAlign:'center',
-      padding:'10px 0'
-    };
-    const activeStyle = {
-      ...style,
-      borderBottom:'1px solid #A06CD5',
-    };
+
     const elements = links.map( link => {
       const isActive = activeRoute === link.route || (activeRoute === '/' && link.route === '/tweets');
+      const tabClasses = cx('tab-link',
+                            {active:isActive}
+                          );
       return (
-        <div className="flex-child-expand" style={isActive ? activeStyle : style} key={link.text}>
-          <Link to={link.route} onClick={this.clickHandler.bind(this,link.route)}>{link.text}</Link>
-        </div>
+        <Link to={link.route} onClick={this.clickHandler.bind(this,link.route)} className="flex-child-expand">
+          <div className={tabClasses} key={link.text}>
+            <div className="tab-icon-holder">
+              <span className={link.iconClass}></span>
+            </div>
+            <div className="tab-descript-holder">
+              {link.text}
+            </div>
+          </div>
+        </Link>
       );
     });
-    return <div className="flex-parent-row"
-                style={{
-                  padding:'0 20px',
-                  borderTop:'1px solid #E7E7EC',
-                  boxShadow:'inset 0 -1px 0 #E7E7EC'}}>
+    return <div className="flex-parent-row" id="navbar">
       {elements}
     </div>;
   }

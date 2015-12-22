@@ -4,3 +4,8 @@ nav{
   color: $barney;
   padding:1px 20px;
 }
+@media(max-width: 414px){
+  nav{
+    border-bottom:1px solid #E7E7EC;
+  }
+}
