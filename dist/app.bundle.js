@@ -26780,6 +26780,8 @@
 	  var created_at = _props$tweet.created_at;
 
 	  var time = (0, _moment2.default)(new Date(created_at)).format('lll');
+	  var isTouchDevice = 'ontouchstart' in window;
+	  var statusId = link.match(/[\d]*$/);
 	  return _react2.default.createElement(
 	    'li',
 	    { className: 'tweet-list-item' },
@@ -26788,12 +26790,12 @@
 	      { className: 'flex-parent-row' },
 	      _react2.default.createElement(
 	        'div',
-	        { className: 'add-endorsement-holder flex-child-start', style: { fontSize: '2em', padding: '0 1em 0 0', color: '#8F2CD8' } },
+	        { className: 'add-endorsement-holder flex-child-start' },
 	        _react2.default.createElement('span', { className: 'icon-plus' })
 	      ),
 	      _react2.default.createElement(
 	        'a',
-	        { href: link, className: 'flex-child-expand' },
+	        { href: isTouchDevice ? 'twitter://status?id=' + statusId : link, className: 'tweet-content' },
 	        _react2.default.createElement(
 	          'div',
 	          { style: { wordWrap: 'break-word' } },
@@ -26807,7 +26809,7 @@
 	      ),
 	      _react2.default.createElement(
 	        'div',
-	        { className: 'remove-tweet-holder flex-child-start', style: { fontSize: '2em', padding: '0 0 0 1em', color: '#8F2CD8' } },
+	        { className: 'remove-tweet-holder flex-child-start' },
 	        _react2.default.createElement('span', { className: 'icon-trash-bin' })
 	      )
 	    )
@@ -39450,7 +39452,7 @@
 
 
 	// module
-	exports.push([module.id, ".tweet-list {\n  list-style: none;\n  padding: 0 10%;\n  max-width: 600px;\n  margin: 20px auto;\n}\n\n.tweet-list-item {\n  padding: 10px 0;\n}\n", ""]);
+	exports.push([module.id, ".tweet-list {\n  list-style: none;\n  padding: 0 10%;\n  max-width: 600px;\n  margin: 20px auto;\n}\n\n.tweet-list-item {\n  padding: 10px 0;\n}\n\n.tweet-content {\n  -webkit-flex: 1 2 auto;\n      -ms-flex: 1 2 auto;\n          flex: 1 2 auto;\n}\n\n.remove-tweet-holder {\n  font-size: 2em;\n  padding: 0 0 0 1em;\n  color: #8F2CD8;\n}\n\n.add-endorsement-holder {\n  font-size: 2em;\n  padding: 0 1em 0 0;\n  color: #8F2CD8;\n}\n\n@media (max-width: 414px) {\n  .tweet-list {\n    padding: 0;\n    margin: 10px;\n  }\n  .tweet-content {\n    -webkit-flex: 1 2 300px;\n        -ms-flex: 1 2 300px;\n            flex: 1 2 300px;\n  }\n  .remove-tweet-holder {\n    padding: 0 5px 0 .5em;\n  }\n  .add-endorsement-holder {\n    padding: 0 .5em 0 0;\n  }\n}\n", ""]);
 
 	// exports
 

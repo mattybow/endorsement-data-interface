@@ -4,16 +4,18 @@ import moment from 'moment';
 var TweetListItem = (props) => {
   const {text, link, created_at} = props.tweet;
   const time = moment(new Date(created_at)).format('lll');
+  const isTouchDevice = 'ontouchstart' in window;
+  const statusId = link.match(/[\d]*$/);
   return <li className="tweet-list-item">
     <div className="flex-parent-row">
-      <div className="add-endorsement-holder flex-child-start" style={{fontSize:'2em', padding:'0 1em 0 0', color:'#8F2CD8'}}>
+      <div className="add-endorsement-holder flex-child-start">
         <span className="icon-plus"></span>
       </div>
-      <a href={link} className="flex-child-expand">
+      <a href={isTouchDevice ? `twitter://status?id=${statusId}` : link} className="tweet-content">
         <div style={{wordWrap: 'break-word'}}>{text}</div>
         <div style={{color:"#A06CD5"}}>{time}</div>
       </a>
-      <div className="remove-tweet-holder flex-child-start" style={{fontSize:'2em', padding:'0 0 0 1em', color:'#8F2CD8'}}>
+      <div className="remove-tweet-holder flex-child-start">
         <span className="icon-trash-bin"></span>
       </div>
     </div>
