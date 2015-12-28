@@ -9,3 +9,7 @@ export function deleteTweet(id){
     id
   });
 }
+
+export function checkAuth(){
+  return axios.post('/auth/check');
+}

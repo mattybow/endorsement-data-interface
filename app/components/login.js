@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { setLoginInfo } from '../actions/loginActions';
+import { setLoginInfo, checkAuth } from '../actions/loginActions';
 import '../styles/login.scss';
 
 function selectLoginInfo(state){
@@ -11,8 +11,12 @@ function selectLoginInfo(state){
 
 class LoginButton extends Component{
   componentWillMount(){
+    const { dispatch } = this.props;
     const userInfo = this.getLoginInfoFromCookies();
-    this.props.dispatch(setLoginInfo(userInfo));
+    if(userInfo){
+      dispatch(checkAuth());
+    }
+    dispatch(setLoginInfo(userInfo));
   }
   getLoginInfoFromCookies(){
     let loginInfo = {};

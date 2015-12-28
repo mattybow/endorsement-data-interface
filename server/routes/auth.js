@@ -2,6 +2,16 @@ import express from 'express';
 const router = express.Router();
 import passport from 'passport';
 
+router.post('/check',(req,res) => {
+  console.log(req.session.passport);
+  if(req.session.passport){
+    res.json({ok:true});
+  } else {
+    res.status(401)
+       .cookie('userInfo', '{}', { maxAge: 0, httpOnly: false })
+       .json({ok:false});
+  }
+});
 router.get('/failed',(req,res) => {
   res.send('you are not authorized');
 });
