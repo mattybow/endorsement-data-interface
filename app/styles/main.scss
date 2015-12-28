@@ -90,6 +90,13 @@ a{
   text-decoration:none;
 }
 
+.btn-default{
+  &:hover{
+    cursor:pointer;
+    color:#102B3F;
+  }
+}
+
 .flex-parent-row{
   display:flex;
   flex-flow:row nowrap;
@@ -103,4 +110,10 @@ a{
 }
 .flex-child-start{
   align-self:flex-start;
+}
+
+@media(min-width:415px){
+  .mobile-only{
+    display:none;
+  }
 }

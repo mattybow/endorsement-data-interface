@@ -1,7 +1,7 @@
 import React from 'react';
 import { IndexRoute, Route } from 'react-router';
 import App from './components/app';
-import TweetList from './components/tweetList';
+import TweetTab from './components/tweetTab';
 
 class Cray extends React.Component{
   render(){
@@ -11,8 +11,8 @@ class Cray extends React.Component{
 
 export default (
   <Route path="/" component={App}>
-    <IndexRoute component={TweetList}/>
-    <Route path="/tweets" component={TweetList}></Route>
+    <IndexRoute component={TweetTab}/>
+    <Route path="/tweets" component={TweetTab}></Route>
     <Route path="/candidates" component={Cray}></Route>
     <Route path="/endorsers" component={Cray}></Route>
     <Route path="/endorsements" component={Cray}></Route>

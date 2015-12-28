@@ -19677,11 +19677,11 @@
 
 	var _redux = __webpack_require__(221);
 
-	var _reduxThunk = __webpack_require__(363);
+	var _reduxThunk = __webpack_require__(368);
 
 	var _reduxThunk2 = _interopRequireDefault(_reduxThunk);
 
-	var _reducers = __webpack_require__(364);
+	var _reducers = __webpack_require__(369);
 
 	var reducers = _interopRequireWildcard(_reducers);
 
@@ -24567,9 +24567,9 @@
 
 	var _app2 = _interopRequireDefault(_app);
 
-	var _tweetList = __webpack_require__(252);
+	var _tweetTab = __webpack_require__(252);
 
-	var _tweetList2 = _interopRequireDefault(_tweetList);
+	var _tweetTab2 = _interopRequireDefault(_tweetTab);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -24605,8 +24605,8 @@
 	exports.default = _react2.default.createElement(
 	  _reactRouter.Route,
 	  { path: '/', component: _app2.default },
-	  _react2.default.createElement(_reactRouter.IndexRoute, { component: _tweetList2.default }),
-	  _react2.default.createElement(_reactRouter.Route, { path: '/tweets', component: _tweetList2.default }),
+	  _react2.default.createElement(_reactRouter.IndexRoute, { component: _tweetTab2.default }),
+	  _react2.default.createElement(_reactRouter.Route, { path: '/tweets', component: _tweetTab2.default }),
 	  _react2.default.createElement(_reactRouter.Route, { path: '/candidates', component: Cray }),
 	  _react2.default.createElement(_reactRouter.Route, { path: '/endorsers', component: Cray }),
 	  _react2.default.createElement(_reactRouter.Route, { path: '/endorsements', component: Cray }),
@@ -26445,13 +26445,13 @@
 	        var tabClasses = (0, _classnames2.default)('tab-link', { active: isActive });
 	        return _react2.default.createElement(
 	          _reactRouter.Link,
-	          { to: link.route, onClick: _this2.clickHandler.bind(_this2, link.route), className: 'flex-child-expand' },
+	          { to: link.route, onClick: _this2.clickHandler.bind(_this2, link.route), className: 'flex-child-expand', key: link.text },
 	          _react2.default.createElement(
 	            'div',
-	            { className: tabClasses, key: link.text },
+	            { className: tabClasses },
 	            _react2.default.createElement(
 	              'div',
-	              { className: 'tab-icon-holder' },
+	              { className: 'tab-icon-holder mobile-only' },
 	              _react2.default.createElement('span', { className: link.iconClass })
 	            ),
 	            _react2.default.createElement(
@@ -26636,7 +26636,7 @@
 	exports.push([module.id, "@import url(https://fonts.googleapis.com/css?family=Source+Code+Pro:400,300);", ""]);
 
 	// module
-	exports.push([module.id, "@charset \"UTF-8\";\n@font-face {\n  font-family: 'sarial';\n  src: url(" + __webpack_require__(247) + ") format(\"truetype\");\n  font-weight: normal;\n  font-style: normal;\n}\n\n@font-face {\n  font-family: 'fontello';\n  src: url(" + __webpack_require__(248) + ");\n  src: url(" + __webpack_require__(248) + "#iefix) format(\"embedded-opentype\"), url(" + __webpack_require__(249) + ") format(\"woff\"), url(" + __webpack_require__(250) + ") format(\"truetype\"), url(" + __webpack_require__(251) + "#fontello) format(\"svg\");\n  font-weight: normal;\n  font-style: normal;\n}\n\n/* Chrome hack: SVG is rendered more smooth in Windozze. 100% magic, uncomment if you need it. */\n/* Note, that will break hinting! In other OS-es font will be not as sharp as it could be */\n/*\n@media screen and (-webkit-min-device-pixel-ratio:0) {\n  @font-face {\n    font-family: 'fontello';\n    src: url('../font/fontello.svg?18129615#fontello') format('svg');\n  }\n}\n*/\n[class^=\"icon-\"]:before, [class*=\" icon-\"]:before {\n  font-family: \"fontello\";\n  font-style: normal;\n  font-weight: normal;\n  speak: none;\n  display: inline-block;\n  text-decoration: inherit;\n  width: 1em;\n  margin-right: .2em;\n  text-align: center;\n  /* opacity: .8; */\n  /* For safety - reset parent styles, that can break glyph codes*/\n  font-variant: normal;\n  text-transform: none;\n  /* fix buttons height, for twitter bootstrap */\n  line-height: 1em;\n  /* Animation center compensation - margins should be symmetric */\n  /* remove if not needed */\n  margin-left: .2em;\n  /* you can be more comfortable with increased icons size */\n  /* font-size: 120%; */\n  /* Font smoothing. That was taken from TWBS */\n  -webkit-font-smoothing: antialiased;\n  -moz-osx-font-smoothing: grayscale;\n  /* Uncomment for 3D effect */\n  /* text-shadow: 1px 1px 1px rgba(127, 127, 127, 0.3); */\n}\n\n.icon-twitter:before {\n  content: '\\E800';\n}\n\n/* '' */\n.icon-arrow:before {\n  content: '\\E801';\n}\n\n/* '' */\n.icon-check-mark:before {\n  content: '\\E802';\n}\n\n/* '' */\n.icon-trash-bin:before {\n  content: '\\E803';\n}\n\n/* '' */\n.icon-label:before {\n  content: '\\E804';\n}\n\n/* '' */\n.icon-home:before {\n  content: '\\E805';\n}\n\n/* '' */\n.icon-close:before {\n  content: '\\E806';\n}\n\n/* '' */\n.icon-chat:before {\n  content: '\\E807';\n}\n\n/* '' */\n.icon-star:before {\n  content: '\\E808';\n}\n\n/* '' */\n.icon-plus:before {\n  content: '\\E809';\n}\n\n/* '' */\n.icon-pencil:before {\n  content: '\\E80A';\n}\n\n/* '' */\n.icon-empty-blank:before {\n  content: '\\E80B';\n}\n\n/* '' */\n.icon-flag:before {\n  content: '\\E80C';\n}\n\n/* '' */\nbody {\n  color: black;\n  font-family: 'Source Code Pro';\n}\n\n.title-font {\n  font-family: \"sarial\";\n}\n\na {\n  color: black;\n  text-decoration: none;\n}\n\n.flex-parent-row {\n  display: -webkit-flex;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-flex-flow: row nowrap;\n      -ms-flex-flow: row nowrap;\n          flex-flow: row nowrap;\n  -webkit-align-items: center;\n      -ms-flex-align: center;\n          align-items: center;\n}\n\n.flex-child-expand {\n  -webkit-flex: 1 1 auto;\n      -ms-flex: 1 1 auto;\n          flex: 1 1 auto;\n}\n\n.flex-child-end {\n  -webkit-align-self: flex-end;\n      -ms-flex-item-align: end;\n          align-self: flex-end;\n}\n\n.flex-child-start {\n  -webkit-align-self: flex-start;\n      -ms-flex-item-align: start;\n          align-self: flex-start;\n}\n", ""]);
+	exports.push([module.id, "@charset \"UTF-8\";\n@font-face {\n  font-family: 'sarial';\n  src: url(" + __webpack_require__(247) + ") format(\"truetype\");\n  font-weight: normal;\n  font-style: normal;\n}\n\n@font-face {\n  font-family: 'fontello';\n  src: url(" + __webpack_require__(248) + ");\n  src: url(" + __webpack_require__(248) + "#iefix) format(\"embedded-opentype\"), url(" + __webpack_require__(249) + ") format(\"woff\"), url(" + __webpack_require__(250) + ") format(\"truetype\"), url(" + __webpack_require__(251) + "#fontello) format(\"svg\");\n  font-weight: normal;\n  font-style: normal;\n}\n\n/* Chrome hack: SVG is rendered more smooth in Windozze. 100% magic, uncomment if you need it. */\n/* Note, that will break hinting! In other OS-es font will be not as sharp as it could be */\n/*\n@media screen and (-webkit-min-device-pixel-ratio:0) {\n  @font-face {\n    font-family: 'fontello';\n    src: url('../font/fontello.svg?18129615#fontello') format('svg');\n  }\n}\n*/\n[class^=\"icon-\"]:before, [class*=\" icon-\"]:before {\n  font-family: \"fontello\";\n  font-style: normal;\n  font-weight: normal;\n  speak: none;\n  display: inline-block;\n  text-decoration: inherit;\n  width: 1em;\n  margin-right: .2em;\n  text-align: center;\n  /* opacity: .8; */\n  /* For safety - reset parent styles, that can break glyph codes*/\n  font-variant: normal;\n  text-transform: none;\n  /* fix buttons height, for twitter bootstrap */\n  line-height: 1em;\n  /* Animation center compensation - margins should be symmetric */\n  /* remove if not needed */\n  margin-left: .2em;\n  /* you can be more comfortable with increased icons size */\n  /* font-size: 120%; */\n  /* Font smoothing. That was taken from TWBS */\n  -webkit-font-smoothing: antialiased;\n  -moz-osx-font-smoothing: grayscale;\n  /* Uncomment for 3D effect */\n  /* text-shadow: 1px 1px 1px rgba(127, 127, 127, 0.3); */\n}\n\n.icon-twitter:before {\n  content: '\\E800';\n}\n\n/* '' */\n.icon-arrow:before {\n  content: '\\E801';\n}\n\n/* '' */\n.icon-check-mark:before {\n  content: '\\E802';\n}\n\n/* '' */\n.icon-trash-bin:before {\n  content: '\\E803';\n}\n\n/* '' */\n.icon-label:before {\n  content: '\\E804';\n}\n\n/* '' */\n.icon-home:before {\n  content: '\\E805';\n}\n\n/* '' */\n.icon-close:before {\n  content: '\\E806';\n}\n\n/* '' */\n.icon-chat:before {\n  content: '\\E807';\n}\n\n/* '' */\n.icon-star:before {\n  content: '\\E808';\n}\n\n/* '' */\n.icon-plus:before {\n  content: '\\E809';\n}\n\n/* '' */\n.icon-pencil:before {\n  content: '\\E80A';\n}\n\n/* '' */\n.icon-empty-blank:before {\n  content: '\\E80B';\n}\n\n/* '' */\n.icon-flag:before {\n  content: '\\E80C';\n}\n\n/* '' */\nbody {\n  color: black;\n  font-family: 'Source Code Pro';\n}\n\n.title-font {\n  font-family: \"sarial\";\n}\n\na {\n  color: black;\n  text-decoration: none;\n}\n\n.btn-default:hover {\n  cursor: pointer;\n  color: #102B3F;\n}\n\n.flex-parent-row {\n  display: -webkit-flex;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-flex-flow: row nowrap;\n      -ms-flex-flow: row nowrap;\n          flex-flow: row nowrap;\n  -webkit-align-items: center;\n      -ms-flex-align: center;\n          align-items: center;\n}\n\n.flex-child-expand {\n  -webkit-flex: 1 1 auto;\n      -ms-flex: 1 1 auto;\n          flex: 1 1 auto;\n}\n\n.flex-child-end {\n  -webkit-align-self: flex-end;\n      -ms-flex-item-align: end;\n          align-self: flex-end;\n}\n\n.flex-child-start {\n  -webkit-align-self: flex-start;\n      -ms-flex-item-align: start;\n          align-self: flex-start;\n}\n\n@media (min-width: 415px) {\n  .mobile-only {\n    display: none;\n  }\n}\n", ""]);
 
 	// exports
 
@@ -26687,19 +26687,17 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _tweetListItem = __webpack_require__(253);
+	var _tweetList = __webpack_require__(253);
 
-	var _tweetListItem2 = _interopRequireDefault(_tweetListItem);
+	var _tweetList2 = _interopRequireDefault(_tweetList);
 
-	var _tweetActions = __webpack_require__(342);
+	var _addEndorsementForm = __webpack_require__(346);
 
-	var tweetActions = _interopRequireWildcard(_tweetActions);
+	var _addEndorsementForm2 = _interopRequireDefault(_addEndorsementForm);
 
 	var _reactRedux = __webpack_require__(214);
 
-	__webpack_require__(361);
-
-	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+	var _tweetActions = __webpack_require__(349);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -26715,49 +26713,64 @@
 	  return { tweets: tweets };
 	}
 
-	var TweetListView = (function (_Component) {
-	  _inherits(TweetListView, _Component);
+	var TweetTab = (function (_Component) {
+	  _inherits(TweetTab, _Component);
 
-	  function TweetListView() {
-	    _classCallCheck(this, TweetListView);
+	  function TweetTab(props) {
+	    _classCallCheck(this, TweetTab);
 
-	    return _possibleConstructorReturn(this, Object.getPrototypeOf(TweetListView).apply(this, arguments));
+	    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(TweetTab).call(this, props));
+
+	    _this.openForm = function () {
+	      _this.setState({ formOpen: true });
+	    };
+
+	    _this.closeForm = function () {
+	      _this.setState({ formOpen: false });
+	    };
+
+	    _this.fetchTweets = function () {
+	      console.log('fetch tweets');
+	      _this.props.dispatch((0, _tweetActions.fetchTweetsIfNeeded)());
+	    };
+
+	    _this.deleteTweet = function (id) {
+	      _this.props.dispatch((0, _tweetActions.requestTweetDelete)(id));
+	    };
+
+	    _this.state = {
+	      formOpen: false
+	    };
+	    return _this;
 	  }
 
-	  _createClass(TweetListView, [{
-	    key: 'componentDidMount',
-	    value: function componentDidMount() {
-	      var fetchTweetsIfNeeded = tweetActions.fetchTweetsIfNeeded;
-
-	      this.props.dispatch(fetchTweetsIfNeeded());
-	    }
-	  }, {
+	  _createClass(TweetTab, [{
 	    key: 'render',
 	    value: function render() {
-	      //console.log(this.props);
-	      var tweets = this.props.tweets;
-
-	      var tweetItems = tweets.map(function (tweet, i) {
-	        return _react2.default.createElement(_tweetListItem2.default, { tweet: tweet, key: i });
-	      });
 	      return _react2.default.createElement(
-	        'ul',
-	        { className: 'tweet-list' },
-	        tweetItems
+	        'div',
+	        null,
+	        _react2.default.createElement(_tweetList2.default, { tweets: this.props.tweets,
+	          addHandler: this.openForm,
+	          deleteTweet: this.deleteTweet,
+	          fetchTweets: this.fetchTweets }),
+	        this.state.formOpen ? _react2.default.createElement(_addEndorsementForm2.default, { closeHandler: this.closeForm.bind(this) }) : ''
 	      );
 	    }
 	  }]);
 
-	  return TweetListView;
+	  return TweetTab;
 	})(_react.Component);
 
-	exports.default = (0, _reactRedux.connect)(selectTweets)(TweetListView);
+	exports.default = (0, _reactRedux.connect)(selectTweets)(TweetTab);
 
 /***/ },
 /* 253 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
+
+	var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
 
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
@@ -26771,9 +26784,23 @@
 
 	var _moment2 = _interopRequireDefault(_moment);
 
+	var _function = __webpack_require__(342);
+
+	var _function2 = _interopRequireDefault(_function);
+
+	__webpack_require__(344);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
 	var TweetListItem = function TweetListItem(props) {
+	  var addHandler = props.addHandler;
+	  var deleteHandler = props.deleteHandler;
 	  var _props$tweet = props.tweet;
 	  var text = _props$tweet.text;
 	  var link = _props$tweet.link;
@@ -26781,7 +26808,7 @@
 
 	  var time = (0, _moment2.default)(new Date(created_at)).format('lll');
 	  var isTouchDevice = 'ontouchstart' in window;
-	  var statusId = link.match(/[\d]*$/);
+	  var statusId = link.match(/[\d]*$/)[0];
 	  return _react2.default.createElement(
 	    'li',
 	    { className: 'tweet-list-item' },
@@ -26790,7 +26817,7 @@
 	      { className: 'flex-parent-row' },
 	      _react2.default.createElement(
 	        'div',
-	        { className: 'add-endorsement-holder flex-child-start' },
+	        { className: 'btn-default add-endorsement-holder flex-child-start', onClick: addHandler.bind(undefined, text) },
 	        _react2.default.createElement('span', { className: 'icon-plus' })
 	      ),
 	      _react2.default.createElement(
@@ -26809,14 +26836,65 @@
 	      ),
 	      _react2.default.createElement(
 	        'div',
-	        { className: 'remove-tweet-holder flex-child-start' },
+	        { className: 'btn-default remove-tweet-holder flex-child-start', onClick: deleteHandler.bind(undefined, statusId) },
 	        _react2.default.createElement('span', { className: 'icon-trash-bin' })
 	      )
 	    )
 	  );
 	};
 
-	exports.default = TweetListItem;
+	var TweetList = (function (_Component) {
+	  _inherits(TweetList, _Component);
+
+	  function TweetList() {
+	    var _Object$getPrototypeO;
+
+	    var _temp, _this, _ret;
+
+	    _classCallCheck(this, TweetList);
+
+	    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+	      args[_key] = arguments[_key];
+	    }
+
+	    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_Object$getPrototypeO = Object.getPrototypeOf(TweetList)).call.apply(_Object$getPrototypeO, [this].concat(args))), _this), _this.shouldComponentUpdate = _function2.default, _temp), _possibleConstructorReturn(_this, _ret);
+	  }
+
+	  _createClass(TweetList, [{
+	    key: 'componentDidMount',
+	    value: function componentDidMount() {
+	      this.props.fetchTweets();
+	    }
+	  }, {
+	    key: 'renderTweets',
+	    value: function renderTweets() {
+	      var _this2 = this;
+
+	      var tweets = this.props.tweets;
+
+	      return tweets.map(function (tweet, i) {
+	        return _react2.default.createElement(TweetListItem, { tweet: tweet,
+	          key: tweet._id,
+	          addHandler: _this2.props.addHandler,
+	          deleteHandler: _this2.props.deleteTweet.bind(_this2, tweet._id) });
+	      });
+	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      console.log('renderTweetList');
+	      return _react2.default.createElement(
+	        'ul',
+	        { className: 'tweet-list' },
+	        this.renderTweets()
+	      );
+	    }
+	  }]);
+
+	  return TweetList;
+	})(_react.Component);
+
+	exports.default = TweetList;
 
 /***/ },
 /* 254 */
@@ -38284,16 +38362,255 @@
 
 	'use strict';
 
+	exports.__esModule = true;
+	exports['default'] = shouldPureComponentUpdate;
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+
+	var _shallowEqual = __webpack_require__(343);
+
+	var _shallowEqual2 = _interopRequireDefault(_shallowEqual);
+
+	function shouldPureComponentUpdate(nextProps, nextState) {
+	  return !(0, _shallowEqual2['default'])(this.props, nextProps) || !(0, _shallowEqual2['default'])(this.state, nextState);
+	}
+
+	module.exports = exports['default'];
+
+/***/ },
+/* 343 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	exports.__esModule = true;
+	exports['default'] = shallowEqual;
+
+	function shallowEqual(objA, objB) {
+	  if (objA === objB) {
+	    return true;
+	  }
+
+	  if (typeof objA !== 'object' || objA === null || typeof objB !== 'object' || objB === null) {
+	    return false;
+	  }
+
+	  var keysA = Object.keys(objA);
+	  var keysB = Object.keys(objB);
+
+	  if (keysA.length !== keysB.length) {
+	    return false;
+	  }
+
+	  // Test for A's keys different from B.
+	  var bHasOwnProperty = Object.prototype.hasOwnProperty.bind(objB);
+	  for (var i = 0; i < keysA.length; i++) {
+	    if (!bHasOwnProperty(keysA[i]) || objA[keysA[i]] !== objB[keysA[i]]) {
+	      return false;
+	    }
+	  }
+
+	  return true;
+	}
+
+	module.exports = exports['default'];
+
+/***/ },
+/* 344 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+
+	// load the styles
+	var content = __webpack_require__(345);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(236)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!./../../node_modules/css-loader/index.js!./../../node_modules/autoprefixer-loader/index.js?browsers=last 2 version!./../../node_modules/sass-loader/index.js?outputStyle=expanded&sourceMap=true&sourceMapContents=true!./tweetList.scss", function() {
+				var newContent = require("!!./../../node_modules/css-loader/index.js!./../../node_modules/autoprefixer-loader/index.js?browsers=last 2 version!./../../node_modules/sass-loader/index.js?outputStyle=expanded&sourceMap=true&sourceMapContents=true!./tweetList.scss");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 345 */
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(235)();
+	// imports
+
+
+	// module
+	exports.push([module.id, ".tweet-list {\n  list-style: none;\n  padding: 0 10%;\n  max-width: 600px;\n  margin: 20px auto;\n}\n\n.tweet-list-item {\n  padding: 10px 0;\n}\n\n.tweet-content {\n  -webkit-flex: 1 2 auto;\n      -ms-flex: 1 2 auto;\n          flex: 1 2 auto;\n}\n\n.remove-tweet-holder {\n  font-size: 2em;\n  padding: 0 0 0 1em;\n  color: #8F2CD8;\n}\n\n.add-endorsement-holder {\n  font-size: 2em;\n  padding: 0 1em 0 0;\n  color: #8F2CD8;\n}\n\n@media (max-width: 414px) {\n  .tweet-list {\n    padding: 0;\n    margin: 10px;\n  }\n  .tweet-content {\n    -webkit-flex: 1 2 300px;\n        -ms-flex: 1 2 300px;\n            flex: 1 2 300px;\n  }\n  .remove-tweet-holder {\n    padding: 0 5px 0 .5em;\n  }\n  .add-endorsement-holder {\n    padding: 0 .5em 0 0;\n  }\n}\n", ""]);
+
+	// exports
+
+
+/***/ },
+/* 346 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	__webpack_require__(347);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var AddEndorsementForm = (function (_Component) {
+	  _inherits(AddEndorsementForm, _Component);
+
+	  function AddEndorsementForm() {
+	    _classCallCheck(this, AddEndorsementForm);
+
+	    return _possibleConstructorReturn(this, Object.getPrototypeOf(AddEndorsementForm).apply(this, arguments));
+	  }
+
+	  _createClass(AddEndorsementForm, [{
+	    key: 'render',
+	    value: function render() {
+	      return _react2.default.createElement(
+	        'div',
+	        { id: 'addEndorsementForm', className: 'form-container' },
+	        _react2.default.createElement('div', { className: 'icon-close', onClick: this.props.closeHandler }),
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'quoted-tweet' },
+	          'Ricky Martin To Endorse Hillary Clinton Ahead Of Florida Event Aimed At Puerto Ricans'
+	        ),
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'flex-parent-row' },
+	          _react2.default.createElement(
+	            'div',
+	            { className: 'endorser-input' },
+	            _react2.default.createElement(
+	              'h4',
+	              null,
+	              'Endorser'
+	            ),
+	            _react2.default.createElement(
+	              'div',
+	              null,
+	              _react2.default.createElement(
+	                'label',
+	                { htmlFor: 'endorser-first-name' },
+	                'first name'
+	              ),
+	              _react2.default.createElement('input', { type: 'text', id: 'endorser-first-name' })
+	            ),
+	            _react2.default.createElement(
+	              'div',
+	              null,
+	              _react2.default.createElement(
+	                'label',
+	                { htmlFor: 'endorser-last-name' },
+	                'last name'
+	              ),
+	              _react2.default.createElement('input', { type: 'text', id: 'endorser-last-name' })
+	            ),
+	            _react2.default.createElement(
+	              'div',
+	              null,
+	              _react2.default.createElement(
+	                'label',
+	                { htmlFor: 'endorsers-candidate' },
+	                'candidate'
+	              ),
+	              _react2.default.createElement('input', { type: 'text', id: 'endorsers-candidate' })
+	            )
+	          )
+	        )
+	      );
+	    }
+	  }]);
+
+	  return AddEndorsementForm;
+	})(_react.Component);
+
+	exports.default = AddEndorsementForm;
+
+/***/ },
+/* 347 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+
+	// load the styles
+	var content = __webpack_require__(348);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(236)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!./../../node_modules/css-loader/index.js!./../../node_modules/autoprefixer-loader/index.js?browsers=last 2 version!./../../node_modules/sass-loader/index.js?outputStyle=expanded&sourceMap=true&sourceMapContents=true!./forms.scss", function() {
+				var newContent = require("!!./../../node_modules/css-loader/index.js!./../../node_modules/autoprefixer-loader/index.js?browsers=last 2 version!./../../node_modules/sass-loader/index.js?outputStyle=expanded&sourceMap=true&sourceMapContents=true!./forms.scss");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 348 */
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(235)();
+	// imports
+
+
+	// module
+	exports.push([module.id, ".form-container {\n  background-color: rgba(255, 255, 255, 0.95);\n  position: fixed;\n  top: 0;\n  left: 0;\n  padding: 10% 20%;\n  min-height: 100%;\n}\n", ""]);
+
+	// exports
+
+
+/***/ },
+/* 349 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
 	exports.fetchTweetsIfNeeded = fetchTweetsIfNeeded;
+	exports.requestTweetDelete = requestTweetDelete;
 
-	var _tweetTypes = __webpack_require__(343);
+	var _tweetTypes = __webpack_require__(350);
 
 	var ACTION_TYPES = _interopRequireWildcard(_tweetTypes);
 
-	var _api = __webpack_require__(344);
+	var _api = __webpack_require__(351);
 
 	var api = _interopRequireWildcard(_api);
 
@@ -38302,6 +38619,8 @@
 	var REQUEST_TWEETS = ACTION_TYPES.REQUEST_TWEETS;
 	var REQUEST_TWEETS_FAIL = ACTION_TYPES.REQUEST_TWEETS_FAIL;
 	var RECEIVE_TWEETS = ACTION_TYPES.RECEIVE_TWEETS;
+	var DELETE_TWEET = ACTION_TYPES.DELETE_TWEET;
+	var UNDELETE_TWEET = ACTION_TYPES.UNDELETE_TWEET;
 	function fetchTweetsIfNeeded() {
 	  return function (dispatch, getState) {
 	    dispatch(requestTweets());
@@ -38335,8 +38654,35 @@
 	  };
 	}
 
+	function requestTweetDelete(id) {
+	  return function (dispatch, getState) {
+	    var tweet = getState().tweets.find(function (tweet) {
+	      return tweet.id === id;
+	    });
+	    console.log(tweet);
+	    dispatch(deleteTweet(id));
+	    api.deleteTweet(id).then(null, function (err) {
+	      dispatch(undeleteTweet(tweet));
+	    });
+	  };
+	}
+
+	function deleteTweet(id) {
+	  return {
+	    type: DELETE_TWEET,
+	    id: id
+	  };
+	}
+
+	function undeleteTweet(tweet) {
+	  return {
+	    type: UNDELETE_TWEET,
+	    tweet: tweet
+	  };
+	}
+
 /***/ },
-/* 343 */
+/* 350 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -38347,9 +38693,11 @@
 	var REQUEST_TWEETS = exports.REQUEST_TWEETS = 'REQUEST_TWEETS';
 	var REQUEST_TWEETS_FAIL = exports.REQUEST_TWEETS_FAIL = 'REQUEST_TWEETS_FAIL';
 	var RECEIVE_TWEETS = exports.RECEIVE_TWEETS = 'RECEIVE_TWEETS';
+	var DELETE_TWEET = exports.DELETE_TWEET = 'DELETE_TWEET';
+	var UNDELETE_TWEET = exports.UNDELETE_TWEET = 'DELETE_TWEET_FAIL';
 
 /***/ },
-/* 344 */
+/* 351 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -38358,8 +38706,9 @@
 	  value: true
 	});
 	exports.getTweets = getTweets;
+	exports.deleteTweet = deleteTweet;
 
-	var _axios = __webpack_require__(345);
+	var _axios = __webpack_require__(352);
 
 	var _axios2 = _interopRequireDefault(_axios);
 
@@ -38369,24 +38718,30 @@
 	  return _axios2.default.get('/api/data');
 	}
 
+	function deleteTweet(id) {
+	  return _axios2.default.post('/api/deleteTweet', {
+	    id: id
+	  });
+	}
+
 /***/ },
-/* 345 */
+/* 352 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = __webpack_require__(346);
+	module.exports = __webpack_require__(353);
 
 /***/ },
-/* 346 */
+/* 353 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var defaults = __webpack_require__(347);
-	var utils = __webpack_require__(348);
-	var dispatchRequest = __webpack_require__(349);
-	var InterceptorManager = __webpack_require__(357);
-	var isAbsoluteURL = __webpack_require__(358);
-	var combineURLs = __webpack_require__(359);
+	var defaults = __webpack_require__(354);
+	var utils = __webpack_require__(355);
+	var dispatchRequest = __webpack_require__(356);
+	var InterceptorManager = __webpack_require__(364);
+	var isAbsoluteURL = __webpack_require__(365);
+	var combineURLs = __webpack_require__(366);
 
 	function Axios (defaultConfig) {
 	  this.defaultConfig = utils.merge({
@@ -38453,7 +38808,7 @@
 	axios.all = function (promises) {
 	  return Promise.all(promises);
 	};
-	axios.spread = __webpack_require__(360);
+	axios.spread = __webpack_require__(367);
 
 	// Expose interceptors
 	axios.interceptors = defaultInstance.interceptors;
@@ -38493,12 +38848,12 @@
 
 
 /***/ },
-/* 347 */
+/* 354 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var utils = __webpack_require__(348);
+	var utils = __webpack_require__(355);
 
 	var PROTECTION_PREFIX = /^\)\]\}',?\n/;
 	var DEFAULT_CONTENT_TYPE = {
@@ -38561,7 +38916,7 @@
 
 
 /***/ },
-/* 348 */
+/* 355 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -38803,7 +39158,7 @@
 
 
 /***/ },
-/* 349 */
+/* 356 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
@@ -38820,11 +39175,11 @@
 	    try {
 	      // For browsers use XHR adapter
 	      if ((typeof XMLHttpRequest !== 'undefined') || (typeof ActiveXObject !== 'undefined')) {
-	        __webpack_require__(350)(resolve, reject, config);
+	        __webpack_require__(357)(resolve, reject, config);
 	      }
 	      // For node use HTTP adapter
 	      else if (typeof process !== 'undefined') {
-	        __webpack_require__(350)(resolve, reject, config);
+	        __webpack_require__(357)(resolve, reject, config);
 	      }
 	    } catch (e) {
 	      reject(e);
@@ -38836,20 +39191,20 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4)))
 
 /***/ },
-/* 350 */
+/* 357 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	/*global ActiveXObject:true*/
 
-	var defaults = __webpack_require__(347);
-	var utils = __webpack_require__(348);
-	var buildURL = __webpack_require__(351);
-	var parseHeaders = __webpack_require__(352);
-	var transformData = __webpack_require__(353);
-	var isURLSameOrigin = __webpack_require__(354);
-	var btoa = window.btoa || __webpack_require__(355)
+	var defaults = __webpack_require__(354);
+	var utils = __webpack_require__(355);
+	var buildURL = __webpack_require__(358);
+	var parseHeaders = __webpack_require__(359);
+	var transformData = __webpack_require__(360);
+	var isURLSameOrigin = __webpack_require__(361);
+	var btoa = window.btoa || __webpack_require__(362)
 
 	module.exports = function xhrAdapter(resolve, reject, config) {
 	  // Transform request data
@@ -38926,7 +39281,7 @@
 	  // This is only done if running in a standard browser environment.
 	  // Specifically not if we're in a web worker, or react-native.
 	  if (utils.isStandardBrowserEnv()) {
-	    var cookies = __webpack_require__(356);
+	    var cookies = __webpack_require__(363);
 
 	    // Add xsrf header
 	    var xsrfValue = isURLSameOrigin(config.url) ?
@@ -38977,12 +39332,12 @@
 
 
 /***/ },
-/* 351 */
+/* 358 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var utils = __webpack_require__(348);
+	var utils = __webpack_require__(355);
 
 	function encode(val) {
 	  return encodeURIComponent(val).
@@ -39051,12 +39406,12 @@
 
 
 /***/ },
-/* 352 */
+/* 359 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var utils = __webpack_require__(348);
+	var utils = __webpack_require__(355);
 
 	/**
 	 * Parse headers into an object
@@ -39091,12 +39446,12 @@
 
 
 /***/ },
-/* 353 */
+/* 360 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var utils = __webpack_require__(348);
+	var utils = __webpack_require__(355);
 
 	/**
 	 * Transform the data for a request or a response
@@ -39116,12 +39471,12 @@
 
 
 /***/ },
-/* 354 */
+/* 361 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var utils = __webpack_require__(348);
+	var utils = __webpack_require__(355);
 
 	module.exports = (
 	  utils.isStandardBrowserEnv() ?
@@ -39190,7 +39545,7 @@
 
 
 /***/ },
-/* 355 */
+/* 362 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -39230,12 +39585,12 @@
 
 
 /***/ },
-/* 356 */
+/* 363 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var utils = __webpack_require__(348);
+	var utils = __webpack_require__(355);
 
 	module.exports = (
 	  utils.isStandardBrowserEnv() ?
@@ -39289,12 +39644,12 @@
 
 
 /***/ },
-/* 357 */
+/* 364 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var utils = __webpack_require__(348);
+	var utils = __webpack_require__(355);
 
 	function InterceptorManager() {
 	  this.handlers = [];
@@ -39347,7 +39702,7 @@
 
 
 /***/ },
-/* 358 */
+/* 365 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -39367,7 +39722,7 @@
 
 
 /***/ },
-/* 359 */
+/* 366 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -39385,7 +39740,7 @@
 
 
 /***/ },
-/* 360 */
+/* 367 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -39418,47 +39773,7 @@
 
 
 /***/ },
-/* 361 */
-/***/ function(module, exports, __webpack_require__) {
-
-	// style-loader: Adds some css to the DOM by adding a <style> tag
-
-	// load the styles
-	var content = __webpack_require__(362);
-	if(typeof content === 'string') content = [[module.id, content, '']];
-	// add the styles to the DOM
-	var update = __webpack_require__(236)(content, {});
-	if(content.locals) module.exports = content.locals;
-	// Hot Module Replacement
-	if(false) {
-		// When the styles change, update the <style> tags
-		if(!content.locals) {
-			module.hot.accept("!!./../../node_modules/css-loader/index.js!./../../node_modules/autoprefixer-loader/index.js?browsers=last 2 version!./../../node_modules/sass-loader/index.js?outputStyle=expanded&sourceMap=true&sourceMapContents=true!./tweetList.scss", function() {
-				var newContent = require("!!./../../node_modules/css-loader/index.js!./../../node_modules/autoprefixer-loader/index.js?browsers=last 2 version!./../../node_modules/sass-loader/index.js?outputStyle=expanded&sourceMap=true&sourceMapContents=true!./tweetList.scss");
-				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-				update(newContent);
-			});
-		}
-		// When the module is disposed, remove the <style> tags
-		module.hot.dispose(function() { update(); });
-	}
-
-/***/ },
-/* 362 */
-/***/ function(module, exports, __webpack_require__) {
-
-	exports = module.exports = __webpack_require__(235)();
-	// imports
-
-
-	// module
-	exports.push([module.id, ".tweet-list {\n  list-style: none;\n  padding: 0 10%;\n  max-width: 600px;\n  margin: 20px auto;\n}\n\n.tweet-list-item {\n  padding: 10px 0;\n}\n\n.tweet-content {\n  -webkit-flex: 1 2 auto;\n      -ms-flex: 1 2 auto;\n          flex: 1 2 auto;\n}\n\n.remove-tweet-holder {\n  font-size: 2em;\n  padding: 0 0 0 1em;\n  color: #8F2CD8;\n}\n\n.add-endorsement-holder {\n  font-size: 2em;\n  padding: 0 1em 0 0;\n  color: #8F2CD8;\n}\n\n@media (max-width: 414px) {\n  .tweet-list {\n    padding: 0;\n    margin: 10px;\n  }\n  .tweet-content {\n    -webkit-flex: 1 2 300px;\n        -ms-flex: 1 2 300px;\n            flex: 1 2 300px;\n  }\n  .remove-tweet-holder {\n    padding: 0 5px 0 .5em;\n  }\n  .add-endorsement-holder {\n    padding: 0 .5em 0 0;\n  }\n}\n", ""]);
-
-	// exports
-
-
-/***/ },
-/* 363 */
+/* 368 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -39480,7 +39795,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 364 */
+/* 369 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -39489,7 +39804,7 @@
 	  value: true
 	});
 
-	var _tweets = __webpack_require__(365);
+	var _tweets = __webpack_require__(370);
 
 	Object.defineProperty(exports, 'tweets', {
 	  enumerable: true,
@@ -39498,7 +39813,7 @@
 	  }
 	});
 
-	var _login = __webpack_require__(366);
+	var _login = __webpack_require__(371);
 
 	Object.defineProperty(exports, 'loginInfo', {
 	  enumerable: true,
@@ -39508,7 +39823,7 @@
 	});
 
 /***/ },
-/* 365 */
+/* 370 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -39518,7 +39833,7 @@
 	});
 	exports.default = tweets;
 
-	var _tweetTypes = __webpack_require__(343);
+	var _tweetTypes = __webpack_require__(350);
 
 	var initialState = [];
 
@@ -39529,13 +39844,17 @@
 	  switch (action.type) {
 	    case _tweetTypes.RECEIVE_TWEETS:
 	      return action.data;
+	    case _tweetTypes.DELETE_TWEET:
+	      return state.filter(function (data) {
+	        return action.id !== data._id;
+	      });
 	    default:
 	      return state;
 	  }
 	}
 
 /***/ },
-/* 366 */
+/* 371 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';

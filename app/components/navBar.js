@@ -52,9 +52,9 @@ export default class NavBar extends Component{
                             {active:isActive}
                           );
       return (
-        <Link to={link.route} onClick={this.clickHandler.bind(this,link.route)} className="flex-child-expand">
-          <div className={tabClasses} key={link.text}>
-            <div className="tab-icon-holder">
+        <Link to={link.route} onClick={this.clickHandler.bind(this,link.route)} className="flex-child-expand" key={link.text}>
+          <div className={tabClasses}>
+            <div className="tab-icon-holder mobile-only">
               <span className={link.iconClass}></span>
             </div>
             <div className="tab-descript-holder">

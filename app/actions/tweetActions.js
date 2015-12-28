@@ -3,7 +3,9 @@ import * as api from './api';
 
 const { REQUEST_TWEETS,
         REQUEST_TWEETS_FAIL,
-        RECEIVE_TWEETS } = ACTION_TYPES;
+        RECEIVE_TWEETS,
+        DELETE_TWEET,
+        UNDELETE_TWEET } = ACTION_TYPES;
 
 export function fetchTweetsIfNeeded(){
   return (dispatch, getState) => {
@@ -14,7 +16,8 @@ export function fetchTweetsIfNeeded(){
       },
       err => {
         dispatch(requestTweetsFail(err));
-      });
+      }
+    );
   }
 }
 
@@ -37,5 +40,33 @@ function receiveTweets(data){
   return {
     type: RECEIVE_TWEETS,
     data
+  }
+}
+
+export function requestTweetDelete(id){
+  return (dispatch, getState) => {
+    const tweet = getState().tweets.find( tweet => (tweet.id === id) );
+    console.log(tweet);
+    dispatch(deleteTweet(id));
+    api.deleteTweet(id).then(
+      null,
+      err => {
+        dispatch(undeleteTweet(tweet));
+      }
+    );
+  }
+}
+
+function deleteTweet(id){
+  return {
+    type: DELETE_TWEET,
+    id
+  }
+}
+
+function undeleteTweet(tweet){
+  return {
+    type: UNDELETE_TWEET,
+    tweet
   }
 }

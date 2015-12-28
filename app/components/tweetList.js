@@ -1,28 +1,54 @@
 import React, { Component } from 'react';
-import TweetListItem from './tweetListItem';
-import * as tweetActions from '../actions/tweetActions';
-import {connect} from 'react-redux';
-
+import moment from 'moment';
+import shouldPureComponentUpdate from 'react-pure-render/function';
 import '../styles/tweetList.scss'
 
-function selectTweets(state){
-  const {tweets} = state;
-  return {tweets};
-}
+var TweetListItem = (props) => {
+  const { addHandler,
+          deleteHandler,
+          tweet:
+            { text,
+              link,
+              created_at}
+          } = props;
+  const time = moment(new Date(created_at)).format('lll');
+  const isTouchDevice = 'ontouchstart' in window;
+  const statusId = link.match(/[\d]*$/)[0];
+  return <li className="tweet-list-item">
+    <div className="flex-parent-row">
+      <div className="btn-default add-endorsement-holder flex-child-start" onClick={addHandler.bind(this, text)}>
+        <span className="icon-plus"></span>
+      </div>
+      <a href={isTouchDevice ? `twitter://status?id=${statusId}` : link} className="tweet-content">
+        <div style={{wordWrap: 'break-word'}}>{text}</div>
+        <div style={{color:"#A06CD5"}}>{time}</div>
+      </a>
+      <div className="btn-default remove-tweet-holder flex-child-start" onClick={deleteHandler.bind(this, statusId)}>
+        <span className="icon-trash-bin"></span>
+      </div>
+    </div>
+  </li>;
+};
 
-class TweetListView extends Component{
+
+export default class TweetList extends Component{
+  shouldComponentUpdate = shouldPureComponentUpdate;
   componentDidMount(){
-    const {fetchTweetsIfNeeded} = tweetActions;
-    this.props.dispatch(fetchTweetsIfNeeded());
+    this.props.fetchTweets();
+  }
+  renderTweets(){
+    const {tweets} = this.props;
+    return tweets.map(
+      (tweet, i) => <TweetListItem tweet={tweet}
+                                   key={tweet._id}
+                                   addHandler={this.props.addHandler}
+                                   deleteHandler={this.props.deleteTweet.bind(this,tweet._id)} />
+    );
   }
   render(){
-    //console.log(this.props);
-    const {tweets} = this.props;
-    const tweetItems = tweets.map((tweet, i) => <TweetListItem tweet={tweet} key={i} />);
+    console.log('renderTweetList');
     return <ul className="tweet-list">
-      {tweetItems}
-    </ul>;
+      {this.renderTweets()}
+    </ul>
   }
 }
-
-export default connect(selectTweets)(TweetListView);
