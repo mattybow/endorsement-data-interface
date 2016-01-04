@@ -1,14 +1,12 @@
 .tweet-list{
   list-style:none;
-  padding: 0 10%;
-  max-width:600px;
-  margin:20px auto;
+  padding:0;
 }
 .tweet-list-item{
   padding: 10px 0;
 }
 .tweet-content{
-  flex:1 2 auto;
+  flex:1 2 400px;
 }
 .remove-tweet-holder{
   font-size:2em;
@@ -21,12 +19,8 @@
   color:#8F2CD8;
 }
 @media(max-width:414px){
-  .tweet-list{
-    padding:0;
-    margin:10px;
-  }
   .tweet-content{
-    flex:1 2 300px;
+    flex:1 2 220px;
   }
   .remove-tweet-holder{
     padding:0 5px 0 .5em;

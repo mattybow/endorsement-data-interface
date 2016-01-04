@@ -1,9 +1,9 @@
 import express from 'express';
 import mongodb from '../mongoAccess';
+import mysqldb from '../mysqlAccess';
 const router = express.Router();
 
-router.get('/data',(req,res) => {
-  console.log(req.session.passport);
+router.get('/tweets',(req,res) => {
   if(req.session.passport){
     mongodb.twStream.find({},null,{sort:{created_time:-1}, limit: 1000},(err,data)=>{
       res.json(data);
@@ -13,6 +13,26 @@ router.get('/data',(req,res) => {
        .json([]);
   }
 
+});
+
+router.get('/candidates',(req,res) => {
+  if(req.session.passport){
+    mysqldb.query('SELECT * FROM CANDIDATES;', (err,results) => {
+      res.json(results);
+    });
+  } else {
+    res.status(401)
+       .json([]);
+  }
+});
+
+router.get('/candidate',(req,res) => {
+  if(req.session.passport){
+    res.json([]);
+  } else {
+    res.status(401)
+       .json([]);
+  }
 });
 
 router.post('/deleteTweet',(req,res) => {

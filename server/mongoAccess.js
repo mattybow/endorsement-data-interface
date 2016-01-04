@@ -10,7 +10,7 @@ db.twStream.findOne({},(err,doc) => {
   if(err) {
     throw new Error(`no db connection: ${err}`);
   }
-  debug(new Date(), 'Connected to Local Database');
+  debug('CONNECTED TO LOCAL MONGODB', new Date());
 });
 
 function connectionStrToDb(db){

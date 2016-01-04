@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 export function getTweets(){
-  return axios.get('/api/data');
+  return axios.get('/api/tweets');
 }
 
 export function deleteTweet(id){
@@ -12,4 +12,12 @@ export function deleteTweet(id){
 
 export function checkAuth(){
   return axios.post('/auth/check');
+}
+
+export function getCandidates(){
+  return axios.get('/api/candidates');
+}
+
+export function getCandidateInfo(id){
+  return axios.get('/api/candidate');
 }

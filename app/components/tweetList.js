@@ -33,9 +33,6 @@ var TweetListItem = (props) => {
 
 export default class TweetList extends Component{
   shouldComponentUpdate = shouldPureComponentUpdate;
-  componentDidMount(){
-    this.props.fetchTweets();
-  }
   renderTweets(){
     const {tweets} = this.props;
     return tweets.map(

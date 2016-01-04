@@ -1,9 +1,12 @@
 import React, { Component } from 'react';
 import TweetList from './tweetList';
 import AddEndorsementForm from './addEndorsementForm';
+import LoadingIndicator from './loadingIndicator';
+import ModalWrapper from './modalWrapper';
 import {connect} from 'react-redux';
 
 import { fetchTweetsIfNeeded, requestTweetDelete } from '../actions/tweetActions';
+import { updateEndorsementForm } from '../actions/endorsementFormActions';
 
 function selectTweets(state){
   const {tweets} = state;
@@ -17,26 +20,31 @@ class TweetTab extends Component{
       formOpen:false
     }
   }
-  openForm = () => {
+  componentWillMount(){
+    this.props.dispatch(fetchTweetsIfNeeded());
+  }
+  openForm = (tweetText) => {
+    this.props.dispatch(updateEndorsementForm({tweetText}));
     this.setState({formOpen:true});
   }
   closeForm = () => {
     this.setState({formOpen:false});
   }
-  fetchTweets = () => {
-    console.log('fetch tweets');
-    this.props.dispatch(fetchTweetsIfNeeded());
-  }
   deleteTweet = (id) => {
     this.props.dispatch(requestTweetDelete(id));
   }
   render(){
+    const noTweets = !this.props.tweets.length;
+    if(noTweets){
+      return <LoadingIndicator />
+    }
     return <div>
       <TweetList tweets = {this.props.tweets}
                  addHandler = {this.openForm}
-                 deleteTweet = {this.deleteTweet}
-                 fetchTweets = {this.fetchTweets}/>
-      { this.state.formOpen ? <AddEndorsementForm closeHandler={this.closeForm.bind(this)}/> : '' }
+                 deleteTweet = {this.deleteTweet}/>
+      <ModalWrapper isOpen={this.state.formOpen}>
+        { this.state.formOpen ? <AddEndorsementForm closeHandler={this.closeForm.bind(this)}/> : '' }
+      </ModalWrapper>
     </div>;
   }
 }

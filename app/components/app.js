@@ -6,10 +6,13 @@ import '../styles/main.scss';
 
 export default class App extends Component{
   render(){
-    return <div>
+    const touchCapable = 'ontouchstart' in window ? 'touch' : '';
+    return <div className={touchCapable}>
       <TopBar />
       <NavBar />
-      {this.props.children}
+      <div id="tab-contents">
+        {this.props.children}
+      </div>
     </div>;
   }
 }
