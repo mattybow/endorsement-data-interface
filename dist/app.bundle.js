@@ -19677,11 +19677,11 @@
 
 	var _redux = __webpack_require__(221);
 
-	var _reduxThunk = __webpack_require__(380);
+	var _reduxThunk = __webpack_require__(383);
 
 	var _reduxThunk2 = _interopRequireDefault(_reduxThunk);
 
-	var _reducers = __webpack_require__(381);
+	var _reducers = __webpack_require__(384);
 
 	var reducers = _interopRequireWildcard(_reducers);
 
@@ -24571,7 +24571,7 @@
 
 	var _tweetTab2 = _interopRequireDefault(_tweetTab);
 
-	var _candidateTab = __webpack_require__(377);
+	var _candidateTab = __webpack_require__(380);
 
 	var _candidateTab2 = _interopRequireDefault(_candidateTab);
 
@@ -24829,7 +24829,6 @@
 	      var displayName = _props$loginInfo.displayName;
 	      var profile_image_url = _props$loginInfo.profile_image_url;
 
-	      console.log(this.props);
 	      var content = _react2.default.createElement(
 	        'a',
 	        { href: '/auth/twitter' },
@@ -27771,7 +27770,7 @@
 	exports.push([module.id, "@import url(https://fonts.googleapis.com/css?family=Source+Code+Pro:400,300);", ""]);
 
 	// module
-	exports.push([module.id, "@charset \"UTF-8\";\n@font-face {\n  font-family: 'sarial';\n  src: url(" + __webpack_require__(264) + ") format(\"truetype\");\n  font-weight: normal;\n  font-style: normal;\n}\n\n@font-face {\n  font-family: 'fontello';\n  src: url(" + __webpack_require__(265) + ");\n  src: url(" + __webpack_require__(265) + "#iefix) format(\"embedded-opentype\"), url(" + __webpack_require__(266) + ") format(\"woff\"), url(" + __webpack_require__(267) + ") format(\"truetype\"), url(" + __webpack_require__(268) + "#fontello) format(\"svg\");\n  font-weight: normal;\n  font-style: normal;\n}\n\n/* Chrome hack: SVG is rendered more smooth in Windozze. 100% magic, uncomment if you need it. */\n/* Note, that will break hinting! In other OS-es font will be not as sharp as it could be */\n/*\n@media screen and (-webkit-min-device-pixel-ratio:0) {\n  @font-face {\n    font-family: 'fontello';\n    src: url('../font/fontello.svg?18129615#fontello') format('svg');\n  }\n}\n*/\n[class^=\"icon-\"]:before, [class*=\" icon-\"]:before {\n  font-family: \"fontello\";\n  font-style: normal;\n  font-weight: normal;\n  speak: none;\n  display: inline-block;\n  text-decoration: inherit;\n  width: 1em;\n  margin-right: .2em;\n  text-align: center;\n  /* opacity: .8; */\n  /* For safety - reset parent styles, that can break glyph codes*/\n  font-variant: normal;\n  text-transform: none;\n  /* fix buttons height, for twitter bootstrap */\n  line-height: 1em;\n  /* Animation center compensation - margins should be symmetric */\n  /* remove if not needed */\n  margin-left: .2em;\n  /* you can be more comfortable with increased icons size */\n  /* font-size: 120%; */\n  /* Font smoothing. That was taken from TWBS */\n  -webkit-font-smoothing: antialiased;\n  -moz-osx-font-smoothing: grayscale;\n  /* Uncomment for 3D effect */\n  /* text-shadow: 1px 1px 1px rgba(127, 127, 127, 0.3); */\n}\n\n.icon-twitter:before {\n  content: '\\E800';\n}\n\n/* '' */\n.icon-check-mark:before {\n  content: '\\E801';\n}\n\n/* '' */\n.icon-close:before {\n  content: '\\E802';\n}\n\n/* '' */\n.icon-label:before {\n  content: '\\E803';\n}\n\n/* '' */\n.icon-arrow:before {\n  content: '\\E804';\n}\n\n/* '' */\n.icon-trash-bin:before {\n  content: '\\E805';\n}\n\n/* '' */\n.icon-home:before {\n  content: '\\E806';\n}\n\n/* '' */\n.icon-chat:before {\n  content: '\\E807';\n}\n\n/* '' */\n.icon-plus:before {\n  content: '\\E808';\n}\n\n/* '' */\n.icon-pencil:before {\n  content: '\\E809';\n}\n\n/* '' */\n.icon-star:before {\n  content: '\\E80A';\n}\n\n/* '' */\n.icon-empty-blank:before {\n  content: '\\E80B';\n}\n\n/* '' */\n.icon-flag:before {\n  content: '\\E80C';\n}\n\n/* '' */\nbody {\n  color: black;\n  font-family: 'Source Code Pro';\n}\n\n.title-font {\n  font-family: \"sarial\";\n}\n\nbutton {\n  background-color: transparent;\n  border: 1px solid #8F2CD8;\n  color: #8F2CD8;\n}\n\na {\n  color: black;\n  text-decoration: none;\n}\n\n.btn-default:hover {\n  cursor: pointer;\n  color: #102B3F;\n}\n\n.btn-block {\n  display: block;\n}\n\n.no-border {\n  border: none;\n}\n\n.list-item-spacing {\n  padding: 10px 1em;\n}\n\n.flex-parent-row {\n  display: -webkit-flex;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-flex-flow: row nowrap;\n      -ms-flex-flow: row nowrap;\n          flex-flow: row nowrap;\n  -webkit-align-items: center;\n      -ms-flex-align: center;\n          align-items: center;\n}\n\n.flex-child-expand {\n  -webkit-flex: 1 1 auto;\n      -ms-flex: 1 1 auto;\n          flex: 1 1 auto;\n}\n\n.flex-child-end {\n  -webkit-align-self: flex-end;\n      -ms-flex-item-align: end;\n          align-self: flex-end;\n}\n\n.flex-child-start {\n  -webkit-align-self: flex-start;\n      -ms-flex-item-align: start;\n          align-self: flex-start;\n}\n\n.icon-md {\n  font-size: 1.5em;\n}\n\n.icon-lg {\n  font-size: 2em;\n}\n\n.icon-lg.icon-close {\n  font-size: 1.6em;\n  margin: 0 .2em;\n}\n\n.touch .modal-wrapper {\n  -webkit-overflow-scrolling: touch;\n}\n\n#tab-contents {\n  padding: 0 10%;\n  max-width: 600px;\n  margin: 20px auto;\n}\n\n@media (min-width: 415px) {\n  .mobile-only {\n    display: none;\n  }\n}\n\n@media (max-width: 414px) {\n  #tab-contents {\n    padding: 0;\n    margin: 10px;\n  }\n}\n", ""]);
+	exports.push([module.id, "@charset \"UTF-8\";\n@font-face {\n  font-family: 'sarial';\n  src: url(" + __webpack_require__(264) + ") format(\"truetype\");\n  font-weight: normal;\n  font-style: normal;\n}\n\n@font-face {\n  font-family: 'fontello';\n  src: url(" + __webpack_require__(265) + ");\n  src: url(" + __webpack_require__(265) + "#iefix) format(\"embedded-opentype\"), url(" + __webpack_require__(266) + ") format(\"woff\"), url(" + __webpack_require__(267) + ") format(\"truetype\"), url(" + __webpack_require__(268) + "#fontello) format(\"svg\");\n  font-weight: normal;\n  font-style: normal;\n}\n\n/* Chrome hack: SVG is rendered more smooth in Windozze. 100% magic, uncomment if you need it. */\n/* Note, that will break hinting! In other OS-es font will be not as sharp as it could be */\n/*\n@media screen and (-webkit-min-device-pixel-ratio:0) {\n  @font-face {\n    font-family: 'fontello';\n    src: url('../font/fontello.svg?18129615#fontello') format('svg');\n  }\n}\n*/\n[class^=\"icon-\"]:before, [class*=\" icon-\"]:before {\n  font-family: \"fontello\";\n  font-style: normal;\n  font-weight: normal;\n  speak: none;\n  display: inline-block;\n  text-decoration: inherit;\n  width: 1em;\n  margin-right: .2em;\n  text-align: center;\n  /* opacity: .8; */\n  /* For safety - reset parent styles, that can break glyph codes*/\n  font-variant: normal;\n  text-transform: none;\n  /* fix buttons height, for twitter bootstrap */\n  line-height: 1em;\n  /* Animation center compensation - margins should be symmetric */\n  /* remove if not needed */\n  margin-left: .2em;\n  /* you can be more comfortable with increased icons size */\n  /* font-size: 120%; */\n  /* Font smoothing. That was taken from TWBS */\n  -webkit-font-smoothing: antialiased;\n  -moz-osx-font-smoothing: grayscale;\n  /* Uncomment for 3D effect */\n  /* text-shadow: 1px 1px 1px rgba(127, 127, 127, 0.3); */\n}\n\n.icon-twitter:before {\n  content: '\\E800';\n}\n\n/* '' */\n.icon-check-mark:before {\n  content: '\\E801';\n}\n\n/* '' */\n.icon-close:before {\n  content: '\\E802';\n}\n\n/* '' */\n.icon-label:before {\n  content: '\\E803';\n}\n\n/* '' */\n.icon-arrow:before {\n  content: '\\E804';\n}\n\n/* '' */\n.icon-trash-bin:before {\n  content: '\\E805';\n}\n\n/* '' */\n.icon-home:before {\n  content: '\\E806';\n}\n\n/* '' */\n.icon-chat:before {\n  content: '\\E807';\n}\n\n/* '' */\n.icon-plus:before {\n  content: '\\E808';\n}\n\n/* '' */\n.icon-pencil:before {\n  content: '\\E809';\n}\n\n/* '' */\n.icon-star:before {\n  content: '\\E80A';\n}\n\n/* '' */\n.icon-empty-blank:before {\n  content: '\\E80B';\n}\n\n/* '' */\n.icon-flag:before {\n  content: '\\E80C';\n}\n\n/* '' */\nbody {\n  color: black;\n  font-family: 'Source Code Pro';\n}\n\n.title-font {\n  font-family: \"sarial\";\n}\n\nbutton {\n  background-color: transparent;\n  border: 1px solid #8F2CD8;\n  color: #8F2CD8;\n  outline: none;\n}\n\na {\n  color: black;\n  text-decoration: none;\n}\n\n.btn-default {\n  padding: .5em 1em;\n}\n\n.btn-default:hover {\n  cursor: pointer;\n  color: #102B3F;\n}\n\n.btn-naked {\n  padding: 0;\n}\n\n.btn-block {\n  display: block;\n}\n\n.no-border {\n  border: none;\n}\n\n.list-item-spacing {\n  padding: 10px 1em;\n}\n\n.flex-parent-row {\n  display: -webkit-flex;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-flex-flow: row nowrap;\n      -ms-flex-flow: row nowrap;\n          flex-flow: row nowrap;\n  -webkit-align-items: center;\n      -ms-flex-align: center;\n          align-items: center;\n}\n\n.flex-child-expand {\n  -webkit-flex: 1 1 auto;\n      -ms-flex: 1 1 auto;\n          flex: 1 1 auto;\n}\n\n.flex-child-end {\n  -webkit-align-self: flex-end;\n      -ms-flex-item-align: end;\n          align-self: flex-end;\n}\n\n.flex-child-start {\n  -webkit-align-self: flex-start;\n      -ms-flex-item-align: start;\n          align-self: flex-start;\n}\n\n.icon-md {\n  font-size: 1.5em;\n}\n\n.icon-lg {\n  font-size: 2em;\n}\n\n.icon-lg.icon-close {\n  font-size: 1.6em;\n  margin: 0 .2em;\n}\n\n.icon-naked:before {\n  margin: 0;\n}\n\n.touch .modal-wrapper {\n  -webkit-overflow-scrolling: touch;\n}\n\n#tab-contents {\n  padding: 0 10%;\n  max-width: 600px;\n  margin: 20px auto;\n}\n\n@media (min-width: 415px) {\n  .mobile-only {\n    display: none;\n  }\n}\n\n@media (max-width: 414px) {\n  #tab-contents {\n    padding: 0;\n    margin: 10px;\n  }\n}\n", ""]);
 
 	// exports
 
@@ -27830,19 +27829,19 @@
 
 	var _addEndorsementForm2 = _interopRequireDefault(_addEndorsementForm);
 
-	var _loadingIndicator = __webpack_require__(369);
+	var _loadingIndicator = __webpack_require__(372);
 
 	var _loadingIndicator2 = _interopRequireDefault(_loadingIndicator);
 
-	var _modalWrapper = __webpack_require__(372);
+	var _modalWrapper = __webpack_require__(375);
 
 	var _modalWrapper2 = _interopRequireDefault(_modalWrapper);
 
 	var _reactRedux = __webpack_require__(214);
 
-	var _tweetActions = __webpack_require__(373);
+	var _tweetActions = __webpack_require__(378);
 
-	var _endorsementFormActions = __webpack_require__(375);
+	var _endorsementFormActions = __webpack_require__(366);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -39609,6 +39608,8 @@
 
 	'use strict';
 
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
 	var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
 
 	Object.defineProperty(exports, "__esModule", {
@@ -39619,15 +39620,17 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _formInputText = __webpack_require__(364);
-
-	var _formInputText2 = _interopRequireDefault(_formInputText);
-
 	var _reactRedux = __webpack_require__(214);
 
-	var _candidateActions = __webpack_require__(365);
+	var _candidateActions = __webpack_require__(364);
 
-	__webpack_require__(367);
+	var _endorsementFormActions = __webpack_require__(366);
+
+	var _endorserInput = __webpack_require__(368);
+
+	var _endorserInput2 = _interopRequireDefault(_endorserInput);
+
+	__webpack_require__(370);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -39650,9 +39653,17 @@
 	  _inherits(AddEndorsementForm, _Component);
 
 	  function AddEndorsementForm() {
+	    var _Object$getPrototypeO;
+
+	    var _temp, _this, _ret;
+
 	    _classCallCheck(this, AddEndorsementForm);
 
-	    return _possibleConstructorReturn(this, Object.getPrototypeOf(AddEndorsementForm).apply(this, arguments));
+	    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+	      args[_key] = arguments[_key];
+	    }
+
+	    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_Object$getPrototypeO = Object.getPrototypeOf(AddEndorsementForm)).call.apply(_Object$getPrototypeO, [this].concat(args))), _this), _initialiseProps.call(_this), _temp), _possibleConstructorReturn(_this, _ret);
 	  }
 
 	  _createClass(AddEndorsementForm, [{
@@ -39661,21 +39672,37 @@
 	      this.props.dispatch((0, _candidateActions.fetchCandidatesIfNeeded)());
 	    }
 	  }, {
+	    key: 'renderEndorserInputs',
+	    value: function renderEndorserInputs(endorsers) {
+	      var _this2 = this;
+
+	      return endorsers.map(function (endorser, i) {
+	        return _react2.default.createElement(_endorserInput2.default, _extends({ key: endorser.id,
+	          inputChangeHandler: _this2.endorserChangeHandler,
+	          removeHandler: _this2.endorserRemoveHandler
+	        }, endorser));
+	      });
+	    }
+	  }, {
+	    key: 'newEndorserField',
+	    value: function newEndorserField() {
+	      this.props.dispatch((0, _endorsementFormActions.addEndorser)());
+	    }
+	  }, {
 	    key: 'render',
 	    value: function render() {
 	      var _props = this.props;
 	      var candidates = _props.candidates;
 	      var _props$formData = _props.formData;
-	      var firstName = _props$formData.firstName;
-	      var lastName = _props$formData.lastName;
-	      var candidate = _props$formData.candidate;
+	      var endorsers = _props$formData.endorsers;
+	      var selectedCandidate = _props$formData.selectedCandidate;
 	      var tweetText = _props$formData.tweetText;
 
 	      return _react2.default.createElement(
 	        'div',
 	        { id: 'addEndorsementForm', className: 'form-container' },
 	        _react2.default.createElement(
-	          'h3',
+	          'h2',
 	          null,
 	          'Add Endorsement'
 	        ),
@@ -39695,38 +39722,65 @@
 	          'div',
 	          { className: 'candidate-input' },
 	          _react2.default.createElement(
-	            'h4',
+	            'h3',
 	            null,
 	            'Candidate'
 	          ),
 	          _react2.default.createElement(
-	            'select',
-	            { name: 'candidate', id: 'selectCandidate' },
-	            candidates.map(function (candidate) {
-	              return _react2.default.createElement(
+	            'div',
+	            { className: 'form-select' },
+	            _react2.default.createElement(
+	              'select',
+	              { name: 'candidate',
+	                id: 'selectCandidate',
+	                onChange: this.candidateChangeHandler,
+	                value: selectedCandidate },
+	              _react2.default.createElement(
 	                'option',
-	                { value: candidate.CAN_ID },
-	                candidate.FIRST_NAME,
-	                ' ',
-	                candidate.LAST_NAME
-	              );
-	            })
+	                { value: 'null' },
+	                'Select a candidate'
+	              ),
+	              candidates.map(function (candidate) {
+	                return _react2.default.createElement(
+	                  'option',
+	                  { value: candidate.CAN_ID },
+	                  candidate.FIRST_NAME,
+	                  ' ',
+	                  candidate.LAST_NAME
+	                );
+	              })
+	            )
 	          )
 	        ),
 	        _react2.default.createElement(
 	          'div',
 	          { className: 'endorser-input' },
 	          _react2.default.createElement(
-	            'h4',
+	            'div',
+	            { className: 'flex-parent-row' },
+	            _react2.default.createElement(
+	              'h3',
+	              { className: 'flex-child-expand' },
+	              'Endorsers (',
+	              endorsers.length,
+	              ')'
+	            ),
+	            _react2.default.createElement(
+	              'button',
+	              { className: 'no-border btn-naked', onClick: this.newEndorserField.bind(this) },
+	              _react2.default.createElement('span', { className: 'icon-plus icon-lg icon-naked icon-btn-form' })
+	            )
+	          )
+	        ),
+	        this.renderEndorserInputs(endorsers),
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'endorser-tags' },
+	          _react2.default.createElement(
+	            'h3',
 	            null,
-	            'Endorser'
-	          ),
-	          _react2.default.createElement(_formInputText2.default, { inputName: 'endorser-first-name',
-	            label: 'FIRST NAME',
-	            data: firstName }),
-	          _react2.default.createElement(_formInputText2.default, { inputName: 'endorser-last-name',
-	            label: 'LAST NAME',
-	            data: lastName })
+	            'Endorser Tags'
+	          )
 	        )
 	      );
 	    }
@@ -39735,45 +39789,31 @@
 	  return AddEndorsementForm;
 	})(_react.Component);
 
+	var _initialiseProps = function _initialiseProps() {
+	  var _this3 = this;
+
+	  this.endorserChangeHandler = function () {
+	    for (var _len2 = arguments.length, args = Array(_len2), _key2 = 0; _key2 < _len2; _key2++) {
+	      args[_key2] = arguments[_key2];
+	    }
+
+	    _this3.props.dispatch(_endorsementFormActions.updateEndorser.apply(_this3, args));
+	  };
+
+	  this.endorserRemoveHandler = function (id) {
+	    _this3.props.dispatch((0, _endorsementFormActions.removeEndorser)(id));
+	  };
+
+	  this.candidateChangeHandler = function (ev) {
+	    var selectedId = ev.target.value;
+	    _this3.props.dispatch((0, _endorsementFormActions.updateEndorsementForm)({ selectedCandidate: selectedId }));
+	  };
+	};
+
 	exports.default = (0, _reactRedux.connect)(selectFormData)(AddEndorsementForm);
 
 /***/ },
 /* 364 */
-/***/ function(module, exports, __webpack_require__) {
-
-	"use strict";
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-
-	var _react = __webpack_require__(1);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	var FormInputText = function FormInputText(props) {
-	  var inputName = props.inputName;
-	  var label = props.label;
-	  var data = props.data;
-
-	  return _react2.default.createElement(
-	    "div",
-	    { className: "form-input-text" },
-	    _react2.default.createElement(
-	      "label",
-	      { htmlFor: inputName },
-	      label
-	    ),
-	    _react2.default.createElement("input", { type: "text", id: inputName })
-	  );
-	};
-
-	exports.default = FormInputText;
-
-/***/ },
-/* 365 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -39783,7 +39823,7 @@
 	});
 	exports.fetchCandidatesIfNeeded = fetchCandidatesIfNeeded;
 
-	var _candidateTypes = __webpack_require__(366);
+	var _candidateTypes = __webpack_require__(365);
 
 	var _api = __webpack_require__(233);
 
@@ -39817,7 +39857,7 @@
 	}
 
 /***/ },
-/* 366 */
+/* 365 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -39829,13 +39869,224 @@
 	var RECEIVE_CANDIDATES = exports.RECEIVE_CANDIDATES = 'RECEIVE_CANDIDATES';
 
 /***/ },
+/* 366 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	exports.updateEndorsementForm = updateEndorsementForm;
+	exports.updateEndorser = updateEndorser;
+	exports.removeEndorser = removeEndorser;
+	exports.addEndorser = addEndorser;
+
+	var _endorsementFormTypes = __webpack_require__(367);
+
+	function updateEndorsementForm(data) {
+	  return {
+	    type: _endorsementFormTypes.UPDATE_ENDORSEMENT_FORM,
+	    data: data
+	  };
+	}
+
+	function updateEndorser(id, data) {
+	  return {
+	    type: _endorsementFormTypes.UPDATE_ENDORSER,
+	    id: id,
+	    data: data
+	  };
+	}
+
+	function removeEndorser(id) {
+	  return {
+	    type: _endorsementFormTypes.REMOVE_ENDORSER,
+	    id: id
+	  };
+	}
+
+	function addEndorser() {
+	  return {
+	    type: _endorsementFormTypes.ADD_ENDORSER
+	  };
+	}
+
+/***/ },
 /* 367 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	var UPDATE_ENDORSEMENT_FORM = exports.UPDATE_ENDORSEMENT_FORM = 'UPDATE_ENDORSEMENT_FORM';
+	var ADD_ENDORSER = exports.ADD_ENDORSER = 'ADD_ENDORSER';
+	var UPDATE_ENDORSER = exports.UPDATE_ENDORSER = 'UPDATE_ENDORSER';
+	var REMOVE_ENDORSER = exports.REMOVE_ENDORSER = 'REMOVE_ENDORSER';
+	var CLEAR_ENDORSEMENT_FORM = exports.CLEAR_ENDORSEMENT_FORM = 'CLEAR_ENDORSEMENT_FORM';
+
+/***/ },
+/* 368 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _formCheckBox = __webpack_require__(369);
+
+	var _formCheckBox2 = _interopRequireDefault(_formCheckBox);
+
+	var _function = __webpack_require__(359);
+
+	var _function2 = _interopRequireDefault(_function);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var EndorserInput = (function (_Component) {
+	  _inherits(EndorserInput, _Component);
+
+	  function EndorserInput() {
+	    var _Object$getPrototypeO;
+
+	    var _temp, _this, _ret;
+
+	    _classCallCheck(this, EndorserInput);
+
+	    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+	      args[_key] = arguments[_key];
+	    }
+
+	    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_Object$getPrototypeO = Object.getPrototypeOf(EndorserInput)).call.apply(_Object$getPrototypeO, [this].concat(args))), _this), _this.shouldComponentUpdate = _function2.default, _temp), _possibleConstructorReturn(_this, _ret);
+	  }
+
+	  _createClass(EndorserInput, [{
+	    key: 'render',
+	    value: function render() {
+	      var _props = this.props;
+	      var id = _props.id;
+	      var firstName = _props.firstName;
+	      var lastName = _props.lastName;
+	      var isOrg = _props.isOrg;
+	      var inputChangeHandler = _props.inputChangeHandler;
+	      var removeHandler = _props.removeHandler;
+
+	      console.log('render ' + id + ' input');
+	      return _react2.default.createElement(
+	        'div',
+	        { style: { marginBottom: '1em' } },
+	        _react2.default.createElement('input', { type: 'text',
+	          placeholder: 'First Name',
+	          value: firstName,
+	          onChange: function onChange(ev) {
+	            inputChangeHandler(id, { firstName: ev.target.value });
+	          } }),
+	        _react2.default.createElement('input', { type: 'text',
+	          placeholder: 'Last Name',
+	          value: lastName,
+	          onChange: function onChange(ev) {
+	            inputChangeHandler(id, { lastName: ev.target.value });
+	          } }),
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'flex-parent-row' },
+	          _react2.default.createElement(
+	            'div',
+	            { className: 'flex-child-expand' },
+	            _react2.default.createElement(_formCheckBox2.default, { label: 'org',
+	              isChecked: isOrg,
+	              checkHandler: function checkHandler(ev) {
+	                inputChangeHandler(id, { isOrg: !isOrg });
+	              } })
+	          ),
+	          _react2.default.createElement(
+	            'button',
+	            { className: 'btn-default no-border btn-naked',
+	              onClick: function onClick() {
+	                removeHandler(id);
+	              } },
+	            _react2.default.createElement('span', { className: 'icon-trash-bin icon-lg icon-naked icon-btn-form' })
+	          )
+	        )
+	      );
+	    }
+	  }]);
+
+	  return EndorserInput;
+	})(_react.Component);
+
+	exports.default = EndorserInput;
+
+/***/ },
+/* 369 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _classnames = __webpack_require__(257);
+
+	var _classnames2 = _interopRequireDefault(_classnames);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var FormCheckBox = function FormCheckBox(props) {
+	  var checkboxClasses = (0, _classnames2.default)('form-check-box', {
+	    checked: props.isChecked
+	  });
+	  return _react2.default.createElement(
+	    'div',
+	    { className: checkboxClasses, onClick: props.checkHandler },
+	    _react2.default.createElement(
+	      'div',
+	      { className: 'flex-parent-row' },
+	      _react2.default.createElement(
+	        'div',
+	        { className: 'check-box-label' },
+	        props.label
+	      ),
+	      _react2.default.createElement(
+	        'div',
+	        { className: 'check-box' },
+	        _react2.default.createElement('div', { className: 'icon-check-mark' })
+	      )
+	    )
+	  );
+	};
+
+	exports.default = FormCheckBox;
+
+/***/ },
+/* 370 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(368);
+	var content = __webpack_require__(371);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(253)(content, {});
@@ -39855,7 +40106,7 @@
 	}
 
 /***/ },
-/* 368 */
+/* 371 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(252)();
@@ -39863,13 +40114,13 @@
 
 
 	// module
-	exports.push([module.id, "label {\n  width: 100px;\n  display: inline-block;\n}\n\ninput[type=\"text\"] {\n  width: 100%;\n  text-align: right;\n  border-style: none none solid;\n  border-width: 1px;\n  border-color: #8F2CD8;\n  margin-bottom: 1em;\n}\n\ninput[type=\"text\"]:focus {\n  outline: none;\n}\n", ""]);
+	exports.push([module.id, "label {\n  width: 100px;\n  display: inline-block;\n}\n\ninput[type=\"text\"] {\n  width: 100%;\n  border-style: none none solid;\n  border-width: 1px;\n  border-color: #8F2CD8;\n  margin-bottom: 1em;\n  padding: .5em 0;\n}\n\ninput[type=\"text\"]:focus {\n  outline: none;\n}\n\n.check-box {\n  padding: .5em 0 .5em .2em;\n}\n\n.check-box:hover {\n  cursor: pointer;\n}\n\n.form-check-box {\n  display: inline-block;\n  padding: 0 .5em 0 .6em;\n  border-radius: 2px;\n  border: 1px solid rgba(0, 0, 0, 0.4);\n}\n\n.form-check-box.checked {\n  border-color: #A06CD5;\n  background-color: #A06CD5;\n  color: #E2CFEA;\n}\n\n.check-box-label:hover {\n  cursor: pointer;\n}\n\nselect {\n  background-color: transparent;\n  border: none;\n  border-bottom: 1px solid #8F2CD8;\n  overflow: hidden;\n  outline: none;\n  border-radius: 20px;\n  -webkit-appearance: none;\n  -webkit-border-radius: 0px;\n  padding: .5em 0;\n  width: 100%;\n}\n\n.form-select {\n  position: relative;\n}\n\n.form-select:after {\n  font-family: \"fontello\";\n  -webkit-transform: rotateZ(90deg);\n          transform: rotateZ(90deg);\n  content: '\\E804';\n  width: 1em;\n  height: 1em;\n  position: absolute;\n  top: .7em;\n  right: 0;\n  pointer-events: none;\n}\n\n.icon-btn-form {\n  margin: 0;\n  margin-right: -.4em;\n}\n", ""]);
 
 	// exports
 
 
 /***/ },
-/* 369 */
+/* 372 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -39882,7 +40133,7 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	__webpack_require__(370);
+	__webpack_require__(373);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -39905,13 +40156,13 @@
 	exports.default = LoadingIndicator;
 
 /***/ },
-/* 370 */
+/* 373 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(371);
+	var content = __webpack_require__(374);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(253)(content, {});
@@ -39931,13 +40182,13 @@
 	}
 
 /***/ },
-/* 371 */
+/* 374 */
 /***/ function(module, exports) {
 
 	module.exports = ".sk-folding-cube {\n  margin: 20px auto;\n  width: 40px;\n  height: 40px;\n  position: relative;\n  -webkit-transform: rotateZ(45deg);\n          transform: rotateZ(45deg);\n}\n\n.sk-folding-cube .sk-cube {\n  float: left;\n  width: 50%;\n  height: 50%;\n  position: relative;\n  -webkit-transform: scale(1.1);\n      -ms-transform: scale(1.1);\n          transform: scale(1.1);\n}\n.sk-folding-cube .sk-cube:before {\n  content: '';\n  position: absolute;\n  top: 0;\n  left: 0;\n  width: 100%;\n  height: 100%;\n  background-color: purple;\n  -webkit-animation: sk-foldCubeAngle 2.4s infinite linear both;\n          animation: sk-foldCubeAngle 2.4s infinite linear both;\n  -webkit-transform-origin: 100% 100%;\n      -ms-transform-origin: 100% 100%;\n          transform-origin: 100% 100%;\n}\n.sk-folding-cube .sk-cube2 {\n  -webkit-transform: scale(1.1) rotateZ(90deg);\n          transform: scale(1.1) rotateZ(90deg);\n}\n.sk-folding-cube .sk-cube3 {\n  -webkit-transform: scale(1.1) rotateZ(180deg);\n          transform: scale(1.1) rotateZ(180deg);\n}\n.sk-folding-cube .sk-cube4 {\n  -webkit-transform: scale(1.1) rotateZ(270deg);\n          transform: scale(1.1) rotateZ(270deg);\n}\n.sk-folding-cube .sk-cube2:before {\n  -webkit-animation-delay: 0.3s;\n          animation-delay: 0.3s;\n}\n.sk-folding-cube .sk-cube3:before {\n  -webkit-animation-delay: 0.6s;\n          animation-delay: 0.6s;\n}\n.sk-folding-cube .sk-cube4:before {\n  -webkit-animation-delay: 0.9s;\n          animation-delay: 0.9s;\n}\n@-webkit-keyframes sk-foldCubeAngle {\n  0%, 10% {\n    -webkit-transform: perspective(140px) rotateX(-180deg);\n            transform: perspective(140px) rotateX(-180deg);\n    opacity: 0;\n  } 25%, 75% {\n    -webkit-transform: perspective(140px) rotateX(0deg);\n            transform: perspective(140px) rotateX(0deg);\n    opacity: 1;\n  } 90%, 100% {\n    -webkit-transform: perspective(140px) rotateY(180deg);\n            transform: perspective(140px) rotateY(180deg);\n    opacity: 0;\n  }\n}\n\n@keyframes sk-foldCubeAngle {\n  0%, 10% {\n    -webkit-transform: perspective(140px) rotateX(-180deg);\n            transform: perspective(140px) rotateX(-180deg);\n    opacity: 0;\n  } 25%, 75% {\n    -webkit-transform: perspective(140px) rotateX(0deg);\n            transform: perspective(140px) rotateX(0deg);\n    opacity: 1;\n  } 90%, 100% {\n    -webkit-transform: perspective(140px) rotateY(180deg);\n            transform: perspective(140px) rotateY(180deg);\n    opacity: 0;\n  }\n}\n"
 
 /***/ },
-/* 372 */
+/* 375 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -39951,6 +40202,8 @@
 	var _react = __webpack_require__(1);
 
 	var _react2 = _interopRequireDefault(_react);
+
+	__webpack_require__(376);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -39987,10 +40240,10 @@
 	            left: 0,
 	            right: 0,
 	            backgroundColor: 'rgba(255,255,255,.95)',
-	            padding: '5% 20%',
-	            minHeight: '100%',
+	            bottom: 0,
 	            visibility: isOpen ? 'visible' : 'hidden',
-	            transition: isOpen ? 'none' : 'visibility 140ms'
+	            transition: isOpen ? 'none' : 'visibility 140ms',
+	            overflow: 'auto'
 	          }, className: 'modal-wrapper' },
 	        _react2.default.createElement(
 	          'div',
@@ -40012,7 +40265,47 @@
 	exports.default = ModalWrapper;
 
 /***/ },
-/* 373 */
+/* 376 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+
+	// load the styles
+	var content = __webpack_require__(377);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(253)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!./../../node_modules/css-loader/index.js!./../../node_modules/autoprefixer-loader/index.js?browsers=last 2 version!./../../node_modules/sass-loader/index.js?outputStyle=expanded&sourceMap=true&sourceMapContents=true!./modal.scss", function() {
+				var newContent = require("!!./../../node_modules/css-loader/index.js!./../../node_modules/autoprefixer-loader/index.js?browsers=last 2 version!./../../node_modules/sass-loader/index.js?outputStyle=expanded&sourceMap=true&sourceMapContents=true!./modal.scss");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 377 */
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(252)();
+	// imports
+
+
+	// module
+	exports.push([module.id, ".modal-wrapper {\n  padding: 5% 20%;\n}\n\n@media (max-width: 414px) {\n  .modal-wrapper {\n    padding: 5% 20% 5% 10%;\n  }\n}\n", ""]);
+
+	// exports
+
+
+/***/ },
+/* 378 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -40023,7 +40316,7 @@
 	exports.fetchTweetsIfNeeded = fetchTweetsIfNeeded;
 	exports.requestTweetDelete = requestTweetDelete;
 
-	var _tweetTypes = __webpack_require__(374);
+	var _tweetTypes = __webpack_require__(379);
 
 	var ACTION_TYPES = _interopRequireWildcard(_tweetTypes);
 
@@ -40099,7 +40392,7 @@
 	}
 
 /***/ },
-/* 374 */
+/* 379 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -40114,39 +40407,7 @@
 	var UNDELETE_TWEET = exports.UNDELETE_TWEET = 'DELETE_TWEET_FAIL';
 
 /***/ },
-/* 375 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	exports.updateEndorsementForm = updateEndorsementForm;
-
-	var _endorsementFormTypes = __webpack_require__(376);
-
-	function updateEndorsementForm(data) {
-	  return {
-	    type: _endorsementFormTypes.UPDATE_ENDORSEMENT_FORM,
-	    data: data
-	  };
-	}
-
-/***/ },
-/* 376 */
-/***/ function(module, exports) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	var UPDATE_ENDORSEMENT_FORM = exports.UPDATE_ENDORSEMENT_FORM = 'UPDATE_ENDORSEMENT_FORM';
-	var CLEAR_ENDORSEMENT_FORM = exports.CLEAR_ENDORSEMENT_FORM = 'CLEAR_ENDORSEMENT_FORM';
-
-/***/ },
-/* 377 */
+/* 380 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -40163,13 +40424,13 @@
 
 	var _reactRedux = __webpack_require__(214);
 
-	var _candidateActions = __webpack_require__(365);
+	var _candidateActions = __webpack_require__(364);
 
-	var _candidateList = __webpack_require__(378);
+	var _candidateList = __webpack_require__(381);
 
 	var _candidateList2 = _interopRequireDefault(_candidateList);
 
-	var _candidateAdd = __webpack_require__(379);
+	var _candidateAdd = __webpack_require__(382);
 
 	var _candidateAdd2 = _interopRequireDefault(_candidateAdd);
 
@@ -40219,7 +40480,7 @@
 	exports.default = (0, _reactRedux.connect)(selectCandidates)(CandidateTab);
 
 /***/ },
-/* 378 */
+/* 381 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -40309,7 +40570,7 @@
 	exports.default = CandidateList;
 
 /***/ },
-/* 379 */
+/* 382 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -40367,7 +40628,7 @@
 	exports.default = CandidateAdd;
 
 /***/ },
-/* 380 */
+/* 383 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -40389,7 +40650,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 381 */
+/* 384 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -40398,7 +40659,7 @@
 	  value: true
 	});
 
-	var _tweets = __webpack_require__(382);
+	var _tweets = __webpack_require__(385);
 
 	Object.defineProperty(exports, 'tweets', {
 	  enumerable: true,
@@ -40407,7 +40668,7 @@
 	  }
 	});
 
-	var _login = __webpack_require__(383);
+	var _login = __webpack_require__(386);
 
 	Object.defineProperty(exports, 'loginInfo', {
 	  enumerable: true,
@@ -40416,7 +40677,7 @@
 	  }
 	});
 
-	var _candidates = __webpack_require__(384);
+	var _candidates = __webpack_require__(387);
 
 	Object.defineProperty(exports, 'candidates', {
 	  enumerable: true,
@@ -40425,7 +40686,7 @@
 	  }
 	});
 
-	var _endorsementFormData = __webpack_require__(385);
+	var _endorsementFormData = __webpack_require__(388);
 
 	Object.defineProperty(exports, 'endorsementFormData', {
 	  enumerable: true,
@@ -40435,7 +40696,7 @@
 	});
 
 /***/ },
-/* 382 */
+/* 385 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -40445,7 +40706,7 @@
 	});
 	exports.default = tweets;
 
-	var _tweetTypes = __webpack_require__(374);
+	var _tweetTypes = __webpack_require__(379);
 
 	var initialState = [];
 
@@ -40466,7 +40727,7 @@
 	}
 
 /***/ },
-/* 383 */
+/* 386 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -40495,7 +40756,7 @@
 	}
 
 /***/ },
-/* 384 */
+/* 387 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -40505,7 +40766,7 @@
 	});
 	exports.default = candidates;
 
-	var _candidateTypes = __webpack_require__(366);
+	var _candidateTypes = __webpack_require__(365);
 
 	function candidates() {
 	  var state = arguments.length <= 0 || arguments[0] === undefined ? [] : arguments[0];
@@ -40520,7 +40781,7 @@
 	}
 
 /***/ },
-/* 385 */
+/* 388 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -40532,15 +40793,50 @@
 	});
 	exports.default = endorsementFormData;
 
-	var _endorsementFormTypes = __webpack_require__(376);
+	var _endorsementFormTypes = __webpack_require__(367);
+
+	function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
+
+	function makeEmptyEndorser() {
+	  return {
+	    firstName: null,
+	    lastName: null,
+	    isOrg: false,
+	    id: new Date().valueOf().toString()
+	  };
+	}
+
+	var initalState = {
+	  selectedCandidate: null,
+	  endorsers: [makeEmptyEndorser()],
+	  selectedTags: []
+	};
 
 	function endorsementFormData() {
-	  var state = arguments.length <= 0 || arguments[0] === undefined ? {} : arguments[0];
+	  var state = arguments.length <= 0 || arguments[0] === undefined ? initalState : arguments[0];
 	  var action = arguments[1];
 
 	  switch (action.type) {
 	    case _endorsementFormTypes.UPDATE_ENDORSEMENT_FORM:
 	      return _extends({}, state, action.data);
+	    case _endorsementFormTypes.ADD_ENDORSER:
+	      var endorsers = state.endorsers;
+
+	      var newEndorsers = [makeEmptyEndorser()].concat(_toConsumableArray(endorsers));
+	      return _extends({}, state, { endorsers: newEndorsers });
+	    case _endorsementFormTypes.UPDATE_ENDORSER:
+	      var id = action.id;
+	      var data = action.data;
+
+	      var updatedEndorsers = state.endorsers.map(function (endorser) {
+	        return endorser.id === id ? _extends({}, endorser, data) : endorser;
+	      });
+	      return _extends({}, state, { endorsers: updatedEndorsers });
+	    case _endorsementFormTypes.REMOVE_ENDORSER:
+	      console.log(action.id);
+	      return _extends({}, state, { endorsers: state.endorsers.filter(function (endorser) {
+	          return endorser.id !== action.id;
+	        }) });
 	    default:
 	      return state;
 	  }
