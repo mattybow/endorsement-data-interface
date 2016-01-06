@@ -1,0 +1,9 @@
+.modal-wrapper{
+  padding:5% 20%;
+}
+
+@media(max-width:414px){
+  .modal-wrapper{
+    padding:5% 20% 5% 10%;
+  }
+}

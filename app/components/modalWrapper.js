@@ -1,4 +1,5 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import '../styles/modal.scss';
 
 export default class ModalWrapper extends Component{
   componentDidUpdate(){
@@ -12,10 +13,10 @@ export default class ModalWrapper extends Component{
         left:0,
         right:0,
         backgroundColor:'rgba(255,255,255,.95)',
-        padding:'5% 20%',
-        minHeight:'100%',
+        bottom:0,
         visibility: isOpen ? 'visible' : 'hidden',
-        transition: isOpen ? 'none' : 'visibility 140ms'
+        transition: isOpen ? 'none' : 'visibility 140ms',
+        overflow:'auto'
       }} className="modal-wrapper">
       <div className="modal-content-container" style={{
           maxWidth:600,

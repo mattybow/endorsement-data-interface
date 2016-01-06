@@ -88,6 +88,7 @@ button{
   background-color:transparent;
   border:1px solid $barney;
   color: $barney;
+  outline:none;
 }
 
 
@@ -97,11 +98,17 @@ a{
 }
 
 .btn-default{
+  padding:.5em 1em;
   &:hover{
     cursor:pointer;
     color:$dkBlue;
   }
 }
+
+.btn-naked{
+  padding:0;
+}
+
 .btn-block{
   display:block;
 }
@@ -136,6 +143,11 @@ a{
   &.icon-close{
     font-size:1.6em;
     margin:0 .2em;
+  }
+}
+.icon-naked{
+  &:before{
+    margin:0;
   }
 }
 

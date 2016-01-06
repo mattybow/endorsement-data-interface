@@ -30,7 +30,6 @@ class LoginButton extends Component{
   }
   render(){
     const { displayName, profile_image_url } = this.props.loginInfo;
-    console.log(this.props);
     let content = <a href="/auth/twitter">login</a>
     if(displayName){
       content = <div className="flex-parent-row">

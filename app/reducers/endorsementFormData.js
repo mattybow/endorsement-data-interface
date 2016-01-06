@@ -1,9 +1,41 @@
-import { UPDATE_ENDORSEMENT_FORM } from '../constants/endorsementFormTypes';
+import { UPDATE_ENDORSEMENT_FORM, ADD_ENDORSER, UPDATE_ENDORSER, REMOVE_ENDORSER } from '../constants/endorsementFormTypes';
 
-export default function endorsementFormData(state={}, action){
+function makeEmptyEndorser(){
+  return {
+    firstName:null,
+    lastName: null,
+    isOrg: false,
+    id:new Date().valueOf().toString(),
+  }
+}
+
+const initalState = {
+  selectedCandidate:null,
+  endorsers:[
+    makeEmptyEndorser()
+  ],
+  selectedTags:[]
+}
+
+export default function endorsementFormData(state=initalState, action){
   switch(action.type){
     case UPDATE_ENDORSEMENT_FORM:
       return {...state, ...action.data};
+    case ADD_ENDORSER:
+      const { endorsers } = state;
+      const newEndorsers = [makeEmptyEndorser(),...endorsers];
+      return {...state, ...{endorsers:newEndorsers} };
+    case UPDATE_ENDORSER:
+      const { id, data } = action;
+      const updatedEndorsers = state.endorsers.map(endorser =>
+        endorser.id === id ?
+          {...endorser, ...data} :
+          endorser
+        );
+      return {...state, ...{endorsers:updatedEndorsers}};
+    case REMOVE_ENDORSER:
+    console.log(action.id);
+      return {...state, ...{endorsers:state.endorsers.filter( endorser => endorser.id !== action.id )}}
     default:
       return state;
   }

@@ -5,12 +5,65 @@ label{
 }
 input[type="text"]{
   width: 100%;
-  text-align: right;
   border-style: none none solid;
   border-width: 1px;
   border-color: $barney;
   margin-bottom: 1em;
+  padding:.5em 0;
   &:focus{
     outline:none;
   }
+}
+.check-box{
+  padding:.5em 0 .5em .2em;
+  &:hover{
+    cursor:pointer;
+  }
+}
+.form-check-box{
+  display:inline-block;
+  padding:0 .5em 0 .6em;
+  border-radius:2px;
+  border:1px solid rgba(0,0,0,.4);
+  &.checked{
+    border-color:$lightBarney;
+    background-color:$lightBarney;
+    color:$whiteBarney;
+  }
+}
+
+.check-box-label:hover{
+  cursor:pointer;
+}
+select{
+  background-color: transparent;
+  border: none;
+  border-bottom: 1px solid $barney;
+  overflow: hidden;
+  outline: none;
+  border-radius: 20px;
+  -webkit-appearance: none;
+  -webkit-border-radius: 0px;
+  padding: .5em 0;
+  width: 100%;
+}
+
+.form-select{
+  position:relative;
+  &:after{
+    font-family: "fontello";
+    transform:rotateZ(90deg);
+    content: '\e804';
+    width: 1em;
+    height: 1em;
+    position: absolute;
+    top: .7em;
+    right: 0;
+    pointer-events: none;
+  }
+}
+
+.icon-btn-form{
+  margin:0;
+  margin-right:-.4em;
 }
