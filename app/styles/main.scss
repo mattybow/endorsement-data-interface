@@ -76,6 +76,9 @@
 .icon-empty-blank:before { content: '\e80b'; } /* '' */
 .icon-flag:before { content: '\e80c'; } /* '' */
 
+html {
+  -webkit-tap-highlight-color: transparent;
+}
 body{
   color:black;
   font-family:'Source Code Pro';
@@ -99,10 +102,6 @@ a{
 
 .btn-default{
   padding:.5em 1em;
-  &:hover{
-    cursor:pointer;
-    color:$dkBlue;
-  }
 }
 
 .btn-naked{
@@ -164,6 +163,10 @@ a{
 @media(min-width:415px){
   .mobile-only{
     display:none;
+  }
+  .btn-default:hover{
+    cursor:pointer;
+    color:$dkBlue;
   }
 }
 @media(max-width:414px){
