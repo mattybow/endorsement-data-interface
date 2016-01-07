@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import cx from 'classnames';
 import '../styles/modal.scss';
 
 export default class ModalWrapper extends Component{
@@ -7,6 +8,7 @@ export default class ModalWrapper extends Component{
   }
   render(){
     const { isOpen } = this.props;
+    const contentClassNames = cx("modal-content-container", {open:isOpen});
     return <div style={{
         position:'fixed',
         top:0,
@@ -16,13 +18,12 @@ export default class ModalWrapper extends Component{
         bottom:0,
         visibility: isOpen ? 'visible' : 'hidden',
         transition: isOpen ? 'none' : 'visibility 140ms',
+        WebkitTransition: isOpen ? 'none' : 'visibility 140ms',
         overflow:'auto'
       }} className="modal-wrapper">
-      <div className="modal-content-container" style={{
+      <div className={contentClassNames} style={{
           maxWidth:600,
-          margin:'auto',
-          transition: 'transform .2s cubic-bezier(0.215, 0.610, 0.355, 1.000)',
-          transform: isOpen ? 'translateY(0)' : 'translateY(100%)',
+          margin:'auto'
         }}>
         {this.props.children}
       </div>
