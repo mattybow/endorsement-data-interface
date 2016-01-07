@@ -2,7 +2,10 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { fetchCandidatesIfNeeded } from '../actions/candidateActions';
 import CandidateList from './candidateList';
-import CandidateAdd from './candidateAdd';
+import AddButton from './addButton';
+import ModalWrapper from './modalWrapper';
+import AddCandidateForm from './addCandidateForm';
+import FormContainer from './formContainer';
 
 function selectCandidates(state){
   const { candidates } = state;
@@ -10,13 +13,33 @@ function selectCandidates(state){
 }
 
 class CandidateTab extends Component{
+  constructor(props){
+    super(props);
+    this.state = {
+      formOpen: false
+    }
+  }
+  openForm = () => {
+    this.setState({formOpen:true});
+  }
+  closeForm = () => {
+    this.setState({formOpen:false});
+  }
   componentWillMount(){
     this.props.dispatch(fetchCandidatesIfNeeded());
   }
   render(){
+    const addForm = <FormContainer closeHandler={this.closeForm}
+                                   formName="Add Candidate">
+      <AddCandidateForm />
+    </FormContainer>
     return <div>
-      <CandidateAdd />
+      <AddButton clickHandler={this.openForm}
+                 buttonText = 'Add Candidate'/>
       <CandidateList candidates={this.props.candidates}/>
+      <ModalWrapper isOpen={this.state.formOpen}>
+        { this.state.formOpen ? addForm : '' }
+      </ModalWrapper>
     </div>;
   }
 }

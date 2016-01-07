@@ -3,6 +3,7 @@ import TweetList from './tweetList';
 import AddEndorsementForm from './addEndorsementForm';
 import LoadingIndicator from './loadingIndicator';
 import ModalWrapper from './modalWrapper';
+import FormContainer from './formContainer';
 import {connect} from 'react-redux';
 
 import { fetchTweetsIfNeeded, requestTweetDelete } from '../actions/tweetActions';
@@ -35,15 +36,22 @@ class TweetTab extends Component{
   }
   render(){
     const noTweets = !this.props.tweets.length;
+
     if(noTweets){
       return <LoadingIndicator />
     }
+
+    const addForm = <FormContainer formName="Add Endorsement"
+                   closeHandler={this.closeForm}>
+      <AddEndorsementForm />
+    </FormContainer>;
+
     return <div>
       <TweetList tweets = {this.props.tweets}
                  addHandler = {this.openForm}
                  deleteTweet = {this.deleteTweet}/>
       <ModalWrapper isOpen={this.state.formOpen}>
-        { this.state.formOpen ? <AddEndorsementForm closeHandler={this.closeForm.bind(this)}/> : '' }
+        { this.state.formOpen ? addForm : '' }
       </ModalWrapper>
     </div>;
   }

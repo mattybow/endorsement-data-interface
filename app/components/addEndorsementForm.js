@@ -46,13 +46,7 @@ class AddEndorsementForm extends Component{
             }
     } = this.props;
 
-    return <div id="addEndorsementForm" className="form-container">
-      <h2>Add Endorsement</h2>
-      <hr/>
-      <div className="form-controls" style={{position:'absolute', right:'-4em', top:0}}>
-        <div className="icon-check-mark icon-lg" style={{marginBottom:'.5em'}}></div>
-        <div className="icon-close icon-lg" onClick={this.props.closeHandler}></div>
-      </div>
+    return <div className="form-contents">
       <div className="quoted-tweet">{tweetText}</div>
       <div className="candidate-input">
         <h3>Candidate</h3>
@@ -61,8 +55,12 @@ class AddEndorsementForm extends Component{
                   id="selectCandidate"
                   onChange={this.candidateChangeHandler}
                   value={selectedCandidate}>
-            <option value="null">Select a candidate</option>
-            {candidates.map( candidate => (<option value={candidate.CAN_ID}>{candidate.FIRST_NAME} {candidate.LAST_NAME}</option>))}
+            <option value="null" key="null">Select a candidate</option>
+            {candidates.map( candidate => (
+              <option value={candidate.CAN_ID}
+                      key={candidate.CAN_ID}>
+                      {candidate.FIRST_NAME} {candidate.LAST_NAME}
+              </option>))}
           </select>
         </div>
       </div>

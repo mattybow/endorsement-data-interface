@@ -43,7 +43,6 @@ export default class NavBar extends Component{
     this.setState({route});
   }
   render(){
-    console.log(this.state.route);
     const activeRoute = this.state.route || window.location.pathname;
 
     const elements = links.map( link => {
