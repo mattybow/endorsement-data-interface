@@ -126,6 +126,9 @@ a{
   flex-flow:row nowrap;
   align-items:center;
 }
+.flex-row-center{
+  justify-content:center;
+}
 .flex-child-expand{
   flex:1 1 auto;
 }
@@ -161,6 +164,12 @@ a{
   margin:20px auto;
 }
 
+.floating-add-button{
+  position:fixed;
+  bottom:3em;
+  right:3em;
+}
+
 @media(min-width:415px){
   .mobile-only{
     display:none;
@@ -174,5 +183,9 @@ a{
   #tab-contents{
     padding: 0;
     margin:10px;
+  }
+  .floating-add-button{
+    bottom:4.5em;
+    right:1em;
   }
 }

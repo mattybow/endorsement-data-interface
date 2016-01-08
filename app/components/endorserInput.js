@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import FormCheckBox from './formCheckBox';
+import TextInputField from './textInputField';
 import shouldPureComponentUpdate from 'react-pure-render/function';
 
 class EndorserInput extends Component{
@@ -8,21 +9,17 @@ class EndorserInput extends Component{
     const { id, firstName, lastName, isOrg, inputChangeHandler, removeHandler } = this.props;
     console.log(`render ${id} input`);
     return <div style={{marginBottom:'1em'}}>
-      <input type="text"
-            placeholder="First Name"
-            value={firstName}
-            onChange={ ev => {
-              inputChangeHandler(id, {firstName:ev.target.value});
-            }}/>
-      <input type="text"
-             placeholder="Last Name"
-             value={lastName}
-             onChange={ ev => {
-               inputChangeHandler(id, {lastName:ev.target.value});
-             }}/>
+      <TextInputField label='First Name'
+                      dataKey = 'firstName'
+                      changeHandler = {inputChangeHandler}
+                      {...this.props}/>
+      <TextInputField label='Last Name'
+                      dataKey = 'lastName'
+                      changeHandler = {inputChangeHandler}
+                      {...this.props}/>
       <div className="flex-parent-row">
        <div className="flex-child-expand">
-         <FormCheckBox label="org"
+         <FormCheckBox label="is organization"
                        isChecked={isOrg}
                        checkHandler={ev => {
                          inputChangeHandler(id, {isOrg:!isOrg});

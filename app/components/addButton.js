@@ -1,13 +1,16 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import FloatingActionButton from 'material-ui/lib/floating-action-button';
+import FontIcon from 'material-ui/lib/font-icon';
 
 export default class AddButton extends Component{
   render(){
-    return <div style={{marginTop:'1em', textAlign:'right'}}>
-      <button className="btn-default flex-parent-row"
-              style={{ padding:'1em', display:'inline-block'}}
-              onClick={this.props.clickHandler}>
-        <span className="flex-child-expand">{this.props.buttonText}</span>
-      </button>
+    return <div className="floating-add-button">
+      <FloatingActionButton onClick={this.props.clickHandler}
+                            backgroundColor='#A06CD5'>
+        <div className="flex-parent-row flex-row-center">
+          <span className="icon-plus icon-lg"></span>
+        </div>
+      </FloatingActionButton>
     </div>;
   }
 }
