@@ -1,4 +1,4 @@
-import { REQUEST_CANDIDATES, RECEIVE_CANDIDATES } from '../constants/candidateTypes';
+import { REQUEST_CANDIDATES, RECEIVE_CANDIDATES, ADD_CANDIDATE } from '../constants/candidateTypes';
 import * as api from './api';
 
 export function fetchCandidatesIfNeeded(){
@@ -26,5 +26,12 @@ function receiveCandidates(data){
   return {
     type: RECEIVE_CANDIDATES,
     data
+  }
+}
+
+export function addCandidate(candidate){
+  return {
+    type: ADD_CANDIDATE,
+    candidate
   }
 }

@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import TopBar from './topBar';
 import NavBar from './navBar';
+import Snackbar from './snackbar';
 import '../styles/normalize.css';
 import '../styles/main.scss';
 
@@ -13,6 +14,7 @@ export default class App extends Component{
       <div id="tab-contents">
         {this.props.children}
       </div>
+      <Snackbar duration={5000}/>
     </div>;
   }
 }

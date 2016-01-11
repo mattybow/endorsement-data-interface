@@ -6,6 +6,7 @@ import AddButton from './addButton';
 import ModalWrapper from './modalWrapper';
 import AddCandidateForm from './addCandidateForm';
 import FormContainer from './formContainer';
+import { requestAddCandidate } from '../actions/candidateFormActions';
 
 function selectCandidates(state){
   const { candidates } = state;
@@ -25,11 +26,16 @@ class CandidateTab extends Component{
   closeForm = () => {
     this.setState({formOpen:false});
   }
+  saveForm = () => {
+    console.log('save form');
+    this.props.dispatch(requestAddCandidate());
+  }
   componentWillMount(){
     this.props.dispatch(fetchCandidatesIfNeeded());
   }
   render(){
     const addForm = <FormContainer closeHandler={this.closeForm}
+                                   saveHandler = {this.saveForm}
                                    formName="Add Candidate">
       <AddCandidateForm />
     </FormContainer>

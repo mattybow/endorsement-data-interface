@@ -1,6 +1,8 @@
 import express from 'express';
 import mongodb from '../mongoAccess';
 import mysqldb from '../mysqlAccess';
+import MysqlTransaction from '../mysqlTransaction';
+const transaction = new MysqlTransaction(mysqldb);
 const router = express.Router();
 
 router.get('/tweets',(req,res) => {
@@ -34,6 +36,17 @@ router.get('/candidate',(req,res) => {
        .json([]);
   }
 });
+
+router.post('/addCandidate', (req,res) => {
+  const {CAN_ID,FIRST_NAME,MIDDLE_NAME,LAST_NAME,PARTY,GENDER,DOB,AVATAR} = req.body;
+  const argList = [CAN_ID,FIRST_NAME,MIDDLE_NAME,LAST_NAME,PARTY,GENDER,DOB,AVATAR];
+  transaction.executeProcedure('ADD_CANDIDATE', argList).then(
+    result => {
+      const { code, ok } = result;
+      res.status(code).json({ok});
+    }
+  );
+})
 
 router.post('/deleteTweet',(req,res) => {
   const {body:{id}, session:{passport}} = req;

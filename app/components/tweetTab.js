@@ -31,6 +31,9 @@ class TweetTab extends Component{
   closeForm = () => {
     this.setState({formOpen:false});
   }
+  saveForm = () => {
+    console.log('save form');
+  }
   deleteTweet = (id) => {
     this.props.dispatch(requestTweetDelete(id));
   }
@@ -42,7 +45,8 @@ class TweetTab extends Component{
     }
 
     const addForm = <FormContainer formName="Add Endorsement"
-                   closeHandler={this.closeForm}>
+                                   closeHandler={this.closeForm}
+                                   saveHandler = {this.saveForm}>
       <AddEndorsementForm />
     </FormContainer>;
 

@@ -17,8 +17,12 @@ export default class EndorsementsTab extends Component{
   closeForm = () => {
     this.setState({formOpen:false});
   }
+  saveForm = () => {
+    console.log('save form');
+  }
   render(){
     const addForm = <FormContainer closeHandler={this.closeForm}
+                                   saveHandler = {this.saveForm}
                                    formName="Add Endorsment">
       <AddEndorsementForm />
     </FormContainer>

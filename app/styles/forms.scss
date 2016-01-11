@@ -1,7 +1,9 @@
 @import "variables";
 label{
-  width:100px;
   display:inline-block;
+  &.non-mui{
+    margin:1em 0 .5em 0;
+  }
 }
 input[type="text"]{
   width: 100%;
@@ -40,7 +42,7 @@ input[type="text"]{
 select{
   background-color: transparent;
   border: none;
-  border-bottom: 1px solid $barney;
+  border-bottom: 1px solid #e0e0e0;
   overflow: hidden;
   outline: none;
   border-radius: 20px;
@@ -68,4 +70,7 @@ select{
 .icon-btn-form{
   margin:0;
   margin-right:-.4em;
+}
+.input-field{
+  margin-bottom:1em;
 }

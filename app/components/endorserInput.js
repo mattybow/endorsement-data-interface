@@ -10,12 +10,16 @@ class EndorserInput extends Component{
     console.log(`render ${id} input`);
     return <div style={{marginBottom:'1em'}}>
       <TextInputField label='First Name'
-                      dataKey = 'firstName'
-                      changeHandler = {inputChangeHandler}
+                      value = {firstName}
+                      changeHandler = {ev => {
+                        inputChangeHandler(id,{firstName:ev.target.value})
+                      }}
                       {...this.props}/>
       <TextInputField label='Last Name'
-                      dataKey = 'lastName'
-                      changeHandler = {inputChangeHandler}
+                      value = {lastName}
+                      changeHandler = {ev => {
+                        inputChangeHandler(id,{lastName:ev.target.value})
+                      }}
                       {...this.props}/>
       <div className="flex-parent-row">
        <div className="flex-child-expand">

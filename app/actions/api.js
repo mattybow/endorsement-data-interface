@@ -10,6 +10,10 @@ export function deleteTweet(id){
   });
 }
 
+export function addCandidate(data){
+  return axios.post('/api/addCandidate',data);
+}
+
 export function checkAuth(){
   return axios.post('/auth/check');
 }
