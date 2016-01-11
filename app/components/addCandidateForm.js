@@ -13,7 +13,7 @@ function selectCandidateFormData(state){
 
 function convertDate(date){
   if(date && date.match(/(\d{2}\-){2}\d{4}T/)){
-    return moment(new Date(date)).format('MM-DD-YYYY');
+    return moment(new Date(date)).format('YYYY-MM-DD');
   }
   return date;
 }
@@ -37,7 +37,7 @@ class AddCandidateForm extends Component{
     this.props.dispatch(updateCandidateForm(data));
   }
   render(){
-    const { formData: {CAN_ID, FIRST_NAME, MIDDLE_NAME, LAST_NAME, DOB, GENDER, PARTY} } = this.props;
+    const { formData: {CAN_ID, FIRST_NAME, MIDDLE_NAME, LAST_NAME, DOB, GENDER, PARTY, AVATAR} } = this.props;
     return <div className="form-contents">
       <TextInputField label='FEC Id'
                       value = {CAN_ID}
@@ -84,7 +84,7 @@ class AddCandidateForm extends Component{
                     style={{marginBottom:'.5em', width:'50%', display:'inline-block', height:'1em'}}/>
       </div>
       <TextInputField label='Birthdate'
-                      placeholder="MM-DD-YYYY"
+                      placeholder="YYYY-MM-DD"
                       value={convertDate(DOB)}
                       changeHandler = {ev => {
                         this.inputChangeHandler({DOB:ev.target.value})
@@ -92,8 +92,10 @@ class AddCandidateForm extends Component{
                       {...this.props}/>
 
       <TextInputField label='Avatar Link'
-                      dataKey = 'lastName'
-                      changeHandler = {this.inputChangeHandler}
+                      value={AVATAR}
+                      changeHandler = {ev => {
+                        this.inputChangeHandler({AVATAR:ev.target.value})
+                      }}
                       {...this.props}/>
     </div>
   }

@@ -51228,7 +51228,7 @@
 
 	function convertDate(date) {
 	  if (date && date.match(/(\d{2}\-){2}\d{4}T/)) {
-	    return (0, _moment2.default)(new Date(date)).format('MM-DD-YYYY');
+	    return (0, _moment2.default)(new Date(date)).format('YYYY-MM-DD');
 	  }
 	  return date;
 	}
@@ -51268,6 +51268,7 @@
 	      var DOB = _props$formData.DOB;
 	      var GENDER = _props$formData.GENDER;
 	      var PARTY = _props$formData.PARTY;
+	      var AVATAR = _props$formData.AVATAR;
 
 	      return _react2.default.createElement(
 	        'div',
@@ -51329,15 +51330,17 @@
 	            style: { marginBottom: '.5em', width: '50%', display: 'inline-block', height: '1em' } })
 	        ),
 	        _react2.default.createElement(_textInputField2.default, _extends({ label: 'Birthdate',
-	          placeholder: 'MM-DD-YYYY',
+	          placeholder: 'YYYY-MM-DD',
 	          value: convertDate(DOB),
 	          changeHandler: function changeHandler(ev) {
 	            _this2.inputChangeHandler({ DOB: ev.target.value });
 	          }
 	        }, this.props)),
 	        _react2.default.createElement(_textInputField2.default, _extends({ label: 'Avatar Link',
-	          dataKey: 'lastName',
-	          changeHandler: this.inputChangeHandler
+	          value: AVATAR,
+	          changeHandler: function changeHandler(ev) {
+	            _this2.inputChangeHandler({ AVATAR: ev.target.value });
+	          }
 	        }, this.props))
 	      );
 	    }
