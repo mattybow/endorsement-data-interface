@@ -2,10 +2,11 @@ import { UPDATE_ENDORSEMENT_FORM, ADD_ENDORSER, UPDATE_ENDORSER, REMOVE_ENDORSER
 
 function makeEmptyEndorser(){
   return {
-    firstName:null,
-    lastName: null,
-    isOrg: false,
-    id:new Date().valueOf().toString(),
+    NAME:null,
+    DESCRIPT: null,
+    WIKI_LINK: null,
+    IS_ORG: false,
+    END_ID:new Date().valueOf().toString(),
   }
 }
 
@@ -28,7 +29,7 @@ export default function endorsementFormData(state=initalState, action){
     case UPDATE_ENDORSER:
       const { id, data } = action;
       const updatedEndorsers = state.endorsers.map(endorser =>
-        endorser.id === id ?
+        endorser.END_ID === id ?
           {...endorser, ...data} :
           endorser
         );

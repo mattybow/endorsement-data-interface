@@ -167,6 +167,14 @@ a{
   max-width:600px;
   margin:20px auto;
 }
+.fader{
+  transition:opacity .2s ease;
+  opacity:1;
+  &.faded{
+    opacity:0;
+    pointer-events:none;
+  }
+}
 
 .floating-add-button{
   position:fixed;

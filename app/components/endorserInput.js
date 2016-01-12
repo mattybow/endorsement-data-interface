@@ -6,19 +6,25 @@ import shouldPureComponentUpdate from 'react-pure-render/function';
 class EndorserInput extends Component{
   shouldComponentUpdate = shouldPureComponentUpdate;
   render(){
-    const { id, firstName, lastName, isOrg, inputChangeHandler, removeHandler } = this.props;
-    console.log(`render ${id} input`);
+    const { END_ID, NAME, DESCRIPT, WIKI_LINK, isOrg, inputChangeHandler, removeHandler } = this.props;
+    console.log(`render ${END_ID} input`);
     return <div style={{marginBottom:'1em'}}>
-      <TextInputField label='First Name'
-                      value = {firstName}
+      <TextInputField label='Name'
+                      value = {NAME}
                       changeHandler = {ev => {
-                        inputChangeHandler(id,{firstName:ev.target.value})
+                        inputChangeHandler(END_ID,{NAME:ev.target.value})
                       }}
                       {...this.props}/>
-      <TextInputField label='Last Name'
-                      value = {lastName}
+      <TextInputField label='Description'
+                      value = {DESCRIPT}
                       changeHandler = {ev => {
-                        inputChangeHandler(id,{lastName:ev.target.value})
+                        inputChangeHandler(END_ID,{DESCRIPT:ev.target.value})
+                      }}
+                      {...this.props}/>
+      <TextInputField label='Wikipedia Link'
+                      value = {WIKI_LINK}
+                      changeHandler = {ev => {
+                        inputChangeHandler(END_ID,{WIKI_LINK:ev.target.value})
                       }}
                       {...this.props}/>
       <div className="flex-parent-row">
@@ -26,12 +32,12 @@ class EndorserInput extends Component{
          <FormCheckBox label="is organization"
                        isChecked={isOrg}
                        checkHandler={ev => {
-                         inputChangeHandler(id, {isOrg:!isOrg});
+                         inputChangeHandler(END_ID, {isOrg:!isOrg});
                        }}/>
        </div>
        <button className="btn-default no-border btn-naked"
                onClick={ () => {
-                 removeHandler(id);
+                 removeHandler(END_ID);
                }}>
          <span className="icon-trash-bin icon-lg icon-naked icon-btn-form"></span>
        </button>

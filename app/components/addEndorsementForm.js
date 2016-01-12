@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { fetchCandidatesIfNeeded } from '../actions/candidateActions';
 import { addEndorser, updateEndorser, removeEndorser, updateEndorsementForm } from '../actions/endorsementFormActions';
 import EndorserInput from './endorserInput';
+import TagInput from './tagInput';
 import '../styles/forms.scss';
 
 function selectFormData(state){
@@ -18,7 +19,7 @@ class AddEndorsementForm extends Component{
   }
   renderEndorserInputs(endorsers){
     return endorsers.map((endorser,i) => {
-      return <EndorserInput key={endorser.id}
+      return <EndorserInput key={endorser.END_ID}
                             inputChangeHandler= {this.endorserChangeHandler}
                             removeHandler = {this.endorserRemoveHandler}
                             {...endorser}/>;
@@ -73,8 +74,12 @@ class AddEndorsementForm extends Component{
         </div>
       </div>
       { this.renderEndorserInputs(endorsers) }
-      <div className="endorser-tags">
+      <div className="endorser-tags"
+        style={{
+          paddingBottom:400
+        }}>
         <h3>Endorser Tags</h3>
+        <TagInput />
       </div>
     </div>;
   }

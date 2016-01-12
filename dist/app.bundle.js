@@ -20818,11 +20818,11 @@
 
 	var _redux = __webpack_require__(226);
 
-	var _reduxThunk = __webpack_require__(492);
+	var _reduxThunk = __webpack_require__(496);
 
 	var _reduxThunk2 = _interopRequireDefault(_reduxThunk);
 
-	var _reducers = __webpack_require__(493);
+	var _reducers = __webpack_require__(497);
 
 	var reducers = _interopRequireWildcard(_reducers);
 
@@ -25710,19 +25710,19 @@
 
 	var _tweetTab2 = _interopRequireDefault(_tweetTab);
 
-	var _candidateTab = __webpack_require__(472);
+	var _candidateTab = __webpack_require__(476);
 
 	var _candidateTab2 = _interopRequireDefault(_candidateTab);
 
-	var _endorserTab = __webpack_require__(489);
+	var _endorserTab = __webpack_require__(493);
 
 	var _endorserTab2 = _interopRequireDefault(_endorserTab);
 
-	var _endorsementsTab = __webpack_require__(490);
+	var _endorsementsTab = __webpack_require__(494);
 
 	var _endorsementsTab2 = _interopRequireDefault(_endorsementsTab);
 
-	var _tagsTab = __webpack_require__(491);
+	var _tagsTab = __webpack_require__(495);
 
 	var _tagsTab2 = _interopRequireDefault(_tagsTab);
 
@@ -29081,7 +29081,7 @@
 	exports.push([module.id, "@import url(https://fonts.googleapis.com/css?family=Source+Code+Pro:400,300);", ""]);
 
 	// module
-	exports.push([module.id, "@charset \"UTF-8\";\n@font-face {\n  font-family: 'sarial';\n  src: url(" + __webpack_require__(274) + ") format(\"truetype\");\n  font-weight: normal;\n  font-style: normal;\n}\n\n@font-face {\n  font-family: 'fontello';\n  src: url(" + __webpack_require__(275) + ");\n  src: url(" + __webpack_require__(275) + "#iefix) format(\"embedded-opentype\"), url(" + __webpack_require__(276) + ") format(\"woff\"), url(" + __webpack_require__(277) + ") format(\"truetype\"), url(" + __webpack_require__(278) + "#fontello) format(\"svg\");\n  font-weight: normal;\n  font-style: normal;\n}\n\n/* Chrome hack: SVG is rendered more smooth in Windozze. 100% magic, uncomment if you need it. */\n/* Note, that will break hinting! In other OS-es font will be not as sharp as it could be */\n/*\n@media screen and (-webkit-min-device-pixel-ratio:0) {\n  @font-face {\n    font-family: 'fontello';\n    src: url('../font/fontello.svg?18129615#fontello') format('svg');\n  }\n}\n*/\n[class^=\"icon-\"]:before, [class*=\" icon-\"]:before {\n  font-family: \"fontello\";\n  font-style: normal;\n  font-weight: normal;\n  speak: none;\n  display: inline-block;\n  text-decoration: inherit;\n  width: 1em;\n  margin-right: .2em;\n  text-align: center;\n  /* opacity: .8; */\n  /* For safety - reset parent styles, that can break glyph codes*/\n  font-variant: normal;\n  text-transform: none;\n  /* fix buttons height, for twitter bootstrap */\n  line-height: 1em;\n  /* Animation center compensation - margins should be symmetric */\n  /* remove if not needed */\n  margin-left: .2em;\n  /* you can be more comfortable with increased icons size */\n  /* font-size: 120%; */\n  /* Font smoothing. That was taken from TWBS */\n  -webkit-font-smoothing: antialiased;\n  -moz-osx-font-smoothing: grayscale;\n  /* Uncomment for 3D effect */\n  /* text-shadow: 1px 1px 1px rgba(127, 127, 127, 0.3); */\n}\n\n.icon-twitter:before {\n  content: '\\E800';\n}\n\n/* '' */\n.icon-check-mark:before {\n  content: '\\E801';\n}\n\n/* '' */\n.icon-close:before {\n  content: '\\E802';\n}\n\n/* '' */\n.icon-label:before {\n  content: '\\E803';\n}\n\n/* '' */\n.icon-arrow:before {\n  content: '\\E804';\n}\n\n/* '' */\n.icon-trash-bin:before {\n  content: '\\E805';\n}\n\n/* '' */\n.icon-home:before {\n  content: '\\E806';\n}\n\n/* '' */\n.icon-chat:before {\n  content: '\\E807';\n}\n\n/* '' */\n.icon-plus:before {\n  content: '\\E808';\n}\n\n/* '' */\n.icon-pencil:before {\n  content: '\\E809';\n}\n\n/* '' */\n.icon-star:before {\n  content: '\\E80A';\n}\n\n/* '' */\n.icon-empty-blank:before {\n  content: '\\E80B';\n}\n\n/* '' */\n.icon-flag:before {\n  content: '\\E80C';\n}\n\n/* '' */\nhtml {\n  -webkit-tap-highlight-color: transparent;\n}\n\nbody {\n  color: black;\n  font-family: 'Source Code Pro';\n}\n\n.title-font {\n  font-family: \"sarial\";\n}\n\nbutton {\n  background-color: transparent;\n  border: 1px solid #8F2CD8;\n  color: #8F2CD8;\n  outline: none;\n}\n\na {\n  color: black;\n  text-decoration: none;\n}\n\n.btn-default {\n  padding: .5em 1em;\n}\n\n.btn-naked {\n  padding: 0;\n}\n\n.btn-block {\n  display: block;\n}\n\n.pointer:hover {\n  cursor: pointer;\n}\n\n.no-border {\n  border: none;\n}\n\n.list-item-spacing {\n  padding: 10px 0;\n  margin-bottom: 1px;\n}\n\n.flex-parent-row {\n  display: -webkit-flex;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-flex-flow: row nowrap;\n      -ms-flex-flow: row nowrap;\n          flex-flow: row nowrap;\n  -webkit-align-items: center;\n      -ms-flex-align: center;\n          align-items: center;\n}\n\n.flex-row-center {\n  -webkit-justify-content: center;\n      -ms-flex-pack: center;\n          justify-content: center;\n}\n\n.flex-child-expand {\n  -webkit-flex: 1 1 auto;\n      -ms-flex: 1 1 auto;\n          flex: 1 1 auto;\n}\n\n.flex-child-end {\n  -webkit-align-self: flex-end;\n      -ms-flex-item-align: end;\n          align-self: flex-end;\n}\n\n.flex-child-start {\n  -webkit-align-self: flex-start;\n      -ms-flex-item-align: start;\n          align-self: flex-start;\n}\n\n.icon-md {\n  font-size: 1.5em;\n}\n\n.icon-lg {\n  font-size: 2em;\n}\n\n.icon-lg.icon-close {\n  font-size: 1.6em;\n  margin: 0 .2em;\n}\n\n.icon-naked:before {\n  margin: 0;\n}\n\n.touch .modal-wrapper {\n  -webkit-overflow-scrolling: touch;\n}\n\n#tab-contents {\n  padding: 0 10%;\n  max-width: 600px;\n  margin: 20px auto;\n}\n\n.floating-add-button {\n  position: fixed;\n  bottom: 3em;\n  right: 3em;\n}\n\n@media (min-width: 415px) {\n  .mobile-only {\n    display: none;\n  }\n  .btn-default:hover {\n    cursor: pointer;\n    color: #102B3F;\n  }\n}\n\n@media (max-width: 414px) {\n  #tab-contents {\n    padding: 0;\n    margin: 10px;\n  }\n  .floating-add-button {\n    bottom: 4.5em;\n    right: 1em;\n  }\n}\n", ""]);
+	exports.push([module.id, "@charset \"UTF-8\";\n@font-face {\n  font-family: 'sarial';\n  src: url(" + __webpack_require__(274) + ") format(\"truetype\");\n  font-weight: normal;\n  font-style: normal;\n}\n\n@font-face {\n  font-family: 'fontello';\n  src: url(" + __webpack_require__(275) + ");\n  src: url(" + __webpack_require__(275) + "#iefix) format(\"embedded-opentype\"), url(" + __webpack_require__(276) + ") format(\"woff\"), url(" + __webpack_require__(277) + ") format(\"truetype\"), url(" + __webpack_require__(278) + "#fontello) format(\"svg\");\n  font-weight: normal;\n  font-style: normal;\n}\n\n/* Chrome hack: SVG is rendered more smooth in Windozze. 100% magic, uncomment if you need it. */\n/* Note, that will break hinting! In other OS-es font will be not as sharp as it could be */\n/*\n@media screen and (-webkit-min-device-pixel-ratio:0) {\n  @font-face {\n    font-family: 'fontello';\n    src: url('../font/fontello.svg?18129615#fontello') format('svg');\n  }\n}\n*/\n[class^=\"icon-\"]:before, [class*=\" icon-\"]:before {\n  font-family: \"fontello\";\n  font-style: normal;\n  font-weight: normal;\n  speak: none;\n  display: inline-block;\n  text-decoration: inherit;\n  width: 1em;\n  margin-right: .2em;\n  text-align: center;\n  /* opacity: .8; */\n  /* For safety - reset parent styles, that can break glyph codes*/\n  font-variant: normal;\n  text-transform: none;\n  /* fix buttons height, for twitter bootstrap */\n  line-height: 1em;\n  /* Animation center compensation - margins should be symmetric */\n  /* remove if not needed */\n  margin-left: .2em;\n  /* you can be more comfortable with increased icons size */\n  /* font-size: 120%; */\n  /* Font smoothing. That was taken from TWBS */\n  -webkit-font-smoothing: antialiased;\n  -moz-osx-font-smoothing: grayscale;\n  /* Uncomment for 3D effect */\n  /* text-shadow: 1px 1px 1px rgba(127, 127, 127, 0.3); */\n}\n\n.icon-twitter:before {\n  content: '\\E800';\n}\n\n/* '' */\n.icon-check-mark:before {\n  content: '\\E801';\n}\n\n/* '' */\n.icon-close:before {\n  content: '\\E802';\n}\n\n/* '' */\n.icon-label:before {\n  content: '\\E803';\n}\n\n/* '' */\n.icon-arrow:before {\n  content: '\\E804';\n}\n\n/* '' */\n.icon-trash-bin:before {\n  content: '\\E805';\n}\n\n/* '' */\n.icon-home:before {\n  content: '\\E806';\n}\n\n/* '' */\n.icon-chat:before {\n  content: '\\E807';\n}\n\n/* '' */\n.icon-plus:before {\n  content: '\\E808';\n}\n\n/* '' */\n.icon-pencil:before {\n  content: '\\E809';\n}\n\n/* '' */\n.icon-star:before {\n  content: '\\E80A';\n}\n\n/* '' */\n.icon-empty-blank:before {\n  content: '\\E80B';\n}\n\n/* '' */\n.icon-flag:before {\n  content: '\\E80C';\n}\n\n/* '' */\nhtml {\n  -webkit-tap-highlight-color: transparent;\n}\n\nbody {\n  color: black;\n  font-family: 'Source Code Pro';\n}\n\n.title-font {\n  font-family: \"sarial\";\n}\n\nbutton {\n  background-color: transparent;\n  border: 1px solid #8F2CD8;\n  color: #8F2CD8;\n  outline: none;\n}\n\na {\n  color: black;\n  text-decoration: none;\n}\n\n.btn-default {\n  padding: .5em 1em;\n}\n\n.btn-naked {\n  padding: 0;\n}\n\n.btn-block {\n  display: block;\n}\n\n.pointer:hover {\n  cursor: pointer;\n}\n\n.no-border {\n  border: none;\n}\n\n.list-item-spacing {\n  padding: 10px 0;\n  margin-bottom: 1px;\n}\n\n.flex-parent-row {\n  display: -webkit-flex;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-flex-flow: row nowrap;\n      -ms-flex-flow: row nowrap;\n          flex-flow: row nowrap;\n  -webkit-align-items: center;\n      -ms-flex-align: center;\n          align-items: center;\n}\n\n.flex-row-center {\n  -webkit-justify-content: center;\n      -ms-flex-pack: center;\n          justify-content: center;\n}\n\n.flex-child-expand {\n  -webkit-flex: 1 1 auto;\n      -ms-flex: 1 1 auto;\n          flex: 1 1 auto;\n}\n\n.flex-child-end {\n  -webkit-align-self: flex-end;\n      -ms-flex-item-align: end;\n          align-self: flex-end;\n}\n\n.flex-child-start {\n  -webkit-align-self: flex-start;\n      -ms-flex-item-align: start;\n          align-self: flex-start;\n}\n\n.icon-md {\n  font-size: 1.5em;\n}\n\n.icon-lg {\n  font-size: 2em;\n}\n\n.icon-lg.icon-close {\n  font-size: 1.6em;\n  margin: 0 .2em;\n}\n\n.icon-naked:before {\n  margin: 0;\n}\n\n.touch .modal-wrapper {\n  -webkit-overflow-scrolling: touch;\n}\n\n#tab-contents {\n  padding: 0 10%;\n  max-width: 600px;\n  margin: 20px auto;\n}\n\n.fader {\n  transition: opacity .2s ease;\n  opacity: 1;\n}\n\n.fader.faded {\n  opacity: 0;\n  pointer-events: none;\n}\n\n.floating-add-button {\n  position: fixed;\n  bottom: 3em;\n  right: 3em;\n}\n\n@media (min-width: 415px) {\n  .mobile-only {\n    display: none;\n  }\n  .btn-default:hover {\n    cursor: pointer;\n    color: #102B3F;\n  }\n}\n\n@media (max-width: 414px) {\n  #tab-contents {\n    padding: 0;\n    margin: 10px;\n  }\n  .floating-add-button {\n    bottom: 4.5em;\n    right: 1em;\n  }\n}\n", ""]);
 
 	// exports
 
@@ -29140,21 +29140,21 @@
 
 	var _addEndorsementForm2 = _interopRequireDefault(_addEndorsementForm);
 
-	var _loadingIndicator = __webpack_require__(462);
+	var _loadingIndicator = __webpack_require__(466);
 
 	var _loadingIndicator2 = _interopRequireDefault(_loadingIndicator);
 
-	var _modalWrapper = __webpack_require__(465);
+	var _modalWrapper = __webpack_require__(469);
 
 	var _modalWrapper2 = _interopRequireDefault(_modalWrapper);
 
-	var _formContainer = __webpack_require__(468);
+	var _formContainer = __webpack_require__(472);
 
 	var _formContainer2 = _interopRequireDefault(_formContainer);
 
 	var _reactRedux = __webpack_require__(219);
 
-	var _tweetActions = __webpack_require__(470);
+	var _tweetActions = __webpack_require__(474);
 
 	var _endorsementFormActions = __webpack_require__(376);
 
@@ -40959,7 +40959,11 @@
 
 	var _endorserInput2 = _interopRequireDefault(_endorserInput);
 
-	__webpack_require__(460);
+	var _tagInput = __webpack_require__(460);
+
+	var _tagInput2 = _interopRequireDefault(_tagInput);
+
+	__webpack_require__(464);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -41006,7 +41010,7 @@
 	      var _this2 = this;
 
 	      return endorsers.map(function (endorser, i) {
-	        return _react2.default.createElement(_endorserInput2.default, _extends({ key: endorser.id,
+	        return _react2.default.createElement(_endorserInput2.default, _extends({ key: endorser.END_ID,
 	          inputChangeHandler: _this2.endorserChangeHandler,
 	          removeHandler: _this2.endorserRemoveHandler
 	        }, endorser));
@@ -41093,12 +41097,16 @@
 	        this.renderEndorserInputs(endorsers),
 	        _react2.default.createElement(
 	          'div',
-	          { className: 'endorser-tags' },
+	          { className: 'endorser-tags',
+	            style: {
+	              paddingBottom: 400
+	            } },
 	          _react2.default.createElement(
 	            'h3',
 	            null,
 	            'Endorser Tags'
-	          )
+	          ),
+	          _react2.default.createElement(_tagInput2.default, null)
 	        )
 	      );
 	    }
@@ -41313,27 +41321,34 @@
 	    key: 'render',
 	    value: function render() {
 	      var _props = this.props;
-	      var id = _props.id;
-	      var firstName = _props.firstName;
-	      var lastName = _props.lastName;
+	      var END_ID = _props.END_ID;
+	      var NAME = _props.NAME;
+	      var DESCRIPT = _props.DESCRIPT;
+	      var WIKI_LINK = _props.WIKI_LINK;
 	      var isOrg = _props.isOrg;
 	      var inputChangeHandler = _props.inputChangeHandler;
 	      var removeHandler = _props.removeHandler;
 
-	      console.log('render ' + id + ' input');
+	      console.log('render ' + END_ID + ' input');
 	      return _react2.default.createElement(
 	        'div',
 	        { style: { marginBottom: '1em' } },
-	        _react2.default.createElement(_textInputField2.default, _extends({ label: 'First Name',
-	          value: firstName,
+	        _react2.default.createElement(_textInputField2.default, _extends({ label: 'Name',
+	          value: NAME,
 	          changeHandler: function changeHandler(ev) {
-	            inputChangeHandler(id, { firstName: ev.target.value });
+	            inputChangeHandler(END_ID, { NAME: ev.target.value });
 	          }
 	        }, this.props)),
-	        _react2.default.createElement(_textInputField2.default, _extends({ label: 'Last Name',
-	          value: lastName,
+	        _react2.default.createElement(_textInputField2.default, _extends({ label: 'Description',
+	          value: DESCRIPT,
 	          changeHandler: function changeHandler(ev) {
-	            inputChangeHandler(id, { lastName: ev.target.value });
+	            inputChangeHandler(END_ID, { DESCRIPT: ev.target.value });
+	          }
+	        }, this.props)),
+	        _react2.default.createElement(_textInputField2.default, _extends({ label: 'Wikipedia Link',
+	          value: WIKI_LINK,
+	          changeHandler: function changeHandler(ev) {
+	            inputChangeHandler(END_ID, { WIKI_LINK: ev.target.value });
 	          }
 	        }, this.props)),
 	        _react2.default.createElement(
@@ -41345,14 +41360,14 @@
 	            _react2.default.createElement(_formCheckBox2.default, { label: 'is organization',
 	              isChecked: isOrg,
 	              checkHandler: function checkHandler(ev) {
-	                inputChangeHandler(id, { isOrg: !isOrg });
+	                inputChangeHandler(END_ID, { isOrg: !isOrg });
 	              } })
 	          ),
 	          _react2.default.createElement(
 	            'button',
 	            { className: 'btn-default no-border btn-naked',
 	              onClick: function onClick() {
-	                removeHandler(id);
+	                removeHandler(END_ID);
 	              } },
 	            _react2.default.createElement('span', { className: 'icon-trash-bin icon-lg icon-naked icon-btn-form' })
 	          )
@@ -49584,10 +49599,225 @@
 /* 460 */
 /***/ function(module, exports, __webpack_require__) {
 
+	'use strict';
+
+	var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _classnames = __webpack_require__(262);
+
+	var _classnames2 = _interopRequireDefault(_classnames);
+
+	var _autoCompleteDropdown = __webpack_require__(461);
+
+	var _autoCompleteDropdown2 = _interopRequireDefault(_autoCompleteDropdown);
+
+	__webpack_require__(462);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var TagInput = (function (_Component) {
+	  _inherits(TagInput, _Component);
+
+	  function TagInput(props) {
+	    _classCallCheck(this, TagInput);
+
+	    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(TagInput).call(this, props));
+
+	    _this.state = {
+	      searchTerm: ''
+	    };
+	    return _this;
+	  }
+
+	  _createClass(TagInput, [{
+	    key: 'handleTagInputChange',
+	    value: function handleTagInputChange(term) {
+	      this.setState({ searchTerm: term });
+	    }
+	  }, {
+	    key: 'handleCloseClick',
+	    value: function handleCloseClick() {
+	      this.setState({ searchTerm: '' });
+	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      var _this2 = this;
+
+	      var searchTerm = this.state.searchTerm;
+
+	      var closeIconClasses = (0, _classnames2.default)("btn-naked", "no-border", "icon-close", "fader", { faded: !searchTerm });
+	      var autoCompleteClasses = (0, _classnames2.default)("auto-complete-container", { open: !!searchTerm });
+	      return _react2.default.createElement(
+	        'div',
+	        { style: { position: 'relative' } },
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'search-input-holder', style: { position: 'relative' } },
+	          _react2.default.createElement('button', { className: closeIconClasses,
+	            style: {
+	              position: 'absolute',
+	              right: 0,
+	              top: '0.8em'
+	            },
+	            onClick: function onClick() {
+	              _this2.handleCloseClick();
+	            } }),
+	          _react2.default.createElement('input', { type: 'text',
+	            style: { paddingRight: '1em' },
+	            placeholder: 'Search for tag',
+	            value: searchTerm,
+	            onChange: function onChange(ev) {
+	              _this2.handleTagInputChange(ev.target.value);
+	            } }),
+	          _react2.default.createElement(
+	            'div',
+	            { className: autoCompleteClasses,
+	              style: { position: 'absolute',
+	                top: '3em',
+	                left: 0,
+	                width: '100%'
+	              } },
+	            _react2.default.createElement(_autoCompleteDropdown2.default, { choices: [{ value: "asdf" }, { value: "1324" }] })
+	          )
+	        )
+	      );
+	    }
+	  }]);
+
+	  return TagInput;
+	})(_react.Component);
+
+	exports.default = TagInput;
+
+/***/ },
+/* 461 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var AutoCompleteDropdown = (function (_Component) {
+	  _inherits(AutoCompleteDropdown, _Component);
+
+	  function AutoCompleteDropdown() {
+	    _classCallCheck(this, AutoCompleteDropdown);
+
+	    return _possibleConstructorReturn(this, Object.getPrototypeOf(AutoCompleteDropdown).apply(this, arguments));
+	  }
+
+	  _createClass(AutoCompleteDropdown, [{
+	    key: 'renderChoices',
+	    value: function renderChoices() {
+	      return this.props.choices.map(function (choice) {
+	        return _react2.default.createElement(
+	          'div',
+	          { className: 'dropdown-choice', style: {
+	              padding: '0 1em'
+	            } },
+	          _react2.default.createElement(
+	            'div',
+	            null,
+	            choice.value
+	          )
+	        );
+	      });
+	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      return _react2.default.createElement(
+	        'div',
+	        { className: 'dropdown-container' },
+	        this.renderChoices()
+	      );
+	    }
+	  }]);
+
+	  return AutoCompleteDropdown;
+	})(_react.Component);
+
+	exports.default = AutoCompleteDropdown;
+
+/***/ },
+/* 462 */
+/***/ function(module, exports, __webpack_require__) {
+
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(461);
+	var content = __webpack_require__(463);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(258)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!./../../node_modules/css-loader/index.js!./../../node_modules/autoprefixer-loader/index.js?browsers=last 2 version!./../../node_modules/sass-loader/index.js?outputStyle=expanded&sourceMap=true&sourceMapContents=true!./autoComplete.scss", function() {
+				var newContent = require("!!./../../node_modules/css-loader/index.js!./../../node_modules/autoprefixer-loader/index.js?browsers=last 2 version!./../../node_modules/sass-loader/index.js?outputStyle=expanded&sourceMap=true&sourceMapContents=true!./autoComplete.scss");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 463 */
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(257)();
+	// imports
+
+
+	// module
+	exports.push([module.id, ".auto-complete-container {\n  height: 0;\n  overflow: hidden;\n}\n\n.auto-complete-container.open {\n  height: 100px;\n  overflow: initial;\n}\n\n.dropdown-container {\n  border-radius: 2px;\n  background-color: #fff;\n  box-shadow: rgba(0, 0, 0, 0.117647) 0px 1px 6px, rgba(0, 0, 0, 0.239216) 0px 1px 4px;\n  padding: 1em;\n}\n\n.dropdown-choice > div {\n  border-bottom: 1px solid #e0e0e0;\n  padding: .5em 0;\n}\n\n.dropdown-choice:last-child > div {\n  border-bottom: none;\n}\n", ""]);
+
+	// exports
+
+
+/***/ },
+/* 464 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+
+	// load the styles
+	var content = __webpack_require__(465);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(258)(content, {});
@@ -49607,7 +49837,7 @@
 	}
 
 /***/ },
-/* 461 */
+/* 465 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(257)();
@@ -49615,13 +49845,13 @@
 
 
 	// module
-	exports.push([module.id, "label {\n  display: inline-block;\n}\n\nlabel.non-mui {\n  margin: 1em 0 .5em 0;\n}\n\ninput[type=\"text\"] {\n  width: 100%;\n  border-style: none none solid;\n  border-width: 1px;\n  border-color: #8F2CD8;\n  margin-bottom: 1em;\n  padding: .5em 0;\n  -webkit-appearance: none;\n  border-radius: 0;\n}\n\ninput[type=\"text\"]:focus {\n  outline: none;\n}\n\n.check-box {\n  padding: .5em 0 .5em .2em;\n}\n\n.check-box:hover {\n  cursor: pointer;\n}\n\n.form-check-box {\n  display: inline-block;\n  padding: 0 .5em 0 .6em;\n  border-radius: 2px;\n  border: 1px solid rgba(0, 0, 0, 0.4);\n}\n\n.form-check-box.checked {\n  border-color: #A06CD5;\n  background-color: #A06CD5;\n  color: #E2CFEA;\n}\n\n.check-box-label:hover {\n  cursor: pointer;\n}\n\nselect {\n  background-color: transparent;\n  border: none;\n  border-bottom: 1px solid #e0e0e0;\n  overflow: hidden;\n  outline: none;\n  border-radius: 20px;\n  -webkit-appearance: none;\n  -webkit-border-radius: 0px;\n  padding: .5em 0;\n  width: 100%;\n}\n\n.form-select {\n  position: relative;\n}\n\n.form-select:after {\n  font-family: \"fontello\";\n  -webkit-transform: rotateZ(90deg);\n          transform: rotateZ(90deg);\n  content: '\\E804';\n  width: 1em;\n  height: 1em;\n  position: absolute;\n  top: .7em;\n  right: 0;\n  pointer-events: none;\n}\n\n.icon-btn-form {\n  margin: 0;\n  margin-right: -.4em;\n}\n\n.input-field {\n  margin-bottom: 1em;\n}\n", ""]);
+	exports.push([module.id, "label {\n  display: inline-block;\n}\n\nlabel.non-mui {\n  margin: 1em 0 .5em 0;\n}\n\ninput[type=\"text\"] {\n  width: 100%;\n  border-style: none none solid;\n  border-width: 1px;\n  border-color: #e0e0e0;\n  margin-bottom: 1em;\n  padding: .5em 0;\n  -webkit-appearance: none;\n  border-radius: 0;\n}\n\ninput[type=\"text\"]:focus {\n  outline: none;\n}\n\n.check-box {\n  padding: .5em 0 .5em .2em;\n}\n\n.check-box:hover {\n  cursor: pointer;\n}\n\n.form-check-box {\n  display: inline-block;\n  padding: 0 .5em 0 .6em;\n  border-radius: 2px;\n  border: 1px solid rgba(0, 0, 0, 0.4);\n}\n\n.form-check-box.checked {\n  border-color: #A06CD5;\n  background-color: #A06CD5;\n  color: #E2CFEA;\n}\n\n.check-box-label:hover {\n  cursor: pointer;\n}\n\nselect {\n  background-color: transparent;\n  border: none;\n  border-bottom: 1px solid #e0e0e0;\n  overflow: hidden;\n  outline: none;\n  border-radius: 20px;\n  -webkit-appearance: none;\n  -webkit-border-radius: 0px;\n  padding: .5em 0;\n  width: 100%;\n}\n\n.form-select {\n  position: relative;\n}\n\n.form-select:after {\n  font-family: \"fontello\";\n  -webkit-transform: rotateZ(90deg);\n          transform: rotateZ(90deg);\n  content: '\\E804';\n  width: 1em;\n  height: 1em;\n  position: absolute;\n  top: .7em;\n  right: 0;\n  pointer-events: none;\n}\n\n.icon-btn-form {\n  margin: 0;\n  margin-right: -.4em;\n}\n\n.input-field {\n  margin-bottom: 1em;\n}\n", ""]);
 
 	// exports
 
 
 /***/ },
-/* 462 */
+/* 466 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -49634,7 +49864,7 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	__webpack_require__(463);
+	__webpack_require__(467);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -49657,13 +49887,13 @@
 	exports.default = LoadingIndicator;
 
 /***/ },
-/* 463 */
+/* 467 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(464);
+	var content = __webpack_require__(468);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(258)(content, {});
@@ -49683,13 +49913,13 @@
 	}
 
 /***/ },
-/* 464 */
+/* 468 */
 /***/ function(module, exports) {
 
 	module.exports = ".sk-folding-cube {\n  margin: 20px auto;\n  width: 40px;\n  height: 40px;\n  position: relative;\n  -webkit-transform: rotateZ(45deg);\n          transform: rotateZ(45deg);\n}\n\n.sk-folding-cube .sk-cube {\n  float: left;\n  width: 50%;\n  height: 50%;\n  position: relative;\n  -webkit-transform: scale(1.1);\n      -ms-transform: scale(1.1);\n          transform: scale(1.1);\n}\n.sk-folding-cube .sk-cube:before {\n  content: '';\n  position: absolute;\n  top: 0;\n  left: 0;\n  width: 100%;\n  height: 100%;\n  background-color: purple;\n  -webkit-animation: sk-foldCubeAngle 2.4s infinite linear both;\n          animation: sk-foldCubeAngle 2.4s infinite linear both;\n  -webkit-transform-origin: 100% 100%;\n      -ms-transform-origin: 100% 100%;\n          transform-origin: 100% 100%;\n}\n.sk-folding-cube .sk-cube2 {\n  -webkit-transform: scale(1.1) rotateZ(90deg);\n          transform: scale(1.1) rotateZ(90deg);\n}\n.sk-folding-cube .sk-cube3 {\n  -webkit-transform: scale(1.1) rotateZ(180deg);\n          transform: scale(1.1) rotateZ(180deg);\n}\n.sk-folding-cube .sk-cube4 {\n  -webkit-transform: scale(1.1) rotateZ(270deg);\n          transform: scale(1.1) rotateZ(270deg);\n}\n.sk-folding-cube .sk-cube2:before {\n  -webkit-animation-delay: 0.3s;\n          animation-delay: 0.3s;\n}\n.sk-folding-cube .sk-cube3:before {\n  -webkit-animation-delay: 0.6s;\n          animation-delay: 0.6s;\n}\n.sk-folding-cube .sk-cube4:before {\n  -webkit-animation-delay: 0.9s;\n          animation-delay: 0.9s;\n}\n@-webkit-keyframes sk-foldCubeAngle {\n  0%, 10% {\n    -webkit-transform: perspective(140px) rotateX(-180deg);\n            transform: perspective(140px) rotateX(-180deg);\n    opacity: 0;\n  } 25%, 75% {\n    -webkit-transform: perspective(140px) rotateX(0deg);\n            transform: perspective(140px) rotateX(0deg);\n    opacity: 1;\n  } 90%, 100% {\n    -webkit-transform: perspective(140px) rotateY(180deg);\n            transform: perspective(140px) rotateY(180deg);\n    opacity: 0;\n  }\n}\n\n@keyframes sk-foldCubeAngle {\n  0%, 10% {\n    -webkit-transform: perspective(140px) rotateX(-180deg);\n            transform: perspective(140px) rotateX(-180deg);\n    opacity: 0;\n  } 25%, 75% {\n    -webkit-transform: perspective(140px) rotateX(0deg);\n            transform: perspective(140px) rotateX(0deg);\n    opacity: 1;\n  } 90%, 100% {\n    -webkit-transform: perspective(140px) rotateY(180deg);\n            transform: perspective(140px) rotateY(180deg);\n    opacity: 0;\n  }\n}\n"
 
 /***/ },
-/* 465 */
+/* 469 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -49708,7 +49938,7 @@
 
 	var _classnames2 = _interopRequireDefault(_classnames);
 
-	__webpack_require__(466);
+	__webpack_require__(470);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -49770,13 +50000,13 @@
 	exports.default = ModalWrapper;
 
 /***/ },
-/* 466 */
+/* 470 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(467);
+	var content = __webpack_require__(471);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(258)(content, {});
@@ -49796,7 +50026,7 @@
 	}
 
 /***/ },
-/* 467 */
+/* 471 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(257)();
@@ -49810,7 +50040,7 @@
 
 
 /***/ },
-/* 468 */
+/* 472 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -49825,7 +50055,7 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _formControls = __webpack_require__(469);
+	var _formControls = __webpack_require__(473);
 
 	var _formControls2 = _interopRequireDefault(_formControls);
 
@@ -49870,7 +50100,7 @@
 	exports.default = FormContainer;
 
 /***/ },
-/* 469 */
+/* 473 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -49902,7 +50132,7 @@
 	exports.default = FormControls;
 
 /***/ },
-/* 470 */
+/* 474 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -49913,7 +50143,7 @@
 	exports.fetchTweetsIfNeeded = fetchTweetsIfNeeded;
 	exports.requestTweetDelete = requestTweetDelete;
 
-	var _tweetTypes = __webpack_require__(471);
+	var _tweetTypes = __webpack_require__(475);
 
 	var ACTION_TYPES = _interopRequireWildcard(_tweetTypes);
 
@@ -49989,7 +50219,7 @@
 	}
 
 /***/ },
-/* 471 */
+/* 475 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -50004,7 +50234,7 @@
 	var UNDELETE_TWEET = exports.UNDELETE_TWEET = 'DELETE_TWEET_FAIL';
 
 /***/ },
-/* 472 */
+/* 476 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -50023,27 +50253,27 @@
 
 	var _candidateActions = __webpack_require__(374);
 
-	var _candidateList = __webpack_require__(473);
+	var _candidateList = __webpack_require__(477);
 
 	var _candidateList2 = _interopRequireDefault(_candidateList);
 
-	var _addButton = __webpack_require__(474);
+	var _addButton = __webpack_require__(478);
 
 	var _addButton2 = _interopRequireDefault(_addButton);
 
-	var _modalWrapper = __webpack_require__(465);
+	var _modalWrapper = __webpack_require__(469);
 
 	var _modalWrapper2 = _interopRequireDefault(_modalWrapper);
 
-	var _addCandidateForm = __webpack_require__(481);
+	var _addCandidateForm = __webpack_require__(485);
 
 	var _addCandidateForm2 = _interopRequireDefault(_addCandidateForm);
 
-	var _formContainer = __webpack_require__(468);
+	var _formContainer = __webpack_require__(472);
 
 	var _formContainer2 = _interopRequireDefault(_formContainer);
 
-	var _candidateFormActions = __webpack_require__(487);
+	var _candidateFormActions = __webpack_require__(491);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -50122,7 +50352,7 @@
 	exports.default = (0, _reactRedux.connect)(selectCandidates)(CandidateTab);
 
 /***/ },
-/* 473 */
+/* 477 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -50217,7 +50447,7 @@
 	exports.default = CandidateList;
 
 /***/ },
-/* 474 */
+/* 478 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -50232,11 +50462,11 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _floatingActionButton = __webpack_require__(475);
+	var _floatingActionButton = __webpack_require__(479);
 
 	var _floatingActionButton2 = _interopRequireDefault(_floatingActionButton);
 
-	var _fontIcon = __webpack_require__(480);
+	var _fontIcon = __webpack_require__(484);
 
 	var _fontIcon2 = _interopRequireDefault(_fontIcon);
 
@@ -50283,7 +50513,7 @@
 	exports.default = AddButton;
 
 /***/ },
-/* 475 */
+/* 479 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
@@ -50314,11 +50544,11 @@
 
 	var _colorManipulator2 = _interopRequireDefault(_colorManipulator);
 
-	var _enhancedButton = __webpack_require__(476);
+	var _enhancedButton = __webpack_require__(480);
 
 	var _enhancedButton2 = _interopRequireDefault(_enhancedButton);
 
-	var _fontIcon = __webpack_require__(480);
+	var _fontIcon = __webpack_require__(484);
 
 	var _fontIcon2 = _interopRequireDefault(_fontIcon);
 
@@ -50326,7 +50556,7 @@
 
 	var _paper2 = _interopRequireDefault(_paper);
 
-	var _children = __webpack_require__(477);
+	var _children = __webpack_require__(481);
 
 	var _children2 = _interopRequireDefault(_children);
 
@@ -50580,7 +50810,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4)))
 
 /***/ },
-/* 476 */
+/* 480 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -50607,7 +50837,7 @@
 
 	var _colors2 = _interopRequireDefault(_colors);
 
-	var _children = __webpack_require__(477);
+	var _children = __webpack_require__(481);
 
 	var _children2 = _interopRequireDefault(_children);
 
@@ -50918,7 +51148,7 @@
 	exports.default = EnhancedButton;
 
 /***/ },
-/* 477 */
+/* 481 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -50931,7 +51161,7 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _reactAddonsCreateFragment = __webpack_require__(478);
+	var _reactAddonsCreateFragment = __webpack_require__(482);
 
 	var _reactAddonsCreateFragment2 = _interopRequireDefault(_reactAddonsCreateFragment);
 
@@ -50972,13 +51202,13 @@
 	};
 
 /***/ },
-/* 478 */
+/* 482 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = __webpack_require__(479).create;
+	module.exports = __webpack_require__(483).create;
 
 /***/ },
-/* 479 */
+/* 483 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {/**
@@ -51048,7 +51278,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4)))
 
 /***/ },
-/* 480 */
+/* 484 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -51175,7 +51405,7 @@
 	exports.default = FontIcon;
 
 /***/ },
-/* 481 */
+/* 485 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -51192,7 +51422,7 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _formControls = __webpack_require__(469);
+	var _formControls = __webpack_require__(473);
 
 	var _formControls2 = _interopRequireDefault(_formControls);
 
@@ -51202,11 +51432,11 @@
 
 	var _reactRedux = __webpack_require__(219);
 
-	var _radioGroup = __webpack_require__(482);
+	var _radioGroup = __webpack_require__(486);
 
 	var _radioGroup2 = _interopRequireDefault(_radioGroup);
 
-	var _candidateFormActions = __webpack_require__(487);
+	var _candidateFormActions = __webpack_require__(491);
 
 	var _moment = __webpack_require__(281);
 
@@ -51352,7 +51582,7 @@
 	exports.default = (0, _reactRedux.connect)(selectCandidateFormData)(AddCandidateForm);
 
 /***/ },
-/* 482 */
+/* 486 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -51365,11 +51595,11 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _radioButton = __webpack_require__(483);
+	var _radioButton = __webpack_require__(487);
 
 	var _radioButton2 = _interopRequireDefault(_radioButton);
 
-	var _radioButtonGroup = __webpack_require__(486);
+	var _radioButtonGroup = __webpack_require__(490);
 
 	var _radioButtonGroup2 = _interopRequireDefault(_radioButtonGroup);
 
@@ -51404,7 +51634,7 @@
 	exports.default = RadioGroup;
 
 /***/ },
-/* 483 */
+/* 487 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -51431,11 +51661,11 @@
 
 	var _enhancedSwitch2 = _interopRequireDefault(_enhancedSwitch);
 
-	var _radioButtonUnchecked = __webpack_require__(484);
+	var _radioButtonUnchecked = __webpack_require__(488);
 
 	var _radioButtonUnchecked2 = _interopRequireDefault(_radioButtonUnchecked);
 
-	var _radioButtonChecked = __webpack_require__(485);
+	var _radioButtonChecked = __webpack_require__(489);
 
 	var _radioButtonChecked2 = _interopRequireDefault(_radioButtonChecked);
 
@@ -51598,7 +51828,7 @@
 	exports.default = RadioButton;
 
 /***/ },
-/* 484 */
+/* 488 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -51638,7 +51868,7 @@
 	exports.default = ToggleRadioButtonUnchecked;
 
 /***/ },
-/* 485 */
+/* 489 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -51678,7 +51908,7 @@
 	exports.default = ToggleRadioButtonChecked;
 
 /***/ },
-/* 486 */
+/* 490 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
@@ -51693,7 +51923,7 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _radioButton = __webpack_require__(483);
+	var _radioButton = __webpack_require__(487);
 
 	var _radioButton2 = _interopRequireDefault(_radioButton);
 
@@ -51850,7 +52080,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4)))
 
 /***/ },
-/* 487 */
+/* 491 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -51862,7 +52092,7 @@
 	exports.resetCandidateForm = resetCandidateForm;
 	exports.requestAddCandidate = requestAddCandidate;
 
-	var _candidateFormTypes = __webpack_require__(488);
+	var _candidateFormTypes = __webpack_require__(492);
 
 	var _snackbarActions = __webpack_require__(266);
 
@@ -51904,7 +52134,7 @@
 	}
 
 /***/ },
-/* 488 */
+/* 492 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -51918,7 +52148,7 @@
 	var RESET_CANDIDATE_FORM = exports.RESET_CANDIDATE_FORM = "RESET_CANDIDATE_FORM";
 
 /***/ },
-/* 489 */
+/* 493 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -51967,7 +52197,7 @@
 	exports.default = EndorserTab;
 
 /***/ },
-/* 490 */
+/* 494 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -51982,15 +52212,15 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _addButton = __webpack_require__(474);
+	var _addButton = __webpack_require__(478);
 
 	var _addButton2 = _interopRequireDefault(_addButton);
 
-	var _formContainer = __webpack_require__(468);
+	var _formContainer = __webpack_require__(472);
 
 	var _formContainer2 = _interopRequireDefault(_formContainer);
 
-	var _modalWrapper = __webpack_require__(465);
+	var _modalWrapper = __webpack_require__(469);
 
 	var _modalWrapper2 = _interopRequireDefault(_modalWrapper);
 
@@ -52062,7 +52292,7 @@
 	exports.default = EndorsementsTab;
 
 /***/ },
-/* 491 */
+/* 495 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -52111,7 +52341,7 @@
 	exports.default = TagsTab;
 
 /***/ },
-/* 492 */
+/* 496 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -52133,7 +52363,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 493 */
+/* 497 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -52142,7 +52372,7 @@
 	  value: true
 	});
 
-	var _tweets = __webpack_require__(494);
+	var _tweets = __webpack_require__(498);
 
 	Object.defineProperty(exports, 'tweets', {
 	  enumerable: true,
@@ -52151,7 +52381,7 @@
 	  }
 	});
 
-	var _login = __webpack_require__(495);
+	var _login = __webpack_require__(499);
 
 	Object.defineProperty(exports, 'loginInfo', {
 	  enumerable: true,
@@ -52160,7 +52390,7 @@
 	  }
 	});
 
-	var _candidates = __webpack_require__(496);
+	var _candidates = __webpack_require__(500);
 
 	Object.defineProperty(exports, 'candidates', {
 	  enumerable: true,
@@ -52169,7 +52399,7 @@
 	  }
 	});
 
-	var _endorsementFormData = __webpack_require__(497);
+	var _endorsementFormData = __webpack_require__(501);
 
 	Object.defineProperty(exports, 'endorsementFormData', {
 	  enumerable: true,
@@ -52178,7 +52408,7 @@
 	  }
 	});
 
-	var _candidateFormData = __webpack_require__(498);
+	var _candidateFormData = __webpack_require__(502);
 
 	Object.defineProperty(exports, 'candidateFormData', {
 	  enumerable: true,
@@ -52187,7 +52417,7 @@
 	  }
 	});
 
-	var _snackbarData = __webpack_require__(499);
+	var _snackbarData = __webpack_require__(503);
 
 	Object.defineProperty(exports, 'snackbarData', {
 	  enumerable: true,
@@ -52197,7 +52427,7 @@
 	});
 
 /***/ },
-/* 494 */
+/* 498 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -52207,7 +52437,7 @@
 	});
 	exports.default = tweets;
 
-	var _tweetTypes = __webpack_require__(471);
+	var _tweetTypes = __webpack_require__(475);
 
 	var initialState = [];
 
@@ -52228,7 +52458,7 @@
 	}
 
 /***/ },
-/* 495 */
+/* 499 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -52257,7 +52487,7 @@
 	}
 
 /***/ },
-/* 496 */
+/* 500 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -52286,7 +52516,7 @@
 	}
 
 /***/ },
-/* 497 */
+/* 501 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -52304,10 +52534,11 @@
 
 	function makeEmptyEndorser() {
 	  return {
-	    firstName: null,
-	    lastName: null,
-	    isOrg: false,
-	    id: new Date().valueOf().toString()
+	    NAME: null,
+	    DESCRIPT: null,
+	    WIKI_LINK: null,
+	    IS_ORG: false,
+	    END_ID: new Date().valueOf().toString()
 	  };
 	}
 
@@ -52334,7 +52565,7 @@
 	      var data = action.data;
 
 	      var updatedEndorsers = state.endorsers.map(function (endorser) {
-	        return endorser.id === id ? _extends({}, endorser, data) : endorser;
+	        return endorser.END_ID === id ? _extends({}, endorser, data) : endorser;
 	      });
 	      return _extends({}, state, { endorsers: updatedEndorsers });
 	    case _endorsementFormTypes.REMOVE_ENDORSER:
@@ -52348,7 +52579,7 @@
 	}
 
 /***/ },
-/* 498 */
+/* 502 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -52360,7 +52591,7 @@
 	});
 	exports.default = candidateFormData;
 
-	var _candidateFormTypes = __webpack_require__(488);
+	var _candidateFormTypes = __webpack_require__(492);
 
 	var initialState = {
 	  AVATAR: null,
@@ -52388,7 +52619,7 @@
 	}
 
 /***/ },
-/* 499 */
+/* 503 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';

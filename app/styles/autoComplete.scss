@@ -1,0 +1,24 @@
+@import "variables";
+.auto-complete-container{
+  height:0;
+  overflow:hidden;
+  &.open{
+    height:100px;
+    overflow:initial;
+  }
+}
+.dropdown-container{
+  border-radius:2px;
+  background-color:#fff;
+  box-shadow: rgba(0, 0, 0, 0.117647) 0px 1px 6px, rgba(0, 0, 0, 0.239216) 0px 1px 4px;
+  padding:1em;
+}
+.dropdown-choice{
+  &>div{
+    border-bottom:1px solid $grey;
+    padding: .5em 0;
+  }
+  &:last-child > div{
+    border-bottom:none;
+  }
+}
