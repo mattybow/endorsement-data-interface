@@ -14,10 +14,12 @@ input[type="text"]{
   padding:.5em 0;
   -webkit-appearance:none;
   border-radius:0;
+  background-color:transparent;
   &:focus{
     outline:none;
   }
 }
+
 .check-box{
   padding:.5em 0 .5em .2em;
   &:hover{
@@ -73,4 +75,8 @@ select{
 }
 .input-field{
   margin-bottom:1em;
+}
+
+.input-group{
+  margin-bottom:3em;
 }

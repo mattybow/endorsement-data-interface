@@ -41332,7 +41332,7 @@
 	      console.log('render ' + END_ID + ' input');
 	      return _react2.default.createElement(
 	        'div',
-	        { style: { marginBottom: '1em' } },
+	        { className: 'input-group' },
 	        _react2.default.createElement(_textInputField2.default, _extends({ label: 'Name',
 	          value: NAME,
 	          changeHandler: function changeHandler(ev) {
@@ -41345,7 +41345,7 @@
 	            inputChangeHandler(END_ID, { DESCRIPT: ev.target.value });
 	          }
 	        }, this.props)),
-	        _react2.default.createElement(_textInputField2.default, _extends({ label: 'Wikipedia Link',
+	        _react2.default.createElement(_textInputField2.default, _extends({ label: 'Wikipedia',
 	          value: WIKI_LINK,
 	          changeHandler: function changeHandler(ev) {
 	            inputChangeHandler(END_ID, { WIKI_LINK: ev.target.value });
@@ -48414,7 +48414,7 @@
 	'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
-	            value: true
+	  value: true
 	});
 
 	var _react = __webpack_require__(1);
@@ -48428,22 +48428,26 @@
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	var TextInputField = function TextInputField(props) {
-	            var id = props.id;
-	            var label = props.label;
-	            var changeHandler = props.changeHandler;
-	            var value = props.value;
-	            var type = props.type;
-	            var placeholder = props.placeholder;
+	  var END_ID = props.END_ID;
+	  var label = props.label;
+	  var changeHandler = props.changeHandler;
+	  var value = props.value;
+	  var type = props.type;
+	  var placeholder = props.placeholder;
 
-	            return _react2.default.createElement(_textField2.default, { value: value,
-	                        floatingLabelText: label,
-	                        underlineFocusStyle: { borderColor: '#A06CD5' },
-	                        floatingLabelStyle: { color: 'black' },
-	                        fullWidth: true,
-	                        type: type || 'text',
-	                        hintText: placeholder || '',
-	                        style: { fontFamily: 'Source Code Pro' },
-	                        onChange: changeHandler });
+	  return _react2.default.createElement(
+	    'div',
+	    { className: 'form-input' },
+	    _react2.default.createElement(
+	      'label',
+	      { htmlFor: END_ID + label },
+	      label
+	    ),
+	    _react2.default.createElement('input', { type: type || 'text',
+	      value: value,
+	      onChange: changeHandler,
+	      id: END_ID + label })
+	  );
 	};
 
 	exports.default = TextInputField;
@@ -49845,7 +49849,7 @@
 
 
 	// module
-	exports.push([module.id, "label {\n  display: inline-block;\n}\n\nlabel.non-mui {\n  margin: 1em 0 .5em 0;\n}\n\ninput[type=\"text\"] {\n  width: 100%;\n  border-style: none none solid;\n  border-width: 1px;\n  border-color: #e0e0e0;\n  margin-bottom: 1em;\n  padding: .5em 0;\n  -webkit-appearance: none;\n  border-radius: 0;\n}\n\ninput[type=\"text\"]:focus {\n  outline: none;\n}\n\n.check-box {\n  padding: .5em 0 .5em .2em;\n}\n\n.check-box:hover {\n  cursor: pointer;\n}\n\n.form-check-box {\n  display: inline-block;\n  padding: 0 .5em 0 .6em;\n  border-radius: 2px;\n  border: 1px solid rgba(0, 0, 0, 0.4);\n}\n\n.form-check-box.checked {\n  border-color: #A06CD5;\n  background-color: #A06CD5;\n  color: #E2CFEA;\n}\n\n.check-box-label:hover {\n  cursor: pointer;\n}\n\nselect {\n  background-color: transparent;\n  border: none;\n  border-bottom: 1px solid #e0e0e0;\n  overflow: hidden;\n  outline: none;\n  border-radius: 20px;\n  -webkit-appearance: none;\n  -webkit-border-radius: 0px;\n  padding: .5em 0;\n  width: 100%;\n}\n\n.form-select {\n  position: relative;\n}\n\n.form-select:after {\n  font-family: \"fontello\";\n  -webkit-transform: rotateZ(90deg);\n          transform: rotateZ(90deg);\n  content: '\\E804';\n  width: 1em;\n  height: 1em;\n  position: absolute;\n  top: .7em;\n  right: 0;\n  pointer-events: none;\n}\n\n.icon-btn-form {\n  margin: 0;\n  margin-right: -.4em;\n}\n\n.input-field {\n  margin-bottom: 1em;\n}\n", ""]);
+	exports.push([module.id, "label {\n  display: inline-block;\n}\n\nlabel.non-mui {\n  margin: 1em 0 .5em 0;\n}\n\ninput[type=\"text\"] {\n  width: 100%;\n  border-style: none none solid;\n  border-width: 1px;\n  border-color: #e0e0e0;\n  margin-bottom: 1em;\n  padding: .5em 0;\n  -webkit-appearance: none;\n  border-radius: 0;\n  background-color: transparent;\n}\n\ninput[type=\"text\"]:focus {\n  outline: none;\n}\n\n.check-box {\n  padding: .5em 0 .5em .2em;\n}\n\n.check-box:hover {\n  cursor: pointer;\n}\n\n.form-check-box {\n  display: inline-block;\n  padding: 0 .5em 0 .6em;\n  border-radius: 2px;\n  border: 1px solid rgba(0, 0, 0, 0.4);\n}\n\n.form-check-box.checked {\n  border-color: #A06CD5;\n  background-color: #A06CD5;\n  color: #E2CFEA;\n}\n\n.check-box-label:hover {\n  cursor: pointer;\n}\n\nselect {\n  background-color: transparent;\n  border: none;\n  border-bottom: 1px solid #e0e0e0;\n  overflow: hidden;\n  outline: none;\n  border-radius: 20px;\n  -webkit-appearance: none;\n  -webkit-border-radius: 0px;\n  padding: .5em 0;\n  width: 100%;\n}\n\n.form-select {\n  position: relative;\n}\n\n.form-select:after {\n  font-family: \"fontello\";\n  -webkit-transform: rotateZ(90deg);\n          transform: rotateZ(90deg);\n  content: '\\E804';\n  width: 1em;\n  height: 1em;\n  position: absolute;\n  top: .7em;\n  right: 0;\n  pointer-events: none;\n}\n\n.icon-btn-form {\n  margin: 0;\n  margin-right: -.4em;\n}\n\n.input-field {\n  margin-bottom: 1em;\n}\n\n.input-group {\n  margin-bottom: 3em;\n}\n", ""]);
 
 	// exports
 
@@ -52571,7 +52575,7 @@
 	    case _endorsementFormTypes.REMOVE_ENDORSER:
 	      console.log(action.id);
 	      return _extends({}, state, { endorsers: state.endorsers.filter(function (endorser) {
-	          return endorser.id !== action.id;
+	          return endorser.END_ID !== action.id;
 	        }) });
 	    default:
 	      return state;

@@ -8,7 +8,7 @@ class EndorserInput extends Component{
   render(){
     const { END_ID, NAME, DESCRIPT, WIKI_LINK, isOrg, inputChangeHandler, removeHandler } = this.props;
     console.log(`render ${END_ID} input`);
-    return <div style={{marginBottom:'1em'}}>
+    return <div className="input-group">
       <TextInputField label='Name'
                       value = {NAME}
                       changeHandler = {ev => {
@@ -21,7 +21,7 @@ class EndorserInput extends Component{
                         inputChangeHandler(END_ID,{DESCRIPT:ev.target.value})
                       }}
                       {...this.props}/>
-      <TextInputField label='Wikipedia Link'
+      <TextInputField label='Wikipedia'
                       value = {WIKI_LINK}
                       changeHandler = {ev => {
                         inputChangeHandler(END_ID,{WIKI_LINK:ev.target.value})

@@ -36,7 +36,7 @@ export default function endorsementFormData(state=initalState, action){
       return {...state, ...{endorsers:updatedEndorsers}};
     case REMOVE_ENDORSER:
     console.log(action.id);
-      return {...state, ...{endorsers:state.endorsers.filter( endorser => endorser.id !== action.id )}}
+      return {...state, ...{endorsers:state.endorsers.filter( endorser => endorser.END_ID !== action.id )}}
     default:
       return state;
   }
