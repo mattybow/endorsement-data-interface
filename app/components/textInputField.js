@@ -7,6 +7,7 @@ const TextInputField = (props) => {
     <label htmlFor={END_ID+label}>{label}</label>
     <input type={type || 'text'}
           value={value}
+          placeholder={placeholder}
           onChange={changeHandler}
           id={END_ID+label}/>
   </div>

@@ -21,7 +21,9 @@ export function requestAddCandidate(data){
     const { candidateFormData } = getState();
     api.addCandidate(candidateFormData).then(
       ()=>{
+        //add the candidate clientside
         dispatch(addCandidate(candidateFormData));
+        //indicate that the persistance was successful
         dispatch(openSnackbar('SUCCESS', 'Candidate Created'));
         dispatch(resetCandidateForm());
       },

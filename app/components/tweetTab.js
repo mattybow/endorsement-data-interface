@@ -4,10 +4,11 @@ import AddEndorsementForm from './addEndorsementForm';
 import LoadingIndicator from './loadingIndicator';
 import ModalWrapper from './modalWrapper';
 import FormContainer from './formContainer';
+import moment from 'moment';
 import {connect} from 'react-redux';
 
 import { fetchTweetsIfNeeded, requestTweetDelete } from '../actions/tweetActions';
-import { updateEndorsementForm } from '../actions/endorsementFormActions';
+import { updateEndorsementForm, saveEndorsement } from '../actions/endorsementFormActions';
 
 function selectTweets(state){
   const {tweets} = state;
@@ -24,8 +25,12 @@ class TweetTab extends Component{
   componentWillMount(){
     this.props.dispatch(fetchTweetsIfNeeded());
   }
-  openForm = (tweetText) => {
-    this.props.dispatch(updateEndorsementForm({tweetText}));
+  openForm = ({text, link, created_at}) => {
+    this.props.dispatch(updateEndorsementForm({
+      tweetText:text,
+      source:link,
+      date:moment(new Date(created_at)).format('YYYY-MM-DD')
+    }));
     this.setState({formOpen:true});
   }
   closeForm = () => {
@@ -33,6 +38,7 @@ class TweetTab extends Component{
   }
   saveForm = () => {
     console.log('save form');
+    this.props.dispatch(saveEndorsement());
   }
   deleteTweet = (id) => {
     this.props.dispatch(requestTweetDelete(id));

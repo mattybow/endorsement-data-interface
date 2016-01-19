@@ -4,3 +4,4 @@ export {default as candidates} from './candidates';
 export {default as endorsementFormData} from  './endorsementFormData';
 export {default as candidateFormData} from  './candidateFormData';
 export {default as snackbarData} from './snackbarData';
+export {default as tags } from './tags';

@@ -7,7 +7,7 @@ export default class TopBar extends Component{
     return <div>
       <nav>
         <div className="flex-parent-row">
-          <h2 className="title-font flex-child-expand">datas</h2>
+          <h2 className="brand title-font flex-child-expand">datas</h2>
           <LoginButton />
         </div>
       </nav>

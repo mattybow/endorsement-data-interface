@@ -6,7 +6,7 @@ import shouldPureComponentUpdate from 'react-pure-render/function';
 class EndorserInput extends Component{
   shouldComponentUpdate = shouldPureComponentUpdate;
   render(){
-    const { END_ID, NAME, DESCRIPT, WIKI_LINK, isOrg, inputChangeHandler, removeHandler } = this.props;
+    const { END_ID, NAME, DESCRIPT, WIKI_LINK, AVATAR, isOrg, inputChangeHandler, removeHandler } = this.props;
     console.log(`render ${END_ID} input`);
     return <div className="input-group">
       <TextInputField label='Name'
@@ -25,6 +25,12 @@ class EndorserInput extends Component{
                       value = {WIKI_LINK}
                       changeHandler = {ev => {
                         inputChangeHandler(END_ID,{WIKI_LINK:ev.target.value})
+                      }}
+                      {...this.props}/>
+      <TextInputField label='Avatar'
+                      value = {AVATAR}
+                      changeHandler = {ev => {
+                        inputChangeHandler(END_ID,{AVATAR:ev.target.value})
                       }}
                       {...this.props}/>
       <div className="flex-parent-row">

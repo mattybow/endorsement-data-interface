@@ -1,4 +1,8 @@
-import { UPDATE_ENDORSEMENT_FORM, ADD_ENDORSER, UPDATE_ENDORSER, REMOVE_ENDORSER } from '../constants/endorsementFormTypes';
+import { UPDATE_ENDORSEMENT_FORM,
+         ADD_ENDORSER,
+         UPDATE_ENDORSER,
+         REMOVE_ENDORSER,
+         UPDATE_ENDORSER_TAGS } from '../constants/endorsementFormTypes';
 
 function makeEmptyEndorser(){
   return {
@@ -7,6 +11,7 @@ function makeEmptyEndorser(){
     WIKI_LINK: null,
     IS_ORG: false,
     END_ID:new Date().valueOf().toString(),
+    AVATAR:null
   }
 }
 
@@ -15,7 +20,8 @@ const initalState = {
   endorsers:[
     makeEmptyEndorser()
   ],
-  selectedTags:[]
+  selectedTags:[],
+  source:null
 }
 
 export default function endorsementFormData(state=initalState, action){
@@ -35,8 +41,16 @@ export default function endorsementFormData(state=initalState, action){
         );
       return {...state, ...{endorsers:updatedEndorsers}};
     case REMOVE_ENDORSER:
-    console.log(action.id);
-      return {...state, ...{endorsers:state.endorsers.filter( endorser => endorser.END_ID !== action.id )}}
+      return {...state, ...{endorsers:state.endorsers.filter( endorser => endorser.END_ID !== action.id )}};
+    case UPDATE_ENDORSER_TAGS:
+      const {tag, selected} = action;
+      console.log('ADD SELECTED TAG',tag)
+      if(selected){
+        return {...state, selectedTags:[...state.selectedTags, {...tag, isSelected:selected}]}
+      } else {
+        return {...state, selectedTags: state.selectedTags.filter( selectedTag => tag.id !== selectedTag.id)};
+      }
+
     default:
       return state;
   }

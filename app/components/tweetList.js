@@ -6,6 +6,7 @@ import '../styles/tweetList.scss'
 var TweetListItem = (props) => {
   const { addHandler,
           deleteHandler,
+          tweet,
           tweet:
             { text,
               link,
@@ -16,10 +17,12 @@ var TweetListItem = (props) => {
   const statusId = link.match(/[\d]*$/)[0];
   return <li className="tweet-list-item">
     <div className="flex-parent-row">
-      <div className="btn-default add-endorsement-holder flex-child-start" onClick={addHandler.bind(this, text)}>
+      <div className="btn-default add-endorsement-holder flex-child-start" onClick={addHandler.bind(this, tweet)}>
         <span className="icon-plus"></span>
       </div>
-      <a href={isTouchDevice ? `twitter://status?id=${statusId}` : link} className="tweet-content">
+      <a href={isTouchDevice ? `twitter://status?id=${statusId}` : link}
+         className="tweet-content"
+         target="_blank">
         <div style={{wordWrap: 'break-word'}}>{text}</div>
         <div style={{color:"#A06CD5"}}>{time}</div>
       </a>

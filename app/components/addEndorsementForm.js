@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { fetchCandidatesIfNeeded } from '../actions/candidateActions';
-import { addEndorser, updateEndorser, removeEndorser, updateEndorsementForm } from '../actions/endorsementFormActions';
+import { addEndorser, updateEndorser, removeEndorser, updateEndorsementForm, updateEndorserTags } from '../actions/endorsementFormActions';
+import { deleteTag } from '../actions/tagActions';
 import EndorserInput from './endorserInput';
+import TextInputField from './textInputField';
 import TagInput from './tagInput';
 import '../styles/forms.scss';
 
@@ -28,6 +30,16 @@ class AddEndorsementForm extends Component{
   newEndorserField(){
     this.props.dispatch(addEndorser());
   }
+  handleSelectionClick = (tag,selected) => {
+    this.props.dispatch(updateEndorserTags(tag,selected));
+    const {isNew} = tag;
+    if(!selected && isNew){
+      this.props.dispatch(deleteTag(tag.id));
+    }
+  }
+  handleChange = (data) => {
+    this.props.dispatch(updateEndorsementForm(data));
+  }
   endorserChangeHandler = (...args) => {
     this.props.dispatch(updateEndorser.apply(this,args));
   }
@@ -43,12 +55,31 @@ class AddEndorsementForm extends Component{
             formData:{
               endorsers,
               selectedCandidate,
-              tweetText
+              tweetText,
+              selectedTags,
+              source,
+              date
             }
-    } = this.props;
+          } = this.props;
 
     return <div className="form-contents">
       <div className="quoted-tweet">{tweetText}</div>
+      <div className="reference-input">
+        <h3>Reference</h3>
+        <TextInputField label='Date'
+                        value = {date}
+                        placeholder="YYYY-MM-DD"
+                        changeHandler = {ev => {
+                          handleChange({date:ev.target.value});
+                        }}
+                        {...this.props}/>
+        <TextInputField label='Source'
+                        value = {source}
+                        changeHandler = {ev => {
+                          handleChange({source:ev.target.value});
+                        }}
+                        {...this.props}/>
+      </div>
       <div className="candidate-input">
         <h3>Candidate</h3>
         <div className="form-select">
@@ -78,8 +109,9 @@ class AddEndorsementForm extends Component{
         style={{
           paddingBottom:400
         }}>
-        <h3>Endorser Tags</h3>
-        <TagInput />
+        <h3>Endorser Tags ({selectedTags.length})</h3>
+        <TagInput selectedTags={selectedTags}
+                  selectionHandler={this.handleSelectionClick}/>
       </div>
     </div>;
   }

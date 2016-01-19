@@ -22,3 +22,42 @@
     border-bottom:none;
   }
 }
+.tag-choice{
+  background-color:$whiteBarney;
+  border-radius:2px;
+  padding:.2em .5em;
+  margin: .5em .2em;
+  transition:background .2s ease;
+  &:hover{
+    cursor:pointer;
+  }
+  &.selected{
+    background-color:$lightBarney;
+    color:rgba(255,255,255,.9);
+  }
+}
+
+.input-error-message{
+  transition: opacity .2s ease, transform .3s ease;
+  opacity:0;
+  transform: translateY(-20px);
+  position:absolute;
+  pointer-events:none;
+  top:-.5em;
+  left:0;
+  font-size:.7em;
+  &.show{
+    transform: translateY(0px);
+    opacity:1;
+  }
+}
+
+@media(min-width:415px){
+  .tag-choice:hover{
+    background-color:$lightBarney;
+  }
+  .selected:hover{
+    background-color:$whiteBarney;
+    color:rgba(0,0,0,.8);
+  }
+}

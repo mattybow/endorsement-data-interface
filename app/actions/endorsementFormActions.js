@@ -1,10 +1,25 @@
-import { UPDATE_ENDORSEMENT_FORM, ADD_ENDORSER, UPDATE_ENDORSER, REMOVE_ENDORSER } from '../constants/endorsementFormTypes';
+import { UPDATE_ENDORSEMENT_FORM,
+         ADD_ENDORSER,
+         UPDATE_ENDORSER,
+         REMOVE_ENDORSER,
+         UPDATE_ENDORSER_TAGS,
+         REQUEST_SAVE_ENDORSEMENT } from '../constants/endorsementFormTypes';
+import * as api from './api';
+import { openSnackbar } from './snackbarActions';
 
 export function updateEndorsementForm(data){
   return {
     type:UPDATE_ENDORSEMENT_FORM,
     data
   };
+}
+
+export function updateEndorserTags(tag,selected){
+  return {
+    type:UPDATE_ENDORSER_TAGS,
+    tag,
+    selected
+  }
 }
 
 export function updateEndorser(id, data){
@@ -26,4 +41,59 @@ export function addEndorser(){
   return {
     type:ADD_ENDORSER
   };
+}
+
+export function saveEndorsement(){
+  return (dispatch,getState) => {
+    const state = getState().endorsementFormData;
+    const validation = checkEndorsementData(state);
+    if(validation.ok){
+      dispatch(requestSaveEndorsement());
+      api.addEndorsements(state).then(
+        reply => {
+          dispatch(openSnackbar('SUCCESS', 'Endorsements Added'));
+        },
+        err => {
+          console.log(err);
+        }
+      );
+    } else {
+      dispatch(openSnackbar('PREVENTED', validation.msg));
+    }
+
+  }
+}
+
+function checkEndorsementData(data){
+  const ok = false;
+  const hasCandidate = data.selectedCandidate;
+  if(!hasCandidate){
+    return {ok,
+      msg:'needs a candidate'
+    };
+  }
+  const hasEndorsers = data.endorsers.length;
+  if(!hasEndorsers){
+    return {ok,
+      msg:'needs an endorser'
+    };
+  }
+  let endorserNameNull;
+  if(hasEndorsers){
+    endorserNameNull = data.endorsers.find( endorser => endorser.NAME === null );
+    if(endorserNameNull){
+      return {ok,
+        msg:'an endorser needs a name'
+      }
+    }
+  }
+  return {
+    ok:true
+  }
+}
+
+function requestSaveEndorsement(){
+  return {
+    type:REQUEST_SAVE_ENDORSEMENT
+  }
 }

@@ -5,6 +5,9 @@ nav{
   padding:1px 20px;
 }
 @media(max-width: 414px){
+  .brand{
+    margin:5px 0;
+  }
   nav{
     border-bottom:1px solid #E7E7EC;
   }

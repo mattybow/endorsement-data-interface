@@ -10,11 +10,22 @@
   }
 }
 
+@media(min-width:415px){
+  .modal-content-container{
+    transform: translateY(400px);
+    &.open{
+      transform: translateY(0);
+    }
+  }
+}
 @media(max-width:414px){
   .modal-wrapper{
-    padding:5% 20% 5% 10%;
+    padding:0 15% 5%;
   }
   .modal-content-container{
-    transform: translateY(100px);
+    transform: translateX(400px);
+    &.open{
+      transform: translateX(0);
+    }
   }
 }
