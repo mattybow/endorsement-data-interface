@@ -68,6 +68,9 @@ select{
     pointer-events: none;
   }
 }
+.form-contents{
+  padding:0 20px;
+}
 
 .icon-btn-form{
   margin:0;
@@ -79,4 +82,13 @@ select{
 
 .input-group{
   margin-bottom:3em;
+}
+
+@media(min-width:415px){
+  .form-container{
+    margin-top:10%;
+  }
+  .form-contents{
+    padding:0;
+  }
 }

@@ -28630,7 +28630,7 @@
 
 
 	// module
-	exports.push([module.id, "nav {\n  color: #8F2CD8;\n  padding: 1px 20px;\n}\n\n@media (max-width: 414px) {\n  .brand {\n    margin: 5px 0;\n  }\n  nav {\n    border-bottom: 1px solid #E7E7EC;\n  }\n}\n", ""]);
+	exports.push([module.id, "nav {\n  color: #8F2CD8;\n  padding: 1px 20px;\n}\n\n@media (max-width: 414px) {\n  .brand {\n    margin: 10px 0;\n    font-size: 1.3em;\n  }\n  nav {\n    border-bottom: 1px solid #E7E7EC;\n  }\n}\n", ""]);
 
 	// exports
 
@@ -29091,7 +29091,7 @@
 	exports.push([module.id, "@import url(https://fonts.googleapis.com/css?family=Source+Code+Pro:400,300);", ""]);
 
 	// module
-	exports.push([module.id, "@charset \"UTF-8\";\n@font-face {\n  font-family: 'sarial';\n  src: url(" + __webpack_require__(274) + ") format(\"truetype\");\n  font-weight: normal;\n  font-style: normal;\n}\n\n@font-face {\n  font-family: 'fontello';\n  src: url(" + __webpack_require__(275) + ");\n  src: url(" + __webpack_require__(275) + "#iefix) format(\"embedded-opentype\"), url(" + __webpack_require__(276) + ") format(\"woff\"), url(" + __webpack_require__(277) + ") format(\"truetype\"), url(" + __webpack_require__(278) + "#fontello) format(\"svg\");\n  font-weight: normal;\n  font-style: normal;\n}\n\n/* Chrome hack: SVG is rendered more smooth in Windozze. 100% magic, uncomment if you need it. */\n/* Note, that will break hinting! In other OS-es font will be not as sharp as it could be */\n/*\n@media screen and (-webkit-min-device-pixel-ratio:0) {\n  @font-face {\n    font-family: 'fontello';\n    src: url('../font/fontello.svg?18129615#fontello') format('svg');\n  }\n}\n*/\n[class^=\"icon-\"]:before, [class*=\" icon-\"]:before {\n  font-family: \"fontello\";\n  font-style: normal;\n  font-weight: normal;\n  speak: none;\n  display: inline-block;\n  text-decoration: inherit;\n  width: 1em;\n  margin-right: .2em;\n  text-align: center;\n  /* opacity: .8; */\n  /* For safety - reset parent styles, that can break glyph codes*/\n  font-variant: normal;\n  text-transform: none;\n  /* fix buttons height, for twitter bootstrap */\n  line-height: 1em;\n  /* Animation center compensation - margins should be symmetric */\n  /* remove if not needed */\n  margin-left: .2em;\n  /* you can be more comfortable with increased icons size */\n  /* font-size: 120%; */\n  /* Font smoothing. That was taken from TWBS */\n  -webkit-font-smoothing: antialiased;\n  -moz-osx-font-smoothing: grayscale;\n  /* Uncomment for 3D effect */\n  /* text-shadow: 1px 1px 1px rgba(127, 127, 127, 0.3); */\n}\n\n.icon-twitter:before {\n  content: '\\E800';\n}\n\n/* '' */\n.icon-check-mark:before {\n  content: '\\E801';\n}\n\n/* '' */\n.icon-close:before {\n  content: '\\E802';\n}\n\n/* '' */\n.icon-label:before {\n  content: '\\E803';\n}\n\n/* '' */\n.icon-arrow:before {\n  content: '\\E804';\n}\n\n/* '' */\n.icon-trash-bin:before {\n  content: '\\E805';\n}\n\n/* '' */\n.icon-home:before {\n  content: '\\E806';\n}\n\n/* '' */\n.icon-chat:before {\n  content: '\\E807';\n}\n\n/* '' */\n.icon-plus:before {\n  content: '\\E808';\n}\n\n/* '' */\n.icon-pencil:before {\n  content: '\\E809';\n}\n\n/* '' */\n.icon-star:before {\n  content: '\\E80A';\n}\n\n/* '' */\n.icon-empty-blank:before {\n  content: '\\E80B';\n}\n\n/* '' */\n.icon-flag:before {\n  content: '\\E80C';\n}\n\n/* '' */\nhtml {\n  -webkit-tap-highlight-color: transparent;\n}\n\nbody {\n  color: black;\n  font-family: 'Source Code Pro';\n}\n\n.title-font {\n  font-family: \"sarial\";\n}\n\nbutton {\n  background-color: transparent;\n  border: 1px solid #8F2CD8;\n  color: #8F2CD8;\n  outline: none;\n}\n\na {\n  color: black;\n  text-decoration: none;\n}\n\n.btn-default {\n  padding: .5em 1em;\n}\n\n.btn-naked {\n  padding: 0;\n}\n\n.btn-block {\n  display: block;\n}\n\n.pointer:hover {\n  cursor: pointer;\n}\n\n.no-border {\n  border: none;\n}\n\n.list-item-spacing {\n  padding: 10px 0;\n  margin-bottom: 1px;\n}\n\n.flex-parent-row {\n  display: -webkit-flex;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-flex-flow: row nowrap;\n      -ms-flex-flow: row nowrap;\n          flex-flow: row nowrap;\n  -webkit-align-items: center;\n      -ms-flex-align: center;\n          align-items: center;\n}\n\n.flex-parent-row.wrap {\n  -webkit-flex-flow: row wrap;\n      -ms-flex-flow: row wrap;\n          flex-flow: row wrap;\n}\n\n.flex-row-center {\n  -webkit-justify-content: center;\n      -ms-flex-pack: center;\n          justify-content: center;\n}\n\n.flex-child-expand {\n  -webkit-flex: 1 1 auto;\n      -ms-flex: 1 1 auto;\n          flex: 1 1 auto;\n}\n\n.flex-child-end {\n  -webkit-align-self: flex-end;\n      -ms-flex-item-align: end;\n          align-self: flex-end;\n}\n\n.flex-child-start {\n  -webkit-align-self: flex-start;\n      -ms-flex-item-align: start;\n          align-self: flex-start;\n}\n\n.icon-md {\n  font-size: 1.5em;\n}\n\n.icon-lg {\n  font-size: 2em;\n}\n\n.icon-lg.icon-close {\n  font-size: 1.6em;\n  margin: 0 .2em;\n}\n\n.icon-naked:before {\n  margin: 0;\n}\n\n.touch .modal-wrapper {\n  -webkit-overflow-scrolling: touch;\n}\n\n#tab-contents {\n  padding: 0 10%;\n  max-width: 600px;\n  margin: 20px auto;\n}\n\n.fader {\n  transition: opacity .2s ease;\n  opacity: 1;\n}\n\n.fader.faded {\n  opacity: 0;\n  pointer-events: none;\n}\n\n.floating-add-button {\n  position: fixed;\n  bottom: 3em;\n  right: 3em;\n}\n\n@media (min-width: 415px) {\n  .mobile-only {\n    display: none;\n  }\n  .btn-default:hover {\n    cursor: pointer;\n    color: #102B3F;\n  }\n}\n\n@media (max-width: 414px) {\n  #tab-contents {\n    padding: 0;\n    margin: 10px;\n  }\n  .floating-add-button {\n    bottom: 4.5em;\n    right: 1em;\n  }\n}\n", ""]);
+	exports.push([module.id, "@charset \"UTF-8\";\n@font-face {\n  font-family: 'sarial';\n  src: url(" + __webpack_require__(274) + ") format(\"truetype\");\n  font-weight: normal;\n  font-style: normal;\n}\n\n@font-face {\n  font-family: 'fontello';\n  src: url(" + __webpack_require__(275) + ");\n  src: url(" + __webpack_require__(275) + "#iefix) format(\"embedded-opentype\"), url(" + __webpack_require__(276) + ") format(\"woff\"), url(" + __webpack_require__(277) + ") format(\"truetype\"), url(" + __webpack_require__(278) + "#fontello) format(\"svg\");\n  font-weight: normal;\n  font-style: normal;\n}\n\n/* Chrome hack: SVG is rendered more smooth in Windozze. 100% magic, uncomment if you need it. */\n/* Note, that will break hinting! In other OS-es font will be not as sharp as it could be */\n/*\n@media screen and (-webkit-min-device-pixel-ratio:0) {\n  @font-face {\n    font-family: 'fontello';\n    src: url('../font/fontello.svg?18129615#fontello') format('svg');\n  }\n}\n*/\n[class^=\"icon-\"]:before, [class*=\" icon-\"]:before {\n  font-family: \"fontello\";\n  font-style: normal;\n  font-weight: normal;\n  speak: none;\n  display: inline-block;\n  text-decoration: inherit;\n  width: 1em;\n  margin-right: .2em;\n  text-align: center;\n  /* opacity: .8; */\n  /* For safety - reset parent styles, that can break glyph codes*/\n  font-variant: normal;\n  text-transform: none;\n  /* fix buttons height, for twitter bootstrap */\n  line-height: 1em;\n  /* Animation center compensation - margins should be symmetric */\n  /* remove if not needed */\n  margin-left: .2em;\n  /* you can be more comfortable with increased icons size */\n  /* font-size: 120%; */\n  /* Font smoothing. That was taken from TWBS */\n  -webkit-font-smoothing: antialiased;\n  -moz-osx-font-smoothing: grayscale;\n  /* Uncomment for 3D effect */\n  /* text-shadow: 1px 1px 1px rgba(127, 127, 127, 0.3); */\n}\n\n.icon-twitter:before {\n  content: '\\E800';\n}\n\n/* '' */\n.icon-check-mark:before {\n  content: '\\E801';\n}\n\n/* '' */\n.icon-close:before {\n  content: '\\E802';\n}\n\n/* '' */\n.icon-label:before {\n  content: '\\E803';\n}\n\n/* '' */\n.icon-arrow:before {\n  content: '\\E804';\n}\n\n/* '' */\n.icon-trash-bin:before {\n  content: '\\E805';\n}\n\n/* '' */\n.icon-home:before {\n  content: '\\E806';\n}\n\n/* '' */\n.icon-chat:before {\n  content: '\\E807';\n}\n\n/* '' */\n.icon-plus:before {\n  content: '\\E808';\n}\n\n/* '' */\n.icon-pencil:before {\n  content: '\\E809';\n}\n\n/* '' */\n.icon-star:before {\n  content: '\\E80A';\n}\n\n/* '' */\n.icon-empty-blank:before {\n  content: '\\E80B';\n}\n\n/* '' */\n.icon-flag:before {\n  content: '\\E80C';\n}\n\n/* '' */\n.icon-arrow.back:before {\n  -webkit-transform: rotateZ(180deg);\n          transform: rotateZ(180deg);\n  margin-right: 0;\n}\n\nhtml {\n  -webkit-tap-highlight-color: transparent;\n}\n\nbody {\n  color: black;\n  font-family: 'Source Code Pro';\n}\n\n.title-font {\n  font-family: \"sarial\";\n}\n\nbutton {\n  background-color: transparent;\n  border: 1px solid #8F2CD8;\n  color: #8F2CD8;\n  outline: none;\n}\n\na {\n  color: black;\n  text-decoration: none;\n}\n\n.btn-default {\n  padding: .5em 1em;\n}\n\n.btn-naked {\n  padding: 0;\n}\n\n.btn-block {\n  display: block;\n}\n\n.pointer:hover {\n  cursor: pointer;\n}\n\n.no-border {\n  border: none;\n}\n\n.list-item-spacing {\n  padding: 10px 0;\n  margin-bottom: 1px;\n}\n\n.flex-parent-row {\n  display: -webkit-flex;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-flex-flow: row nowrap;\n      -ms-flex-flow: row nowrap;\n          flex-flow: row nowrap;\n  -webkit-align-items: center;\n      -ms-flex-align: center;\n          align-items: center;\n}\n\n.flex-parent-row.wrap {\n  -webkit-flex-flow: row wrap;\n      -ms-flex-flow: row wrap;\n          flex-flow: row wrap;\n}\n\n.flex-row-center {\n  -webkit-justify-content: center;\n      -ms-flex-pack: center;\n          justify-content: center;\n}\n\n.flex-child-expand {\n  -webkit-flex: 1 1 auto;\n      -ms-flex: 1 1 auto;\n          flex: 1 1 auto;\n}\n\n.flex-child-end {\n  -webkit-align-self: flex-end;\n      -ms-flex-item-align: end;\n          align-self: flex-end;\n}\n\n.flex-child-start {\n  -webkit-align-self: flex-start;\n      -ms-flex-item-align: start;\n          align-self: flex-start;\n}\n\n.icon-md {\n  font-size: 1.5em;\n}\n\n.icon-lg {\n  font-size: 2em;\n}\n\n.icon-lg.icon-close {\n  font-size: 1.6em;\n  margin: 0 .2em;\n}\n\n.icon-naked:before {\n  margin: 0;\n}\n\n.touch .modal-wrapper {\n  -webkit-overflow-scrolling: touch;\n}\n\n#tab-contents {\n  padding: 0 10%;\n  max-width: 600px;\n  margin: 20px auto;\n}\n\n.fader {\n  transition: opacity .2s ease;\n  opacity: 1;\n}\n\n.fader.faded {\n  opacity: 0;\n  pointer-events: none;\n}\n\n.floating-add-button {\n  position: fixed;\n  bottom: 3em;\n  right: 3em;\n}\n\n@media (max-width: 414px) {\n  .desktop-only {\n    display: none;\n  }\n}\n\n@media (min-width: 415px) {\n  .mobile-only {\n    display: none;\n  }\n  .btn-default:hover {\n    cursor: pointer;\n    color: #102B3F;\n  }\n}\n\n@media (max-width: 414px) {\n  #tab-contents {\n    padding: 0;\n    margin: 10px;\n  }\n  .floating-add-button {\n    bottom: 4.5em;\n    right: 1em;\n  }\n}\n", ""]);
 
 	// exports
 
@@ -50300,7 +50300,7 @@
 
 
 	// module
-	exports.push([module.id, "label {\n  display: inline-block;\n}\n\nlabel.non-mui {\n  margin: 1em 0 .5em 0;\n}\n\ninput[type=\"text\"] {\n  width: 100%;\n  border-style: none none solid;\n  border-width: 1px;\n  border-color: #e0e0e0;\n  margin-bottom: 1em;\n  padding: .5em 0;\n  -webkit-appearance: none;\n  border-radius: 0;\n  background-color: transparent;\n}\n\ninput[type=\"text\"]:focus {\n  outline: none;\n}\n\n.check-box {\n  padding: .5em 0 .5em .2em;\n}\n\n.check-box:hover {\n  cursor: pointer;\n}\n\n.form-check-box {\n  display: inline-block;\n  padding: 0 .5em 0 .6em;\n  border-radius: 2px;\n  border: 1px solid rgba(0, 0, 0, 0.4);\n}\n\n.form-check-box.checked {\n  border-color: #A06CD5;\n  background-color: #A06CD5;\n  color: #E2CFEA;\n}\n\n.check-box-label:hover {\n  cursor: pointer;\n}\n\nselect {\n  background-color: transparent;\n  border: none;\n  border-bottom: 1px solid #e0e0e0;\n  overflow: hidden;\n  outline: none;\n  border-radius: 20px;\n  -webkit-appearance: none;\n  -webkit-border-radius: 0px;\n  padding: .5em 0;\n  width: 100%;\n}\n\n.form-select {\n  position: relative;\n}\n\n.form-select:after {\n  font-family: \"fontello\";\n  -webkit-transform: rotateZ(90deg);\n          transform: rotateZ(90deg);\n  content: '\\E804';\n  width: 1em;\n  height: 1em;\n  position: absolute;\n  top: .7em;\n  right: 0;\n  pointer-events: none;\n}\n\n.icon-btn-form {\n  margin: 0;\n  margin-right: -.4em;\n}\n\n.input-field {\n  margin-bottom: 1em;\n}\n\n.input-group {\n  margin-bottom: 3em;\n}\n", ""]);
+	exports.push([module.id, "label {\n  display: inline-block;\n}\n\nlabel.non-mui {\n  margin: 1em 0 .5em 0;\n}\n\ninput[type=\"text\"] {\n  width: 100%;\n  border-style: none none solid;\n  border-width: 1px;\n  border-color: #e0e0e0;\n  margin-bottom: 1em;\n  padding: .5em 0;\n  -webkit-appearance: none;\n  border-radius: 0;\n  background-color: transparent;\n}\n\ninput[type=\"text\"]:focus {\n  outline: none;\n}\n\n.check-box {\n  padding: .5em 0 .5em .2em;\n}\n\n.check-box:hover {\n  cursor: pointer;\n}\n\n.form-check-box {\n  display: inline-block;\n  padding: 0 .5em 0 .6em;\n  border-radius: 2px;\n  border: 1px solid rgba(0, 0, 0, 0.4);\n}\n\n.form-check-box.checked {\n  border-color: #A06CD5;\n  background-color: #A06CD5;\n  color: #E2CFEA;\n}\n\n.check-box-label:hover {\n  cursor: pointer;\n}\n\nselect {\n  background-color: transparent;\n  border: none;\n  border-bottom: 1px solid #e0e0e0;\n  overflow: hidden;\n  outline: none;\n  border-radius: 20px;\n  -webkit-appearance: none;\n  -webkit-border-radius: 0px;\n  padding: .5em 0;\n  width: 100%;\n}\n\n.form-select {\n  position: relative;\n}\n\n.form-select:after {\n  font-family: \"fontello\";\n  -webkit-transform: rotateZ(90deg);\n          transform: rotateZ(90deg);\n  content: '\\E804';\n  width: 1em;\n  height: 1em;\n  position: absolute;\n  top: .7em;\n  right: 0;\n  pointer-events: none;\n}\n\n.form-contents {\n  padding: 0 20px;\n}\n\n.icon-btn-form {\n  margin: 0;\n  margin-right: -.4em;\n}\n\n.input-field {\n  margin-bottom: 1em;\n}\n\n.input-group {\n  margin-bottom: 3em;\n}\n\n@media (min-width: 415px) {\n  .form-container {\n    margin-top: 10%;\n  }\n  .form-contents {\n    padding: 0;\n  }\n}\n", ""]);
 
 	// exports
 
@@ -50489,7 +50489,7 @@
 
 
 	// module
-	exports.push([module.id, ".modal-wrapper {\n  padding: 5% 20%;\n}\n\n.modal-content-container {\n  transition: -webkit-transform 0.2s cubic-bezier(0.215, 0.61, 0.355, 1);\n  transition: transform 0.2s cubic-bezier(0.215, 0.61, 0.355, 1);\n  transition: transform 0.2s cubic-bezier(0.215, 0.61, 0.355, 1), -webkit-transform 0.2s cubic-bezier(0.215, 0.61, 0.355, 1);\n  -webkit-transform: translateY(400px);\n          transform: translateY(400px);\n}\n\n.modal-content-container.open {\n  -webkit-transform: translateY(0);\n          transform: translateY(0);\n}\n\n@media (min-width: 415px) {\n  .modal-content-container {\n    -webkit-transform: translateY(400px);\n            transform: translateY(400px);\n  }\n  .modal-content-container.open {\n    -webkit-transform: translateY(0);\n            transform: translateY(0);\n  }\n}\n\n@media (max-width: 414px) {\n  .modal-wrapper {\n    padding: 0 15% 5%;\n  }\n  .modal-content-container {\n    -webkit-transform: translateX(400px);\n            transform: translateX(400px);\n  }\n  .modal-content-container.open {\n    -webkit-transform: translateX(0);\n            transform: translateX(0);\n  }\n}\n", ""]);
+	exports.push([module.id, ".modal-content-container {\n  transition: -webkit-transform 0.2s cubic-bezier(0.215, 0.61, 0.355, 1);\n  transition: transform 0.2s cubic-bezier(0.215, 0.61, 0.355, 1);\n  transition: transform 0.2s cubic-bezier(0.215, 0.61, 0.355, 1), -webkit-transform 0.2s cubic-bezier(0.215, 0.61, 0.355, 1);\n  -webkit-transform: translateY(400px);\n          transform: translateY(400px);\n}\n\n.modal-content-container.open {\n  -webkit-transform: translateY(0);\n          transform: translateY(0);\n}\n\n@media (min-width: 415px) {\n  .modal-content-container {\n    -webkit-transform: translateY(400px);\n            transform: translateY(400px);\n  }\n  .modal-content-container.open {\n    -webkit-transform: translateY(0);\n            transform: translateY(0);\n  }\n}\n\n@media (max-width: 414px) {\n  .modal-content-container {\n    -webkit-transform: translateX(400px);\n            transform: translateX(400px);\n  }\n  .modal-content-container.open {\n    -webkit-transform: translateX(0);\n            transform: translateX(0);\n  }\n}\n", ""]);
 
 	// exports
 
@@ -50538,11 +50538,33 @@
 	        'div',
 	        { className: 'form-container' },
 	        _react2.default.createElement(
-	          'h2',
-	          null,
-	          this.props.formName
+	          'div',
+	          { className: 'desktop-only' },
+	          _react2.default.createElement(
+	            'h2',
+	            null,
+	            this.props.formName
+	          ),
+	          _react2.default.createElement('hr', null)
 	        ),
-	        _react2.default.createElement('hr', null),
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'mobile-only flex-parent-row flex-row-center', style: {
+	              height: '3em',
+	              borderBottom: '1px solid #e0e0e0',
+	              position: 'absolute',
+	              width: '100%',
+	              pointerEvents: 'none'
+	            } },
+	          _react2.default.createElement(
+	            'h4',
+	            { style: {
+	                textAlign: 'center',
+	                margin: '10px 0'
+	              } },
+	            this.props.formName
+	          )
+	        ),
 	        _react2.default.createElement(_formControls2.default, this.props),
 	        this.props.children
 	      );
@@ -50571,11 +50593,54 @@
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	var FormControls = function FormControls(props) {
+
 	  return _react2.default.createElement(
 	    'div',
-	    { className: 'form-controls', style: { position: 'absolute', right: '-4em', top: 0 } },
-	    _react2.default.createElement('div', { className: 'icon-check-mark icon-lg pointer', style: { marginBottom: '.5em' }, onClick: props.saveHandler }),
-	    _react2.default.createElement('div', { className: 'icon-close icon-lg pointer', onClick: props.closeHandler })
+	    null,
+	    _react2.default.createElement(
+	      'div',
+	      { className: 'form-controls mobile-only flex-parent-row',
+	        style: {
+	          height: '3em',
+	          marginBottom: '1em'
+	        } },
+	      _react2.default.createElement(
+	        'button',
+	        { className: 'no-border btn-naked flex-child-expand',
+	          style: {
+	            paddingLeft: 9,
+	            verticalAlign: 'middle',
+	            textAlign: 'left'
+	          },
+	          onClick: props.closeHandler },
+	        _react2.default.createElement('span', { className: 'icon-arrow back' }),
+	        _react2.default.createElement(
+	          'span',
+	          null,
+	          'cancel'
+	        )
+	      ),
+	      _react2.default.createElement(
+	        'button',
+	        { className: 'no-border btn-naked flex-child-expand',
+	          style: {
+	            textAlign: 'right',
+	            paddingRight: 20
+	          },
+	          onClick: props.saveHandler },
+	        _react2.default.createElement(
+	          'div',
+	          null,
+	          'save'
+	        )
+	      )
+	    ),
+	    _react2.default.createElement(
+	      'div',
+	      { className: 'form-controls desktop-only', style: { position: 'absolute', right: '-4em', top: 0 } },
+	      _react2.default.createElement('div', { className: 'icon-check-mark icon-lg pointer', style: { marginBottom: '.5em' }, onClick: props.saveHandler }),
+	      _react2.default.createElement('div', { className: 'icon-close icon-lg pointer', onClick: props.closeHandler })
+	    )
 	  );
 	};
 

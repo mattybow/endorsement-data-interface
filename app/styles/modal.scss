@@ -1,6 +1,3 @@
-.modal-wrapper{
-  padding:5% 20%;
-}
 
 .modal-content-container{
   transition: transform .2s cubic-bezier(0.215, 0.610, 0.355, 1.000);
@@ -19,9 +16,6 @@
   }
 }
 @media(max-width:414px){
-  .modal-wrapper{
-    padding:0 15% 5%;
-  }
   .modal-content-container{
     transform: translateX(400px);
     &.open{
