@@ -116,7 +116,10 @@ router.post('/addEndorsements', (req,res) => {
         txn.insertIntoTable('ENDORSER_TAGS',[END_ID,tag.id]);
       });
       //tie endorser to candidate
-      txn.insertIntoTable('ENDORSEMENTS',[selectedCandidate, END_ID, date, source, new Date(), new Date()]);
+      txn.insertIntoTable('ENDORSEMENTS',
+        ['CAN_ID', 'END_ID', 'DATE', 'SOURCE', 'CREATED', 'MODIFIED'],
+        [selectedCandidate, END_ID, date, source, new Date(), new Date()]
+      );
     });
 
     txn.execute()

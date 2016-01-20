@@ -79,6 +79,12 @@ select{
 .input-field{
   margin-bottom:1em;
 }
+.input-center{
+  text-align:center;
+  &:focus{
+    text-align:left;
+  }
+}
 
 .input-group{
   margin-bottom:3em;

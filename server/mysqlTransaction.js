@@ -10,8 +10,14 @@ class MySqlTransaction {
   create(){
     return new MySqlTransaction(this.connection);
   }
-  insertIntoTable(tableName,values){
-    const query = `INSERT INTO ${tableName} VALUES(${this.connection.escape(values)});`;
+  insertIntoTable(tableName,fields,values){
+    if(values === undefined){
+      values = fields;
+      fields = null;
+    }
+    const escapedFields = fields ? `(${fields.join(',')})` : '';
+    const escapedValues = `(${this.connection.escape(values)})`;
+    const query = `INSERT INTO ${tableName} ${escapedFields} VALUES ${escapedValues};`;
     this.queries.push(query);
     return this;
   }

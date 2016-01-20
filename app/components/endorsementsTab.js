@@ -3,13 +3,27 @@ import AddButton from './addButton';
 import FormContainer from './formContainer';
 import ModalWrapper from './modalWrapper';
 import AddEndorsementForm from './addEndorsementForm';
+import EndorsementList from './endorsementList';
+import { connect } from 'react-redux';
+import { getEndorsementsIfNeeded } from '../actions/endorsementActions';
+import { saveEndorsement } from '../actions/endorsementFormActions';
 
-export default class EndorsementsTab extends Component{
+
+function selectData(state,props){
+  return {
+    endorsements:state.endorsements
+  }
+}
+
+class EndorsementsTab extends Component{
   constructor(props){
     super(props);
     this.state = {
       formOpen: false
     }
+  }
+  componentWillMount(){
+    this.props.dispatch(getEndorsementsIfNeeded());
   }
   openForm = () => {
     this.setState({formOpen:true});
@@ -19,6 +33,7 @@ export default class EndorsementsTab extends Component{
   }
   saveForm = () => {
     console.log('save form');
+    this.props.dispatch(saveEndorsement());
   }
   render(){
     const addForm = <FormContainer closeHandler={this.closeForm}
@@ -27,6 +42,7 @@ export default class EndorsementsTab extends Component{
       <AddEndorsementForm />
     </FormContainer>
     return <div>
+      <EndorsementList endorsements={this.props.endorsements}/>
       <AddButton clickHandler={this.openForm}
                  buttonText = 'Add Endorsement'/>
       <ModalWrapper isOpen={this.state.formOpen}>
@@ -35,3 +51,5 @@ export default class EndorsementsTab extends Component{
     </div>;
   }
 }
+
+export default connect(selectData)(EndorsementsTab);

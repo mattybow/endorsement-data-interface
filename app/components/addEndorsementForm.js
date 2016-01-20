@@ -70,13 +70,13 @@ class AddEndorsementForm extends Component{
                         value = {date}
                         placeholder="YYYY-MM-DD"
                         changeHandler = {ev => {
-                          handleChange({date:ev.target.value});
+                          this.handleChange({date:ev.target.value});
                         }}
                         {...this.props}/>
         <TextInputField label='Source'
                         value = {source}
                         changeHandler = {ev => {
-                          handleChange({source:ev.target.value});
+                          this.handleChange({source:ev.target.value});
                         }}
                         {...this.props}/>
       </div>
