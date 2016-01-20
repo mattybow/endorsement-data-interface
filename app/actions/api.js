@@ -26,6 +26,14 @@ export function getCandidates(){
   return axios.get('/api/candidates');
 }
 
+export function getEndorsements(){
+  return axios.get('/api/endorsements');
+}
+
+export function getEndorsers(){
+  return axios.get('/api/endorsers');
+}
+
 export function getTags(){
   return axios.get('/api/tags');
 }

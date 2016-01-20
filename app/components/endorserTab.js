@@ -1,7 +1,20 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import EndorserList from './endorserList';
+import { getEndorsersIfNeeded } from '../actions/endorserActions';
 
-export default class EndorserTab extends Component{
+function selectData(state,props){
+  const {endorsers} = state;
+  return {endorsers};
+}
+
+class EndorserTab extends Component{
+  componentWillMount(){
+    this.props.dispatch(getEndorsersIfNeeded());
+  }
   render(){
-    return <div>endorser tab</div>;
+    return <EndorserList {...this.props}/>;
   }
 }
+
+export default connect(selectData)(EndorserTab);

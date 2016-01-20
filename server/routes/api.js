@@ -38,6 +38,44 @@ router.get('/candidate',(req,res) => {
   }
 });
 
+router.get('/endorsers',(req,res) => {
+  if(req.session.passport){
+    mysqldb.query('SELECT * FROM ENDORSERS;', (err,results) => {
+      res.json(results);
+    });
+  } else {
+    res.status(401)
+       .json([]);
+  }
+});
+
+router.get('/endorsements',(req,res) => {
+  if(req.session.passport){
+    const query = `SELECT
+                        e.id,
+                        ee.name endorser,
+                        e.end_id,
+                        ee.avatar end_avatar,
+                        CONCAT(c.first_name, ' ', c.last_name) candidate,
+                        c.can_id,
+                        c.avatar can_avatar,
+                        e.date
+                    FROM
+                        endorsements e
+                            JOIN
+                        endorsers ee ON e.end_id = ee.end_id
+                            JOIN
+                        candidates c ON e.can_id = c.can_id
+                    ORDER BY e.date DESC;`;
+    mysqldb.query(query, (err,results) => {
+      res.json(results);
+    });
+  } else {
+    res.status(401)
+       .json([]);
+  }
+});
+
 router.get('/tags',(req,res) => {
   mysqldb.query('SELECT ID AS id, TAG_NAME AS value FROM TAGS ORDER BY 2;', (err,results) => {
     res.json(results);
