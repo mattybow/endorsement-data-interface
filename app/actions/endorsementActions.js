@@ -1,7 +1,7 @@
 import { RECEIVE_ENDORSEMENTS } from '../constants/endorsementTypes';
 import * as api from './api';
 
-export function getEndorsementsIfNeeded(){
+export function getEndorsements(){
   return (dispatch,getState) => {
     api.getEndorsements().then(
       data => {

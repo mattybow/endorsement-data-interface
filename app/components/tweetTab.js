@@ -8,7 +8,7 @@ import moment from 'moment';
 import {connect} from 'react-redux';
 
 import { fetchTweetsIfNeeded, requestTweetDelete } from '../actions/tweetActions';
-import { updateEndorsementForm, saveEndorsement } from '../actions/endorsementFormActions';
+import { updateEndorsementForm, saveEndorsement, clearEndorsementForm } from '../actions/endorsementFormActions';
 
 function selectTweets(state){
   const {tweets} = state;
@@ -36,6 +36,9 @@ class TweetTab extends Component{
   closeForm = () => {
     this.setState({formOpen:false});
   }
+  clearForm = () => {
+    this.props.dispatch(clearEndorsementForm());
+  }
   saveForm = () => {
     console.log('save form');
     this.props.dispatch(saveEndorsement());
@@ -52,7 +55,8 @@ class TweetTab extends Component{
 
     const addForm = <FormContainer formName="Add Endorsement"
                                    closeHandler={this.closeForm}
-                                   saveHandler = {this.saveForm}>
+                                   saveHandler = {this.saveForm}
+                                   clearHandler = {this.clearForm}>
       <AddEndorsementForm />
     </FormContainer>;
 

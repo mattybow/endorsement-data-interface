@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import cx from 'classnames';
 import AutoCompleteDropdown from './autoCompleteDropdown';
-import { requestTagsIfNeeded, addTag } from '../actions/tagActions';
+import { getTags, addTag } from '../actions/tagActions';
 import { connect } from 'react-redux';
 import "../styles/autoComplete.scss";
 
@@ -31,8 +31,7 @@ class TagInput extends Component{
   }
   isDuplicateTag(tagName){
     const lowercaseTagName = tagName.toLowerCase();
-    return this.props.tags.find( tag => tag.value === lowercaseTagName ) ?
-      true : false;
+    return this.props.tags.find( tag => tag.value === lowercaseTagName );
   }
   setDuplicateTag(isDupe){
     this.setState({duplicateTag:isDupe});
@@ -47,21 +46,22 @@ class TagInput extends Component{
   handleTagEnter(ev){
     const newTag = ev.target.value;
     if(ev.which === ENTER_KEY && newTag){
-      if(this.isDuplicateTag(newTag)){
-        this.setDuplicateTag(true);
+      const duplicateTag = this.isDuplicateTag(newTag);
+      if(duplicateTag){
+        this.props.selectionHandler(duplicateTag,true);
       } else {
         const addTagAction = addTag(newTag);
         this.props.dispatch(addTagAction);
         this.props.selectionHandler(addTagAction.tag,true);
-        ev.target.select();
       }
+      ev.target.select();
     }
   }
   handleAutoCompCloseClick = () => {
     this.setState({showChoices:false});
   }
   componentWillMount(){
-    this.props.dispatch(requestTagsIfNeeded());
+    this.props.dispatch(getTags());
   }
   renderAutoComplete(){
     return <AutoCompleteDropdown choices={this.props.tags}

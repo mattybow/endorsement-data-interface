@@ -3,9 +3,12 @@ import { UPDATE_ENDORSEMENT_FORM,
          UPDATE_ENDORSER,
          REMOVE_ENDORSER,
          UPDATE_ENDORSER_TAGS,
-         REQUEST_SAVE_ENDORSEMENT } from '../constants/endorsementFormTypes';
+         REQUEST_SAVE_ENDORSEMENT,
+         CLEAR_ENDORSEMENT_FORM } from '../constants/endorsementFormTypes';
 import * as api from './api';
 import { openSnackbar } from './snackbarActions';
+import { getTags } from './tagActions';
+import { getEndorsements } from './endorsementActions';
 
 export function updateEndorsementForm(data){
   return {
@@ -27,6 +30,12 @@ export function updateEndorser(id, data){
     type:UPDATE_ENDORSER,
     id,
     data
+  }
+}
+
+export function clearEndorsementForm(){
+  return {
+    type:CLEAR_ENDORSEMENT_FORM
   }
 }
 
@@ -52,6 +61,11 @@ export function saveEndorsement(){
       api.addEndorsements(state).then(
         reply => {
           dispatch(openSnackbar('SUCCESS', 'Endorsements Added'));
+          dispatch(clearEndorsementForm());
+          //refresh tags, clears isNew flags
+          //todo: only refresh if there is a newly added tag
+          dispatch(getTags());
+          dispatch(getEndorsements());
         },
         err => {
           console.log(err);

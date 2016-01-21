@@ -1,19 +1,17 @@
 import { REQUEST_TAGS, RECEIVE_TAGS, ADD_TAG, DELETE_TAG } from '../constants/tagTypes';
 import * as api from './api';
 
-export function requestTagsIfNeeded(){
+export function getTags(){
   return (dispatch, getState) => {
     dispatch(requestTags());
-    if(!getState().tags.length){
-      api.getTags().then(
-        data => {
-          dispatch(receiveTags(data.data));
-        },
-        err => {
-          console.log('err on tag request', err);
-        }
-      );
-    }
+    api.getTags().then(
+      data => {
+        dispatch(receiveTags(data.data));
+      },
+      err => {
+        console.log('err on tag request', err);
+      }
+    );
   }
 }
 

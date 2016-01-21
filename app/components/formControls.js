@@ -29,6 +29,11 @@ const FormControls = (props) => {
     </div>
     <div className="form-controls desktop-only" style={{position:'absolute', right:'-4em', top:0}}>
       <div className="icon-check-mark icon-lg pointer" style={{marginBottom:'.5em'}} onClick={props.saveHandler}></div>
+      { props.clearHandler ?
+        <div className="icon-empty-blank icon-lg pointer"
+             style={{marginBottom:'.5em'}}
+             onClick={props.clearHandler}></div>
+           : '' }
       <div className="icon-close icon-lg pointer" onClick={props.closeHandler}></div>
     </div>
   </div>

@@ -5,8 +5,8 @@ import ModalWrapper from './modalWrapper';
 import AddEndorsementForm from './addEndorsementForm';
 import EndorsementList from './endorsementList';
 import { connect } from 'react-redux';
-import { getEndorsementsIfNeeded } from '../actions/endorsementActions';
-import { saveEndorsement } from '../actions/endorsementFormActions';
+import { getEndorsements } from '../actions/endorsementActions';
+import { saveEndorsement, clearEndorsementForm } from '../actions/endorsementFormActions';
 
 
 function selectData(state,props){
@@ -23,10 +23,13 @@ class EndorsementsTab extends Component{
     }
   }
   componentWillMount(){
-    this.props.dispatch(getEndorsementsIfNeeded());
+    this.props.dispatch(getEndorsements());
   }
   openForm = () => {
     this.setState({formOpen:true});
+  }
+  clearForm = () => {
+    this.props.dispatch(clearEndorsementForm());
   }
   closeForm = () => {
     this.setState({formOpen:false});
@@ -38,7 +41,8 @@ class EndorsementsTab extends Component{
   render(){
     const addForm = <FormContainer closeHandler={this.closeForm}
                                    saveHandler = {this.saveForm}
-                                   formName="Add Endorsment">
+                                   clearHandler = {this.clearForm}
+                                   formName="Add Endorsement">
       <AddEndorsementForm />
     </FormContainer>
     return <div>

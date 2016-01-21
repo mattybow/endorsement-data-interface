@@ -87,7 +87,7 @@ class AddEndorsementForm extends Component{
                   id="selectCandidate"
                   onChange={this.candidateChangeHandler}
                   value={selectedCandidate}>
-            <option value="null" key="null">Select a candidate</option>
+            <option value="" key="null">Select a candidate</option>
             {candidates.map( candidate => (
               <option value={candidate.CAN_ID}
                       key={candidate.CAN_ID}>

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { setLoginInfo, checkAuth } from '../actions/loginActions';
-import '../styles/login.scss';
+import Avatar from './avatar';
 
 function selectLoginInfo(state){
   console.log(state);
@@ -33,7 +33,8 @@ class LoginButton extends Component{
     let content = <a href="/auth/twitter">login</a>
     if(displayName){
       content = <div className="flex-parent-row">
-        <div className="profile-image-holder"><img src={profile_image_url} alt="" /></div>
+        <Avatar url={profile_image_url}
+                size={40}/>
       </div>;
     }
     return <div className="login-logout">{content}</div>;

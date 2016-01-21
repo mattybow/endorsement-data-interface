@@ -2,7 +2,8 @@ import { UPDATE_ENDORSEMENT_FORM,
          ADD_ENDORSER,
          UPDATE_ENDORSER,
          REMOVE_ENDORSER,
-         UPDATE_ENDORSER_TAGS } from '../constants/endorsementFormTypes';
+         UPDATE_ENDORSER_TAGS,
+         CLEAR_ENDORSEMENT_FORM } from '../constants/endorsementFormTypes';
 
 function makeEmptyEndorser(){
   return {
@@ -15,16 +16,18 @@ function makeEmptyEndorser(){
   }
 }
 
-const initalState = {
-  selectedCandidate:null,
-  endorsers:[
-    makeEmptyEndorser()
-  ],
-  selectedTags:[],
-  source:null
+function getInitialState(){
+  return {
+    selectedCandidate:'',
+    endorsers:[
+      makeEmptyEndorser()
+    ],
+    selectedTags:[],
+    source:null
+  }
 }
 
-export default function endorsementFormData(state=initalState, action){
+export default function endorsementFormData(state=getInitialState(), action){
   switch(action.type){
     case UPDATE_ENDORSEMENT_FORM:
       return {...state, ...action.data};
@@ -50,7 +53,8 @@ export default function endorsementFormData(state=initalState, action){
       } else {
         return {...state, selectedTags: state.selectedTags.filter( selectedTag => tag.id !== selectedTag.id)};
       }
-
+    case CLEAR_ENDORSEMENT_FORM:
+      return getInitialState();
     default:
       return state;
   }
