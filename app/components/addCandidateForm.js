@@ -4,18 +4,12 @@ import TextInputField from './textInputField';
 import { connect } from 'react-redux';
 import RadioGroup from './radioGroup';
 import { updateCandidateForm } from '../actions/candidateFormActions';
-import moment from 'moment';
+import { convertDate } from '../util';
+
 
 function selectCandidateFormData(state){
   const { candidateFormData } = state;
   return { formData: candidateFormData };
-}
-
-function convertDate(date){
-  if(date && date.match(/(\d{2}\-){2}\d{4}T/)){
-    return moment(new Date(date)).format('YYYY-MM-DD');
-  }
-  return date;
 }
 
 const PARTY_CHOICES=[
@@ -41,24 +35,28 @@ class AddCandidateForm extends Component{
     return <div className="form-contents">
       <TextInputField label='FEC Id'
                       value = {CAN_ID}
+                      id={CAN_ID}
                       changeHandler = {ev => {
                         this.inputChangeHandler({CAN_ID:ev.target.value})
                       }}
                       {...this.props}/>
       <TextInputField label='First Name'
                       value = {FIRST_NAME}
+                      id={CAN_ID}
                       changeHandler = {ev => {
                         this.inputChangeHandler({FIRST_NAME:ev.target.value})
                       }}
                       {...this.props}/>
       <TextInputField label='Middle Name'
                       value = {MIDDLE_NAME}
+                      id={CAN_ID}
                       changeHandler = {ev => {
                         this.inputChangeHandler({MIDDLE_NAME:ev.target.value})
                       }}
                       {...this.props}/>
       <TextInputField label='Last Name'
                       value = {LAST_NAME}
+                      id={CAN_ID}
                       changeHandler = {ev => {
                         this.inputChangeHandler({LAST_NAME:ev.target.value})
                       }}
@@ -86,6 +84,7 @@ class AddCandidateForm extends Component{
       <TextInputField label='Birthdate'
                       placeholder="YYYY-MM-DD"
                       value={convertDate(DOB)}
+                      id={CAN_ID}
                       changeHandler = {ev => {
                         this.inputChangeHandler({DOB:ev.target.value})
                       }}
@@ -93,6 +92,7 @@ class AddCandidateForm extends Component{
 
       <TextInputField label='Avatar Link'
                       value={AVATAR}
+                      id={CAN_ID}
                       changeHandler = {ev => {
                         this.inputChangeHandler({AVATAR:ev.target.value})
                       }}

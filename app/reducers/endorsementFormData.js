@@ -4,6 +4,7 @@ import { UPDATE_ENDORSEMENT_FORM,
          REMOVE_ENDORSER,
          UPDATE_ENDORSER_TAGS,
          CLEAR_ENDORSEMENT_FORM } from '../constants/endorsementFormTypes';
+import moment from 'moment';
 
 function makeEmptyEndorser(){
   return {
@@ -23,7 +24,8 @@ function getInitialState(){
       makeEmptyEndorser()
     ],
     selectedTags:[],
-    source:null
+    source:null,
+    date: moment(new Date()).format('YYYY-MM-DD')
   }
 }
 

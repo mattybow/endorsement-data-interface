@@ -20818,11 +20818,11 @@
 
 	var _redux = __webpack_require__(226);
 
-	var _reduxThunk = __webpack_require__(503);
+	var _reduxThunk = __webpack_require__(505);
 
 	var _reduxThunk2 = _interopRequireDefault(_reduxThunk);
 
-	var _reducers = __webpack_require__(504);
+	var _reducers = __webpack_require__(506);
 
 	var reducers = _interopRequireWildcard(_reducers);
 
@@ -25714,15 +25714,15 @@
 
 	var _candidateTab2 = _interopRequireDefault(_candidateTab);
 
-	var _endorserTab = __webpack_require__(496);
+	var _endorserTab = __webpack_require__(497);
 
 	var _endorserTab2 = _interopRequireDefault(_endorserTab);
 
-	var _endorsementsTab = __webpack_require__(500);
+	var _endorsementsTab = __webpack_require__(501);
 
 	var _endorsementsTab2 = _interopRequireDefault(_endorsementsTab);
 
-	var _tagsTab = __webpack_require__(502);
+	var _tagsTab = __webpack_require__(504);
 
 	var _tagsTab2 = _interopRequireDefault(_tagsTab);
 
@@ -28851,7 +28851,7 @@
 
 
 	// module
-	exports.push([module.id, "#navbar {\n  background-color: white;\n  padding: 0 20px;\n  border-top: 1px solid #E7E7EC;\n  box-shadow: inset 0 -1px 0 #E7E7EC;\n  -webkit-justify-content: space-between;\n      -ms-flex-pack: justify;\n          justify-content: space-between;\n}\n\n.tab-link {\n  text-align: center;\n  padding: 10px 0;\n}\n\n.tab-link.active {\n  border-bottom: 1px solid #A06CD5;\n}\n\n@media (max-width: 414px) {\n  #navbar {\n    position: fixed;\n    width: 100%;\n    bottom: 0;\n    padding: 0;\n    border: none;\n    box-shadow: inset 0 1px 0 #E7E7EC;\n  }\n  .tab-descript-holder {\n    font-size: .5em;\n  }\n  .tab-icon-holder {\n    font-size: 2em;\n  }\n  .tab-link {\n    padding: 5px 0;\n  }\n  .tab-link.active {\n    border: none;\n    background-color: #A06CD5;\n    color: white;\n  }\n  .tab-link.active a {\n    color: white;\n  }\n}\n", ""]);
+	exports.push([module.id, "#navbar {\n  background-color: white;\n  padding: 0 20px;\n  border-top: 1px solid #E7E7EC;\n  box-shadow: inset 0 -1px 0 #E7E7EC;\n  -webkit-justify-content: space-between;\n      -ms-flex-pack: justify;\n          justify-content: space-between;\n}\n\n.tab-link {\n  text-align: center;\n  padding: 10px 0;\n}\n\n.tab-link.active {\n  border-bottom: 1px solid #A06CD5;\n}\n\n@media (max-width: 414px) {\n  #navbar {\n    position: fixed;\n    width: 100%;\n    bottom: 0;\n    padding: 0;\n    border: none;\n    box-shadow: inset 0 1px 0 #E7E7EC;\n    z-index: 1;\n  }\n  .tab-descript-holder {\n    font-size: .5em;\n  }\n  .tab-icon-holder {\n    font-size: 2em;\n  }\n  .tab-link {\n    padding: 5px 0;\n  }\n  .tab-link.active {\n    border: none;\n    background-color: #A06CD5;\n    color: white;\n  }\n  .tab-link.active a {\n    color: white;\n  }\n}\n", ""]);
 
 	// exports
 
@@ -41644,24 +41644,28 @@
 	        { className: 'input-group' },
 	        _react2.default.createElement(_textInputField2.default, _extends({ label: 'Name',
 	          value: NAME,
+	          id: END_ID,
 	          changeHandler: function changeHandler(ev) {
 	            inputChangeHandler(END_ID, { NAME: ev.target.value });
 	          }
 	        }, this.props)),
 	        _react2.default.createElement(_textInputField2.default, _extends({ label: 'Description',
 	          value: DESCRIPT,
+	          id: END_ID,
 	          changeHandler: function changeHandler(ev) {
 	            inputChangeHandler(END_ID, { DESCRIPT: ev.target.value });
 	          }
 	        }, this.props)),
 	        _react2.default.createElement(_textInputField2.default, _extends({ label: 'Wikipedia',
 	          value: WIKI_LINK,
+	          id: END_ID,
 	          changeHandler: function changeHandler(ev) {
 	            inputChangeHandler(END_ID, { WIKI_LINK: ev.target.value });
 	          }
 	        }, this.props)),
 	        _react2.default.createElement(_textInputField2.default, _extends({ label: 'Avatar',
 	          value: AVATAR,
+	          id: END_ID,
 	          changeHandler: function changeHandler(ev) {
 	            inputChangeHandler(END_ID, { AVATAR: ev.target.value });
 	          }
@@ -48743,7 +48747,7 @@
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	var TextInputField = function TextInputField(props) {
-	  var END_ID = props.END_ID;
+	  var id = props.id;
 	  var label = props.label;
 	  var changeHandler = props.changeHandler;
 	  var value = props.value;
@@ -48755,14 +48759,14 @@
 	    { className: 'form-input' },
 	    _react2.default.createElement(
 	      'label',
-	      { htmlFor: END_ID + label },
+	      { htmlFor: id + label },
 	      label
 	    ),
 	    _react2.default.createElement('input', { type: type || 'text',
 	      value: value,
 	      placeholder: placeholder,
 	      onChange: changeHandler,
-	      id: END_ID + label })
+	      id: id + label })
 	  );
 	};
 
@@ -50380,7 +50384,7 @@
 
 
 	// module
-	exports.push([module.id, "label {\n  display: inline-block;\n}\n\nlabel.non-mui {\n  margin: 1em 0 .5em 0;\n}\n\ninput[type=\"text\"] {\n  width: 100%;\n  border-style: none none solid;\n  border-width: 1px;\n  border-color: #e0e0e0;\n  margin-bottom: 1em;\n  padding: .5em 0;\n  -webkit-appearance: none;\n  border-radius: 0;\n  background-color: transparent;\n}\n\ninput[type=\"text\"]:focus {\n  outline: none;\n}\n\n.check-box {\n  padding: .5em 0 .5em .2em;\n}\n\n.check-box:hover {\n  cursor: pointer;\n}\n\n.form-check-box {\n  display: inline-block;\n  padding: 0 .5em 0 .6em;\n  border-radius: 2px;\n  border: 1px solid rgba(0, 0, 0, 0.4);\n}\n\n.form-check-box.checked {\n  border-color: #A06CD5;\n  background-color: #A06CD5;\n  color: #E2CFEA;\n}\n\n.check-box-label:hover {\n  cursor: pointer;\n}\n\nselect {\n  background-color: transparent;\n  border: none;\n  border-bottom: 1px solid #e0e0e0;\n  overflow: hidden;\n  outline: none;\n  border-radius: 20px;\n  -webkit-appearance: none;\n  -webkit-border-radius: 0px;\n  padding: .5em 0;\n  width: 100%;\n}\n\n.form-select {\n  position: relative;\n}\n\n.form-select:after {\n  font-family: \"fontello\";\n  -webkit-transform: rotateZ(90deg);\n          transform: rotateZ(90deg);\n  content: '\\E804';\n  width: 1em;\n  height: 1em;\n  position: absolute;\n  top: .7em;\n  right: 0;\n  pointer-events: none;\n}\n\n.form-contents {\n  padding: 0 20px;\n}\n\n.icon-btn-form {\n  margin: 0;\n  margin-right: -.4em;\n}\n\n.input-field {\n  margin-bottom: 1em;\n}\n\n.input-center {\n  text-align: center;\n}\n\n.input-center:focus {\n  text-align: left;\n}\n\n.input-group {\n  margin-bottom: 3em;\n}\n\n@media (min-width: 415px) {\n  .form-container {\n    margin-top: 10%;\n  }\n  .form-contents {\n    padding: 0;\n  }\n}\n", ""]);
+	exports.push([module.id, "label {\n  display: inline-block;\n}\n\nlabel.non-mui {\n  margin: 1em 0 .5em 0;\n}\n\ninput[type=\"text\"] {\n  width: 100%;\n  border-style: none none solid;\n  border-width: 1px;\n  border-color: #e0e0e0;\n  margin-bottom: 1em;\n  padding: .5em 0;\n  -webkit-appearance: none;\n  border-radius: 0;\n  background-color: transparent;\n  white-space: nowrap;\n  overflow: hidden;\n  text-overflow: ellipsis;\n}\n\ninput[type=\"text\"]:focus {\n  outline: none;\n}\n\n.check-box {\n  padding: .5em 0 .5em .2em;\n}\n\n.check-box:hover {\n  cursor: pointer;\n}\n\n.form-check-box {\n  display: inline-block;\n  padding: 0 .5em 0 .6em;\n  border-radius: 2px;\n  border: 1px solid rgba(0, 0, 0, 0.4);\n}\n\n.form-check-box.checked {\n  border-color: #A06CD5;\n  background-color: #A06CD5;\n  color: #E2CFEA;\n}\n\n.check-box-label:hover {\n  cursor: pointer;\n}\n\nselect {\n  background-color: transparent;\n  border: none;\n  border-bottom: 1px solid #e0e0e0;\n  overflow: hidden;\n  outline: none;\n  border-radius: 20px;\n  -webkit-appearance: none;\n  -webkit-border-radius: 0px;\n  padding: .5em 0;\n  width: 100%;\n}\n\n.form-select {\n  position: relative;\n}\n\n.form-select:after {\n  font-family: \"fontello\";\n  -webkit-transform: rotateZ(90deg);\n          transform: rotateZ(90deg);\n  content: '\\E804';\n  width: 1em;\n  height: 1em;\n  position: absolute;\n  top: .7em;\n  right: 0;\n  pointer-events: none;\n}\n\n.form-contents {\n  padding: 0 20px;\n}\n\n.icon-btn-form {\n  margin: 0;\n  margin-right: -.4em;\n}\n\n.input-field {\n  margin-bottom: 1em;\n}\n\n.input-center {\n  text-align: center;\n}\n\n.input-center:focus {\n  text-align: left;\n}\n\n.input-group {\n  margin-bottom: 3em;\n}\n\n@media (min-width: 415px) {\n  .form-container {\n    margin-top: 10%;\n  }\n  .form-contents {\n    padding: 0;\n  }\n}\n", ""]);
 
 	// exports
 
@@ -50634,7 +50638,8 @@
 	              borderBottom: '1px solid #e0e0e0',
 	              position: 'absolute',
 	              width: '100%',
-	              pointerEvents: 'none'
+	              pointerEvents: 'none',
+	              backgroundColor: '#fff'
 	            } },
 	          _react2.default.createElement(
 	            'h4',
@@ -50676,7 +50681,10 @@
 
 	  return _react2.default.createElement(
 	    'div',
-	    null,
+	    { style: {
+	        position: 'relative',
+	        zIndex: 1
+	      } },
 	    _react2.default.createElement(
 	      'div',
 	      { className: 'form-controls mobile-only flex-parent-row',
@@ -50697,7 +50705,7 @@
 	        _react2.default.createElement(
 	          'span',
 	          null,
-	          'cancel'
+	          'back'
 	        )
 	      ),
 	      _react2.default.createElement(
@@ -52041,9 +52049,7 @@
 
 	var _candidateFormActions = __webpack_require__(494);
 
-	var _moment = __webpack_require__(280);
-
-	var _moment2 = _interopRequireDefault(_moment);
+	var _util = __webpack_require__(496);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -52057,13 +52063,6 @@
 	  var candidateFormData = state.candidateFormData;
 
 	  return { formData: candidateFormData };
-	}
-
-	function convertDate(date) {
-	  if (date && date.match(/(\d{2}\-){2}\d{4}T/)) {
-	    return (0, _moment2.default)(new Date(date)).format('YYYY-MM-DD');
-	  }
-	  return date;
 	}
 
 	var PARTY_CHOICES = [{ value: 'D',
@@ -52108,24 +52107,28 @@
 	        { className: 'form-contents' },
 	        _react2.default.createElement(_textInputField2.default, _extends({ label: 'FEC Id',
 	          value: CAN_ID,
+	          id: CAN_ID,
 	          changeHandler: function changeHandler(ev) {
 	            _this2.inputChangeHandler({ CAN_ID: ev.target.value });
 	          }
 	        }, this.props)),
 	        _react2.default.createElement(_textInputField2.default, _extends({ label: 'First Name',
 	          value: FIRST_NAME,
+	          id: CAN_ID,
 	          changeHandler: function changeHandler(ev) {
 	            _this2.inputChangeHandler({ FIRST_NAME: ev.target.value });
 	          }
 	        }, this.props)),
 	        _react2.default.createElement(_textInputField2.default, _extends({ label: 'Middle Name',
 	          value: MIDDLE_NAME,
+	          id: CAN_ID,
 	          changeHandler: function changeHandler(ev) {
 	            _this2.inputChangeHandler({ MIDDLE_NAME: ev.target.value });
 	          }
 	        }, this.props)),
 	        _react2.default.createElement(_textInputField2.default, _extends({ label: 'Last Name',
 	          value: LAST_NAME,
+	          id: CAN_ID,
 	          changeHandler: function changeHandler(ev) {
 	            _this2.inputChangeHandler({ LAST_NAME: ev.target.value });
 	          }
@@ -52164,13 +52167,15 @@
 	        ),
 	        _react2.default.createElement(_textInputField2.default, _extends({ label: 'Birthdate',
 	          placeholder: 'YYYY-MM-DD',
-	          value: convertDate(DOB),
+	          value: (0, _util.convertDate)(DOB),
+	          id: CAN_ID,
 	          changeHandler: function changeHandler(ev) {
 	            _this2.inputChangeHandler({ DOB: ev.target.value });
 	          }
 	        }, this.props)),
 	        _react2.default.createElement(_textInputField2.default, _extends({ label: 'Avatar Link',
 	          value: AVATAR,
+	          id: CAN_ID,
 	          changeHandler: function changeHandler(ev) {
 	            _this2.inputChangeHandler({ AVATAR: ev.target.value });
 	          }
@@ -52758,6 +52763,30 @@
 
 	'use strict';
 
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	exports.convertDate = convertDate;
+
+	var _moment = __webpack_require__(280);
+
+	var _moment2 = _interopRequireDefault(_moment);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function convertDate(date) {
+	  if (date && date.match(/\d{4}(\-\d{2}){2}T/)) {
+	    return (0, _moment2.default)(new Date(date)).format('YYYY-MM-DD');
+	  }
+	  return date;
+	}
+
+/***/ },
+/* 497 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
 	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 	var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
@@ -52772,11 +52801,11 @@
 
 	var _reactRedux = __webpack_require__(219);
 
-	var _endorserList = __webpack_require__(497);
+	var _endorserList = __webpack_require__(498);
 
 	var _endorserList2 = _interopRequireDefault(_endorserList);
 
-	var _endorserActions = __webpack_require__(498);
+	var _endorserActions = __webpack_require__(499);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -52859,7 +52888,7 @@
 	exports.default = (0, _reactRedux.connect)(selectData)(EndorserTab);
 
 /***/ },
-/* 497 */
+/* 498 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -52950,7 +52979,7 @@
 	exports.default = EndorserList;
 
 /***/ },
-/* 498 */
+/* 499 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -52960,7 +52989,7 @@
 	});
 	exports.getEndorsersIfNeeded = getEndorsersIfNeeded;
 
-	var _endorserTypes = __webpack_require__(499);
+	var _endorserTypes = __webpack_require__(500);
 
 	var _api = __webpack_require__(238);
 
@@ -52986,7 +53015,7 @@
 	}
 
 /***/ },
-/* 499 */
+/* 500 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -52998,10 +53027,12 @@
 	var RECEIVE_ENDORSERS = exports.RECEIVE_ENDORSERS = 'RECEIVE_ENDORSERS';
 
 /***/ },
-/* 500 */
+/* 501 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
+
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 	var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
 
@@ -53029,7 +53060,11 @@
 
 	var _addEndorsementForm2 = _interopRequireDefault(_addEndorsementForm);
 
-	var _endorsementList = __webpack_require__(501);
+	var _editEndorsementForm = __webpack_require__(502);
+
+	var _editEndorsementForm2 = _interopRequireDefault(_editEndorsementForm);
+
+	var _endorsementList = __webpack_require__(503);
 
 	var _endorsementList2 = _interopRequireDefault(_endorsementList);
 
@@ -53061,8 +53096,26 @@
 
 	    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(EndorsementsTab).call(this, props));
 
-	    _this.openForm = function () {
-	      _this.setState({ formOpen: true });
+	    _this.openAddForm = function () {
+	      _this.setState({
+	        formOpen: true,
+	        formName: 'Add Endorsement'
+	      });
+	    };
+
+	    _this.openEditForm = function (data) {
+	      _this.setState({
+	        formOpen: true,
+	        formName: 'Edit Endorsement',
+	        formData: _this.props.endorsements.find(function (endorsement) {
+	          return endorsement.id === data.id;
+	        }) || {}
+	      });
+	    };
+
+	    _this.updateEditForm = function (data) {
+	      console.log(_extends({}, _this.state, data));
+	      _this.setState({ formData: _extends({}, _this.state.formData, data) });
 	    };
 
 	    _this.clearForm = function () {
@@ -53079,7 +53132,8 @@
 	    };
 
 	    _this.state = {
-	      formOpen: false
+	      formOpen: false,
+	      formName: ''
 	    };
 	    return _this;
 	  }
@@ -53090,26 +53144,39 @@
 	      this.props.dispatch((0, _endorsementActions.getEndorsements)());
 	    }
 	  }, {
-	    key: 'render',
-	    value: function render() {
-	      var addForm = _react2.default.createElement(
+	    key: 'openForm',
+	    value: function openForm() {
+	      this.setState({ formOpen: true, formName: formName });
+	    }
+	  }, {
+	    key: 'renderForm',
+	    value: function renderForm() {
+	      var isAddForm = this.state.formName === 'Add Endorsement';
+	      return _react2.default.createElement(
 	        _formContainer2.default,
 	        { closeHandler: this.closeForm,
 	          saveHandler: this.saveForm,
 	          clearHandler: this.clearForm,
-	          formName: 'Add Endorsement' },
-	        _react2.default.createElement(_addEndorsementForm2.default, null)
+	          formName: this.state.formName },
+	        isAddForm ? _react2.default.createElement(_addEndorsementForm2.default, null) : _react2.default.createElement(_editEndorsementForm2.default, _extends({}, this.state.formData, {
+	          changeHandler: this.updateEditForm }))
 	      );
+	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
 	      return _react2.default.createElement(
 	        'div',
 	        null,
-	        _react2.default.createElement(_endorsementList2.default, { endorsements: this.props.endorsements }),
-	        _react2.default.createElement(_addButton2.default, { clickHandler: this.openForm,
+	        _react2.default.createElement(_endorsementList2.default, { endorsements: this.props.endorsements,
+	          editClickHandler: this.openEditForm
+	        }),
+	        _react2.default.createElement(_addButton2.default, { clickHandler: this.openAddForm,
 	          buttonText: 'Add Endorsement' }),
 	        _react2.default.createElement(
 	          _modalWrapper2.default,
 	          { isOpen: this.state.formOpen },
-	          this.state.formOpen ? addForm : ''
+	          this.state.formOpen ? this.renderForm() : ''
 	        )
 	      );
 	    }
@@ -53121,7 +53188,135 @@
 	exports.default = (0, _reactRedux.connect)(selectData)(EndorsementsTab);
 
 /***/ },
-/* 501 */
+/* 502 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _textInputField = __webpack_require__(453);
+
+	var _textInputField2 = _interopRequireDefault(_textInputField);
+
+	var _avatar = __webpack_require__(255);
+
+	var _avatar2 = _interopRequireDefault(_avatar);
+
+	var _util = __webpack_require__(496);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var EditEndorsementForm = function EditEndorsementForm(props) {
+	  var id = props.id;
+	  var end_avatar = props.end_avatar;
+	  var can_avatar = props.can_avatar;
+	  var date = props.date;
+	  var source = props.source;
+	  var endorser = props.endorser;
+	  var candidate = props.candidate;
+
+	  return _react2.default.createElement(
+	    'div',
+	    { className: 'form-contents' },
+	    _react2.default.createElement(
+	      'div',
+	      { className: 'flex-parent-row',
+	        style: {
+	          margin: '20px 0 30px'
+	        } },
+	      _react2.default.createElement(
+	        'div',
+	        { className: 'heads',
+	          style: {
+	            position: 'relative'
+	          } },
+	        _react2.default.createElement(_avatar2.default, { url: end_avatar,
+	          size: 50 }),
+	        _react2.default.createElement('div', { style: {
+	            width: 40,
+	            height: 40,
+	            position: 'absolute',
+	            right: -20,
+	            bottom: -20,
+	            backgroundImage: 'url(' + can_avatar + ')',
+	            backgroundSize: 'cover'
+	          } })
+	      ),
+	      _react2.default.createElement(
+	        'div',
+	        { className: 'flex-child-expand',
+	          style: {
+	            marginLeft: 30
+	          } },
+	        _react2.default.createElement(
+	          'div',
+	          null,
+	          _react2.default.createElement(
+	            'span',
+	            null,
+	            endorser
+	          ),
+	          _react2.default.createElement(
+	            'span',
+	            { style: { fontSize: '.8em', margin: '0 .5em' } },
+	            'endorsed'
+	          )
+	        ),
+	        _react2.default.createElement(
+	          'div',
+	          null,
+	          candidate
+	        )
+	      ),
+	      _react2.default.createElement(
+	        'button',
+	        { className: 'btn-default flex-child-start desktop-only' },
+	        _react2.default.createElement(
+	          'span',
+	          null,
+	          'delete endorsement'
+	        )
+	      ),
+	      _react2.default.createElement(
+	        'button',
+	        { className: 'btn-default btn-naked no-border flex-child-start mobile-only',
+	          style: {
+	            marginRight: -10
+	          } },
+	        _react2.default.createElement(
+	          'span',
+	          { className: 'icon-trash-bin icon-lg' },
+	          ' '
+	        )
+	      )
+	    ),
+	    _react2.default.createElement(_textInputField2.default, { label: 'Date',
+	      value: (0, _util.convertDate)(date),
+	      placeholder: 'YYYY-MM-DD',
+	      id: id,
+	      changeHandler: function changeHandler(ev) {
+	        props.changeHandler({ date: ev.target.value });
+	      } }),
+	    _react2.default.createElement(_textInputField2.default, { label: 'Source',
+	      value: source,
+	      id: id,
+	      changeHandler: function changeHandler(ev) {
+	        props.changeHandler({ source: ev.target.value });
+	      } })
+	  );
+	};
+
+	exports.default = EditEndorsementForm;
+
+/***/ },
+/* 503 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -53164,7 +53359,10 @@
 	  _createClass(EndorsementList, [{
 	    key: 'renderEndorsements',
 	    value: function renderEndorsements() {
+	      var _this2 = this;
+
 	      return this.props.endorsements.map(function (endorsement) {
+	        var can_id = endorsement.can_id;
 	        var end_avatar = endorsement.end_avatar;
 	        var can_avatar = endorsement.can_avatar;
 	        var endorser = endorsement.endorser;
@@ -53226,7 +53424,13 @@
 	            ),
 	            _react2.default.createElement(
 	              'button',
-	              { className: 'btn-default no-border' },
+	              { className: 'btn-default no-border',
+	                onClick: function onClick() {
+	                  _this2.props.editClickHandler({
+	                    id: id,
+	                    date: date
+	                  });
+	                } },
 	              'edit'
 	            )
 	          )
@@ -53251,7 +53455,7 @@
 	exports.default = EndorsementList;
 
 /***/ },
-/* 502 */
+/* 504 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -53300,7 +53504,7 @@
 	exports.default = TagsTab;
 
 /***/ },
-/* 503 */
+/* 505 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -53322,7 +53526,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 504 */
+/* 506 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -53331,7 +53535,7 @@
 	  value: true
 	});
 
-	var _tweets = __webpack_require__(505);
+	var _tweets = __webpack_require__(507);
 
 	Object.defineProperty(exports, 'tweets', {
 	  enumerable: true,
@@ -53340,7 +53544,7 @@
 	  }
 	});
 
-	var _login = __webpack_require__(506);
+	var _login = __webpack_require__(508);
 
 	Object.defineProperty(exports, 'loginInfo', {
 	  enumerable: true,
@@ -53349,7 +53553,7 @@
 	  }
 	});
 
-	var _candidates = __webpack_require__(507);
+	var _candidates = __webpack_require__(509);
 
 	Object.defineProperty(exports, 'candidates', {
 	  enumerable: true,
@@ -53358,7 +53562,7 @@
 	  }
 	});
 
-	var _endorsementFormData = __webpack_require__(508);
+	var _endorsementFormData = __webpack_require__(510);
 
 	Object.defineProperty(exports, 'endorsementFormData', {
 	  enumerable: true,
@@ -53367,7 +53571,7 @@
 	  }
 	});
 
-	var _candidateFormData = __webpack_require__(509);
+	var _candidateFormData = __webpack_require__(511);
 
 	Object.defineProperty(exports, 'candidateFormData', {
 	  enumerable: true,
@@ -53376,7 +53580,7 @@
 	  }
 	});
 
-	var _snackbarData = __webpack_require__(510);
+	var _snackbarData = __webpack_require__(512);
 
 	Object.defineProperty(exports, 'snackbarData', {
 	  enumerable: true,
@@ -53385,7 +53589,7 @@
 	  }
 	});
 
-	var _tags = __webpack_require__(511);
+	var _tags = __webpack_require__(513);
 
 	Object.defineProperty(exports, 'tags', {
 	  enumerable: true,
@@ -53394,7 +53598,7 @@
 	  }
 	});
 
-	var _endorsers = __webpack_require__(512);
+	var _endorsers = __webpack_require__(514);
 
 	Object.defineProperty(exports, 'endorsers', {
 	  enumerable: true,
@@ -53403,7 +53607,7 @@
 	  }
 	});
 
-	var _endorsements = __webpack_require__(513);
+	var _endorsements = __webpack_require__(515);
 
 	Object.defineProperty(exports, 'endorsements', {
 	  enumerable: true,
@@ -53413,7 +53617,7 @@
 	});
 
 /***/ },
-/* 505 */
+/* 507 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -53444,7 +53648,7 @@
 	}
 
 /***/ },
-/* 506 */
+/* 508 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -53473,7 +53677,7 @@
 	}
 
 /***/ },
-/* 507 */
+/* 509 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -53502,7 +53706,7 @@
 	}
 
 /***/ },
-/* 508 */
+/* 510 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -53515,6 +53719,12 @@
 	exports.default = endorsementFormData;
 
 	var _endorsementFormTypes = __webpack_require__(376);
+
+	var _moment = __webpack_require__(280);
+
+	var _moment2 = _interopRequireDefault(_moment);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
 
@@ -53534,7 +53744,8 @@
 	    selectedCandidate: '',
 	    endorsers: [makeEmptyEndorser()],
 	    selectedTags: [],
-	    source: null
+	    source: null,
+	    date: (0, _moment2.default)(new Date()).format('YYYY-MM-DD')
 	  };
 	}
 
@@ -53582,7 +53793,7 @@
 	}
 
 /***/ },
-/* 509 */
+/* 511 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -53622,7 +53833,7 @@
 	}
 
 /***/ },
-/* 510 */
+/* 512 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -53664,7 +53875,7 @@
 	}
 
 /***/ },
-/* 511 */
+/* 513 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -53697,7 +53908,7 @@
 	}
 
 /***/ },
-/* 512 */
+/* 514 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -53707,7 +53918,7 @@
 	});
 	exports.default = endorsers;
 
-	var _endorserTypes = __webpack_require__(499);
+	var _endorserTypes = __webpack_require__(500);
 
 	function endorsers() {
 	  var state = arguments.length <= 0 || arguments[0] === undefined ? [] : arguments[0];
@@ -53722,7 +53933,7 @@
 	}
 
 /***/ },
-/* 513 */
+/* 515 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';

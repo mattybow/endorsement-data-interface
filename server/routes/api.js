@@ -59,7 +59,8 @@ router.get('/endorsements',(req,res) => {
                         CONCAT(c.first_name, ' ', c.last_name) candidate,
                         c.can_id,
                         c.avatar can_avatar,
-                        e.date
+                        e.date,
+                        e.source
                     FROM
                         endorsements e
                             JOIN

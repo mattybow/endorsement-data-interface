@@ -15,6 +15,9 @@ input[type="text"]{
   -webkit-appearance:none;
   border-radius:0;
   background-color:transparent;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
   &:focus{
     outline:none;
   }

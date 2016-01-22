@@ -2,7 +2,10 @@ import React, { PropTypes } from 'react';
 
 const FormControls = (props) => {
 
-  return <div>
+  return <div style={{
+      position:'relative',
+      zIndex:1
+    }}>
     <div className="form-controls mobile-only flex-parent-row"
          style={{
            height:'3em',
@@ -16,7 +19,7 @@ const FormControls = (props) => {
               }}
               onClick={props.closeHandler}>
         <span className="icon-arrow back"></span>
-        <span>cancel</span>
+        <span>back</span>
       </button>
       <button className="no-border btn-naked flex-child-expand"
               style={{

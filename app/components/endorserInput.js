@@ -11,24 +11,28 @@ class EndorserInput extends Component{
     return <div className="input-group">
       <TextInputField label='Name'
                       value = {NAME}
+                      id={END_ID}
                       changeHandler = {ev => {
                         inputChangeHandler(END_ID,{NAME:ev.target.value})
                       }}
                       {...this.props}/>
       <TextInputField label='Description'
                       value = {DESCRIPT}
+                      id={END_ID}
                       changeHandler = {ev => {
                         inputChangeHandler(END_ID,{DESCRIPT:ev.target.value})
                       }}
                       {...this.props}/>
       <TextInputField label='Wikipedia'
                       value = {WIKI_LINK}
+                      id={END_ID}
                       changeHandler = {ev => {
                         inputChangeHandler(END_ID,{WIKI_LINK:ev.target.value})
                       }}
                       {...this.props}/>
       <TextInputField label='Avatar'
                       value = {AVATAR}
+                      id={END_ID}
                       changeHandler = {ev => {
                         inputChangeHandler(END_ID,{AVATAR:ev.target.value})
                       }}

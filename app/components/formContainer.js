@@ -13,7 +13,8 @@ export default class FormContainer extends Component{
           borderBottom:'1px solid #e0e0e0',
           position:'absolute',
           width:'100%',
-          pointerEvents:'none'
+          pointerEvents:'none',
+          backgroundColor:'#fff'
         }}>
         <h4 style={{
                textAlign:'center',

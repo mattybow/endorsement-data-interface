@@ -5,7 +5,7 @@ import Avatar from './avatar';
 export default class EndorsementList extends Component{
   renderEndorsements() {
     return this.props.endorsements.map(endorsement => {
-      const { end_avatar, can_avatar, endorser, candidate, id,date} = endorsement;
+      const { can_id, end_avatar, can_avatar, endorser, candidate, id,date} = endorsement;
       return <div className="flex-parent-row list-item-spacing" key={id}>
         <div className="heads"
              style={{
@@ -32,7 +32,13 @@ export default class EndorsementList extends Component{
             </div>
             <div style={{ fontSize:'.8em', color:'#8F2CD8'}}>{moment(new Date(date)).format('ll')}</div>
           </div>
-          <button className="btn-default no-border">
+          <button className="btn-default no-border"
+                  onClick={() => {
+                    this.props.editClickHandler({
+                      id:id,
+                      date:date
+                    })
+                  }}>
             edit
           </button>
         </div>
