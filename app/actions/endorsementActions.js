@@ -23,11 +23,12 @@ function receiveEndorsements(data){
 
 export function saveEndorsementEdits(data){
   return (dispatch,getState) => {
-    api.saveEndorsementEdits(data).then(
+    return api.saveEndorsementEdits(data).then(
       data => {
         dispatch(openSnackbar('SUCCESS', 'Changes Saved'));
+        dispatch(getEndorsements());
       },
       console.log
-    )
+    );
   }
 }

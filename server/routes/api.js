@@ -63,7 +63,8 @@ router.get('/endorsements',(req,res) => {
                         e.date,
                         e.source,
                         e.confirmed,
-                        e.modified
+                        e.modified,
+                        e.quote
                     FROM
                         endorsements e
                             JOIN
@@ -82,12 +83,13 @@ router.get('/endorsements',(req,res) => {
 
 router.post('/updateEndorsement',(req,res) => {
   if(req.session.passport){
-    const { date, source, confirmed, id } = req.body;
+    const { date, source, confirmed, id, quote } = req.body;
     const txn = transaction.create();
     txn.addTo(`UPDATE ENDORSEMENTS
                 SET DATE=${mysqldb.escape(new Date(date))},
                     SOURCE=${mysqldb.escape(source)},
-                    CONFIRMED=${mysqldb.escape(confirmed)}
+                    CONFIRMED=${mysqldb.escape(confirmed)},
+                    QUOTE=${mysqldb.escape(quote)}
                 WHERE ID=${mysqldb.escape(id)};`)
         .execute()
         .then( result => {

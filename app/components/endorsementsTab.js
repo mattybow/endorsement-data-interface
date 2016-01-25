@@ -36,13 +36,16 @@ class EndorsementsTab extends Component{
       formName: 'Add Endorsement'
     });
   }
+  getEndorsementById(id){
+    return this.props.endorsements.find(
+      endorsement => endorsement.id === id
+    )
+  }
   openEditForm = (id) => {
     this.setState({
       formOpen:true,
       formName: 'Edit Endorsement',
-      formData: this.props.endorsements.find(
-        endorsement => endorsement.id === id
-      ) || {}
+      formData: this.getEndorsementById(id) || {}
     });
   }
   updateEditForm = (data) => {
@@ -63,14 +66,16 @@ class EndorsementsTab extends Component{
   }
   saveEdits = () => {
     const {id} = this.state.formData;
-    var original = this.props.endorsements.find(
-      endorsement => endorsement.id === id
-    );
+    var original = this.getEndorsementById(id);
     if (JSON.stringify(this.state.formData) !== JSON.stringify(original)){
-      const { id, date, source, confirmed } = this.state.formData;
+      const { id, date, source, confirmed, quote } = this.state.formData;
       this.props.dispatch(saveEndorsementEdits({
-        id,date,source,confirmed
-      }));
+        id,date,source,confirmed, quote
+      })).then(
+        () => {
+          this.closeForm();
+        }
+      );
     } else {
       console.log('nothing to save');
     }

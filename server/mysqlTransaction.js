@@ -36,7 +36,8 @@ class MySqlTransaction {
     return this;
   }
   showCall(){
-    return this.queries.join('');
+    console.log(this.queries.join(''));
+    return this;
   }
   execute(){
     const { connection, onCommit, onRollback, queries } = this;

@@ -41568,8 +41568,9 @@
 
 	function saveEndorsementEdits(data) {
 	  return function (dispatch, getState) {
-	    api.saveEndorsementEdits(data).then(function (data) {
+	    return api.saveEndorsementEdits(data).then(function (data) {
 	      dispatch((0, _snackbarActions.openSnackbar)('SUCCESS', 'Changes Saved'));
+	      dispatch(getEndorsements());
 	    }, console.log);
 	  };
 	}
@@ -53124,9 +53125,7 @@
 	      _this.setState({
 	        formOpen: true,
 	        formName: 'Edit Endorsement',
-	        formData: _this.props.endorsements.find(function (endorsement) {
-	          return endorsement.id === id;
-	        }) || {}
+	        formData: _this.getEndorsementById(id) || {}
 	      });
 	    };
 
@@ -53150,19 +53149,20 @@
 	    _this.saveEdits = function () {
 	      var id = _this.state.formData.id;
 
-	      var original = _this.props.endorsements.find(function (endorsement) {
-	        return endorsement.id === id;
-	      });
+	      var original = _this.getEndorsementById(id);
 	      if (JSON.stringify(_this.state.formData) !== JSON.stringify(original)) {
 	        var _this$state$formData = _this.state.formData;
 	        var _id = _this$state$formData.id;
 	        var date = _this$state$formData.date;
 	        var source = _this$state$formData.source;
 	        var confirmed = _this$state$formData.confirmed;
+	        var quote = _this$state$formData.quote;
 
 	        _this.props.dispatch((0, _endorsementActions.saveEndorsementEdits)({
-	          id: _id, date: date, source: source, confirmed: confirmed
-	        }));
+	          id: _id, date: date, source: source, confirmed: confirmed, quote: quote
+	        })).then(function () {
+	          _this.closeForm();
+	        });
 	      } else {
 	        console.log('nothing to save');
 	      }
@@ -53184,6 +53184,13 @@
 	    key: 'openForm',
 	    value: function openForm() {
 	      this.setState({ formOpen: true, formName: formName });
+	    }
+	  }, {
+	    key: 'getEndorsementById',
+	    value: function getEndorsementById(id) {
+	      return this.props.endorsements.find(function (endorsement) {
+	        return endorsement.id === id;
+	      });
 	    }
 	  }, {
 	    key: 'renderForm',
