@@ -136,15 +136,15 @@ router.post('/addEndorsements', (req,res) => {
     endorsers.map(endorser => {
       const { END_ID, DESCRIPT, NAME, IS_ORG, AVATAR, WIKI_LINK } = endorser;
       //create the endorsers
-      txn.insertIntoTable('ENDORSERS',[END_ID, DESCRIPT, NAME, IS_ORG, WIKI_LINK, AVATAR]);
+      txn.insertIntoTable('ENDORSERS',[END_ID, DESCRIPT, NAME, IS_ORG, WIKI_LINK, AVATAR, new Date()]);
       //tie endorsers to tags
       selectedTags.map( tag => {
         txn.insertIntoTable('ENDORSER_TAGS',[END_ID,tag.id]);
       });
       //tie endorser to candidate
       txn.insertIntoTable('ENDORSEMENTS',
-        ['CAN_ID', 'END_ID', 'DATE', 'SOURCE', 'CREATED', 'MODIFIED'],
-        [selectedCandidate, END_ID, date, source, new Date(), new Date()]
+        ['CAN_ID', 'END_ID', 'DATE', 'SOURCE', 'CREATED', 'MODIFIED', 'CONFIRMED', 'QUOTE'],
+        [selectedCandidate, END_ID, date, source, new Date(), new Date(), 0, null]
       );
     });
 

@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import EndorserList from './endorserList';
-import { getEndorsersIfNeeded } from '../actions/endorserActions';
+import FormContainer from './formContainer';
+import EditEndorserForm from './editEndorserForm';
+import ModalWrapper from './modalWrapper';
+import { getEndorsersIfNeeded, saveEndorserEdits } from '../actions/endorserActions';
 
 function selectData(state,props){
   const {endorsers} = state;
@@ -12,7 +15,8 @@ class EndorserTab extends Component{
   constructor(props){
     super(props);
     this.state = {
-      searchTerm:''
+      searchTerm:'',
+      formOpen:false
     }
   }
   componentWillMount(){
@@ -20,6 +24,53 @@ class EndorserTab extends Component{
   }
   searchInputChangeHandler = (term) => {
     this.setState({searchTerm:term});
+  }
+  openEditForm = (id) => {
+    this.setState({
+      formOpen:true,
+      formName: 'Edit Endorser',
+      formData: this.getEndorserById(id) || {}
+    });
+  }
+  getEndorserById(id){
+    return this.props.endorsers.find(
+      endorser => endorser.END_ID === id
+    )
+  }
+  updateEditForm = (id, data) => {
+    this.setState({ formData:{
+      ...this.state.formData,
+      ...data
+    }});
+  }
+
+  closeForm = () => {
+    this.setState({formOpen:false});
+  }
+  saveEdits = () => {
+    const {END_ID} = this.state.formData;
+    var original = this.getEndorserById(END_ID);
+    if (JSON.stringify(this.state.formData) !== JSON.stringify(original)){
+      const { id, date, source, confirmed, quote } = this.state.formData;
+      this.props.dispatch(saveEndorserEdits({
+        id,date,source,confirmed, quote
+      })).then(
+        () => {
+          this.closeForm();
+        }
+      );
+    } else {
+      console.log('nothing to save');
+    }
+  }
+  renderForm(){
+    console.log(this.state.formData);
+    return <FormContainer closeHandler={this.closeForm}
+                   saveHandler = {this.saveEdits}
+                   formName={this.state.formName}>
+      <EditEndorserForm {...this.state.formData}
+            changeHandler={this.updateEditForm}/>
+    </FormContainer>
   }
   render(){
     return <div>
@@ -46,7 +97,12 @@ class EndorserTab extends Component{
                       color:'#e0e0e0'
                     }}></div>
       </div>
-      <EndorserList {...this.props} filter={this.state.searchTerm}/>
+      <EndorserList {...this.props}
+                    filter={this.state.searchTerm}
+                    editClickHandler={this.openEditForm}/>
+      <ModalWrapper isOpen={this.state.formOpen}>
+        { this.state.formOpen ? this.renderForm() : '' }
+      </ModalWrapper>
     </div>;
   }
 }

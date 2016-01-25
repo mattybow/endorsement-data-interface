@@ -11,7 +11,7 @@ const FormCheckBox = (props) => {
                     iconStyle={{
                       fill: '#A06CD5'
                     }}
-                    checked={props.isChecked}
+                    checked={!!props.isChecked}
                     label={props.label}
                     onCheck={props.checkHandler}
   />

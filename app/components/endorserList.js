@@ -12,7 +12,9 @@ export default class EndorserList extends Component{
           <div className="flex-child-expand">
             <span>{endorser.NAME}</span>
           </div>
-          <button className="btn-default no-border">
+          <button className="btn-default no-border" onClick={() => {
+              this.props.editClickHandler(endorser.END_ID);
+            }}>
             edit
           </button>
         </div>

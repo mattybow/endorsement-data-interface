@@ -22,6 +22,10 @@ export function saveEndorsementEdits(data){
   return axios.post('/api/updateEndorsement',data);
 }
 
+export function saveEndorserEdits(data){
+  return axios.post('/api/updateEndorser',data);
+}
+
 export function checkAuth(){
   return axios.post('/auth/check');
 }

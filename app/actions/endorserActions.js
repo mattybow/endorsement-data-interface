@@ -1,4 +1,5 @@
 import {RECEIVE_ENDORSERS} from '../constants/endorserTypes';
+import { openSnackbar } from './snackbarActions';
 import * as api from './api';
 
 export function getEndorsersIfNeeded(){
@@ -18,5 +19,18 @@ function receiveEndorsers(data){
   return {
     type:RECEIVE_ENDORSERS,
     data
+  }
+}
+
+
+export function saveEndorserEdits(){
+  return (dispatch, getState) => {
+    return api.saveEndorserEdits().then(
+      data => {
+        dispatch(openSnackbar('SUCCESS','Changes Saved'));
+        dispatch(getEndorsersIfNeeded());
+      },
+      console.log
+    )
   }
 }

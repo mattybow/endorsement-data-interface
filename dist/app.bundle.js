@@ -20818,11 +20818,11 @@
 
 	var _redux = __webpack_require__(226);
 
-	var _reduxThunk = __webpack_require__(506);
+	var _reduxThunk = __webpack_require__(507);
 
 	var _reduxThunk2 = _interopRequireDefault(_reduxThunk);
 
-	var _reducers = __webpack_require__(507);
+	var _reducers = __webpack_require__(508);
 
 	var reducers = _interopRequireWildcard(_reducers);
 
@@ -25718,11 +25718,11 @@
 
 	var _endorserTab2 = _interopRequireDefault(_endorserTab);
 
-	var _endorsementsTab = __webpack_require__(501);
+	var _endorsementsTab = __webpack_require__(503);
 
 	var _endorsementsTab2 = _interopRequireDefault(_endorsementsTab);
 
-	var _tagsTab = __webpack_require__(505);
+	var _tagsTab = __webpack_require__(506);
 
 	var _tagsTab2 = _interopRequireDefault(_tagsTab);
 
@@ -27152,6 +27152,7 @@
 	exports.addCandidate = addCandidate;
 	exports.addEndorsements = addEndorsements;
 	exports.saveEndorsementEdits = saveEndorsementEdits;
+	exports.saveEndorserEdits = saveEndorserEdits;
 	exports.checkAuth = checkAuth;
 	exports.getCandidates = getCandidates;
 	exports.getEndorsements = getEndorsements;
@@ -27185,6 +27186,10 @@
 
 	function saveEndorsementEdits(data) {
 	  return _axios2.default.post('/api/updateEndorsement', data);
+	}
+
+	function saveEndorserEdits(data) {
+	  return _axios2.default.post('/api/updateEndorser', data);
 	}
 
 	function checkAuth() {
@@ -41593,8 +41598,6 @@
 
 	'use strict';
 
-	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
 	var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
 
 	Object.defineProperty(exports, "__esModule", {
@@ -41651,7 +41654,7 @@
 	      var DESCRIPT = _props.DESCRIPT;
 	      var WIKI_LINK = _props.WIKI_LINK;
 	      var AVATAR = _props.AVATAR;
-	      var isOrg = _props.isOrg;
+	      var IS_ORG = _props.IS_ORG;
 	      var inputChangeHandler = _props.inputChangeHandler;
 	      var removeHandler = _props.removeHandler;
 
@@ -41659,34 +41662,30 @@
 	      return _react2.default.createElement(
 	        'div',
 	        { className: 'input-group' },
-	        _react2.default.createElement(_textInputField2.default, _extends({ label: 'Name',
+	        _react2.default.createElement(_textInputField2.default, { label: 'Name',
 	          value: NAME,
 	          id: END_ID,
 	          changeHandler: function changeHandler(ev) {
 	            inputChangeHandler(END_ID, { NAME: ev.target.value });
-	          }
-	        }, this.props)),
-	        _react2.default.createElement(_textInputField2.default, _extends({ label: 'Description',
+	          } }),
+	        _react2.default.createElement(_textInputField2.default, { label: 'Description',
 	          value: DESCRIPT,
 	          id: END_ID,
 	          changeHandler: function changeHandler(ev) {
 	            inputChangeHandler(END_ID, { DESCRIPT: ev.target.value });
-	          }
-	        }, this.props)),
-	        _react2.default.createElement(_textInputField2.default, _extends({ label: 'Wikipedia',
+	          } }),
+	        _react2.default.createElement(_textInputField2.default, { label: 'Wikipedia',
 	          value: WIKI_LINK,
 	          id: END_ID,
 	          changeHandler: function changeHandler(ev) {
 	            inputChangeHandler(END_ID, { WIKI_LINK: ev.target.value });
-	          }
-	        }, this.props)),
-	        _react2.default.createElement(_textInputField2.default, _extends({ label: 'Avatar',
+	          } }),
+	        _react2.default.createElement(_textInputField2.default, { label: 'Avatar',
 	          value: AVATAR,
 	          id: END_ID,
 	          changeHandler: function changeHandler(ev) {
 	            inputChangeHandler(END_ID, { AVATAR: ev.target.value });
-	          }
-	        }, this.props)),
+	          } }),
 	        _react2.default.createElement(
 	          'div',
 	          { className: 'flex-parent-row' },
@@ -41694,9 +41693,9 @@
 	            'div',
 	            { className: 'flex-child-expand' },
 	            _react2.default.createElement(_formCheckBox2.default, { label: 'is organization',
-	              isChecked: isOrg,
+	              isChecked: IS_ORG,
 	              checkHandler: function checkHandler(ev) {
-	                inputChangeHandler(END_ID, { isOrg: !isOrg });
+	                inputChangeHandler(END_ID, { IS_ORG: !IS_ORG });
 	              } })
 	          ),
 	          _react2.default.createElement(
@@ -41750,7 +41749,7 @@
 	    iconStyle: {
 	      fill: '#A06CD5'
 	    },
-	    checked: props.isChecked,
+	    checked: !!props.isChecked,
 	    label: props.label,
 	    onCheck: props.checkHandler
 	  });
@@ -52823,7 +52822,19 @@
 
 	var _endorserList2 = _interopRequireDefault(_endorserList);
 
-	var _endorserActions = __webpack_require__(499);
+	var _formContainer = __webpack_require__(475);
+
+	var _formContainer2 = _interopRequireDefault(_formContainer);
+
+	var _editEndorserForm = __webpack_require__(499);
+
+	var _editEndorserForm2 = _interopRequireDefault(_editEndorserForm);
+
+	var _modalWrapper = __webpack_require__(472);
+
+	var _modalWrapper2 = _interopRequireDefault(_modalWrapper);
+
+	var _endorserActions = __webpack_require__(501);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -52851,8 +52862,47 @@
 	      _this.setState({ searchTerm: term });
 	    };
 
+	    _this.openEditForm = function (id) {
+	      _this.setState({
+	        formOpen: true,
+	        formName: 'Edit Endorser',
+	        formData: _this.getEndorserById(id) || {}
+	      });
+	    };
+
+	    _this.updateEditForm = function (id, data) {
+	      _this.setState({ formData: _extends({}, _this.state.formData, data) });
+	    };
+
+	    _this.closeForm = function () {
+	      _this.setState({ formOpen: false });
+	    };
+
+	    _this.saveEdits = function () {
+	      var END_ID = _this.state.formData.END_ID;
+
+	      var original = _this.getEndorserById(END_ID);
+	      if (JSON.stringify(_this.state.formData) !== JSON.stringify(original)) {
+	        var _this$state$formData = _this.state.formData;
+	        var id = _this$state$formData.id;
+	        var date = _this$state$formData.date;
+	        var source = _this$state$formData.source;
+	        var confirmed = _this$state$formData.confirmed;
+	        var quote = _this$state$formData.quote;
+
+	        _this.props.dispatch((0, _endorserActions.saveEndorserEdits)({
+	          id: id, date: date, source: source, confirmed: confirmed, quote: quote
+	        })).then(function () {
+	          _this.closeForm();
+	        });
+	      } else {
+	        console.log('nothing to save');
+	      }
+	    };
+
 	    _this.state = {
-	      searchTerm: ''
+	      searchTerm: '',
+	      formOpen: false
 	    };
 	    return _this;
 	  }
@@ -52861,6 +52911,26 @@
 	    key: 'componentWillMount',
 	    value: function componentWillMount() {
 	      this.props.dispatch((0, _endorserActions.getEndorsersIfNeeded)());
+	    }
+	  }, {
+	    key: 'getEndorserById',
+	    value: function getEndorserById(id) {
+	      return this.props.endorsers.find(function (endorser) {
+	        return endorser.END_ID === id;
+	      });
+	    }
+	  }, {
+	    key: 'renderForm',
+	    value: function renderForm() {
+	      console.log(this.state.formData);
+	      return _react2.default.createElement(
+	        _formContainer2.default,
+	        { closeHandler: this.closeForm,
+	          saveHandler: this.saveEdits,
+	          formName: this.state.formName },
+	        _react2.default.createElement(_editEndorserForm2.default, _extends({}, this.state.formData, {
+	          changeHandler: this.updateEditForm }))
+	      );
 	    }
 	  }, {
 	    key: 'render',
@@ -52895,7 +52965,14 @@
 	              color: '#e0e0e0'
 	            } })
 	        ),
-	        _react2.default.createElement(_endorserList2.default, _extends({}, this.props, { filter: this.state.searchTerm }))
+	        _react2.default.createElement(_endorserList2.default, _extends({}, this.props, {
+	          filter: this.state.searchTerm,
+	          editClickHandler: this.openEditForm })),
+	        _react2.default.createElement(
+	          _modalWrapper2.default,
+	          { isOpen: this.state.formOpen },
+	          this.state.formOpen ? this.renderForm() : ''
+	        )
 	      );
 	    }
 	  }]);
@@ -52968,7 +53045,9 @@
 	            ),
 	            _react2.default.createElement(
 	              'button',
-	              { className: 'btn-default no-border' },
+	              { className: 'btn-default no-border', onClick: function onClick() {
+	                  _this2.props.editClickHandler(endorser.END_ID);
+	                } },
 	              'edit'
 	            )
 	          )
@@ -53002,12 +53081,114 @@
 
 	'use strict';
 
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _endorserInput = __webpack_require__(381);
+
+	var _endorserInput2 = _interopRequireDefault(_endorserInput);
+
+	var _avatar = __webpack_require__(255);
+
+	var _avatar2 = _interopRequireDefault(_avatar);
+
+	var _inlineConstants = __webpack_require__(500);
+
+	var _moment = __webpack_require__(280);
+
+	var _moment2 = _interopRequireDefault(_moment);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var barney = _inlineConstants.colors.barney;
+
+	var EditEndorserForm = function EditEndorserForm(props) {
+	  return _react2.default.createElement(
+	    'div',
+	    { className: 'form-contents' },
+	    _react2.default.createElement(
+	      'div',
+	      { className: 'flex-parent-row',
+	        style: {
+	          margin: '20px 0 30px'
+	        } },
+	      _react2.default.createElement(_avatar2.default, { url: props.AVATAR }),
+	      _react2.default.createElement(
+	        'div',
+	        { className: 'flex-child-expand',
+	          style: {
+	            marginLeft: 30
+	          } },
+	        _react2.default.createElement(
+	          'div',
+	          null,
+	          props.NAME
+	        ),
+	        _react2.default.createElement(
+	          'div',
+	          {
+	            style: {
+	              fontSize: '.8em',
+	              color: barney
+	            } },
+	          'updated ',
+	          (0, _moment2.default)(new Date(props.modified)).fromNow()
+	        )
+	      ),
+	      _react2.default.createElement(
+	        'button',
+	        { className: 'btn-default flex-child-start desktop-only' },
+	        _react2.default.createElement(
+	          'span',
+	          null,
+	          'delete endorser'
+	        )
+	      )
+	    ),
+	    _react2.default.createElement(_endorserInput2.default, _extends({}, props, {
+	      inputChangeHandler: props.changeHandler }))
+	  );
+	};
+
+	exports.default = EditEndorserForm;
+
+/***/ },
+/* 500 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	var colors = exports.colors = {
+	  lightBarney: '#A06CD5',
+	  barney: '#8F2CD8',
+	  grey: '#e0e0e0'
+	};
+
+/***/ },
+/* 501 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
 	exports.getEndorsersIfNeeded = getEndorsersIfNeeded;
+	exports.saveEndorserEdits = saveEndorserEdits;
 
-	var _endorserTypes = __webpack_require__(500);
+	var _endorserTypes = __webpack_require__(502);
+
+	var _snackbarActions = __webpack_require__(265);
 
 	var _api = __webpack_require__(238);
 
@@ -53032,8 +53213,17 @@
 	  };
 	}
 
+	function saveEndorserEdits() {
+	  return function (dispatch, getState) {
+	    return api.saveEndorserEdits().then(function (data) {
+	      dispatch((0, _snackbarActions.openSnackbar)('SUCCESS', 'Changes Saved'));
+	      dispatch(getEndorsersIfNeeded());
+	    }, console.log);
+	  };
+	}
+
 /***/ },
-/* 500 */
+/* 502 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -53045,7 +53235,7 @@
 	var RECEIVE_ENDORSERS = exports.RECEIVE_ENDORSERS = 'RECEIVE_ENDORSERS';
 
 /***/ },
-/* 501 */
+/* 503 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -53078,11 +53268,11 @@
 
 	var _addEndorsementForm2 = _interopRequireDefault(_addEndorsementForm);
 
-	var _editEndorsementForm = __webpack_require__(502);
+	var _editEndorsementForm = __webpack_require__(504);
 
 	var _editEndorsementForm2 = _interopRequireDefault(_editEndorsementForm);
 
-	var _endorsementList = __webpack_require__(504);
+	var _endorsementList = __webpack_require__(505);
 
 	var _endorsementList2 = _interopRequireDefault(_endorsementList);
 
@@ -53238,7 +53428,7 @@
 	exports.default = (0, _reactRedux.connect)(selectData)(EndorsementsTab);
 
 /***/ },
-/* 502 */
+/* 504 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -53261,7 +53451,7 @@
 
 	var _util = __webpack_require__(496);
 
-	var _inlineConstants = __webpack_require__(503);
+	var _inlineConstants = __webpack_require__(500);
 
 	var _moment = __webpack_require__(280);
 
@@ -53424,22 +53614,7 @@
 	exports.default = EditEndorsementForm;
 
 /***/ },
-/* 503 */
-/***/ function(module, exports) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	var colors = exports.colors = {
-	  lightBarney: '#A06CD5',
-	  barney: '#8F2CD8',
-	  grey: '#e0e0e0'
-	};
-
-/***/ },
-/* 504 */
+/* 505 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -53462,7 +53637,7 @@
 
 	var _avatar2 = _interopRequireDefault(_avatar);
 
-	var _inlineConstants = __webpack_require__(503);
+	var _inlineConstants = __webpack_require__(500);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -53581,7 +53756,7 @@
 	exports.default = EndorsementList;
 
 /***/ },
-/* 505 */
+/* 506 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -53630,7 +53805,7 @@
 	exports.default = TagsTab;
 
 /***/ },
-/* 506 */
+/* 507 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -53652,7 +53827,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 507 */
+/* 508 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -53661,7 +53836,7 @@
 	  value: true
 	});
 
-	var _tweets = __webpack_require__(508);
+	var _tweets = __webpack_require__(509);
 
 	Object.defineProperty(exports, 'tweets', {
 	  enumerable: true,
@@ -53670,7 +53845,7 @@
 	  }
 	});
 
-	var _login = __webpack_require__(509);
+	var _login = __webpack_require__(510);
 
 	Object.defineProperty(exports, 'loginInfo', {
 	  enumerable: true,
@@ -53679,7 +53854,7 @@
 	  }
 	});
 
-	var _candidates = __webpack_require__(510);
+	var _candidates = __webpack_require__(511);
 
 	Object.defineProperty(exports, 'candidates', {
 	  enumerable: true,
@@ -53688,7 +53863,7 @@
 	  }
 	});
 
-	var _endorsementFormData = __webpack_require__(511);
+	var _endorsementFormData = __webpack_require__(512);
 
 	Object.defineProperty(exports, 'endorsementFormData', {
 	  enumerable: true,
@@ -53697,7 +53872,7 @@
 	  }
 	});
 
-	var _candidateFormData = __webpack_require__(512);
+	var _candidateFormData = __webpack_require__(513);
 
 	Object.defineProperty(exports, 'candidateFormData', {
 	  enumerable: true,
@@ -53706,7 +53881,7 @@
 	  }
 	});
 
-	var _snackbarData = __webpack_require__(513);
+	var _snackbarData = __webpack_require__(514);
 
 	Object.defineProperty(exports, 'snackbarData', {
 	  enumerable: true,
@@ -53715,7 +53890,7 @@
 	  }
 	});
 
-	var _tags = __webpack_require__(514);
+	var _tags = __webpack_require__(515);
 
 	Object.defineProperty(exports, 'tags', {
 	  enumerable: true,
@@ -53724,7 +53899,7 @@
 	  }
 	});
 
-	var _endorsers = __webpack_require__(515);
+	var _endorsers = __webpack_require__(516);
 
 	Object.defineProperty(exports, 'endorsers', {
 	  enumerable: true,
@@ -53733,7 +53908,7 @@
 	  }
 	});
 
-	var _endorsements = __webpack_require__(516);
+	var _endorsements = __webpack_require__(517);
 
 	Object.defineProperty(exports, 'endorsements', {
 	  enumerable: true,
@@ -53743,7 +53918,7 @@
 	});
 
 /***/ },
-/* 508 */
+/* 509 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -53774,7 +53949,7 @@
 	}
 
 /***/ },
-/* 509 */
+/* 510 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -53803,7 +53978,7 @@
 	}
 
 /***/ },
-/* 510 */
+/* 511 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -53832,7 +54007,7 @@
 	}
 
 /***/ },
-/* 511 */
+/* 512 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -53919,7 +54094,7 @@
 	}
 
 /***/ },
-/* 512 */
+/* 513 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -53959,7 +54134,7 @@
 	}
 
 /***/ },
-/* 513 */
+/* 514 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -54001,7 +54176,7 @@
 	}
 
 /***/ },
-/* 514 */
+/* 515 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -54034,7 +54209,7 @@
 	}
 
 /***/ },
-/* 515 */
+/* 516 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -54044,7 +54219,7 @@
 	});
 	exports.default = endorsers;
 
-	var _endorserTypes = __webpack_require__(500);
+	var _endorserTypes = __webpack_require__(502);
 
 	function endorsers() {
 	  var state = arguments.length <= 0 || arguments[0] === undefined ? [] : arguments[0];
@@ -54059,7 +54234,7 @@
 	}
 
 /***/ },
-/* 516 */
+/* 517 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
