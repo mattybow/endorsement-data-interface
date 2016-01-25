@@ -126,10 +126,6 @@ a{
   border:none;
 }
 
-.list-item-spacing{
-  padding: 10px 0;
-  margin-bottom:1px;
-}
 
 .flex-parent-row{
   display:flex;
@@ -141,6 +137,9 @@ a{
 }
 .flex-row-center{
   justify-content:center;
+}
+.flex-row-end{
+  justify-content:flex-end;
 }
 .flex-child-expand{
   flex:1 1 auto;

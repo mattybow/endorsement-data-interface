@@ -18,6 +18,10 @@ export function addEndorsements(data){
   return axios.post('/api/addEndorsements',data);
 }
 
+export function saveEndorsementEdits(data){
+  return axios.post('/api/updateEndorsement',data);
+}
+
 export function checkAuth(){
   return axios.post('/auth/check');
 }

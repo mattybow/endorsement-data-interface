@@ -3,13 +3,14 @@ import React, { PropTypes } from 'react';
 const FormControls = (props) => {
 
   return <div style={{
-      position:'relative',
       zIndex:1
     }}>
     <div className="form-controls mobile-only flex-parent-row"
          style={{
            height:'3em',
-           marginBottom:'1em'
+           marginBottom:'1em',
+           position:'relative',
+           zIndex:1
          }}>
       <button className="no-border btn-naked flex-child-expand"
               style={{

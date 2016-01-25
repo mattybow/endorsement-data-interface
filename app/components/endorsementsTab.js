@@ -6,7 +6,7 @@ import AddEndorsementForm from './addEndorsementForm';
 import EditEndorsementForm from './editEndorsementForm';
 import EndorsementList from './endorsementList';
 import { connect } from 'react-redux';
-import { getEndorsements } from '../actions/endorsementActions';
+import { getEndorsements, saveEndorsementEdits } from '../actions/endorsementActions';
 import { saveEndorsement, clearEndorsementForm } from '../actions/endorsementFormActions';
 
 
@@ -36,17 +36,16 @@ class EndorsementsTab extends Component{
       formName: 'Add Endorsement'
     });
   }
-  openEditForm = (data) => {
+  openEditForm = (id) => {
     this.setState({
       formOpen:true,
       formName: 'Edit Endorsement',
       formData: this.props.endorsements.find(
-        endorsement => endorsement.id === data.id
+        endorsement => endorsement.id === id
       ) || {}
     });
   }
   updateEditForm = (data) => {
-    console.log({...this.state, ...data});
     this.setState({ formData:{
       ...this.state.formData,
       ...data
@@ -58,20 +57,38 @@ class EndorsementsTab extends Component{
   closeForm = () => {
     this.setState({formOpen:false});
   }
-  saveForm = () => {
+  saveAddForm = () => {
     console.log('save form');
     this.props.dispatch(saveEndorsement());
   }
+  saveEdits = () => {
+    const {id} = this.state.formData;
+    var original = this.props.endorsements.find(
+      endorsement => endorsement.id === id
+    );
+    if (JSON.stringify(this.state.formData) !== JSON.stringify(original)){
+      const { id, date, source, confirmed } = this.state.formData;
+      this.props.dispatch(saveEndorsementEdits({
+        id,date,source,confirmed
+      }));
+    } else {
+      console.log('nothing to save');
+    }
+  }
   renderForm(){
     const isAddForm = this.state.formName === 'Add Endorsement';
-    return <FormContainer closeHandler={this.closeForm}
-                                   saveHandler = {this.saveForm}
-                                   clearHandler = {this.clearForm}
-                                   formName={this.state.formName}>
-      { isAddForm ?
-        <AddEndorsementForm />
-        : <EditEndorsementForm {...this.state.formData}
-            changeHandler={this.updateEditForm}/> }
+    return isAddForm ?
+    <FormContainer closeHandler={this.closeForm}
+                   saveHandler = {this.saveAddForm}
+                   clearHandler = {this.clearForm}
+                   formName={this.state.formName}>
+      <AddEndorsementForm />
+    </FormContainer> :
+    <FormContainer closeHandler={this.closeForm}
+                   saveHandler = {this.saveEdits}
+                   formName={this.state.formName}>
+      <EditEndorsementForm {...this.state.formData}
+            changeHandler={this.updateEditForm}/>
     </FormContainer>
   }
   render(){

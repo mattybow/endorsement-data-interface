@@ -2,6 +2,7 @@ import express from 'express';
 import mongodb from '../mongoAccess';
 import mysqldb from '../mysqlAccess';
 import MysqlTransaction from '../mysqlTransaction';
+import moment from 'moment';
 const debug = require('debug')('endorsement-data-interface:api-routes');
 const transaction = new MysqlTransaction(mysqldb);
 const router = express.Router();
@@ -40,7 +41,7 @@ router.get('/candidate',(req,res) => {
 
 router.get('/endorsers',(req,res) => {
   if(req.session.passport){
-    mysqldb.query('SELECT * FROM ENDORSERS;', (err,results) => {
+    mysqldb.query('SELECT * FROM ENDORSERS ORDER BY END_ID DESC;', (err,results) => {
       res.json(results);
     });
   } else {
@@ -60,17 +61,39 @@ router.get('/endorsements',(req,res) => {
                         c.can_id,
                         c.avatar can_avatar,
                         e.date,
-                        e.source
+                        e.source,
+                        e.confirmed,
+                        e.modified
                     FROM
                         endorsements e
                             JOIN
                         endorsers ee ON e.end_id = ee.end_id
                             JOIN
                         candidates c ON e.can_id = c.can_id
-                    ORDER BY e.date DESC;`;
+                    ORDER BY e.date DESC, e.modified DESC;`;
     mysqldb.query(query, (err,results) => {
       res.json(results);
     });
+  } else {
+    res.status(401)
+       .json([]);
+  }
+});
+
+router.post('/updateEndorsement',(req,res) => {
+  if(req.session.passport){
+    const { date, source, confirmed, id } = req.body;
+    const txn = transaction.create();
+    txn.addTo(`UPDATE ENDORSEMENTS
+                SET DATE=${mysqldb.escape(new Date(date))},
+                    SOURCE=${mysqldb.escape(source)},
+                    CONFIRMED=${mysqldb.escape(confirmed)}
+                WHERE ID=${mysqldb.escape(id)};`)
+        .execute()
+        .then( result => {
+          const { code, ok } = result;
+          res.status(code).json({ok});
+        });
   } else {
     res.status(401)
        .json([]);

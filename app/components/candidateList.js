@@ -11,7 +11,7 @@ export default class CandidateList extends Component{
             <img src={AVATAR} alt="" style={{maxWidth:60}}/>
           </div>
           <div style={{borderBottom:'1px solid #E7E7EC', marginLeft:20, padding:'20px 0'}} className="flex-parent-row flex-child-expand">
-            <div className="flex-child-expand" style={{fontSize:'1.2em'}}>
+            <div className="flex-child-expand">
               <span>{FIRST_NAME}&nbsp;</span>
               <span>{LAST_NAME}</span>
             </div>

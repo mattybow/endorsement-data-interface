@@ -20818,11 +20818,11 @@
 
 	var _redux = __webpack_require__(226);
 
-	var _reduxThunk = __webpack_require__(505);
+	var _reduxThunk = __webpack_require__(506);
 
 	var _reduxThunk2 = _interopRequireDefault(_reduxThunk);
 
-	var _reducers = __webpack_require__(506);
+	var _reducers = __webpack_require__(507);
 
 	var reducers = _interopRequireWildcard(_reducers);
 
@@ -25722,7 +25722,7 @@
 
 	var _endorsementsTab2 = _interopRequireDefault(_endorsementsTab);
 
-	var _tagsTab = __webpack_require__(504);
+	var _tagsTab = __webpack_require__(505);
 
 	var _tagsTab2 = _interopRequireDefault(_tagsTab);
 
@@ -27151,6 +27151,7 @@
 	exports.deleteTweet = deleteTweet;
 	exports.addCandidate = addCandidate;
 	exports.addEndorsements = addEndorsements;
+	exports.saveEndorsementEdits = saveEndorsementEdits;
 	exports.checkAuth = checkAuth;
 	exports.getCandidates = getCandidates;
 	exports.getEndorsements = getEndorsements;
@@ -27180,6 +27181,10 @@
 
 	function addEndorsements(data) {
 	  return _axios2.default.post('/api/addEndorsements', data);
+	}
+
+	function saveEndorsementEdits(data) {
+	  return _axios2.default.post('/api/updateEndorsement', data);
 	}
 
 	function checkAuth() {
@@ -29103,7 +29108,7 @@
 	exports.push([module.id, "@import url(https://fonts.googleapis.com/css?family=Source+Code+Pro:400,300);", ""]);
 
 	// module
-	exports.push([module.id, "@charset \"UTF-8\";\n@font-face {\n  font-family: 'fontello';\n  src: url(" + __webpack_require__(273) + ");\n  src: url(" + __webpack_require__(273) + "#iefix) format(\"embedded-opentype\"), url(" + __webpack_require__(274) + ") format(\"woff\"), url(" + __webpack_require__(275) + ") format(\"truetype\"), url(" + __webpack_require__(276) + "#fontello) format(\"svg\");\n  font-weight: normal;\n  font-style: normal;\n}\n\n/* Chrome hack: SVG is rendered more smooth in Windozze. 100% magic, uncomment if you need it. */\n/* Note, that will break hinting! In other OS-es font will be not as sharp as it could be */\n/*\n@media screen and (-webkit-min-device-pixel-ratio:0) {\n  @font-face {\n    font-family: 'fontello';\n    src: url('../font/fontello.svg?2259816#fontello') format('svg');\n  }\n}\n*/\n[class^=\"icon-\"]:before, [class*=\" icon-\"]:before {\n  font-family: \"fontello\";\n  font-style: normal;\n  font-weight: normal;\n  speak: none;\n  display: inline-block;\n  text-decoration: inherit;\n  width: 1em;\n  margin-right: .2em;\n  text-align: center;\n  /* opacity: .8; */\n  /* For safety - reset parent styles, that can break glyph codes*/\n  font-variant: normal;\n  text-transform: none;\n  /* fix buttons height, for twitter bootstrap */\n  line-height: 1em;\n  /* Animation center compensation - margins should be symmetric */\n  /* remove if not needed */\n  margin-left: .2em;\n  /* you can be more comfortable with increased icons size */\n  /* font-size: 120%; */\n  /* Font smoothing. That was taken from TWBS */\n  -webkit-font-smoothing: antialiased;\n  -moz-osx-font-smoothing: grayscale;\n  /* Uncomment for 3D effect */\n  /* text-shadow: 1px 1px 1px rgba(127, 127, 127, 0.3); */\n}\n\n.icon-twitter:before {\n  content: '\\E800';\n}\n\n/* '' */\n.icon-check-mark:before {\n  content: '\\E801';\n}\n\n/* '' */\n.icon-close:before {\n  content: '\\E802';\n}\n\n/* '' */\n.icon-label:before {\n  content: '\\E803';\n}\n\n/* '' */\n.icon-arrow:before {\n  content: '\\E804';\n}\n\n/* '' */\n.icon-trash-bin:before {\n  content: '\\E805';\n}\n\n/* '' */\n.icon-home:before {\n  content: '\\E806';\n}\n\n/* '' */\n.icon-chat:before {\n  content: '\\E807';\n}\n\n/* '' */\n.icon-plus:before {\n  content: '\\E808';\n}\n\n/* '' */\n.icon-pencil:before {\n  content: '\\E809';\n}\n\n/* '' */\n.icon-star:before {\n  content: '\\E80A';\n}\n\n/* '' */\n.icon-empty-blank:before {\n  content: '\\E80B';\n}\n\n/* '' */\n.icon-flag:before {\n  content: '\\E80C';\n}\n\n/* '' */\n.icon-search:before {\n  content: '\\E80D';\n}\n\n/* '' */\n@font-face {\n  font-family: 'sarial';\n  src: url(" + __webpack_require__(277) + ") format(\"truetype\");\n  font-weight: normal;\n  font-style: normal;\n}\n\n.icon-arrow.back:before {\n  -webkit-transform: rotateZ(180deg);\n          transform: rotateZ(180deg);\n  margin-right: 0;\n}\n\nhtml {\n  -webkit-tap-highlight-color: transparent;\n}\n\nbody {\n  color: black;\n  font-family: 'Source Code Pro';\n}\n\n.title-font {\n  font-family: \"sarial\";\n}\n\nbutton {\n  background-color: transparent;\n  border: 1px solid #8F2CD8;\n  color: #8F2CD8;\n  outline: none;\n}\n\na {\n  color: black;\n  text-decoration: none;\n}\n\n.btn-default {\n  padding: .5em 1em;\n}\n\n.btn-naked {\n  padding: 0;\n}\n\n.btn-block {\n  display: block;\n}\n\n.pointer:hover {\n  cursor: pointer;\n}\n\n.no-border {\n  border: none;\n}\n\n.list-item-spacing {\n  padding: 10px 0;\n  margin-bottom: 1px;\n}\n\n.flex-parent-row {\n  display: -webkit-flex;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-flex-flow: row nowrap;\n      -ms-flex-flow: row nowrap;\n          flex-flow: row nowrap;\n  -webkit-align-items: center;\n      -ms-flex-align: center;\n          align-items: center;\n}\n\n.flex-parent-row.wrap {\n  -webkit-flex-flow: row wrap;\n      -ms-flex-flow: row wrap;\n          flex-flow: row wrap;\n}\n\n.flex-row-center {\n  -webkit-justify-content: center;\n      -ms-flex-pack: center;\n          justify-content: center;\n}\n\n.flex-child-expand {\n  -webkit-flex: 1 1 auto;\n      -ms-flex: 1 1 auto;\n          flex: 1 1 auto;\n}\n\n.flex-child-end {\n  -webkit-align-self: flex-end;\n      -ms-flex-item-align: end;\n          align-self: flex-end;\n}\n\n.flex-child-start {\n  -webkit-align-self: flex-start;\n      -ms-flex-item-align: start;\n          align-self: flex-start;\n}\n\n.icon-md {\n  font-size: 1.5em;\n}\n\n.icon-lg {\n  font-size: 2em;\n}\n\n.icon-lg.icon-close {\n  font-size: 1.6em;\n  margin: 0 .2em;\n}\n\n.icon-naked:before {\n  margin: 0;\n}\n\n.touch .modal-wrapper {\n  -webkit-overflow-scrolling: touch;\n}\n\n#tab-contents {\n  padding: 0 10%;\n  max-width: 600px;\n  margin: 20px auto;\n}\n\n.fader {\n  transition: opacity .2s ease;\n  opacity: 1;\n}\n\n.fader.faded {\n  opacity: 0;\n  pointer-events: none;\n}\n\n.floating-add-button {\n  position: fixed;\n  bottom: 3em;\n  right: 3em;\n}\n\n@media (max-width: 414px) {\n  .desktop-only {\n    display: none;\n  }\n}\n\n@media (min-width: 415px) {\n  .mobile-only {\n    display: none;\n  }\n  .btn-default:hover {\n    cursor: pointer;\n    color: #102B3F;\n  }\n}\n\n@media (max-width: 414px) {\n  #tab-contents {\n    padding: 0;\n    margin: 10px;\n  }\n  .floating-add-button {\n    bottom: 4.5em;\n    right: 1em;\n  }\n}\n", ""]);
+	exports.push([module.id, "@charset \"UTF-8\";\n@font-face {\n  font-family: 'fontello';\n  src: url(" + __webpack_require__(273) + ");\n  src: url(" + __webpack_require__(273) + "#iefix) format(\"embedded-opentype\"), url(" + __webpack_require__(274) + ") format(\"woff\"), url(" + __webpack_require__(275) + ") format(\"truetype\"), url(" + __webpack_require__(276) + "#fontello) format(\"svg\");\n  font-weight: normal;\n  font-style: normal;\n}\n\n/* Chrome hack: SVG is rendered more smooth in Windozze. 100% magic, uncomment if you need it. */\n/* Note, that will break hinting! In other OS-es font will be not as sharp as it could be */\n/*\n@media screen and (-webkit-min-device-pixel-ratio:0) {\n  @font-face {\n    font-family: 'fontello';\n    src: url('../font/fontello.svg?2259816#fontello') format('svg');\n  }\n}\n*/\n[class^=\"icon-\"]:before, [class*=\" icon-\"]:before {\n  font-family: \"fontello\";\n  font-style: normal;\n  font-weight: normal;\n  speak: none;\n  display: inline-block;\n  text-decoration: inherit;\n  width: 1em;\n  margin-right: .2em;\n  text-align: center;\n  /* opacity: .8; */\n  /* For safety - reset parent styles, that can break glyph codes*/\n  font-variant: normal;\n  text-transform: none;\n  /* fix buttons height, for twitter bootstrap */\n  line-height: 1em;\n  /* Animation center compensation - margins should be symmetric */\n  /* remove if not needed */\n  margin-left: .2em;\n  /* you can be more comfortable with increased icons size */\n  /* font-size: 120%; */\n  /* Font smoothing. That was taken from TWBS */\n  -webkit-font-smoothing: antialiased;\n  -moz-osx-font-smoothing: grayscale;\n  /* Uncomment for 3D effect */\n  /* text-shadow: 1px 1px 1px rgba(127, 127, 127, 0.3); */\n}\n\n.icon-twitter:before {\n  content: '\\E800';\n}\n\n/* '' */\n.icon-check-mark:before {\n  content: '\\E801';\n}\n\n/* '' */\n.icon-close:before {\n  content: '\\E802';\n}\n\n/* '' */\n.icon-label:before {\n  content: '\\E803';\n}\n\n/* '' */\n.icon-arrow:before {\n  content: '\\E804';\n}\n\n/* '' */\n.icon-trash-bin:before {\n  content: '\\E805';\n}\n\n/* '' */\n.icon-home:before {\n  content: '\\E806';\n}\n\n/* '' */\n.icon-chat:before {\n  content: '\\E807';\n}\n\n/* '' */\n.icon-plus:before {\n  content: '\\E808';\n}\n\n/* '' */\n.icon-pencil:before {\n  content: '\\E809';\n}\n\n/* '' */\n.icon-star:before {\n  content: '\\E80A';\n}\n\n/* '' */\n.icon-empty-blank:before {\n  content: '\\E80B';\n}\n\n/* '' */\n.icon-flag:before {\n  content: '\\E80C';\n}\n\n/* '' */\n.icon-search:before {\n  content: '\\E80D';\n}\n\n/* '' */\n@font-face {\n  font-family: 'sarial';\n  src: url(" + __webpack_require__(277) + ") format(\"truetype\");\n  font-weight: normal;\n  font-style: normal;\n}\n\n.icon-arrow.back:before {\n  -webkit-transform: rotateZ(180deg);\n          transform: rotateZ(180deg);\n  margin-right: 0;\n}\n\nhtml {\n  -webkit-tap-highlight-color: transparent;\n}\n\nbody {\n  color: black;\n  font-family: 'Source Code Pro';\n}\n\n.title-font {\n  font-family: \"sarial\";\n}\n\nbutton {\n  background-color: transparent;\n  border: 1px solid #8F2CD8;\n  color: #8F2CD8;\n  outline: none;\n}\n\na {\n  color: black;\n  text-decoration: none;\n}\n\n.btn-default {\n  padding: .5em 1em;\n}\n\n.btn-naked {\n  padding: 0;\n}\n\n.btn-block {\n  display: block;\n}\n\n.pointer:hover {\n  cursor: pointer;\n}\n\n.no-border {\n  border: none;\n}\n\n.flex-parent-row {\n  display: -webkit-flex;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-flex-flow: row nowrap;\n      -ms-flex-flow: row nowrap;\n          flex-flow: row nowrap;\n  -webkit-align-items: center;\n      -ms-flex-align: center;\n          align-items: center;\n}\n\n.flex-parent-row.wrap {\n  -webkit-flex-flow: row wrap;\n      -ms-flex-flow: row wrap;\n          flex-flow: row wrap;\n}\n\n.flex-row-center {\n  -webkit-justify-content: center;\n      -ms-flex-pack: center;\n          justify-content: center;\n}\n\n.flex-row-end {\n  -webkit-justify-content: flex-end;\n      -ms-flex-pack: end;\n          justify-content: flex-end;\n}\n\n.flex-child-expand {\n  -webkit-flex: 1 1 auto;\n      -ms-flex: 1 1 auto;\n          flex: 1 1 auto;\n}\n\n.flex-child-end {\n  -webkit-align-self: flex-end;\n      -ms-flex-item-align: end;\n          align-self: flex-end;\n}\n\n.flex-child-start {\n  -webkit-align-self: flex-start;\n      -ms-flex-item-align: start;\n          align-self: flex-start;\n}\n\n.icon-md {\n  font-size: 1.5em;\n}\n\n.icon-lg {\n  font-size: 2em;\n}\n\n.icon-lg.icon-close {\n  font-size: 1.6em;\n  margin: 0 .2em;\n}\n\n.icon-naked:before {\n  margin: 0;\n}\n\n.touch .modal-wrapper {\n  -webkit-overflow-scrolling: touch;\n}\n\n#tab-contents {\n  padding: 0 10%;\n  max-width: 600px;\n  margin: 20px auto;\n}\n\n.fader {\n  transition: opacity .2s ease;\n  opacity: 1;\n}\n\n.fader.faded {\n  opacity: 0;\n  pointer-events: none;\n}\n\n.floating-add-button {\n  position: fixed;\n  bottom: 3em;\n  right: 3em;\n}\n\n@media (max-width: 414px) {\n  .desktop-only {\n    display: none;\n  }\n}\n\n@media (min-width: 415px) {\n  .mobile-only {\n    display: none;\n  }\n  .btn-default:hover {\n    cursor: pointer;\n    color: #102B3F;\n  }\n}\n\n@media (max-width: 414px) {\n  #tab-contents {\n    padding: 0;\n    margin: 10px;\n  }\n  .floating-add-button {\n    bottom: 4.5em;\n    right: 1em;\n  }\n}\n", ""]);
 
 	// exports
 
@@ -41534,8 +41539,11 @@
 	  value: true
 	});
 	exports.getEndorsements = getEndorsements;
+	exports.saveEndorsementEdits = saveEndorsementEdits;
 
 	var _endorsementTypes = __webpack_require__(380);
+
+	var _snackbarActions = __webpack_require__(265);
 
 	var _api = __webpack_require__(238);
 
@@ -41555,6 +41563,14 @@
 	  return {
 	    type: _endorsementTypes.RECEIVE_ENDORSEMENTS,
 	    data: data
+	  };
+	}
+
+	function saveEndorsementEdits(data) {
+	  return function (dispatch, getState) {
+	    api.saveEndorsementEdits(data).then(function (data) {
+	      dispatch((0, _snackbarActions.openSnackbar)('SUCCESS', 'Changes Saved'));
+	    }, console.log);
 	  };
 	}
 
@@ -50682,7 +50698,6 @@
 	  return _react2.default.createElement(
 	    'div',
 	    { style: {
-	        position: 'relative',
 	        zIndex: 1
 	      } },
 	    _react2.default.createElement(
@@ -50690,7 +50705,9 @@
 	      { className: 'form-controls mobile-only flex-parent-row',
 	        style: {
 	          height: '3em',
-	          marginBottom: '1em'
+	          marginBottom: '1em',
+	          position: 'relative',
+	          zIndex: 1
 	        } },
 	      _react2.default.createElement(
 	        'button',
@@ -51019,7 +51036,7 @@
 	            { style: { borderBottom: '1px solid #E7E7EC', marginLeft: 20, padding: '20px 0' }, className: "flex-parent-row flex-child-expand" },
 	            _react2.default.createElement(
 	              "div",
-	              { className: "flex-child-expand", style: { fontSize: '1.2em' } },
+	              { className: "flex-child-expand" },
 	              _react2.default.createElement(
 	                "span",
 	                null,
@@ -52941,7 +52958,7 @@
 	            { style: { borderBottom: '1px solid #E7E7EC', marginLeft: 20, padding: '20px 0' }, className: 'flex-parent-row flex-child-expand' },
 	            _react2.default.createElement(
 	              'div',
-	              { className: 'flex-child-expand', style: { fontSize: '1.2em' } },
+	              { className: 'flex-child-expand' },
 	              _react2.default.createElement(
 	                'span',
 	                null,
@@ -53064,7 +53081,7 @@
 
 	var _editEndorsementForm2 = _interopRequireDefault(_editEndorsementForm);
 
-	var _endorsementList = __webpack_require__(503);
+	var _endorsementList = __webpack_require__(504);
 
 	var _endorsementList2 = _interopRequireDefault(_endorsementList);
 
@@ -53103,18 +53120,17 @@
 	      });
 	    };
 
-	    _this.openEditForm = function (data) {
+	    _this.openEditForm = function (id) {
 	      _this.setState({
 	        formOpen: true,
 	        formName: 'Edit Endorsement',
 	        formData: _this.props.endorsements.find(function (endorsement) {
-	          return endorsement.id === data.id;
+	          return endorsement.id === id;
 	        }) || {}
 	      });
 	    };
 
 	    _this.updateEditForm = function (data) {
-	      console.log(_extends({}, _this.state, data));
 	      _this.setState({ formData: _extends({}, _this.state.formData, data) });
 	    };
 
@@ -53126,9 +53142,30 @@
 	      _this.setState({ formOpen: false });
 	    };
 
-	    _this.saveForm = function () {
+	    _this.saveAddForm = function () {
 	      console.log('save form');
 	      _this.props.dispatch((0, _endorsementFormActions.saveEndorsement)());
+	    };
+
+	    _this.saveEdits = function () {
+	      var id = _this.state.formData.id;
+
+	      var original = _this.props.endorsements.find(function (endorsement) {
+	        return endorsement.id === id;
+	      });
+	      if (JSON.stringify(_this.state.formData) !== JSON.stringify(original)) {
+	        var _this$state$formData = _this.state.formData;
+	        var _id = _this$state$formData.id;
+	        var date = _this$state$formData.date;
+	        var source = _this$state$formData.source;
+	        var confirmed = _this$state$formData.confirmed;
+
+	        _this.props.dispatch((0, _endorsementActions.saveEndorsementEdits)({
+	          id: _id, date: date, source: source, confirmed: confirmed
+	        }));
+	      } else {
+	        console.log('nothing to save');
+	      }
 	    };
 
 	    _this.state = {
@@ -53152,13 +53189,19 @@
 	    key: 'renderForm',
 	    value: function renderForm() {
 	      var isAddForm = this.state.formName === 'Add Endorsement';
-	      return _react2.default.createElement(
+	      return isAddForm ? _react2.default.createElement(
 	        _formContainer2.default,
 	        { closeHandler: this.closeForm,
-	          saveHandler: this.saveForm,
+	          saveHandler: this.saveAddForm,
 	          clearHandler: this.clearForm,
 	          formName: this.state.formName },
-	        isAddForm ? _react2.default.createElement(_addEndorsementForm2.default, null) : _react2.default.createElement(_editEndorsementForm2.default, _extends({}, this.state.formData, {
+	        _react2.default.createElement(_addEndorsementForm2.default, null)
+	      ) : _react2.default.createElement(
+	        _formContainer2.default,
+	        { closeHandler: this.closeForm,
+	          saveHandler: this.saveEdits,
+	          formName: this.state.formName },
+	        _react2.default.createElement(_editEndorsementForm2.default, _extends({}, this.state.formData, {
 	          changeHandler: this.updateEditForm }))
 	      );
 	    }
@@ -53211,7 +53254,15 @@
 
 	var _util = __webpack_require__(496);
 
+	var _inlineConstants = __webpack_require__(503);
+
+	var _moment = __webpack_require__(280);
+
+	var _moment2 = _interopRequireDefault(_moment);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var barney = _inlineConstants.colors.barney;
 
 	var EditEndorsementForm = function EditEndorsementForm(props) {
 	  var id = props.id;
@@ -53221,6 +53272,9 @@
 	  var source = props.source;
 	  var endorser = props.endorser;
 	  var candidate = props.candidate;
+	  var confirmed = props.confirmed;
+	  var modified = props.modified;
+	  var quote = props.quote;
 
 	  return _react2.default.createElement(
 	    'div',
@@ -53273,6 +53327,15 @@
 	          'div',
 	          null,
 	          candidate
+	        ),
+	        _react2.default.createElement(
+	          'div',
+	          { style: {
+	              fontSize: '.8em',
+	              color: barney
+	            } },
+	          'updated ',
+	          (0, _moment2.default)(new Date(modified)).fromNow()
 	        )
 	      ),
 	      _react2.default.createElement(
@@ -53297,6 +53360,38 @@
 	        )
 	      )
 	    ),
+	    _react2.default.createElement(
+	      'div',
+	      null,
+	      _react2.default.createElement(
+	        'div',
+	        { className: 'flex-parent-row flex-row-end' },
+	        _react2.default.createElement(
+	          'div',
+	          null,
+	          confirmed ? 'Confirmed' : 'Not Confirmed'
+	        ),
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'box flex-parent-row flex-row-center',
+	            style: {
+	              marginLeft: 10,
+	              width: 30,
+	              height: 30,
+	              borderWidth: 1,
+	              borderStyle: 'solid',
+	              borderColor: confirmed ? barney : 'rgba(0,0,0,.3)'
+	            },
+	            onClick: function onClick() {
+	              props.changeHandler({ confirmed: !confirmed });
+	            } },
+	          confirmed ? _react2.default.createElement('span', { className: 'icon-check-mark',
+	            style: {
+	              color: confirmed ? barney : 'inherit'
+	            } }) : ''
+	        )
+	      )
+	    ),
 	    _react2.default.createElement(_textInputField2.default, { label: 'Date',
 	      value: (0, _util.convertDate)(date),
 	      placeholder: 'YYYY-MM-DD',
@@ -53309,6 +53404,12 @@
 	      id: id,
 	      changeHandler: function changeHandler(ev) {
 	        props.changeHandler({ source: ev.target.value });
+	      } }),
+	    _react2.default.createElement(_textInputField2.default, { label: 'Quote',
+	      value: quote,
+	      id: id,
+	      changeHandler: function changeHandler(ev) {
+	        props.changeHandler({ quote: ev.target.value });
 	      } })
 	  );
 	};
@@ -53317,6 +53418,21 @@
 
 /***/ },
 /* 503 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	var colors = exports.colors = {
+	  lightBarney: '#A06CD5',
+	  barney: '#8F2CD8',
+	  grey: '#e0e0e0'
+	};
+
+/***/ },
+/* 504 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -53339,6 +53455,8 @@
 
 	var _avatar2 = _interopRequireDefault(_avatar);
 
+	var _inlineConstants = __webpack_require__(503);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -53346,6 +53464,9 @@
 	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var barney = _inlineConstants.colors.barney;
+	var grey = _inlineConstants.colors.grey;
 
 	var EndorsementList = (function (_Component) {
 	  _inherits(EndorsementList, _Component);
@@ -53369,6 +53490,7 @@
 	        var candidate = endorsement.candidate;
 	        var id = endorsement.id;
 	        var date = endorsement.date;
+	        var confirmed = endorsement.confirmed;
 
 	        return _react2.default.createElement(
 	          'div',
@@ -53393,7 +53515,7 @@
 	          ),
 	          _react2.default.createElement(
 	            'div',
-	            { style: { borderBottom: '1px solid #E7E7EC', marginLeft: 40, padding: '20px 0' }, className: 'flex-parent-row flex-child-expand' },
+	            { style: { borderBottom: '1px solid ' + grey, marginLeft: 40, padding: '30px 0' }, className: 'flex-parent-row flex-child-expand' },
 	            _react2.default.createElement(
 	              'div',
 	              { className: 'flex-child-expand' },
@@ -53408,7 +53530,7 @@
 	                _react2.default.createElement(
 	                  'span',
 	                  { style: { fontSize: '.8em', margin: '0 .5em' } },
-	                  'endorsed'
+	                  confirmed ? "endorsed" : "will endorse"
 	                ),
 	                _react2.default.createElement(
 	                  'span',
@@ -53418,7 +53540,7 @@
 	              ),
 	              _react2.default.createElement(
 	                'div',
-	                { style: { fontSize: '.8em', color: '#8F2CD8' } },
+	                { style: { fontSize: '.8em', color: barney } },
 	                (0, _moment2.default)(new Date(date)).format('ll')
 	              )
 	            ),
@@ -53426,10 +53548,7 @@
 	              'button',
 	              { className: 'btn-default no-border',
 	                onClick: function onClick() {
-	                  _this2.props.editClickHandler({
-	                    id: id,
-	                    date: date
-	                  });
+	                  _this2.props.editClickHandler(id);
 	                } },
 	              'edit'
 	            )
@@ -53455,7 +53574,7 @@
 	exports.default = EndorsementList;
 
 /***/ },
-/* 504 */
+/* 505 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -53504,7 +53623,7 @@
 	exports.default = TagsTab;
 
 /***/ },
-/* 505 */
+/* 506 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -53526,7 +53645,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 506 */
+/* 507 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -53535,7 +53654,7 @@
 	  value: true
 	});
 
-	var _tweets = __webpack_require__(507);
+	var _tweets = __webpack_require__(508);
 
 	Object.defineProperty(exports, 'tweets', {
 	  enumerable: true,
@@ -53544,7 +53663,7 @@
 	  }
 	});
 
-	var _login = __webpack_require__(508);
+	var _login = __webpack_require__(509);
 
 	Object.defineProperty(exports, 'loginInfo', {
 	  enumerable: true,
@@ -53553,7 +53672,7 @@
 	  }
 	});
 
-	var _candidates = __webpack_require__(509);
+	var _candidates = __webpack_require__(510);
 
 	Object.defineProperty(exports, 'candidates', {
 	  enumerable: true,
@@ -53562,7 +53681,7 @@
 	  }
 	});
 
-	var _endorsementFormData = __webpack_require__(510);
+	var _endorsementFormData = __webpack_require__(511);
 
 	Object.defineProperty(exports, 'endorsementFormData', {
 	  enumerable: true,
@@ -53571,7 +53690,7 @@
 	  }
 	});
 
-	var _candidateFormData = __webpack_require__(511);
+	var _candidateFormData = __webpack_require__(512);
 
 	Object.defineProperty(exports, 'candidateFormData', {
 	  enumerable: true,
@@ -53580,7 +53699,7 @@
 	  }
 	});
 
-	var _snackbarData = __webpack_require__(512);
+	var _snackbarData = __webpack_require__(513);
 
 	Object.defineProperty(exports, 'snackbarData', {
 	  enumerable: true,
@@ -53589,7 +53708,7 @@
 	  }
 	});
 
-	var _tags = __webpack_require__(513);
+	var _tags = __webpack_require__(514);
 
 	Object.defineProperty(exports, 'tags', {
 	  enumerable: true,
@@ -53598,7 +53717,7 @@
 	  }
 	});
 
-	var _endorsers = __webpack_require__(514);
+	var _endorsers = __webpack_require__(515);
 
 	Object.defineProperty(exports, 'endorsers', {
 	  enumerable: true,
@@ -53607,7 +53726,7 @@
 	  }
 	});
 
-	var _endorsements = __webpack_require__(515);
+	var _endorsements = __webpack_require__(516);
 
 	Object.defineProperty(exports, 'endorsements', {
 	  enumerable: true,
@@ -53617,7 +53736,7 @@
 	});
 
 /***/ },
-/* 507 */
+/* 508 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -53648,7 +53767,7 @@
 	}
 
 /***/ },
-/* 508 */
+/* 509 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -53677,7 +53796,7 @@
 	}
 
 /***/ },
-/* 509 */
+/* 510 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -53706,7 +53825,7 @@
 	}
 
 /***/ },
-/* 510 */
+/* 511 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -53793,7 +53912,7 @@
 	}
 
 /***/ },
-/* 511 */
+/* 512 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -53833,7 +53952,7 @@
 	}
 
 /***/ },
-/* 512 */
+/* 513 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -53875,7 +53994,7 @@
 	}
 
 /***/ },
-/* 513 */
+/* 514 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -53908,7 +54027,7 @@
 	}
 
 /***/ },
-/* 514 */
+/* 515 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -53933,7 +54052,7 @@
 	}
 
 /***/ },
-/* 515 */
+/* 516 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';

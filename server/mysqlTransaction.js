@@ -21,8 +21,7 @@ class MySqlTransaction {
     this.queries.push(query);
     return this;
   }
-  addTo(procName, argList){
-    const query = `CALL ${procName}(${this.connection.escape(argList)});`;
+  addTo(query){
     this.queries.push(query);
     return this;
   }
@@ -35,6 +34,9 @@ class MySqlTransaction {
         this.onRollback = callback;
     }
     return this;
+  }
+  showCall(){
+    return this.queries.join('');
   }
   execute(){
     const { connection, onCommit, onRollback, queries } = this;

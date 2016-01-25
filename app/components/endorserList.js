@@ -9,7 +9,7 @@ export default class EndorserList extends Component{
       <div className="flex-parent-row list-item-spacing" key={endorser.END_ID}>
         <Avatar url={endorser.AVATAR}/>
         <div style={{borderBottom:'1px solid #E7E7EC', marginLeft:20, padding:'20px 0'}} className="flex-parent-row flex-child-expand">
-          <div className="flex-child-expand" style={{fontSize:'1.2em'}}>
+          <div className="flex-child-expand">
             <span>{endorser.NAME}</span>
           </div>
           <button className="btn-default no-border">
