@@ -5,6 +5,7 @@ import { addEndorser, updateEndorser, removeEndorser, updateEndorsementForm, upd
 import { deleteTag } from '../actions/tagActions';
 import EndorserInput from './endorserInput';
 import TextInputField from './textInputField';
+import EndorserSelection from './endorserSelection';
 import TagInput from './tagInput';
 import '../styles/forms.scss';
 
@@ -104,6 +105,7 @@ class AddEndorsementForm extends Component{
           </button>
         </div>
       </div>
+      <EndorserSelection />
       { this.renderEndorserInputs(endorsers) }
       <div className="endorser-tags"
         style={{

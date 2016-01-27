@@ -13,16 +13,15 @@ function makeEmptyEndorser(){
     WIKI_LINK: null,
     IS_ORG: false,
     END_ID:new Date().valueOf().toString(),
-    AVATAR:null
+    AVATAR:null,
+    IS_NEW:true
   }
 }
 
 function getInitialState(){
   return {
     selectedCandidate:'',
-    endorsers:[
-      makeEmptyEndorser()
-    ],
+    endorsers:[],
     selectedTags:[],
     source:null,
     date: moment(new Date()).format('YYYY-MM-DD')

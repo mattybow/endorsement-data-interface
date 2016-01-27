@@ -22,7 +22,12 @@ input[type="text"]{
     outline:none;
   }
 }
-
+.key-block{
+  background-color:rgba(0,0,0,0.2);
+  border-radius:2px;
+  margin-right:.5em;
+  padding:1px 4px;
+}
 .check-box{
   padding:.5em 0 .5em .2em;
   &:hover{

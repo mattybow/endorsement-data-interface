@@ -2,6 +2,7 @@
 .auto-complete-container{
   height:0;
   overflow:hidden;
+  z-index:1;
   &.open{
     height:100px;
     overflow:initial;
@@ -11,17 +12,31 @@
   border-radius:2px;
   background-color:#fff;
   box-shadow: rgba(0, 0, 0, 0.117647) 0px 1px 6px, rgba(0, 0, 0, 0.239216) 0px 1px 4px;
-  padding:1em;
+  padding:1em 0;
 }
 .dropdown-choice{
-  &>div{
-    border-bottom:1px solid $grey;
-    padding: .5em 0;
-  }
-  &:last-child > div{
-    border-bottom:none;
+  &:hover{
+    cursor:pointer;
   }
 }
+.endorser-choice{
+  transition:background .2s ease;
+  background-color:transparent;
+  .endorser-choice-name{
+    margin-left:20;
+    border-bottom:1px solid $grey;
+    padding:1em 0;
+  }
+}
+
+.highlighted .endorser-choice{
+  background-color:rgba(100,100,100,.1);
+}
+
+.dropdown-choice:last-child .endorser-choice-name{
+  border:none;
+}
+
 .tag-choice{
   background-color:$whiteBarney;
   border-radius:2px;

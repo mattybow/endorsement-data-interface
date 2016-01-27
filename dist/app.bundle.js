@@ -20818,11 +20818,11 @@
 
 	var _redux = __webpack_require__(226);
 
-	var _reduxThunk = __webpack_require__(507);
+	var _reduxThunk = __webpack_require__(509);
 
 	var _reduxThunk2 = _interopRequireDefault(_reduxThunk);
 
-	var _reducers = __webpack_require__(508);
+	var _reducers = __webpack_require__(510);
 
 	var reducers = _interopRequireWildcard(_reducers);
 
@@ -25710,19 +25710,19 @@
 
 	var _tweetTab2 = _interopRequireDefault(_tweetTab);
 
-	var _candidateTab = __webpack_require__(479);
+	var _candidateTab = __webpack_require__(484);
 
 	var _candidateTab2 = _interopRequireDefault(_candidateTab);
 
-	var _endorserTab = __webpack_require__(497);
+	var _endorserTab = __webpack_require__(502);
 
 	var _endorserTab2 = _interopRequireDefault(_endorserTab);
 
-	var _endorsementsTab = __webpack_require__(503);
+	var _endorsementsTab = __webpack_require__(505);
 
 	var _endorsementsTab2 = _interopRequireDefault(_endorsementsTab);
 
-	var _tagsTab = __webpack_require__(506);
+	var _tagsTab = __webpack_require__(508);
 
 	var _tagsTab2 = _interopRequireDefault(_tagsTab);
 
@@ -29172,15 +29172,15 @@
 
 	var _addEndorsementForm2 = _interopRequireDefault(_addEndorsementForm);
 
-	var _loadingIndicator = __webpack_require__(469);
+	var _loadingIndicator = __webpack_require__(474);
 
 	var _loadingIndicator2 = _interopRequireDefault(_loadingIndicator);
 
-	var _modalWrapper = __webpack_require__(472);
+	var _modalWrapper = __webpack_require__(477);
 
 	var _modalWrapper2 = _interopRequireDefault(_modalWrapper);
 
-	var _formContainer = __webpack_require__(475);
+	var _formContainer = __webpack_require__(480);
 
 	var _formContainer2 = _interopRequireDefault(_formContainer);
 
@@ -29190,7 +29190,7 @@
 
 	var _reactRedux = __webpack_require__(219);
 
-	var _tweetActions = __webpack_require__(477);
+	var _tweetActions = __webpack_require__(482);
 
 	var _endorsementFormActions = __webpack_require__(375);
 
@@ -41018,11 +41018,15 @@
 
 	var _textInputField2 = _interopRequireDefault(_textInputField);
 
-	var _tagInput = __webpack_require__(463);
+	var _endorserSelection = __webpack_require__(463);
+
+	var _endorserSelection2 = _interopRequireDefault(_endorserSelection);
+
+	var _tagInput = __webpack_require__(468);
 
 	var _tagInput2 = _interopRequireDefault(_tagInput);
 
-	__webpack_require__(467);
+	__webpack_require__(472);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -41180,6 +41184,7 @@
 	            )
 	          )
 	        ),
+	        _react2.default.createElement(_endorserSelection2.default, null),
 	        this.renderEndorserInputs(endorsers),
 	        _react2.default.createElement(
 	          'div',
@@ -49943,6 +49948,607 @@
 
 	var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
 
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _autoCompleteSelector = __webpack_require__(464);
+
+	var _autoCompleteSelector2 = _interopRequireDefault(_autoCompleteSelector);
+
+	var _avatar = __webpack_require__(255);
+
+	var _avatar2 = _interopRequireDefault(_avatar);
+
+	var _reactRedux = __webpack_require__(219);
+
+	var _endorserActions = __webpack_require__(465);
+
+	var _inlineConstants = __webpack_require__(467);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var grey = _inlineConstants.colors.grey;
+
+	function selectData(state, props) {
+	  var endorsers = state.endorsers;
+
+	  return { endorsers: endorsers };
+	}
+
+	var EndorserSelection = (function (_Component) {
+	  _inherits(EndorserSelection, _Component);
+
+	  function EndorserSelection() {
+	    _classCallCheck(this, EndorserSelection);
+
+	    return _possibleConstructorReturn(this, Object.getPrototypeOf(EndorserSelection).apply(this, arguments));
+	  }
+
+	  _createClass(EndorserSelection, [{
+	    key: 'componentWillMount',
+	    value: function componentWillMount() {
+	      this.props.dispatch((0, _endorserActions.getEndorsersIfNeeded)());
+	    }
+	  }, {
+	    key: 'handleEndorserSelection',
+	    value: function handleEndorserSelection(choice) {
+	      console.log(choice);
+	    }
+	  }, {
+	    key: 'enterHandler',
+	    value: function enterHandler() {
+	      console.log('call endorser selection');
+	    }
+	  }, {
+	    key: 'renderEndorsers',
+	    value: function renderEndorsers(results) {
+	      return results.map(function (result) {
+	        return _react2.default.createElement(
+	          'div',
+	          null,
+	          result.value
+	        );
+	      });
+	    }
+	  }, {
+	    key: 'renderNoChoices',
+	    value: function renderNoChoices() {
+	      return _react2.default.createElement(
+	        'div',
+	        { className: 'endorser-choice',
+	          style: {
+	            padding: '0 1em'
+	          } },
+	        _react2.default.createElement(
+	          'div',
+	          { style: {
+	              fontSize: '.8em',
+	              color: grey,
+	              margin: '1em 0'
+	            } },
+	          'no matches exist'
+	        ),
+	        _react2.default.createElement(
+	          'div',
+	          null,
+	          'press ',
+	          _react2.default.createElement(
+	            'span',
+	            { className: 'key-block' },
+	            'enter'
+	          ),
+	          'to create a new endorser'
+	        )
+	      );
+	    }
+	  }, {
+	    key: 'renderChoice',
+	    value: function renderChoice(choice) {
+	      return _react2.default.createElement(
+	        'div',
+	        { className: 'flex-parent-row endorser-choice',
+	          style: {
+	            padding: '0 1em'
+	          } },
+	        _react2.default.createElement(_avatar2.default, { size: 30,
+	          url: choice.avatar }),
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'flex-child-expand endorser-choice-name' },
+	          choice.value
+	        )
+	      );
+	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      return _react2.default.createElement(_autoCompleteSelector2.default, { inputPlaceholder: 'Search for Endorser',
+	        renderResults: this.renderEndorsers,
+	        renderChoice: this.renderChoice,
+	        renderNoChoices: this.renderNoChoices,
+	        closeOnSelect: true,
+	        onEnter: this.enterHandler,
+	        selectionClickHandler: this.handleEndorserSelection,
+	        choices: this.props.endorsers.map(function (endorser) {
+	          return {
+	            value: endorser.NAME,
+	            id: endorser.END_ID,
+	            avatar: endorser.AVATAR
+	          };
+	        }) });
+	    }
+	  }]);
+
+	  return EndorserSelection;
+	})(_react.Component);
+
+	exports.default = (0, _reactRedux.connect)(selectData)(EndorserSelection);
+
+/***/ },
+/* 464 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+	var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _classnames = __webpack_require__(261);
+
+	var _classnames2 = _interopRequireDefault(_classnames);
+
+	var _function = __webpack_require__(368);
+
+	var _function2 = _interopRequireDefault(_function);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var ENTER_KEY = 13;
+	var DOWN_KEY = 40;
+	var UP_KEY = 38;
+	var ESC_KEY = 27;
+
+	var AutoCompleteDropdown = (function (_Component) {
+	  _inherits(AutoCompleteDropdown, _Component);
+
+	  function AutoCompleteDropdown() {
+	    var _Object$getPrototypeO;
+
+	    var _temp, _this, _ret;
+
+	    _classCallCheck(this, AutoCompleteDropdown);
+
+	    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+	      args[_key] = arguments[_key];
+	    }
+
+	    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_Object$getPrototypeO = Object.getPrototypeOf(AutoCompleteDropdown)).call.apply(_Object$getPrototypeO, [this].concat(args))), _this), _this.shouldComponentUpdate = _function2.default, _this.closeOnEsc = function (ev) {
+	      if (ev.which === ESC_KEY) {
+	        _this.props.closeClickHandler();
+	        ev.target.blur();
+	      }
+	    }, _this.callClose = function (ev) {
+	      ev.preventDefault();
+	      ev.stopPropagation();
+	      _this.props.closeClickHandler();
+	    }, _temp), _possibleConstructorReturn(_this, _ret);
+	  }
+
+	  _createClass(AutoCompleteDropdown, [{
+	    key: 'componentDidMount',
+	    value: function componentDidMount() {
+	      document.body.addEventListener('keydown', this.closeOnEsc, false);
+	    }
+	  }, {
+	    key: 'componentWillUnmount',
+	    value: function componentWillUnmount() {
+	      document.body.removeEventListener('keydown', this.closeOnEsc, false);
+	    }
+	  }, {
+	    key: 'filterChoices',
+	    value: function filterChoices() {
+	      var regExFilter = '';
+	      var _props = this.props;
+	      var filter = _props.filter;
+	      var choices = _props.choices;
+
+	      switch (filter.length) {
+	        case 0:
+	          break;
+	        case 1:
+	          regExFilter = '^' + filter;
+	          break;
+	        default:
+	          regExFilter = '' + filter;
+	      }
+	      return choices.filter(function (choice) {
+	        return choice.value.match(new RegExp(regExFilter, 'i')) ? true : false;
+	      });
+	    }
+	  }, {
+	    key: 'getIndex',
+	    value: function getIndex(rawIndex, limit) {
+	      if (rawIndex < 0) {
+	        return limit - -1 * rawIndex % limit;
+	      } else if (rawIndex > 0) {
+	        return rawIndex % limit;
+	      } else if (rawIndex === 0) {
+	        return rawIndex;
+	      }
+	    }
+	  }, {
+	    key: 'renderChoices',
+	    value: function renderChoices() {
+	      var _this2 = this;
+
+	      var filteredChoices = this.filterChoices();
+	      var indexToHighlight = this.getIndex(this.props.highlightedIndex, filteredChoices.length);
+	      console.log(this.props.highlightedIndex, indexToHighlight);
+	      var renderedChoices = filteredChoices.map(function (choice, index) {
+	        var tagClasses = (0, _classnames2.default)("dropdown-choice", { selected: choice.isSelected }, { highlighted: index === indexToHighlight });
+	        return _react2.default.createElement(
+	          'div',
+	          { className: tagClasses,
+	            key: choice.id,
+	            onClick: function onClick(ev) {
+	              ev.stopPropagation();
+	              _this2.props.selectionClickHandler(choice);
+	            } },
+	          _this2.props.renderChoice(choice)
+	        );
+	      });
+
+	      return renderedChoices.length ? renderedChoices : this.props.renderNoChoices();
+	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      return _react2.default.createElement(
+	        'div',
+	        { className: 'dropdown-container',
+	          onClick: this.callClose,
+	          onKeyPress: function onKeyPress(ev) {
+	            console.log(ev);
+	          } },
+	        _react2.default.createElement(
+	          'button',
+	          { className: 'btn-default btn-naked no-border',
+	            style: {
+	              position: 'absolute',
+	              right: '-3em',
+	              top: 0
+	            },
+	            onClick: this.callClose },
+	          _react2.default.createElement('span', { className: 'icon-close icon-lg' })
+	        ),
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'esc-hint', style: {
+	              fontSize: '.8em',
+	              margin: '0 .2em 1em 0',
+	              padding: '0 1em'
+	            } },
+	          _react2.default.createElement(
+	            'span',
+	            { className: 'key-block' },
+	            'esc'
+	          ),
+	          _react2.default.createElement(
+	            'span',
+	            null,
+	            'to close'
+	          )
+	        ),
+	        _react2.default.createElement(
+	          'div',
+	          null,
+	          this.renderChoices()
+	        )
+	      );
+	    }
+	  }]);
+
+	  return AutoCompleteDropdown;
+	})(_react.Component);
+
+	var AutoCompleteSelector = (function (_Component2) {
+	  _inherits(AutoCompleteSelector, _Component2);
+
+	  function AutoCompleteSelector(props) {
+	    _classCallCheck(this, AutoCompleteSelector);
+
+	    var _this3 = _possibleConstructorReturn(this, Object.getPrototypeOf(AutoCompleteSelector).call(this, props));
+
+	    _this3.handleSelectionClick = function (choice) {
+	      var _this3$props = _this3.props;
+	      var selectionClickHandler = _this3$props.selectionClickHandler;
+	      var closeOnSelect = _this3$props.closeOnSelect;
+
+	      selectionClickHandler && selectionClickHandler(choice);
+	      if (closeOnSelect) {
+	        _this3.handleAutoCompCloseClick();
+	      }
+	    };
+
+	    _this3.handleAutoCompCloseClick = function () {
+	      _this3.setState({ showChoices: false });
+	    };
+
+	    _this3.state = {
+	      searchTerm: '',
+	      showChoices: false,
+	      highlightedIndex: 0
+	    };
+	    return _this3;
+	  }
+
+	  _createClass(AutoCompleteSelector, [{
+	    key: 'isDuplicateTag',
+	    value: function isDuplicateTag(tagName) {
+	      var lowercaseTagName = tagName.toLowerCase();
+	      return this.props.tags.find(function (tag) {
+	        return tag.value === lowercaseTagName;
+	      });
+	    }
+	  }, {
+	    key: 'handleTagInputChange',
+	    value: function handleTagInputChange(term) {
+	      this.setState({ searchTerm: term });
+	    }
+	  }, {
+	    key: 'handleClearClick',
+	    value: function handleClearClick() {
+	      this.setState({ searchTerm: '' });
+	    }
+	  }, {
+	    key: 'handleSpecialKeys',
+	    value: function handleSpecialKeys(ev) {
+	      console.log('handle special key');
+	      switch (ev.which) {
+	        case ENTER_KEY:
+	          var newTag = ev.target.value;
+	          var _props2 = this.props;
+	          var onEnter = _props2.onEnter;
+	          var closeOnSelect = _props2.closeOnSelect;
+
+	          if (newTag) {
+	            console.log('enter handler');
+	            onEnter && onEnter();
+	            if (closeOnSelect) {
+	              this.handleAutoCompCloseClick();
+	            }
+	          }
+	          break;
+	        case DOWN_KEY:
+	          console.log('down');
+	          ev.preventDefault();
+	          this.handleUpDownKey(DOWN_KEY);
+	          break;
+	        case UP_KEY:
+	          ev.preventDefault();
+	          this.handleUpDownKey(UP_KEY);
+	          break;
+	        default:
+	          this.resetHighlightedIndex();
+	      }
+
+	      // const duplicateTag = this.isDuplicateTag(newTag);
+	      // if(duplicateTag){
+	      //   this.props.selectionHandler(duplicateTag,true);
+	      // } else {
+	      //   this.props.createNew();
+	      //   // const addTagAction = addTag(newTag);
+	      //   // this.props.dispatch(addTagAction);
+	      //   // this.props.selectionHandler(addTagAction.tag,true);
+	      // }
+	      // ev.target.select();
+	    }
+	  }, {
+	    key: 'resetHighlightedIndex',
+	    value: function resetHighlightedIndex() {
+	      this.setState({ highlightedIndex: 0 });
+	    }
+	  }, {
+	    key: 'handleUpDownKey',
+	    value: function handleUpDownKey(whichKey) {
+	      var index = this.state.highlightedIndex;
+
+	      switch (whichKey) {
+	        case DOWN_KEY:
+	          this.setState({ highlightedIndex: index + 1 });
+	          break;
+	        case UP_KEY:
+	          this.setState({ highlightedIndex: index - 1 });
+	          break;
+	      }
+	    }
+	  }, {
+	    key: 'renderAutoComplete',
+	    value: function renderAutoComplete() {
+	      return _react2.default.createElement(AutoCompleteDropdown, _extends({ filter: this.state.searchTerm,
+	        closeClickHandler: this.handleAutoCompCloseClick
+	      }, this.props, {
+	        selectionClickHandler: this.handleSelectionClick,
+	        highlightedIndex: this.state.highlightedIndex }));
+	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      var _this4 = this;
+
+	      var _state = this.state;
+	      var searchTerm = _state.searchTerm;
+	      var showChoices = _state.showChoices;
+	      var duplicateTag = _state.duplicateTag;
+
+	      var closeIconClasses = (0, _classnames2.default)("btn-naked", "no-border", "icon-close", "fader", { faded: !searchTerm });
+	      var autoCompleteClasses = (0, _classnames2.default)("auto-complete-container", { open: showChoices });
+	      return _react2.default.createElement(
+	        'div',
+	        { style: { position: 'relative' } },
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'search-input-holder', style: { position: 'relative' } },
+	          _react2.default.createElement('button', { className: closeIconClasses,
+	            style: {
+	              position: 'absolute',
+	              right: 0,
+	              top: '0.8em'
+	            },
+	            onClick: function onClick() {
+	              _this4.handleClearClick();
+	            } }),
+	          _react2.default.createElement('input', { type: 'text',
+	            style: { paddingRight: '1em' },
+	            placeholder: this.props.inputPlaceholder,
+	            value: searchTerm,
+	            onFocus: function onFocus(ev) {
+	              _this4.setState({ showChoices: true });
+	            },
+	            onKeyDown: function onKeyDown(ev) {
+	              console.log('hi');
+	              _this4.handleSpecialKeys(ev);
+	            },
+	            onChange: function onChange(ev) {
+	              _this4.handleTagInputChange(ev.target.value);
+	            } }),
+	          _react2.default.createElement(
+	            'div',
+	            { className: autoCompleteClasses,
+	              style: { position: 'absolute',
+	                top: '3em',
+	                left: 0,
+	                width: '100%'
+	              } },
+	            showChoices ? this.renderAutoComplete() : ''
+	          ),
+	          _react2.default.createElement(
+	            'div',
+	            { className: 'selected-tags flex-parent-row wrap',
+	              style: {
+	                margin: '0 -.2em'
+	              } },
+	            this.props.renderResults([])
+	          )
+	        )
+	      );
+	    }
+	  }]);
+
+	  return AutoCompleteSelector;
+	})(_react.Component);
+
+	exports.default = AutoCompleteSelector;
+
+/***/ },
+/* 465 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	exports.getEndorsersIfNeeded = getEndorsersIfNeeded;
+	exports.saveEndorserEdits = saveEndorserEdits;
+
+	var _endorserTypes = __webpack_require__(466);
+
+	var _snackbarActions = __webpack_require__(265);
+
+	var _api = __webpack_require__(238);
+
+	var api = _interopRequireWildcard(_api);
+
+	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+
+	function getEndorsersIfNeeded() {
+	  return function (dispatch, getState) {
+	    api.getEndorsers().then(function (data) {
+	      dispatch(receiveEndorsers(data.data));
+	    }, function (err) {
+	      console.log(err);
+	    });
+	  };
+	}
+
+	function receiveEndorsers(data) {
+	  return {
+	    type: _endorserTypes.RECEIVE_ENDORSERS,
+	    data: data
+	  };
+	}
+
+	function saveEndorserEdits() {
+	  return function (dispatch, getState) {
+	    return api.saveEndorserEdits().then(function (data) {
+	      dispatch((0, _snackbarActions.openSnackbar)('SUCCESS', 'Changes Saved'));
+	      dispatch(getEndorsersIfNeeded());
+	    }, console.log);
+	  };
+	}
+
+/***/ },
+/* 466 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	var REQUEST_ENDORSERS = exports.REQUEST_ENDORSERS = 'REQUEST_ENDORSERS';
+	var RECEIVE_ENDORSERS = exports.RECEIVE_ENDORSERS = 'RECEIVE_ENDORSERS';
+
+/***/ },
+/* 467 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	var colors = exports.colors = {
+	  lightBarney: '#A06CD5',
+	  barney: '#8F2CD8',
+	  grey: '#e0e0e0'
+	};
+
+/***/ },
+/* 468 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
+
 	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 	Object.defineProperty(exports, "__esModule", {
@@ -49957,7 +50563,7 @@
 
 	var _classnames2 = _interopRequireDefault(_classnames);
 
-	var _autoCompleteDropdown = __webpack_require__(464);
+	var _autoCompleteDropdown = __webpack_require__(469);
 
 	var _autoCompleteDropdown2 = _interopRequireDefault(_autoCompleteDropdown);
 
@@ -49965,7 +50571,7 @@
 
 	var _reactRedux = __webpack_require__(219);
 
-	__webpack_require__(465);
+	__webpack_require__(470);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -50163,7 +50769,7 @@
 	exports.default = (0, _reactRedux.connect)(selectData)(TagInput);
 
 /***/ },
-/* 464 */
+/* 469 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -50326,13 +50932,13 @@
 	exports.default = AutoCompleteDropdown;
 
 /***/ },
-/* 465 */
+/* 470 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(466);
+	var content = __webpack_require__(471);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(259)(content, {});
@@ -50352,7 +50958,7 @@
 	}
 
 /***/ },
-/* 466 */
+/* 471 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(258)();
@@ -50360,19 +50966,19 @@
 
 
 	// module
-	exports.push([module.id, ".auto-complete-container {\n  height: 0;\n  overflow: hidden;\n}\n\n.auto-complete-container.open {\n  height: 100px;\n  overflow: initial;\n}\n\n.dropdown-container {\n  border-radius: 2px;\n  background-color: #fff;\n  box-shadow: rgba(0, 0, 0, 0.117647) 0px 1px 6px, rgba(0, 0, 0, 0.239216) 0px 1px 4px;\n  padding: 1em;\n}\n\n.dropdown-choice > div {\n  border-bottom: 1px solid #e0e0e0;\n  padding: .5em 0;\n}\n\n.dropdown-choice:last-child > div {\n  border-bottom: none;\n}\n\n.tag-choice {\n  background-color: #E2CFEA;\n  border-radius: 2px;\n  padding: .2em .5em;\n  margin: .5em .2em;\n  transition: background .2s ease;\n}\n\n.tag-choice:hover {\n  cursor: pointer;\n}\n\n.tag-choice.selected {\n  background-color: #A06CD5;\n  color: rgba(255, 255, 255, 0.9);\n}\n\n.input-error-message {\n  transition: opacity .2s ease, -webkit-transform .3s ease;\n  transition: opacity .2s ease, transform .3s ease;\n  transition: opacity .2s ease, transform .3s ease, -webkit-transform .3s ease;\n  opacity: 0;\n  -webkit-transform: translateY(-20px);\n          transform: translateY(-20px);\n  position: absolute;\n  pointer-events: none;\n  top: -.5em;\n  left: 0;\n  font-size: .7em;\n}\n\n.input-error-message.show {\n  -webkit-transform: translateY(0px);\n          transform: translateY(0px);\n  opacity: 1;\n}\n\n@media (min-width: 415px) {\n  .tag-choice:hover {\n    background-color: #A06CD5;\n  }\n  .selected:hover {\n    background-color: #E2CFEA;\n    color: rgba(0, 0, 0, 0.8);\n  }\n}\n", ""]);
+	exports.push([module.id, ".auto-complete-container {\n  height: 0;\n  overflow: hidden;\n  z-index: 1;\n}\n\n.auto-complete-container.open {\n  height: 100px;\n  overflow: initial;\n}\n\n.dropdown-container {\n  border-radius: 2px;\n  background-color: #fff;\n  box-shadow: rgba(0, 0, 0, 0.117647) 0px 1px 6px, rgba(0, 0, 0, 0.239216) 0px 1px 4px;\n  padding: 1em 0;\n}\n\n.dropdown-choice:hover {\n  cursor: pointer;\n}\n\n.endorser-choice {\n  transition: background .2s ease;\n  background-color: transparent;\n}\n\n.endorser-choice .endorser-choice-name {\n  margin-left: 20;\n  border-bottom: 1px solid #e0e0e0;\n  padding: 1em 0;\n}\n\n.highlighted .endorser-choice {\n  background-color: rgba(100, 100, 100, 0.1);\n}\n\n.dropdown-choice:last-child .endorser-choice-name {\n  border: none;\n}\n\n.tag-choice {\n  background-color: #E2CFEA;\n  border-radius: 2px;\n  padding: .2em .5em;\n  margin: .5em .2em;\n  transition: background .2s ease;\n}\n\n.tag-choice:hover {\n  cursor: pointer;\n}\n\n.tag-choice.selected {\n  background-color: #A06CD5;\n  color: rgba(255, 255, 255, 0.9);\n}\n\n.input-error-message {\n  transition: opacity .2s ease, -webkit-transform .3s ease;\n  transition: opacity .2s ease, transform .3s ease;\n  transition: opacity .2s ease, transform .3s ease, -webkit-transform .3s ease;\n  opacity: 0;\n  -webkit-transform: translateY(-20px);\n          transform: translateY(-20px);\n  position: absolute;\n  pointer-events: none;\n  top: -.5em;\n  left: 0;\n  font-size: .7em;\n}\n\n.input-error-message.show {\n  -webkit-transform: translateY(0px);\n          transform: translateY(0px);\n  opacity: 1;\n}\n\n@media (min-width: 415px) {\n  .tag-choice:hover {\n    background-color: #A06CD5;\n  }\n  .selected:hover {\n    background-color: #E2CFEA;\n    color: rgba(0, 0, 0, 0.8);\n  }\n}\n", ""]);
 
 	// exports
 
 
 /***/ },
-/* 467 */
+/* 472 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(468);
+	var content = __webpack_require__(473);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(259)(content, {});
@@ -50392,7 +50998,7 @@
 	}
 
 /***/ },
-/* 468 */
+/* 473 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(258)();
@@ -50400,13 +51006,13 @@
 
 
 	// module
-	exports.push([module.id, "label {\n  display: inline-block;\n}\n\nlabel.non-mui {\n  margin: 1em 0 .5em 0;\n}\n\ninput[type=\"text\"] {\n  width: 100%;\n  border-style: none none solid;\n  border-width: 1px;\n  border-color: #e0e0e0;\n  margin-bottom: 1em;\n  padding: .5em 0;\n  -webkit-appearance: none;\n  border-radius: 0;\n  background-color: transparent;\n  white-space: nowrap;\n  overflow: hidden;\n  text-overflow: ellipsis;\n}\n\ninput[type=\"text\"]:focus {\n  outline: none;\n}\n\n.check-box {\n  padding: .5em 0 .5em .2em;\n}\n\n.check-box:hover {\n  cursor: pointer;\n}\n\n.form-check-box {\n  display: inline-block;\n  padding: 0 .5em 0 .6em;\n  border-radius: 2px;\n  border: 1px solid rgba(0, 0, 0, 0.4);\n}\n\n.form-check-box.checked {\n  border-color: #A06CD5;\n  background-color: #A06CD5;\n  color: #E2CFEA;\n}\n\n.check-box-label:hover {\n  cursor: pointer;\n}\n\nselect {\n  background-color: transparent;\n  border: none;\n  border-bottom: 1px solid #e0e0e0;\n  overflow: hidden;\n  outline: none;\n  border-radius: 20px;\n  -webkit-appearance: none;\n  -webkit-border-radius: 0px;\n  padding: .5em 0;\n  width: 100%;\n}\n\n.form-select {\n  position: relative;\n}\n\n.form-select:after {\n  font-family: \"fontello\";\n  -webkit-transform: rotateZ(90deg);\n          transform: rotateZ(90deg);\n  content: '\\E804';\n  width: 1em;\n  height: 1em;\n  position: absolute;\n  top: .7em;\n  right: 0;\n  pointer-events: none;\n}\n\n.form-contents {\n  padding: 0 20px;\n}\n\n.icon-btn-form {\n  margin: 0;\n  margin-right: -.4em;\n}\n\n.input-field {\n  margin-bottom: 1em;\n}\n\n.input-center {\n  text-align: center;\n}\n\n.input-center:focus {\n  text-align: left;\n}\n\n.input-group {\n  margin-bottom: 3em;\n}\n\n@media (min-width: 415px) {\n  .form-container {\n    margin-top: 10%;\n  }\n  .form-contents {\n    padding: 0;\n  }\n}\n", ""]);
+	exports.push([module.id, "label {\n  display: inline-block;\n}\n\nlabel.non-mui {\n  margin: 1em 0 .5em 0;\n}\n\ninput[type=\"text\"] {\n  width: 100%;\n  border-style: none none solid;\n  border-width: 1px;\n  border-color: #e0e0e0;\n  margin-bottom: 1em;\n  padding: .5em 0;\n  -webkit-appearance: none;\n  border-radius: 0;\n  background-color: transparent;\n  white-space: nowrap;\n  overflow: hidden;\n  text-overflow: ellipsis;\n}\n\ninput[type=\"text\"]:focus {\n  outline: none;\n}\n\n.key-block {\n  background-color: rgba(0, 0, 0, 0.2);\n  border-radius: 2px;\n  margin-right: .5em;\n  padding: 1px 4px;\n}\n\n.check-box {\n  padding: .5em 0 .5em .2em;\n}\n\n.check-box:hover {\n  cursor: pointer;\n}\n\n.form-check-box {\n  display: inline-block;\n  padding: 0 .5em 0 .6em;\n  border-radius: 2px;\n  border: 1px solid rgba(0, 0, 0, 0.4);\n}\n\n.form-check-box.checked {\n  border-color: #A06CD5;\n  background-color: #A06CD5;\n  color: #E2CFEA;\n}\n\n.check-box-label:hover {\n  cursor: pointer;\n}\n\nselect {\n  background-color: transparent;\n  border: none;\n  border-bottom: 1px solid #e0e0e0;\n  overflow: hidden;\n  outline: none;\n  border-radius: 20px;\n  -webkit-appearance: none;\n  -webkit-border-radius: 0px;\n  padding: .5em 0;\n  width: 100%;\n}\n\n.form-select {\n  position: relative;\n}\n\n.form-select:after {\n  font-family: \"fontello\";\n  -webkit-transform: rotateZ(90deg);\n          transform: rotateZ(90deg);\n  content: '\\E804';\n  width: 1em;\n  height: 1em;\n  position: absolute;\n  top: .7em;\n  right: 0;\n  pointer-events: none;\n}\n\n.form-contents {\n  padding: 0 20px;\n}\n\n.icon-btn-form {\n  margin: 0;\n  margin-right: -.4em;\n}\n\n.input-field {\n  margin-bottom: 1em;\n}\n\n.input-center {\n  text-align: center;\n}\n\n.input-center:focus {\n  text-align: left;\n}\n\n.input-group {\n  margin-bottom: 3em;\n}\n\n@media (min-width: 415px) {\n  .form-container {\n    margin-top: 10%;\n  }\n  .form-contents {\n    padding: 0;\n  }\n}\n", ""]);
 
 	// exports
 
 
 /***/ },
-/* 469 */
+/* 474 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -50419,7 +51025,7 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	__webpack_require__(470);
+	__webpack_require__(475);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -50442,13 +51048,13 @@
 	exports.default = LoadingIndicator;
 
 /***/ },
-/* 470 */
+/* 475 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(471);
+	var content = __webpack_require__(476);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(259)(content, {});
@@ -50468,13 +51074,13 @@
 	}
 
 /***/ },
-/* 471 */
+/* 476 */
 /***/ function(module, exports) {
 
 	module.exports = ".sk-folding-cube {\n  margin: 20px auto;\n  width: 40px;\n  height: 40px;\n  position: relative;\n  -webkit-transform: rotateZ(45deg);\n          transform: rotateZ(45deg);\n}\n\n.sk-folding-cube .sk-cube {\n  float: left;\n  width: 50%;\n  height: 50%;\n  position: relative;\n  -webkit-transform: scale(1.1);\n      -ms-transform: scale(1.1);\n          transform: scale(1.1);\n}\n.sk-folding-cube .sk-cube:before {\n  content: '';\n  position: absolute;\n  top: 0;\n  left: 0;\n  width: 100%;\n  height: 100%;\n  background-color: purple;\n  -webkit-animation: sk-foldCubeAngle 2.4s infinite linear both;\n          animation: sk-foldCubeAngle 2.4s infinite linear both;\n  -webkit-transform-origin: 100% 100%;\n      -ms-transform-origin: 100% 100%;\n          transform-origin: 100% 100%;\n}\n.sk-folding-cube .sk-cube2 {\n  -webkit-transform: scale(1.1) rotateZ(90deg);\n          transform: scale(1.1) rotateZ(90deg);\n}\n.sk-folding-cube .sk-cube3 {\n  -webkit-transform: scale(1.1) rotateZ(180deg);\n          transform: scale(1.1) rotateZ(180deg);\n}\n.sk-folding-cube .sk-cube4 {\n  -webkit-transform: scale(1.1) rotateZ(270deg);\n          transform: scale(1.1) rotateZ(270deg);\n}\n.sk-folding-cube .sk-cube2:before {\n  -webkit-animation-delay: 0.3s;\n          animation-delay: 0.3s;\n}\n.sk-folding-cube .sk-cube3:before {\n  -webkit-animation-delay: 0.6s;\n          animation-delay: 0.6s;\n}\n.sk-folding-cube .sk-cube4:before {\n  -webkit-animation-delay: 0.9s;\n          animation-delay: 0.9s;\n}\n@-webkit-keyframes sk-foldCubeAngle {\n  0%, 10% {\n    -webkit-transform: perspective(140px) rotateX(-180deg);\n            transform: perspective(140px) rotateX(-180deg);\n    opacity: 0;\n  } 25%, 75% {\n    -webkit-transform: perspective(140px) rotateX(0deg);\n            transform: perspective(140px) rotateX(0deg);\n    opacity: 1;\n  } 90%, 100% {\n    -webkit-transform: perspective(140px) rotateY(180deg);\n            transform: perspective(140px) rotateY(180deg);\n    opacity: 0;\n  }\n}\n\n@keyframes sk-foldCubeAngle {\n  0%, 10% {\n    -webkit-transform: perspective(140px) rotateX(-180deg);\n            transform: perspective(140px) rotateX(-180deg);\n    opacity: 0;\n  } 25%, 75% {\n    -webkit-transform: perspective(140px) rotateX(0deg);\n            transform: perspective(140px) rotateX(0deg);\n    opacity: 1;\n  } 90%, 100% {\n    -webkit-transform: perspective(140px) rotateY(180deg);\n            transform: perspective(140px) rotateY(180deg);\n    opacity: 0;\n  }\n}\n"
 
 /***/ },
-/* 472 */
+/* 477 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -50493,7 +51099,7 @@
 
 	var _classnames2 = _interopRequireDefault(_classnames);
 
-	__webpack_require__(473);
+	__webpack_require__(478);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -50555,13 +51161,13 @@
 	exports.default = ModalWrapper;
 
 /***/ },
-/* 473 */
+/* 478 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(474);
+	var content = __webpack_require__(479);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(259)(content, {});
@@ -50581,7 +51187,7 @@
 	}
 
 /***/ },
-/* 474 */
+/* 479 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(258)();
@@ -50595,7 +51201,7 @@
 
 
 /***/ },
-/* 475 */
+/* 480 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -50610,7 +51216,7 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _formControls = __webpack_require__(476);
+	var _formControls = __webpack_require__(481);
 
 	var _formControls2 = _interopRequireDefault(_formControls);
 
@@ -50678,7 +51284,7 @@
 	exports.default = FormContainer;
 
 /***/ },
-/* 476 */
+/* 481 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -50760,7 +51366,7 @@
 	exports.default = FormControls;
 
 /***/ },
-/* 477 */
+/* 482 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -50771,7 +51377,7 @@
 	exports.fetchTweetsIfNeeded = fetchTweetsIfNeeded;
 	exports.requestTweetDelete = requestTweetDelete;
 
-	var _tweetTypes = __webpack_require__(478);
+	var _tweetTypes = __webpack_require__(483);
 
 	var ACTION_TYPES = _interopRequireWildcard(_tweetTypes);
 
@@ -50847,7 +51453,7 @@
 	}
 
 /***/ },
-/* 478 */
+/* 483 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -50862,7 +51468,7 @@
 	var UNDELETE_TWEET = exports.UNDELETE_TWEET = 'DELETE_TWEET_FAIL';
 
 /***/ },
-/* 479 */
+/* 484 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -50881,27 +51487,27 @@
 
 	var _candidateActions = __webpack_require__(373);
 
-	var _candidateList = __webpack_require__(480);
+	var _candidateList = __webpack_require__(485);
 
 	var _candidateList2 = _interopRequireDefault(_candidateList);
 
-	var _addButton = __webpack_require__(481);
+	var _addButton = __webpack_require__(486);
 
 	var _addButton2 = _interopRequireDefault(_addButton);
 
-	var _modalWrapper = __webpack_require__(472);
+	var _modalWrapper = __webpack_require__(477);
 
 	var _modalWrapper2 = _interopRequireDefault(_modalWrapper);
 
-	var _addCandidateForm = __webpack_require__(488);
+	var _addCandidateForm = __webpack_require__(493);
 
 	var _addCandidateForm2 = _interopRequireDefault(_addCandidateForm);
 
-	var _formContainer = __webpack_require__(475);
+	var _formContainer = __webpack_require__(480);
 
 	var _formContainer2 = _interopRequireDefault(_formContainer);
 
-	var _candidateFormActions = __webpack_require__(494);
+	var _candidateFormActions = __webpack_require__(499);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -50980,7 +51586,7 @@
 	exports.default = (0, _reactRedux.connect)(selectCandidates)(CandidateTab);
 
 /***/ },
-/* 480 */
+/* 485 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -51075,7 +51681,7 @@
 	exports.default = CandidateList;
 
 /***/ },
-/* 481 */
+/* 486 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -51090,11 +51696,11 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _floatingActionButton = __webpack_require__(482);
+	var _floatingActionButton = __webpack_require__(487);
 
 	var _floatingActionButton2 = _interopRequireDefault(_floatingActionButton);
 
-	var _fontIcon = __webpack_require__(487);
+	var _fontIcon = __webpack_require__(492);
 
 	var _fontIcon2 = _interopRequireDefault(_fontIcon);
 
@@ -51141,7 +51747,7 @@
 	exports.default = AddButton;
 
 /***/ },
-/* 482 */
+/* 487 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
@@ -51172,11 +51778,11 @@
 
 	var _colorManipulator2 = _interopRequireDefault(_colorManipulator);
 
-	var _enhancedButton = __webpack_require__(483);
+	var _enhancedButton = __webpack_require__(488);
 
 	var _enhancedButton2 = _interopRequireDefault(_enhancedButton);
 
-	var _fontIcon = __webpack_require__(487);
+	var _fontIcon = __webpack_require__(492);
 
 	var _fontIcon2 = _interopRequireDefault(_fontIcon);
 
@@ -51184,7 +51790,7 @@
 
 	var _paper2 = _interopRequireDefault(_paper);
 
-	var _children = __webpack_require__(484);
+	var _children = __webpack_require__(489);
 
 	var _children2 = _interopRequireDefault(_children);
 
@@ -51438,7 +52044,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4)))
 
 /***/ },
-/* 483 */
+/* 488 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -51465,7 +52071,7 @@
 
 	var _colors2 = _interopRequireDefault(_colors);
 
-	var _children = __webpack_require__(484);
+	var _children = __webpack_require__(489);
 
 	var _children2 = _interopRequireDefault(_children);
 
@@ -51776,7 +52382,7 @@
 	exports.default = EnhancedButton;
 
 /***/ },
-/* 484 */
+/* 489 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -51789,7 +52395,7 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _reactAddonsCreateFragment = __webpack_require__(485);
+	var _reactAddonsCreateFragment = __webpack_require__(490);
 
 	var _reactAddonsCreateFragment2 = _interopRequireDefault(_reactAddonsCreateFragment);
 
@@ -51830,13 +52436,13 @@
 	};
 
 /***/ },
-/* 485 */
+/* 490 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = __webpack_require__(486).create;
+	module.exports = __webpack_require__(491).create;
 
 /***/ },
-/* 486 */
+/* 491 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {/**
@@ -51906,7 +52512,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4)))
 
 /***/ },
-/* 487 */
+/* 492 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -52033,7 +52639,7 @@
 	exports.default = FontIcon;
 
 /***/ },
-/* 488 */
+/* 493 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -52050,7 +52656,7 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _formControls = __webpack_require__(476);
+	var _formControls = __webpack_require__(481);
 
 	var _formControls2 = _interopRequireDefault(_formControls);
 
@@ -52060,13 +52666,13 @@
 
 	var _reactRedux = __webpack_require__(219);
 
-	var _radioGroup = __webpack_require__(489);
+	var _radioGroup = __webpack_require__(494);
 
 	var _radioGroup2 = _interopRequireDefault(_radioGroup);
 
-	var _candidateFormActions = __webpack_require__(494);
+	var _candidateFormActions = __webpack_require__(499);
 
-	var _util = __webpack_require__(496);
+	var _util = __webpack_require__(501);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -52207,7 +52813,7 @@
 	exports.default = (0, _reactRedux.connect)(selectCandidateFormData)(AddCandidateForm);
 
 /***/ },
-/* 489 */
+/* 494 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -52220,11 +52826,11 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _radioButton = __webpack_require__(490);
+	var _radioButton = __webpack_require__(495);
 
 	var _radioButton2 = _interopRequireDefault(_radioButton);
 
-	var _radioButtonGroup = __webpack_require__(493);
+	var _radioButtonGroup = __webpack_require__(498);
 
 	var _radioButtonGroup2 = _interopRequireDefault(_radioButtonGroup);
 
@@ -52259,7 +52865,7 @@
 	exports.default = RadioGroup;
 
 /***/ },
-/* 490 */
+/* 495 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -52286,11 +52892,11 @@
 
 	var _enhancedSwitch2 = _interopRequireDefault(_enhancedSwitch);
 
-	var _radioButtonUnchecked = __webpack_require__(491);
+	var _radioButtonUnchecked = __webpack_require__(496);
 
 	var _radioButtonUnchecked2 = _interopRequireDefault(_radioButtonUnchecked);
 
-	var _radioButtonChecked = __webpack_require__(492);
+	var _radioButtonChecked = __webpack_require__(497);
 
 	var _radioButtonChecked2 = _interopRequireDefault(_radioButtonChecked);
 
@@ -52453,7 +53059,7 @@
 	exports.default = RadioButton;
 
 /***/ },
-/* 491 */
+/* 496 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -52493,7 +53099,7 @@
 	exports.default = ToggleRadioButtonUnchecked;
 
 /***/ },
-/* 492 */
+/* 497 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -52533,7 +53139,7 @@
 	exports.default = ToggleRadioButtonChecked;
 
 /***/ },
-/* 493 */
+/* 498 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
@@ -52548,7 +53154,7 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _radioButton = __webpack_require__(490);
+	var _radioButton = __webpack_require__(495);
 
 	var _radioButton2 = _interopRequireDefault(_radioButton);
 
@@ -52705,7 +53311,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4)))
 
 /***/ },
-/* 494 */
+/* 499 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -52717,7 +53323,7 @@
 	exports.resetCandidateForm = resetCandidateForm;
 	exports.requestAddCandidate = requestAddCandidate;
 
-	var _candidateFormTypes = __webpack_require__(495);
+	var _candidateFormTypes = __webpack_require__(500);
 
 	var _snackbarActions = __webpack_require__(265);
 
@@ -52761,7 +53367,7 @@
 	}
 
 /***/ },
-/* 495 */
+/* 500 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -52775,7 +53381,7 @@
 	var RESET_CANDIDATE_FORM = exports.RESET_CANDIDATE_FORM = "RESET_CANDIDATE_FORM";
 
 /***/ },
-/* 496 */
+/* 501 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -52799,7 +53405,7 @@
 	}
 
 /***/ },
-/* 497 */
+/* 502 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -52818,23 +53424,23 @@
 
 	var _reactRedux = __webpack_require__(219);
 
-	var _endorserList = __webpack_require__(498);
+	var _endorserList = __webpack_require__(503);
 
 	var _endorserList2 = _interopRequireDefault(_endorserList);
 
-	var _formContainer = __webpack_require__(475);
+	var _formContainer = __webpack_require__(480);
 
 	var _formContainer2 = _interopRequireDefault(_formContainer);
 
-	var _editEndorserForm = __webpack_require__(499);
+	var _editEndorserForm = __webpack_require__(504);
 
 	var _editEndorserForm2 = _interopRequireDefault(_editEndorserForm);
 
-	var _modalWrapper = __webpack_require__(472);
+	var _modalWrapper = __webpack_require__(477);
 
 	var _modalWrapper2 = _interopRequireDefault(_modalWrapper);
 
-	var _endorserActions = __webpack_require__(501);
+	var _endorserActions = __webpack_require__(465);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -52983,7 +53589,7 @@
 	exports.default = (0, _reactRedux.connect)(selectData)(EndorserTab);
 
 /***/ },
-/* 498 */
+/* 503 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -53076,7 +53682,7 @@
 	exports.default = EndorserList;
 
 /***/ },
-/* 499 */
+/* 504 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -53099,7 +53705,7 @@
 
 	var _avatar2 = _interopRequireDefault(_avatar);
 
-	var _inlineConstants = __webpack_require__(500);
+	var _inlineConstants = __webpack_require__(467);
 
 	var _moment = __webpack_require__(280);
 
@@ -53160,82 +53766,7 @@
 	exports.default = EditEndorserForm;
 
 /***/ },
-/* 500 */
-/***/ function(module, exports) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	var colors = exports.colors = {
-	  lightBarney: '#A06CD5',
-	  barney: '#8F2CD8',
-	  grey: '#e0e0e0'
-	};
-
-/***/ },
-/* 501 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	exports.getEndorsersIfNeeded = getEndorsersIfNeeded;
-	exports.saveEndorserEdits = saveEndorserEdits;
-
-	var _endorserTypes = __webpack_require__(502);
-
-	var _snackbarActions = __webpack_require__(265);
-
-	var _api = __webpack_require__(238);
-
-	var api = _interopRequireWildcard(_api);
-
-	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
-
-	function getEndorsersIfNeeded() {
-	  return function (dispatch, getState) {
-	    api.getEndorsers().then(function (data) {
-	      dispatch(receiveEndorsers(data.data));
-	    }, function (err) {
-	      console.log(err);
-	    });
-	  };
-	}
-
-	function receiveEndorsers(data) {
-	  return {
-	    type: _endorserTypes.RECEIVE_ENDORSERS,
-	    data: data
-	  };
-	}
-
-	function saveEndorserEdits() {
-	  return function (dispatch, getState) {
-	    return api.saveEndorserEdits().then(function (data) {
-	      dispatch((0, _snackbarActions.openSnackbar)('SUCCESS', 'Changes Saved'));
-	      dispatch(getEndorsersIfNeeded());
-	    }, console.log);
-	  };
-	}
-
-/***/ },
-/* 502 */
-/***/ function(module, exports) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	var REQUEST_ENDORSERS = exports.REQUEST_ENDORSERS = 'REQUEST_ENDORSERS';
-	var RECEIVE_ENDORSERS = exports.RECEIVE_ENDORSERS = 'RECEIVE_ENDORSERS';
-
-/***/ },
-/* 503 */
+/* 505 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -53252,15 +53783,15 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _addButton = __webpack_require__(481);
+	var _addButton = __webpack_require__(486);
 
 	var _addButton2 = _interopRequireDefault(_addButton);
 
-	var _formContainer = __webpack_require__(475);
+	var _formContainer = __webpack_require__(480);
 
 	var _formContainer2 = _interopRequireDefault(_formContainer);
 
-	var _modalWrapper = __webpack_require__(472);
+	var _modalWrapper = __webpack_require__(477);
 
 	var _modalWrapper2 = _interopRequireDefault(_modalWrapper);
 
@@ -53268,11 +53799,11 @@
 
 	var _addEndorsementForm2 = _interopRequireDefault(_addEndorsementForm);
 
-	var _editEndorsementForm = __webpack_require__(504);
+	var _editEndorsementForm = __webpack_require__(506);
 
 	var _editEndorsementForm2 = _interopRequireDefault(_editEndorsementForm);
 
-	var _endorsementList = __webpack_require__(505);
+	var _endorsementList = __webpack_require__(507);
 
 	var _endorsementList2 = _interopRequireDefault(_endorsementList);
 
@@ -53428,7 +53959,7 @@
 	exports.default = (0, _reactRedux.connect)(selectData)(EndorsementsTab);
 
 /***/ },
-/* 504 */
+/* 506 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -53449,9 +53980,9 @@
 
 	var _avatar2 = _interopRequireDefault(_avatar);
 
-	var _util = __webpack_require__(496);
+	var _util = __webpack_require__(501);
 
-	var _inlineConstants = __webpack_require__(500);
+	var _inlineConstants = __webpack_require__(467);
 
 	var _moment = __webpack_require__(280);
 
@@ -53614,7 +54145,7 @@
 	exports.default = EditEndorsementForm;
 
 /***/ },
-/* 505 */
+/* 507 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -53637,7 +54168,7 @@
 
 	var _avatar2 = _interopRequireDefault(_avatar);
 
-	var _inlineConstants = __webpack_require__(500);
+	var _inlineConstants = __webpack_require__(467);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -53756,7 +54287,7 @@
 	exports.default = EndorsementList;
 
 /***/ },
-/* 506 */
+/* 508 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -53805,7 +54336,7 @@
 	exports.default = TagsTab;
 
 /***/ },
-/* 507 */
+/* 509 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -53827,7 +54358,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 508 */
+/* 510 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -53836,7 +54367,7 @@
 	  value: true
 	});
 
-	var _tweets = __webpack_require__(509);
+	var _tweets = __webpack_require__(511);
 
 	Object.defineProperty(exports, 'tweets', {
 	  enumerable: true,
@@ -53845,7 +54376,7 @@
 	  }
 	});
 
-	var _login = __webpack_require__(510);
+	var _login = __webpack_require__(512);
 
 	Object.defineProperty(exports, 'loginInfo', {
 	  enumerable: true,
@@ -53854,7 +54385,7 @@
 	  }
 	});
 
-	var _candidates = __webpack_require__(511);
+	var _candidates = __webpack_require__(513);
 
 	Object.defineProperty(exports, 'candidates', {
 	  enumerable: true,
@@ -53863,7 +54394,7 @@
 	  }
 	});
 
-	var _endorsementFormData = __webpack_require__(512);
+	var _endorsementFormData = __webpack_require__(514);
 
 	Object.defineProperty(exports, 'endorsementFormData', {
 	  enumerable: true,
@@ -53872,7 +54403,7 @@
 	  }
 	});
 
-	var _candidateFormData = __webpack_require__(513);
+	var _candidateFormData = __webpack_require__(515);
 
 	Object.defineProperty(exports, 'candidateFormData', {
 	  enumerable: true,
@@ -53881,7 +54412,7 @@
 	  }
 	});
 
-	var _snackbarData = __webpack_require__(514);
+	var _snackbarData = __webpack_require__(516);
 
 	Object.defineProperty(exports, 'snackbarData', {
 	  enumerable: true,
@@ -53890,7 +54421,7 @@
 	  }
 	});
 
-	var _tags = __webpack_require__(515);
+	var _tags = __webpack_require__(517);
 
 	Object.defineProperty(exports, 'tags', {
 	  enumerable: true,
@@ -53899,7 +54430,7 @@
 	  }
 	});
 
-	var _endorsers = __webpack_require__(516);
+	var _endorsers = __webpack_require__(518);
 
 	Object.defineProperty(exports, 'endorsers', {
 	  enumerable: true,
@@ -53908,7 +54439,7 @@
 	  }
 	});
 
-	var _endorsements = __webpack_require__(517);
+	var _endorsements = __webpack_require__(519);
 
 	Object.defineProperty(exports, 'endorsements', {
 	  enumerable: true,
@@ -53918,7 +54449,7 @@
 	});
 
 /***/ },
-/* 509 */
+/* 511 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -53928,7 +54459,7 @@
 	});
 	exports.default = tweets;
 
-	var _tweetTypes = __webpack_require__(478);
+	var _tweetTypes = __webpack_require__(483);
 
 	var initialState = [];
 
@@ -53949,7 +54480,7 @@
 	}
 
 /***/ },
-/* 510 */
+/* 512 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -53978,7 +54509,7 @@
 	}
 
 /***/ },
-/* 511 */
+/* 513 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -54007,7 +54538,7 @@
 	}
 
 /***/ },
-/* 512 */
+/* 514 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -54036,14 +54567,15 @@
 	    WIKI_LINK: null,
 	    IS_ORG: false,
 	    END_ID: new Date().valueOf().toString(),
-	    AVATAR: null
+	    AVATAR: null,
+	    IS_NEW: true
 	  };
 	}
 
 	function getInitialState() {
 	  return {
 	    selectedCandidate: '',
-	    endorsers: [makeEmptyEndorser()],
+	    endorsers: [],
 	    selectedTags: [],
 	    source: null,
 	    date: (0, _moment2.default)(new Date()).format('YYYY-MM-DD')
@@ -54094,7 +54626,7 @@
 	}
 
 /***/ },
-/* 513 */
+/* 515 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -54106,7 +54638,7 @@
 	});
 	exports.default = candidateFormData;
 
-	var _candidateFormTypes = __webpack_require__(495);
+	var _candidateFormTypes = __webpack_require__(500);
 
 	var initialState = {
 	  AVATAR: null,
@@ -54134,7 +54666,7 @@
 	}
 
 /***/ },
-/* 514 */
+/* 516 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -54176,7 +54708,7 @@
 	}
 
 /***/ },
-/* 515 */
+/* 517 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -54209,7 +54741,7 @@
 	}
 
 /***/ },
-/* 516 */
+/* 518 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -54219,7 +54751,7 @@
 	});
 	exports.default = endorsers;
 
-	var _endorserTypes = __webpack_require__(502);
+	var _endorserTypes = __webpack_require__(466);
 
 	function endorsers() {
 	  var state = arguments.length <= 0 || arguments[0] === undefined ? [] : arguments[0];
@@ -54234,7 +54766,7 @@
 	}
 
 /***/ },
-/* 517 */
+/* 519 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
