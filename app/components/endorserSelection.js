@@ -16,9 +16,6 @@ class EndorserSelection extends Component{
   componentWillMount(){
     this.props.dispatch(getEndorsersIfNeeded())
   }
-  enterHandler(){
-    console.log('call endorser selection');
-  }
   handleSelection = (choice) => {
     //check if it is a duplicate
     if(this.props.selectedData.find(selectedRecord => selectedRecord.END_ID === choice.id)){
@@ -59,7 +56,7 @@ class EndorserSelection extends Component{
                                  renderChoice={this.renderChoice}
                                  renderNoChoices={this.renderNoChoices}
                                  closeOnSelect={true}
-                                 onEnter={this.enterHandler}
+                                 onEnter={this.props.onEnterHandler}
                                  selectionHandler={this.handleSelection}
                                  selected={this.props.selectedData}
                                  choices={this.props.endorsers.map(endorser => ({

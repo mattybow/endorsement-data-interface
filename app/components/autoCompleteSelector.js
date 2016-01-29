@@ -109,6 +109,7 @@ export default class AutoCompleteSelector extends Component{
         }
 
         if(closeOnSelect){
+          ev.target.blur();
           this.handleAutoCompCloseClick();
         }
         break;
@@ -160,7 +161,7 @@ export default class AutoCompleteSelector extends Component{
     }
   }
   handleAutoCompCloseClick = () => {
-    this.setState({showChoices:false});
+    this.setState({showChoices:false, searchTerm:''});
   }
   getIndex(rawIndex, limit){
     if(rawIndex < 0){

@@ -41246,7 +41246,8 @@
 	          )
 	        ),
 	        _react2.default.createElement(_endorserSelection2.default, { selectedData: endorsers,
-	          handleSelection: this.handleEndorserSelection }),
+	          handleSelection: this.handleEndorserSelection,
+	          onEnterHandler: this.handleNewEndorserSelection }),
 	        this.renderExistingEndorser(endorsers.filter(function (endorser) {
 	          return !endorser.IS_NEW;
 	        })),
@@ -41273,6 +41274,10 @@
 
 	  this.handleTagSelection = function (tag, selected) {
 	    console.log(tag);
+	  };
+
+	  this.handleNewEndorserSelection = function (name) {
+	    _this5.props.dispatch((0, _endorsementFormActions.addEmptyEndorserWithName)(name));
 	  };
 
 	  this.handleEndorserSelection = function (endorser) {
@@ -41387,6 +41392,7 @@
 	exports.removeEndorser = removeEndorser;
 	exports.addEndorser = addEndorser;
 	exports.addEmptyEndorser = addEmptyEndorser;
+	exports.addEmptyEndorserWithName = addEmptyEndorserWithName;
 	exports.saveEndorsement = saveEndorsement;
 
 	var _endorsementFormTypes = __webpack_require__(376);
@@ -41456,6 +41462,13 @@
 	function addEmptyEndorser() {
 	  return {
 	    type: _endorsementFormTypes.ADD_EMPTY_ENDORSER
+	  };
+	}
+
+	function addEmptyEndorserWithName(name) {
+	  return {
+	    type: _endorsementFormTypes.ADD_EMPTY_ENDORSER_WITH_NAME,
+	    name: name
 	  };
 	}
 
@@ -41536,6 +41549,7 @@
 	var UPDATE_ENDORSEMENT_FORM = exports.UPDATE_ENDORSEMENT_FORM = 'UPDATE_ENDORSEMENT_FORM';
 	var ADD_ENDORSER = exports.ADD_ENDORSER = 'ADD_ENDORSER';
 	var ADD_COPY_OF_ENDORSER = exports.ADD_COPY_OF_ENDORSER = 'ADD_COPY_OF_ENDORSER';
+	var ADD_EMPTY_ENDORSER_WITH_NAME = exports.ADD_EMPTY_ENDORSER_WITH_NAME = 'ADD_EMPTY_ENDORSER_WITH_NAME';
 	var ADD_EMPTY_ENDORSER = exports.ADD_EMPTY_ENDORSER = 'ADD_EMPTY_ENDORSER';
 	var UPDATE_ENDORSER = exports.UPDATE_ENDORSER = 'UPDATE_ENDORSER';
 	var REMOVE_ENDORSER = exports.REMOVE_ENDORSER = 'REMOVE_ENDORSER';
@@ -50389,7 +50403,7 @@
 	    };
 
 	    _this3.handleAutoCompCloseClick = function () {
-	      _this3.setState({ showChoices: false });
+	      _this3.setState({ showChoices: false, searchTerm: '' });
 	    };
 
 	    _this3.state = {
@@ -50440,6 +50454,7 @@
 	          }
 
 	          if (closeOnSelect) {
+	            ev.target.blur();
 	            this.handleAutoCompCloseClick();
 	          }
 	          break;
@@ -50735,11 +50750,6 @@
 	      this.props.dispatch((0, _endorserActions.getEndorsersIfNeeded)());
 	    }
 	  }, {
-	    key: 'enterHandler',
-	    value: function enterHandler() {
-	      console.log('call endorser selection');
-	    }
-	  }, {
 	    key: 'renderNoChoices',
 	    value: function renderNoChoices() {
 	      return _react2.default.createElement(
@@ -50795,7 +50805,7 @@
 	        renderChoice: this.renderChoice,
 	        renderNoChoices: this.renderNoChoices,
 	        closeOnSelect: true,
-	        onEnter: this.enterHandler,
+	        onEnter: this.props.onEnterHandler,
 	        selectionHandler: this.handleSelection,
 	        selected: this.props.selectedData,
 	        choices: this.props.endorsers.map(function (endorser) {
@@ -54516,6 +54526,8 @@
 
 	      var newEndorsers = [makeEmptyEndorser()].concat(_toConsumableArray(endorsers));
 	      return _extends({}, state, { endorsers: newEndorsers });
+	    case _endorsementFormTypes.ADD_EMPTY_ENDORSER_WITH_NAME:
+	      return _extends({}, state, { endorsers: [_extends({}, makeEmptyEndorser(), { NAME: action.name })].concat(_toConsumableArray(state.endorsers)) });
 	    case _endorsementFormTypes.UPDATE_ENDORSER:
 	      var id = action.id;
 	      var data = action.data;

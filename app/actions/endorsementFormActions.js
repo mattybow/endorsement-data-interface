@@ -1,6 +1,7 @@
 import { UPDATE_ENDORSEMENT_FORM,
          ADD_ENDORSER,
          ADD_EMPTY_ENDORSER,
+         ADD_EMPTY_ENDORSER_WITH_NAME,
          ADD_COPY_OF_ENDORSER,
          UPDATE_ENDORSER,
          REMOVE_ENDORSER,
@@ -67,6 +68,13 @@ export function addEmptyEndorser(){
   return {
     type:ADD_EMPTY_ENDORSER
   };
+}
+
+export function addEmptyEndorserWithName(name){
+  return {
+    type:ADD_EMPTY_ENDORSER_WITH_NAME,
+    name
+  }
 }
 
 export function saveEndorsement(){

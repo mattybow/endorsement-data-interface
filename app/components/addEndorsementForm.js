@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { fetchCandidatesIfNeeded } from '../actions/candidateActions';
 import { addEndorser,
          addEmptyEndorser,
+         addEmptyEndorserWithName,
          addCopyOfEndorser,
          updateEndorser,
          removeEndorser,
@@ -80,6 +81,9 @@ class AddEndorsementForm extends Component{
     //   this.props.dispatch(deleteTag(tag.id));
     // }
   }
+  handleNewEndorserSelection = (name) => {
+    this.props.dispatch(addEmptyEndorserWithName(name));
+  }
   handleEndorserSelection = (endorser) => {
     this.props.dispatch(addEndorser(endorser));
   }
@@ -151,7 +155,8 @@ class AddEndorsementForm extends Component{
         </div>
       </div>
       <EndorserSelection selectedData={endorsers}
-                         handleSelection={this.handleEndorserSelection}/>
+                         handleSelection={this.handleEndorserSelection}
+                         onEnterHandler={this.handleNewEndorserSelection}/>
       { this.renderExistingEndorser(endorsers.filter(endorser => !endorser.IS_NEW))}
       { this.renderEndorserInputs(endorsers.filter(endorser => endorser.IS_NEW)) }
       <div className="endorser-tags"

@@ -2,6 +2,7 @@ import { UPDATE_ENDORSEMENT_FORM,
          ADD_ENDORSER,
          ADD_COPY_OF_ENDORSER,
          ADD_EMPTY_ENDORSER,
+         ADD_EMPTY_ENDORSER_WITH_NAME,
          UPDATE_ENDORSER,
          REMOVE_ENDORSER,
          UPDATE_ENDORSER_TAGS,
@@ -62,6 +63,8 @@ export default function endorsementFormData(state=getInitialState(), action){
       const { endorsers } = state;
       const newEndorsers = [makeEmptyEndorser(),...endorsers];
       return {...state, ...{endorsers:newEndorsers} };
+    case ADD_EMPTY_ENDORSER_WITH_NAME:
+      return {...state, ...{endorsers:[{...makeEmptyEndorser(),...{NAME:action.name}},...state.endorsers]} };
     case UPDATE_ENDORSER:
       const { id, data } = action;
       const updatedEndorsers = state.endorsers.map(endorser =>
