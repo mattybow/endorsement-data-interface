@@ -1,7 +1,13 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { fetchCandidatesIfNeeded } from '../actions/candidateActions';
-import { addEndorser, addEmptyEndorser, updateEndorser, removeEndorser, updateEndorsementForm, updateEndorserTags } from '../actions/endorsementFormActions';
+import { addEndorser,
+         addEmptyEndorser,
+         addCopyOfEndorser,
+         updateEndorser,
+         removeEndorser,
+         updateEndorsementForm,
+         updateEndorserTags } from '../actions/endorsementFormActions';
 import { deleteTag } from '../actions/tagActions';
 import EndorserInput from './endorserInput';
 import TextInputField from './textInputField';
@@ -27,6 +33,7 @@ class AddEndorsementForm extends Component{
     return endorsers.map((endorser,i) => {
       return <EndorserInput key={endorser.END_ID}
                             handleSelection= {this.handleTagSelection}
+                            copyHandler = {this.handleCopyClick}
                             inputChangeHandler= {this.endorserChangeHandler}
                             removeHandler = {this.endorserRemoveHandler}
                             {...endorser}/>;
@@ -60,6 +67,9 @@ class AddEndorsementForm extends Component{
   }
   newEndorserField(){
     this.props.dispatch(addEmptyEndorser());
+  }
+  handleCopyClick = (id) => {
+    this.props.dispatch(addCopyOfEndorser(id))
   }
   handleTagSelection = (tag,selected) => {
     console.log(tag);

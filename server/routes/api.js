@@ -123,22 +123,21 @@ router.post('/addCandidate', (req,res) => {
 
 router.post('/addEndorsements', (req,res) => {
   if(req.session.passport){
-    const { selectedTags, endorsers, selectedCandidate, source, date } = req.body;
+    const { newTags, endorsers, selectedCandidate, source, date } = req.body;
     const txn = transaction.create();
     //if there are any new tags, insert them
-    selectedTags.filter( tag => {
-      const { isNew } = tag;
-      return isNew;
-    }).map(tag => {
+    newTags.map(tag => {
         txn.insertIntoTable('TAGS',[tag.id, tag.value]);
     });
 
     endorsers.map(endorser => {
-      const { END_ID, DESCRIPT, NAME, IS_ORG, AVATAR, WIKI_LINK } = endorser;
+      const { END_ID, DESCRIPT, NAME, IS_ORG, AVATAR, WIKI_LINK, TAGS=[], IS_NEW } = endorser;
       //create the endorsers
-      txn.insertIntoTable('ENDORSERS',[END_ID, DESCRIPT, NAME, IS_ORG, WIKI_LINK, AVATAR, new Date()]);
+      if(IS_NEW){
+        txn.insertIntoTable('ENDORSERS',[END_ID, DESCRIPT, NAME, IS_ORG, WIKI_LINK, AVATAR, new Date()]);
+      }
       //tie endorsers to tags
-      selectedTags.map( tag => {
+      TAGS.map( tag => {
         txn.insertIntoTable('ENDORSER_TAGS',[END_ID,tag.id]);
       });
       //tie endorser to candidate

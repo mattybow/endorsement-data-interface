@@ -22,7 +22,7 @@ class EndorserInput extends Component{
     });
   }
   render(){
-    const { END_ID, NAME, DESCRIPT, WIKI_LINK, AVATAR, IS_ORG, TAGS, inputChangeHandler, removeHandler } = this.props;
+    const { END_ID, NAME, DESCRIPT, WIKI_LINK, AVATAR, IS_ORG, TAGS, inputChangeHandler, copyHandler, removeHandler } = this.props;
     console.log(`render ${END_ID} input`);
     return <div className="input-group">
       <TextInputField label='Name'
@@ -66,6 +66,12 @@ class EndorserInput extends Component{
                          inputChangeHandler(END_ID, {IS_ORG:!IS_ORG});
                        }}/>
        </div>
+       <button className="btn-default no-border"
+               onClick={ () => {
+                 copyHandler(END_ID);
+               }}>
+         <span className="icon-blank icon-lg icon-naked icon-btn-form"></span>
+       </button>
        <button className="btn-default no-border btn-naked"
                onClick={ () => {
                  removeHandler(END_ID);

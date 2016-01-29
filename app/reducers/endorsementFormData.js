@@ -1,5 +1,6 @@
 import { UPDATE_ENDORSEMENT_FORM,
          ADD_ENDORSER,
+         ADD_COPY_OF_ENDORSER,
          ADD_EMPTY_ENDORSER,
          UPDATE_ENDORSER,
          REMOVE_ENDORSER,
@@ -7,13 +8,17 @@ import { UPDATE_ENDORSEMENT_FORM,
          CLEAR_ENDORSEMENT_FORM } from '../constants/endorsementFormTypes';
 import moment from 'moment';
 
+function newIdByDateTime(){
+  return new Date().valueOf().toString();
+}
+
 function makeEmptyEndorser(){
   return {
     NAME:null,
     DESCRIPT: null,
     WIKI_LINK: null,
     IS_ORG: false,
-    END_ID:new Date().valueOf().toString(),
+    END_ID:newIdByDateTime(),
     AVATAR:null,
     IS_NEW:true,
     TAGS:[]
@@ -24,7 +29,6 @@ function getInitialState(){
   return {
     selectedCandidate:'',
     endorsers:[],
-    selectedTags:[],
     source:null,
     date: moment(new Date()).format('YYYY-MM-DD')
   }
@@ -40,6 +44,20 @@ export default function endorsementFormData(state=getInitialState(), action){
         action.data,
         ...state.endorsers
       ]}};
+    case ADD_COPY_OF_ENDORSER:
+      console.log(action);
+      const endorsersWithCopy = state.endorsers.reduce((acc,endorsement) => {
+        if (endorsement.END_ID === action.id){
+          acc.push({...endorsement, ...{
+            END_ID:newIdByDateTime(),
+            NAME:`Copy of ${endorsement.NAME}`
+          }});
+        }
+        acc.push(endorsement);
+        return acc;
+      },[]);
+      console.log(endorsersWithCopy);
+      return {...state, ...{endorsers:endorsersWithCopy}};
     case ADD_EMPTY_ENDORSER:
       const { endorsers } = state;
       const newEndorsers = [makeEmptyEndorser(),...endorsers];

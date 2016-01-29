@@ -1,6 +1,7 @@
 import { UPDATE_ENDORSEMENT_FORM,
          ADD_ENDORSER,
          ADD_EMPTY_ENDORSER,
+         ADD_COPY_OF_ENDORSER,
          UPDATE_ENDORSER,
          REMOVE_ENDORSER,
          UPDATE_ENDORSER_TAGS,
@@ -10,6 +11,14 @@ import * as api from './api';
 import { openSnackbar } from './snackbarActions';
 import { getTags } from './tagActions';
 import { getEndorsements } from './endorsementActions';
+
+
+export function addCopyOfEndorser(id){
+  return {
+    type:ADD_COPY_OF_ENDORSER,
+    id
+  }
+}
 
 export function updateEndorsementForm(data){
   return {
@@ -62,11 +71,12 @@ export function addEmptyEndorser(){
 
 export function saveEndorsement(){
   return (dispatch,getState) => {
-    const state = getState().endorsementFormData;
-    const validation = checkEndorsementData(state);
+    const {endorsementFormData, tags} = getState();
+    const validation = checkEndorsementData(endorsementFormData);
     if(validation.ok){
       dispatch(requestSaveEndorsement());
-      api.addEndorsements(state).then(
+      const newTags = tags.filter(tag => tag.isNew) || [];
+      api.addEndorsements({...endorsementFormData, newTags}).then(
         reply => {
           dispatch(openSnackbar('SUCCESS', 'Endorsements Added'));
           dispatch(clearEndorsementForm());
