@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import cx from 'classnames';
 import shouldPureComponentUpdate from 'react-pure-render/function';
+import { compose } from 'redux';
+import '../styles/autoComplete.scss';
 
 const ENTER_KEY = 13;
 const DOWN_KEY = 40;
@@ -26,37 +28,9 @@ class AutoCompleteDropdown extends Component{
     ev.stopPropagation();
     this.props.closeClickHandler();
   }
-  filterChoices(){
-    let regExFilter='';
-    const { filter, choices } = this.props;
-    switch(filter.length){
-      case 0:
-        break;
-      case 1:
-        regExFilter = `^${filter}`;
-        break;
-      default:
-        regExFilter = `${filter}`;
-    }
-    return choices.filter( choice => {
-      return choice.value.match(new RegExp(regExFilter, 'i')) ? true : false;
-    });
-  }
-  getIndex(rawIndex, limit){
-    if(rawIndex < 0){
-      return limit - (-1 * rawIndex % limit);
-    } else if (rawIndex > 0 ){
-      return rawIndex % limit;
-    } else if ( rawIndex === 0 ){
-      return rawIndex
-    }
-  }
   renderChoices(){
-    const filteredChoices = this.filterChoices();
-    const indexToHighlight = this.getIndex(this.props.highlightedIndex ,filteredChoices.length);
-    console.log(this.props.highlightedIndex, indexToHighlight)
-    const renderedChoices = filteredChoices.map((choice, index)=> {
-      const tagClasses = cx("dropdown-choice", {selected:choice.isSelected}, {highlighted:index===indexToHighlight});
+    const renderedChoices = this.props.choices.map((choice, index)=> {
+      const tagClasses = cx("dropdown-choice", {selected:choice.isSelected}, {highlighted:choice.isHighlighted});
       return <div className={tagClasses}
            key={choice.id}
            onClick={ev => {
@@ -92,7 +66,7 @@ class AutoCompleteDropdown extends Component{
           <span className="key-block">esc</span>
           <span>to close</span>
         </div>
-        <div>
+        <div className={this.props.containerClass}>
           {this.renderChoices()}
         </div>
 
@@ -121,21 +95,24 @@ export default class AutoCompleteSelector extends Component{
     this.setState({searchTerm:''});
   }
   handleSpecialKeys(ev){
-    console.log('handle special key');
     switch (ev.which) {
       case ENTER_KEY:
-        const newTag = ev.target.value;
+        const newValue = ev.target.value;
         const { onEnter, closeOnSelect } = this.props;
-        if(newTag){
+        const selectedChoice = this.getFilteredChoices().find( choice => choice.isHighlighted );
+
+        if(selectedChoice){
+          this.props.selectionHandler(selectedChoice);
+        } else {
           console.log('enter handler');
-          onEnter && onEnter();
-          if(closeOnSelect){
-            this.handleAutoCompCloseClick();
-          }
+          newValue && onEnter  && onEnter(newValue);
+        }
+
+        if(closeOnSelect){
+          this.handleAutoCompCloseClick();
         }
         break;
       case DOWN_KEY:
-        console.log('down');
         ev.preventDefault();
         this.handleUpDownKey(DOWN_KEY);
         break;
@@ -176,8 +153,8 @@ export default class AutoCompleteSelector extends Component{
 
   }
   handleSelectionClick = (choice) => {
-    const {selectionClickHandler, closeOnSelect} = this.props;
-    selectionClickHandler && selectionClickHandler(choice);
+    const {selectionHandler, closeOnSelect} = this.props;
+    selectionHandler && selectionHandler(choice);
     if(closeOnSelect){
       this.handleAutoCompCloseClick();
     }
@@ -185,12 +162,50 @@ export default class AutoCompleteSelector extends Component{
   handleAutoCompCloseClick = () => {
     this.setState({showChoices:false});
   }
+  getIndex(rawIndex, limit){
+    if(rawIndex < 0){
+      const subtractor = -1 * rawIndex % limit;
+      //weirdness with zero based index
+      return !subtractor ? 0 : limit - subtractor;
+    } else if (rawIndex > 0 ){
+      return rawIndex % limit;
+    } else if ( rawIndex === 0 ){
+      return rawIndex
+    }
+  }
+  getFilteredChoices(){
+    let regExFilter='';
+    const { searchTerm } = this.state;
+
+    switch(searchTerm.length){
+      case 0:
+        break;
+      case 1:
+        regExFilter = `^${searchTerm}`;
+        break;
+      default:
+        regExFilter = `${searchTerm}`;
+    }
+    console.log(this.props.choices);
+    const filteredChoices = this.props.choices.filter( choice => {
+      return choice.value.match(new RegExp(regExFilter, 'i')) ? true : false;
+    })
+
+    const highlightedIndex = this.getIndex(this.state.highlightedIndex,filteredChoices.length);
+
+    return filteredChoices.map((choice,index) => (
+      {...choice, isHighlighted: index === highlightedIndex}
+    )).map(choice => {
+      const isSelected = this.props.selected.find( selection => selection.id === choice.id);
+      return {...choice, isSelected:isSelected ? true : false}
+    });
+
+  }
   renderAutoComplete(){
-    return <AutoCompleteDropdown filter={this.state.searchTerm}
-                                 closeClickHandler = {this.handleAutoCompCloseClick}
+    return <AutoCompleteDropdown closeClickHandler = {this.handleAutoCompCloseClick}
                                  {...this.props}
-                                 selectionClickHandler= {this.handleSelectionClick}
-                                 highlightedIndex={this.state.highlightedIndex}/>;
+                                 choices={this.getFilteredChoices()}
+                                 selectionClickHandler= {this.handleSelectionClick}/>;
   }
   render(){
     const {searchTerm, showChoices, duplicateTag} = this.state;
@@ -229,12 +244,6 @@ export default class AutoCompleteSelector extends Component{
                  width:'100%'
                }}>
            { showChoices ? this.renderAutoComplete() : ''}
-         </div>
-         <div className="selected-tags flex-parent-row wrap"
-              style={{
-                margin:'0 -.2em'
-              }}>
-           {this.props.renderResults([])}
          </div>
       </div>
     </div>;

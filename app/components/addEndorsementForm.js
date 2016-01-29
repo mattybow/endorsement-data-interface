@@ -1,13 +1,16 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { fetchCandidatesIfNeeded } from '../actions/candidateActions';
-import { addEndorser, updateEndorser, removeEndorser, updateEndorsementForm, updateEndorserTags } from '../actions/endorsementFormActions';
+import { addEndorser, addEmptyEndorser, updateEndorser, removeEndorser, updateEndorsementForm, updateEndorserTags } from '../actions/endorsementFormActions';
 import { deleteTag } from '../actions/tagActions';
 import EndorserInput from './endorserInput';
 import TextInputField from './textInputField';
 import EndorserSelection from './endorserSelection';
-import TagInput from './tagInput';
+import Avatar from './avatar';
+import {colors} from '../styles/inlineConstants'
 import '../styles/forms.scss';
+
+const {grey} = colors;
 
 function selectFormData(state){
   const { endorsementFormData, candidates } = state;
@@ -23,20 +26,52 @@ class AddEndorsementForm extends Component{
   renderEndorserInputs(endorsers){
     return endorsers.map((endorser,i) => {
       return <EndorserInput key={endorser.END_ID}
+                            handleSelection= {this.handleTagSelection}
                             inputChangeHandler= {this.endorserChangeHandler}
                             removeHandler = {this.endorserRemoveHandler}
                             {...endorser}/>;
     });
   }
-  newEndorserField(){
-    this.props.dispatch(addEndorser());
+  renderExistingEndorser(endorsers){
+    return endorsers.map(endorser=><div style={{
+      margin:'1em 0'
+    }}
+    key={endorser.END_ID}>
+      <div className="flex-parent-row">
+        <Avatar size={60}
+                url={endorser.AVATAR}/>
+          <div className="existing-endorser-info"
+                style={{
+            marginLeft:20
+          }}>
+          <div>{endorser.NAME}</div>
+          <div style={{
+            fontSize:'.8em'
+          }}>{endorser.DESCRIPT}</div>
+        </div>
+        <button className="btn-default no-border btn-naked"
+                onClick={ () => {
+                  this.endorserRemoveHandler(endorser.END_ID);
+                }}>
+          <span className="icon-trash-bin icon-lg icon-naked icon-btn-form"></span>
+        </button>
+      </div>
+    </div>)
   }
-  handleSelectionClick = (tag,selected) => {
-    this.props.dispatch(updateEndorserTags(tag,selected));
-    const {isNew} = tag;
-    if(!selected && isNew){
-      this.props.dispatch(deleteTag(tag.id));
-    }
+  newEndorserField(){
+    this.props.dispatch(addEmptyEndorser());
+  }
+  handleTagSelection = (tag,selected) => {
+    console.log(tag);
+
+    // this.props.dispatch(updateEndorserTags(tag,selected));
+    // const {isNew} = tag;
+    // if(!selected && isNew){
+    //   this.props.dispatch(deleteTag(tag.id));
+    // }
+  }
+  handleEndorserSelection = (endorser) => {
+    this.props.dispatch(addEndorser(endorser));
   }
   handleChange = (data) => {
     this.props.dispatch(updateEndorsementForm(data));
@@ -105,15 +140,15 @@ class AddEndorsementForm extends Component{
           </button>
         </div>
       </div>
-      <EndorserSelection />
-      { this.renderEndorserInputs(endorsers) }
+      <EndorserSelection selectedData={endorsers}
+                         handleSelection={this.handleEndorserSelection}/>
+      { this.renderExistingEndorser(endorsers.filter(endorser => !endorser.IS_NEW))}
+      { this.renderEndorserInputs(endorsers.filter(endorser => endorser.IS_NEW)) }
       <div className="endorser-tags"
         style={{
           paddingBottom:400
         }}>
-        <h3>Endorser Tags ({selectedTags.length})</h3>
-        <TagInput selectedTags={selectedTags}
-                  selectionHandler={this.handleSelectionClick}/>
+
       </div>
     </div>;
   }

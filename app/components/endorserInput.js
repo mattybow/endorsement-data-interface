@@ -1,12 +1,28 @@
 import React, { Component } from 'react';
 import FormCheckBox from './formCheckBox';
 import TextInputField from './textInputField';
+import TagSelection from './tagSelection';
 import shouldPureComponentUpdate from 'react-pure-render/function';
 
 class EndorserInput extends Component{
   shouldComponentUpdate = shouldPureComponentUpdate;
+  renderSelectedTags(endorserId, tags){
+    return tags.map( tag => {
+      console.log(tag);
+      const { id, value } = tag;
+      return <div key={id}
+        className="flex-parent-row tag-choice selected"
+        onClick={() => {
+          const newTags = tags.filter(tag => tag.id !== id);
+          this.props.inputChangeHandler(endorserId, {TAGS:newTags});
+        }}>
+        <span>{tag.value}</span>
+        <span className="icon-close"></span>
+      </div>
+    });
+  }
   render(){
-    const { END_ID, NAME, DESCRIPT, WIKI_LINK, AVATAR, IS_ORG, inputChangeHandler, removeHandler } = this.props;
+    const { END_ID, NAME, DESCRIPT, WIKI_LINK, AVATAR, IS_ORG, TAGS, inputChangeHandler, removeHandler } = this.props;
     console.log(`render ${END_ID} input`);
     return <div className="input-group">
       <TextInputField label='Name'
@@ -33,11 +49,20 @@ class EndorserInput extends Component{
                       changeHandler = {ev => {
                         inputChangeHandler(END_ID,{AVATAR:ev.target.value})
                       }}/>
+                    <div>Tags</div>
+      <TagSelection selectedData={TAGS}
+                    handleSelection= { choice => {
+                      console.log(choice);
+                      inputChangeHandler(END_ID, {TAGS:[choice, ...TAGS]});
+                    }}/>
+      <div className="flex-parent-row wrap">
+        {this.renderSelectedTags(END_ID, TAGS)}
+      </div>
       <div className="flex-parent-row">
        <div className="flex-child-expand">
          <FormCheckBox label="is organization"
                        isChecked={IS_ORG}
-                       checkHandler={ev => {
+                       checkHandler={() => {
                          inputChangeHandler(END_ID, {IS_ORG:!IS_ORG});
                        }}/>
        </div>

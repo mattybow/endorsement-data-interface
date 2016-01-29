@@ -97,6 +97,9 @@ select{
 .input-group{
   margin-bottom:3em;
 }
+.existing-endorser-info{
+  flex: 1 1 300px;
+}
 
 @media(min-width:415px){
   .form-container{
@@ -104,5 +107,8 @@ select{
   }
   .form-contents{
     padding:0;
+  }
+  .existing-endorser-info{
+    flex: 1 1 500px;
   }
 }

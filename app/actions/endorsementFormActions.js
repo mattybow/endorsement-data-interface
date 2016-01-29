@@ -1,5 +1,6 @@
 import { UPDATE_ENDORSEMENT_FORM,
          ADD_ENDORSER,
+         ADD_EMPTY_ENDORSER,
          UPDATE_ENDORSER,
          REMOVE_ENDORSER,
          UPDATE_ENDORSER_TAGS,
@@ -46,9 +47,16 @@ export function removeEndorser(id){
   }
 }
 
-export function addEndorser(){
+export function addEndorser(data){
   return {
-    type:ADD_ENDORSER
+    type:ADD_ENDORSER,
+    data
+  };
+}
+
+export function addEmptyEndorser(){
+  return {
+    type:ADD_EMPTY_ENDORSER
   };
 }
 

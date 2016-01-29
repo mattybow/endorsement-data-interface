@@ -1,5 +1,6 @@
 import { UPDATE_ENDORSEMENT_FORM,
          ADD_ENDORSER,
+         ADD_EMPTY_ENDORSER,
          UPDATE_ENDORSER,
          REMOVE_ENDORSER,
          UPDATE_ENDORSER_TAGS,
@@ -14,7 +15,8 @@ function makeEmptyEndorser(){
     IS_ORG: false,
     END_ID:new Date().valueOf().toString(),
     AVATAR:null,
-    IS_NEW:true
+    IS_NEW:true,
+    TAGS:[]
   }
 }
 
@@ -33,6 +35,12 @@ export default function endorsementFormData(state=getInitialState(), action){
     case UPDATE_ENDORSEMENT_FORM:
       return {...state, ...action.data};
     case ADD_ENDORSER:
+      return {...state,
+      ...{endorsers:[
+        action.data,
+        ...state.endorsers
+      ]}};
+    case ADD_EMPTY_ENDORSER:
       const { endorsers } = state;
       const newEndorsers = [makeEmptyEndorser(),...endorsers];
       return {...state, ...{endorsers:newEndorsers} };

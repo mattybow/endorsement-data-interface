@@ -16,16 +16,17 @@ class EndorserSelection extends Component{
   componentWillMount(){
     this.props.dispatch(getEndorsersIfNeeded())
   }
-  handleEndorserSelection(choice){
-    console.log(choice);
-  }
   enterHandler(){
     console.log('call endorser selection');
   }
-  renderEndorsers(results){
-    return results.map(result => <div>
-      {result.value}
-    </div>);
+  handleSelection = (choice) => {
+    //check if it is a duplicate
+    if(this.props.selectedData.find(selectedRecord => selectedRecord.END_ID === choice.id)){
+      null;
+    } else {
+      this.props.handleSelection(this.props.endorsers.find( endorser =>
+      endorser.END_ID === choice.id ))
+    }
   }
   renderNoChoices(){
     return <div className="endorser-choice"
@@ -55,12 +56,12 @@ class EndorserSelection extends Component{
   }
   render(){
     return <AutoCompleteSelector inputPlaceholder="Search for Endorser"
-                                 renderResults={this.renderEndorsers}
                                  renderChoice={this.renderChoice}
                                  renderNoChoices={this.renderNoChoices}
                                  closeOnSelect={true}
                                  onEnter={this.enterHandler}
-                                 selectionClickHandler={this.handleEndorserSelection}
+                                 selectionHandler={this.handleSelection}
+                                 selected={this.props.selectedData}
                                  choices={this.props.endorsers.map(endorser => ({
                                    value:endorser.NAME,
                                    id:endorser.END_ID,

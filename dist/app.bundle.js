@@ -20818,11 +20818,11 @@
 
 	var _redux = __webpack_require__(226);
 
-	var _reduxThunk = __webpack_require__(509);
+	var _reduxThunk = __webpack_require__(508);
 
 	var _reduxThunk2 = _interopRequireDefault(_reduxThunk);
 
-	var _reducers = __webpack_require__(510);
+	var _reducers = __webpack_require__(509);
 
 	var reducers = _interopRequireWildcard(_reducers);
 
@@ -25710,19 +25710,19 @@
 
 	var _tweetTab2 = _interopRequireDefault(_tweetTab);
 
-	var _candidateTab = __webpack_require__(484);
+	var _candidateTab = __webpack_require__(483);
 
 	var _candidateTab2 = _interopRequireDefault(_candidateTab);
 
-	var _endorserTab = __webpack_require__(502);
+	var _endorserTab = __webpack_require__(501);
 
 	var _endorserTab2 = _interopRequireDefault(_endorserTab);
 
-	var _endorsementsTab = __webpack_require__(505);
+	var _endorsementsTab = __webpack_require__(504);
 
 	var _endorsementsTab2 = _interopRequireDefault(_endorsementsTab);
 
-	var _tagsTab = __webpack_require__(508);
+	var _tagsTab = __webpack_require__(507);
 
 	var _tagsTab2 = _interopRequireDefault(_tagsTab);
 
@@ -29172,15 +29172,15 @@
 
 	var _addEndorsementForm2 = _interopRequireDefault(_addEndorsementForm);
 
-	var _loadingIndicator = __webpack_require__(474);
+	var _loadingIndicator = __webpack_require__(473);
 
 	var _loadingIndicator2 = _interopRequireDefault(_loadingIndicator);
 
-	var _modalWrapper = __webpack_require__(477);
+	var _modalWrapper = __webpack_require__(476);
 
 	var _modalWrapper2 = _interopRequireDefault(_modalWrapper);
 
-	var _formContainer = __webpack_require__(480);
+	var _formContainer = __webpack_require__(479);
 
 	var _formContainer2 = _interopRequireDefault(_formContainer);
 
@@ -29190,7 +29190,7 @@
 
 	var _reactRedux = __webpack_require__(219);
 
-	var _tweetActions = __webpack_require__(482);
+	var _tweetActions = __webpack_require__(481);
 
 	var _endorsementFormActions = __webpack_require__(375);
 
@@ -41018,15 +41018,17 @@
 
 	var _textInputField2 = _interopRequireDefault(_textInputField);
 
-	var _endorserSelection = __webpack_require__(463);
+	var _endorserSelection = __webpack_require__(468);
 
 	var _endorserSelection2 = _interopRequireDefault(_endorserSelection);
 
-	var _tagInput = __webpack_require__(468);
+	var _avatar = __webpack_require__(255);
 
-	var _tagInput2 = _interopRequireDefault(_tagInput);
+	var _avatar2 = _interopRequireDefault(_avatar);
 
-	__webpack_require__(472);
+	var _inlineConstants = __webpack_require__(467);
+
+	__webpack_require__(471);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -41035,6 +41037,8 @@
 	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var grey = _inlineConstants.colors.grey;
 
 	function selectFormData(state) {
 	  var endorsementFormData = state.endorsementFormData;
@@ -41074,20 +41078,76 @@
 
 	      return endorsers.map(function (endorser, i) {
 	        return _react2.default.createElement(_endorserInput2.default, _extends({ key: endorser.END_ID,
+	          handleSelection: _this2.handleTagSelection,
 	          inputChangeHandler: _this2.endorserChangeHandler,
 	          removeHandler: _this2.endorserRemoveHandler
 	        }, endorser));
 	      });
 	    }
 	  }, {
+	    key: 'renderExistingEndorser',
+	    value: function renderExistingEndorser(endorsers) {
+	      var _this3 = this;
+
+	      return endorsers.map(function (endorser) {
+	        return _react2.default.createElement(
+	          'div',
+	          { style: {
+	              margin: '1em 0'
+	            },
+	            key: endorser.END_ID },
+	          _react2.default.createElement(
+	            'div',
+	            { className: 'flex-parent-row' },
+	            _react2.default.createElement(_avatar2.default, { size: 60,
+	              url: endorser.AVATAR }),
+	            _react2.default.createElement(
+	              'div',
+	              { className: 'existing-endorser-info',
+	                style: {
+	                  marginLeft: 20
+	                } },
+	              _react2.default.createElement(
+	                'div',
+	                null,
+	                endorser.NAME
+	              ),
+	              _react2.default.createElement(
+	                'div',
+	                { style: {
+	                    fontSize: '.8em'
+	                  } },
+	                endorser.DESCRIPT
+	              )
+	            ),
+	            _react2.default.createElement(
+	              'button',
+	              { className: 'btn-default no-border btn-naked',
+	                onClick: function onClick() {
+	                  _this3.endorserRemoveHandler(endorser.END_ID);
+	                } },
+	              _react2.default.createElement('span', { className: 'icon-trash-bin icon-lg icon-naked icon-btn-form' })
+	            )
+	          )
+	        );
+	      });
+	    }
+	  }, {
 	    key: 'newEndorserField',
 	    value: function newEndorserField() {
-	      this.props.dispatch((0, _endorsementFormActions.addEndorser)());
+	      this.props.dispatch((0, _endorsementFormActions.addEmptyEndorser)());
 	    }
+
+	    // this.props.dispatch(updateEndorserTags(tag,selected));
+	    // const {isNew} = tag;
+	    // if(!selected && isNew){
+	    //   this.props.dispatch(deleteTag(tag.id));
+	    // }
+
 	  }, {
 	    key: 'render',
 	    value: function render() {
-	      var _this3 = this;
+	      var _this4 = this;
 
 	      var _props = this.props;
 	      var candidates = _props.candidates;
@@ -41119,13 +41179,13 @@
 	            value: date,
 	            placeholder: 'YYYY-MM-DD',
 	            changeHandler: function changeHandler(ev) {
-	              _this3.handleChange({ date: ev.target.value });
+	              _this4.handleChange({ date: ev.target.value });
 	            }
 	          }, this.props)),
 	          _react2.default.createElement(_textInputField2.default, _extends({ label: 'Source',
 	            value: source,
 	            changeHandler: function changeHandler(ev) {
-	              _this3.handleChange({ source: ev.target.value });
+	              _this4.handleChange({ source: ev.target.value });
 	            }
 	          }, this.props))
 	        ),
@@ -41184,24 +41244,18 @@
 	            )
 	          )
 	        ),
-	        _react2.default.createElement(_endorserSelection2.default, null),
-	        this.renderEndorserInputs(endorsers),
-	        _react2.default.createElement(
-	          'div',
-	          { className: 'endorser-tags',
-	            style: {
-	              paddingBottom: 400
-	            } },
-	          _react2.default.createElement(
-	            'h3',
-	            null,
-	            'Endorser Tags (',
-	            selectedTags.length,
-	            ')'
-	          ),
-	          _react2.default.createElement(_tagInput2.default, { selectedTags: selectedTags,
-	            selectionHandler: this.handleSelectionClick })
-	        )
+	        _react2.default.createElement(_endorserSelection2.default, { selectedData: endorsers,
+	          handleSelection: this.handleEndorserSelection }),
+	        this.renderExistingEndorser(endorsers.filter(function (endorser) {
+	          return !endorser.IS_NEW;
+	        })),
+	        this.renderEndorserInputs(endorsers.filter(function (endorser) {
+	          return endorser.IS_NEW;
+	        })),
+	        _react2.default.createElement('div', { className: 'endorser-tags',
+	          style: {
+	            paddingBottom: 400
+	          } })
 	      );
 	    }
 	  }]);
@@ -41210,19 +41264,18 @@
 	})(_react.Component);
 
 	var _initialiseProps = function _initialiseProps() {
-	  var _this4 = this;
+	  var _this5 = this;
 
-	  this.handleSelectionClick = function (tag, selected) {
-	    _this4.props.dispatch((0, _endorsementFormActions.updateEndorserTags)(tag, selected));
-	    var isNew = tag.isNew;
+	  this.handleTagSelection = function (tag, selected) {
+	    console.log(tag);
+	  };
 
-	    if (!selected && isNew) {
-	      _this4.props.dispatch((0, _tagActions.deleteTag)(tag.id));
-	    }
+	  this.handleEndorserSelection = function (endorser) {
+	    _this5.props.dispatch((0, _endorsementFormActions.addEndorser)(endorser));
 	  };
 
 	  this.handleChange = function (data) {
-	    _this4.props.dispatch((0, _endorsementFormActions.updateEndorsementForm)(data));
+	    _this5.props.dispatch((0, _endorsementFormActions.updateEndorsementForm)(data));
 	  };
 
 	  this.endorserChangeHandler = function () {
@@ -41230,16 +41283,16 @@
 	      args[_key2] = arguments[_key2];
 	    }
 
-	    _this4.props.dispatch(_endorsementFormActions.updateEndorser.apply(_this4, args));
+	    _this5.props.dispatch(_endorsementFormActions.updateEndorser.apply(_this5, args));
 	  };
 
 	  this.endorserRemoveHandler = function (id) {
-	    _this4.props.dispatch((0, _endorsementFormActions.removeEndorser)(id));
+	    _this5.props.dispatch((0, _endorsementFormActions.removeEndorser)(id));
 	  };
 
 	  this.candidateChangeHandler = function (ev) {
 	    var selectedId = ev.target.value;
-	    _this4.props.dispatch((0, _endorsementFormActions.updateEndorsementForm)({ selectedCandidate: selectedId }));
+	    _this5.props.dispatch((0, _endorsementFormActions.updateEndorsementForm)({ selectedCandidate: selectedId }));
 	  };
 	};
 
@@ -41325,6 +41378,7 @@
 	exports.clearEndorsementForm = clearEndorsementForm;
 	exports.removeEndorser = removeEndorser;
 	exports.addEndorser = addEndorser;
+	exports.addEmptyEndorser = addEmptyEndorser;
 	exports.saveEndorsement = saveEndorsement;
 
 	var _endorsementFormTypes = __webpack_require__(376);
@@ -41377,9 +41431,16 @@
 	  };
 	}
 
-	function addEndorser() {
+	function addEndorser(data) {
 	  return {
-	    type: _endorsementFormTypes.ADD_ENDORSER
+	    type: _endorsementFormTypes.ADD_ENDORSER,
+	    data: data
+	  };
+	}
+
+	function addEmptyEndorser() {
+	  return {
+	    type: _endorsementFormTypes.ADD_EMPTY_ENDORSER
 	  };
 	}
 
@@ -41452,6 +41513,7 @@
 	});
 	var UPDATE_ENDORSEMENT_FORM = exports.UPDATE_ENDORSEMENT_FORM = 'UPDATE_ENDORSEMENT_FORM';
 	var ADD_ENDORSER = exports.ADD_ENDORSER = 'ADD_ENDORSER';
+	var ADD_EMPTY_ENDORSER = exports.ADD_EMPTY_ENDORSER = 'ADD_EMPTY_ENDORSER';
 	var UPDATE_ENDORSER = exports.UPDATE_ENDORSER = 'UPDATE_ENDORSER';
 	var REMOVE_ENDORSER = exports.REMOVE_ENDORSER = 'REMOVE_ENDORSER';
 	var CLEAR_ENDORSEMENT_FORM = exports.CLEAR_ENDORSEMENT_FORM = 'CLEAR_ENDORSEMENT_FORM';
@@ -41621,11 +41683,17 @@
 
 	var _textInputField2 = _interopRequireDefault(_textInputField);
 
+	var _tagSelection = __webpack_require__(463);
+
+	var _tagSelection2 = _interopRequireDefault(_tagSelection);
+
 	var _function = __webpack_require__(368);
 
 	var _function2 = _interopRequireDefault(_function);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -41651,6 +41719,35 @@
 	  }
 
 	  _createClass(EndorserInput, [{
+	    key: 'renderSelectedTags',
+	    value: function renderSelectedTags(endorserId, tags) {
+	      var _this2 = this;
+
+	      return tags.map(function (tag) {
+	        console.log(tag);
+	        var id = tag.id;
+	        var value = tag.value;
+
+	        return _react2.default.createElement(
+	          'div',
+	          { key: id,
+	            className: 'flex-parent-row tag-choice selected',
+	            onClick: function onClick() {
+	              var newTags = tags.filter(function (tag) {
+	                return tag.id !== id;
+	              });
+	              _this2.props.inputChangeHandler(endorserId, { TAGS: newTags });
+	            } },
+	          _react2.default.createElement(
+	            'span',
+	            null,
+	            tag.value
+	          ),
+	          _react2.default.createElement('span', { className: 'icon-close' })
+	        );
+	      });
+	    }
+	  }, {
 	    key: 'render',
 	    value: function render() {
 	      var _props = this.props;
@@ -41660,6 +41757,7 @@
 	      var WIKI_LINK = _props.WIKI_LINK;
 	      var AVATAR = _props.AVATAR;
 	      var IS_ORG = _props.IS_ORG;
+	      var TAGS = _props.TAGS;
 	      var inputChangeHandler = _props.inputChangeHandler;
 	      var removeHandler = _props.removeHandler;
 
@@ -41693,13 +41791,28 @@
 	          } }),
 	        _react2.default.createElement(
 	          'div',
+	          null,
+	          'Tags'
+	        ),
+	        _react2.default.createElement(_tagSelection2.default, { selectedData: TAGS,
+	          handleSelection: function handleSelection(choice) {
+	            console.log(choice);
+	            inputChangeHandler(END_ID, { TAGS: [choice].concat(_toConsumableArray(TAGS)) });
+	          } }),
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'flex-parent-row wrap' },
+	          this.renderSelectedTags(END_ID, TAGS)
+	        ),
+	        _react2.default.createElement(
+	          'div',
 	          { className: 'flex-parent-row' },
 	          _react2.default.createElement(
 	            'div',
 	            { className: 'flex-child-expand' },
 	            _react2.default.createElement(_formCheckBox2.default, { label: 'is organization',
 	              isChecked: IS_ORG,
-	              checkHandler: function checkHandler(ev) {
+	              checkHandler: function checkHandler() {
 	                inputChangeHandler(END_ID, { IS_ORG: !IS_ORG });
 	              } })
 	          ),
@@ -49960,13 +50073,9 @@
 
 	var _autoCompleteSelector2 = _interopRequireDefault(_autoCompleteSelector);
 
-	var _avatar = __webpack_require__(255);
-
-	var _avatar2 = _interopRequireDefault(_avatar);
+	var _tagActions = __webpack_require__(377);
 
 	var _reactRedux = __webpack_require__(219);
-
-	var _endorserActions = __webpack_require__(465);
 
 	var _inlineConstants = __webpack_require__(467);
 
@@ -49981,64 +50090,69 @@
 	var grey = _inlineConstants.colors.grey;
 
 	function selectData(state, props) {
-	  var endorsers = state.endorsers;
+	  var tags = state.tags;
 
-	  return { endorsers: endorsers };
+	  return { tags: tags };
 	}
 
-	var EndorserSelection = (function (_Component) {
-	  _inherits(EndorserSelection, _Component);
+	var TagSelection = (function (_Component) {
+	  _inherits(TagSelection, _Component);
 
-	  function EndorserSelection() {
-	    _classCallCheck(this, EndorserSelection);
+	  function TagSelection() {
+	    var _Object$getPrototypeO;
 
-	    return _possibleConstructorReturn(this, Object.getPrototypeOf(EndorserSelection).apply(this, arguments));
+	    var _temp, _this, _ret;
+
+	    _classCallCheck(this, TagSelection);
+
+	    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+	      args[_key] = arguments[_key];
+	    }
+
+	    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_Object$getPrototypeO = Object.getPrototypeOf(TagSelection)).call.apply(_Object$getPrototypeO, [this].concat(args))), _this), _this.enterHandler = function (newValue) {
+	      var newTag = (0, _tagActions.addTag)(newValue);
+	      _this.props.dispatch(newTag);
+	      _this.handleSelection(newTag.tag);
+	    }, _this.handleSelection = function (choice) {
+	      //check if it is already selected
+	      if (_this.props.selectedData.find(function (selectedRecord) {
+	        return selectedRecord.id === choice.id;
+	      })) {
+	        null;
+	      } else {
+	        //if not already selected, pass request
+	        _this.props.handleSelection(choice);
+	      }
+	    }, _this.renderChoice = function (choice) {
+	      return _react2.default.createElement(
+	        'div',
+	        { className: 'tag-choice',
+	          key: choice.id,
+	          onClick: function onClick(ev) {
+	            ev.stopPropagation();
+	            _this.handleSelection(choice);
+	          } },
+	        choice.value
+	      );
+	    }, _temp), _possibleConstructorReturn(_this, _ret);
 	  }
 
-	  _createClass(EndorserSelection, [{
+	  _createClass(TagSelection, [{
 	    key: 'componentWillMount',
 	    value: function componentWillMount() {
-	      this.props.dispatch((0, _endorserActions.getEndorsersIfNeeded)());
-	    }
-	  }, {
-	    key: 'handleEndorserSelection',
-	    value: function handleEndorserSelection(choice) {
-	      console.log(choice);
-	    }
-	  }, {
-	    key: 'enterHandler',
-	    value: function enterHandler() {
-	      console.log('call endorser selection');
-	    }
-	  }, {
-	    key: 'renderEndorsers',
-	    value: function renderEndorsers(results) {
-	      return results.map(function (result) {
-	        return _react2.default.createElement(
-	          'div',
-	          null,
-	          result.value
-	        );
-	      });
+	      this.props.dispatch((0, _tagActions.getTags)());
 	    }
 	  }, {
 	    key: 'renderNoChoices',
 	    value: function renderNoChoices() {
 	      return _react2.default.createElement(
 	        'div',
-	        { className: 'endorser-choice',
-	          style: {
-	            padding: '0 1em'
+	        { style: {
+	            padding: '5px',
+	            fontSize: '.8em',
+	            width: '100%'
 	          } },
-	        _react2.default.createElement(
-	          'div',
-	          { style: {
-	              fontSize: '.8em',
-	              color: grey,
-	              margin: '1em 0'
-	            } },
-	          'no matches exist'
-	        ),
+	        _react2.default.createElement('hr', null),
 	        _react2.default.createElement(
 	          'div',
 	          null,
@@ -50048,52 +50162,29 @@
 	            { className: 'key-block' },
 	            'enter'
 	          ),
-	          'to create a new endorser'
-	        )
-	      );
-	    }
-	  }, {
-	    key: 'renderChoice',
-	    value: function renderChoice(choice) {
-	      return _react2.default.createElement(
-	        'div',
-	        { className: 'flex-parent-row endorser-choice',
-	          style: {
-	            padding: '0 1em'
-	          } },
-	        _react2.default.createElement(_avatar2.default, { size: 30,
-	          url: choice.avatar }),
-	        _react2.default.createElement(
-	          'div',
-	          { className: 'flex-child-expand endorser-choice-name' },
-	          choice.value
+	          'to create a new tag'
 	        )
 	      );
 	    }
 	  }, {
 	    key: 'render',
 	    value: function render() {
-	      return _react2.default.createElement(_autoCompleteSelector2.default, { inputPlaceholder: 'Search for Endorser',
-	        renderResults: this.renderEndorsers,
+	      return _react2.default.createElement(_autoCompleteSelector2.default, { inputPlaceholder: 'Search for Tag',
 	        renderChoice: this.renderChoice,
 	        renderNoChoices: this.renderNoChoices,
-	        closeOnSelect: true,
+	        closeOnSelect: false,
 	        onEnter: this.enterHandler,
-	        selectionClickHandler: this.handleEndorserSelection,
-	        choices: this.props.endorsers.map(function (endorser) {
-	          return {
-	            value: endorser.NAME,
-	            id: endorser.END_ID,
-	            avatar: endorser.AVATAR
-	          };
-	        }) });
+	        selectionHandler: this.handleSelection,
+	        selected: this.props.selectedData,
+	        choices: this.props.tags,
+	        containerClass: 'flex-parent-row wrap tags-container' });
 	    }
 	  }]);
 
-	  return EndorserSelection;
+	  return TagSelection;
 	})(_react.Component);
 
-	exports.default = (0, _reactRedux.connect)(selectData)(EndorserSelection);
+	exports.default = (0, _reactRedux.connect)(selectData)(TagSelection);
 
 /***/ },
 /* 464 */
@@ -50120,6 +50211,10 @@
 	var _function = __webpack_require__(368);
 
 	var _function2 = _interopRequireDefault(_function);
+
+	var _redux = __webpack_require__(226);
+
+	__webpack_require__(465);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -50171,47 +50266,12 @@
 	      document.body.removeEventListener('keydown', this.closeOnEsc, false);
 	    }
 	  }, {
-	    key: 'filterChoices',
-	    value: function filterChoices() {
-	      var regExFilter = '';
-	      var _props = this.props;
-	      var filter = _props.filter;
-	      var choices = _props.choices;
-
-	      switch (filter.length) {
-	        case 0:
-	          break;
-	        case 1:
-	          regExFilter = '^' + filter;
-	          break;
-	        default:
-	          regExFilter = '' + filter;
-	      }
-	      return choices.filter(function (choice) {
-	        return choice.value.match(new RegExp(regExFilter, 'i')) ? true : false;
-	      });
-	    }
-	  }, {
-	    key: 'getIndex',
-	    value: function getIndex(rawIndex, limit) {
-	      if (rawIndex < 0) {
-	        return limit - -1 * rawIndex % limit;
-	      } else if (rawIndex > 0) {
-	        return rawIndex % limit;
-	      } else if (rawIndex === 0) {
-	        return rawIndex;
-	      }
-	    }
-	  }, {
 	    key: 'renderChoices',
 	    value: function renderChoices() {
 	      var _this2 = this;
 
-	      var filteredChoices = this.filterChoices();
-	      var indexToHighlight = this.getIndex(this.props.highlightedIndex, filteredChoices.length);
-	      console.log(this.props.highlightedIndex, indexToHighlight);
-	      var renderedChoices = filteredChoices.map(function (choice, index) {
-	        var tagClasses = (0, _classnames2.default)("dropdown-choice", { selected: choice.isSelected }, { highlighted: index === indexToHighlight });
+	      var renderedChoices = this.props.choices.map(function (choice, index) {
+	        var tagClasses = (0, _classnames2.default)("dropdown-choice", { selected: choice.isSelected }, { highlighted: choice.isHighlighted });
 	        return _react2.default.createElement(
 	          'div',
 	          { className: tagClasses,
@@ -50267,7 +50327,7 @@
 	        ),
 	        _react2.default.createElement(
 	          'div',
-	          null,
+	          { className: this.props.containerClass },
 	          this.renderChoices()
 	        )
 	      );
@@ -50287,10 +50347,10 @@
 
 	    _this3.handleSelectionClick = function (choice) {
 	      var _this3$props = _this3.props;
-	      var selectionClickHandler = _this3$props.selectionClickHandler;
+	      var selectionHandler = _this3$props.selectionHandler;
 	      var closeOnSelect = _this3$props.closeOnSelect;
 
-	      selectionClickHandler && selectionClickHandler(choice);
+	      selectionHandler && selectionHandler(choice);
 	      if (closeOnSelect) {
 	        _this3.handleAutoCompCloseClick();
 	      }
@@ -50329,24 +50389,29 @@
 	  }, {
 	    key: 'handleSpecialKeys',
 	    value: function handleSpecialKeys(ev) {
-	      console.log('handle special key');
 	      switch (ev.which) {
 	        case ENTER_KEY:
-	          var newTag = ev.target.value;
-	          var _props2 = this.props;
-	          var onEnter = _props2.onEnter;
-	          var closeOnSelect = _props2.closeOnSelect;
+	          var newValue = ev.target.value;
+	          var _props = this.props;
+	          var onEnter = _props.onEnter;
+	          var closeOnSelect = _props.closeOnSelect;
 
-	          if (newTag) {
+	          var selectedChoice = this.getFilteredChoices().find(function (choice) {
+	            return choice.isHighlighted;
+	          });
+
+	          if (selectedChoice) {
+	            this.props.selectionHandler(selectedChoice);
+	          } else {
 	            console.log('enter handler');
-	            onEnter && onEnter();
-	            if (closeOnSelect) {
-	              this.handleAutoCompCloseClick();
-	            }
+	            newValue && onEnter && onEnter(newValue);
+	          }
+
+	          if (closeOnSelect) {
+	            this.handleAutoCompCloseClick();
 	          }
 	          break;
 	        case DOWN_KEY:
-	          console.log('down');
 	          ev.preventDefault();
 	          this.handleUpDownKey(DOWN_KEY);
 	          break;
@@ -50389,18 +50454,63 @@
 	      }
 	    }
 	  }, {
+	    key: 'getIndex',
+	    value: function getIndex(rawIndex, limit) {
+	      if (rawIndex < 0) {
+	        var subtractor = -1 * rawIndex % limit;
+	        //weirdness with zero based index
+	        return !subtractor ? 0 : limit - subtractor;
+	      } else if (rawIndex > 0) {
+	        return rawIndex % limit;
+	      } else if (rawIndex === 0) {
+	        return rawIndex;
+	      }
+	    }
+	  }, {
+	    key: 'getFilteredChoices',
+	    value: function getFilteredChoices() {
+	      var _this4 = this;
+
+	      var regExFilter = '';
+	      var searchTerm = this.state.searchTerm;
+
+	      switch (searchTerm.length) {
+	        case 0:
+	          break;
+	        case 1:
+	          regExFilter = '^' + searchTerm;
+	          break;
+	        default:
+	          regExFilter = '' + searchTerm;
+	      }
+	      console.log(this.props.choices);
+	      var filteredChoices = this.props.choices.filter(function (choice) {
+	        return choice.value.match(new RegExp(regExFilter, 'i')) ? true : false;
+	      });
+
+	      var highlightedIndex = this.getIndex(this.state.highlightedIndex, filteredChoices.length);
+
+	      return filteredChoices.map(function (choice, index) {
+	        return _extends({}, choice, { isHighlighted: index === highlightedIndex });
+	      }).map(function (choice) {
+	        var isSelected = _this4.props.selected.find(function (selection) {
+	          return selection.id === choice.id;
+	        });
+	        return _extends({}, choice, { isSelected: isSelected ? true : false });
+	      });
+	    }
+	  }, {
 	    key: 'renderAutoComplete',
 	    value: function renderAutoComplete() {
-	      return _react2.default.createElement(AutoCompleteDropdown, _extends({ filter: this.state.searchTerm,
-	        closeClickHandler: this.handleAutoCompCloseClick
+	      return _react2.default.createElement(AutoCompleteDropdown, _extends({ closeClickHandler: this.handleAutoCompCloseClick
 	      }, this.props, {
-	        selectionClickHandler: this.handleSelectionClick,
-	        highlightedIndex: this.state.highlightedIndex }));
+	        choices: this.getFilteredChoices(),
+	        selectionClickHandler: this.handleSelectionClick }));
 	    }
 	  }, {
 	    key: 'render',
 	    value: function render() {
-	      var _this4 = this;
+	      var _this5 = this;
 
 	      var _state = this.state;
 	      var searchTerm = _state.searchTerm;
@@ -50422,21 +50532,21 @@
 	              top: '0.8em'
 	            },
 	            onClick: function onClick() {
-	              _this4.handleClearClick();
+	              _this5.handleClearClick();
 	            } }),
 	          _react2.default.createElement('input', { type: 'text',
 	            style: { paddingRight: '1em' },
 	            placeholder: this.props.inputPlaceholder,
 	            value: searchTerm,
 	            onFocus: function onFocus(ev) {
-	              _this4.setState({ showChoices: true });
+	              _this5.setState({ showChoices: true });
 	            },
 	            onKeyDown: function onKeyDown(ev) {
 	              console.log('hi');
-	              _this4.handleSpecialKeys(ev);
+	              _this5.handleSpecialKeys(ev);
 	            },
 	            onChange: function onChange(ev) {
-	              _this4.handleTagInputChange(ev.target.value);
+	              _this5.handleTagInputChange(ev.target.value);
 	            } }),
 	          _react2.default.createElement(
 	            'div',
@@ -50447,14 +50557,6 @@
 	                width: '100%'
 	              } },
 	            showChoices ? this.renderAutoComplete() : ''
-	          ),
-	          _react2.default.createElement(
-	            'div',
-	            { className: 'selected-tags flex-parent-row wrap',
-	              style: {
-	                margin: '0 -.2em'
-	              } },
-	            this.props.renderResults([])
 	          )
 	        )
 	      );
@@ -50470,6 +50572,219 @@
 /* 465 */
 /***/ function(module, exports, __webpack_require__) {
 
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+
+	// load the styles
+	var content = __webpack_require__(466);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(259)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!./../../node_modules/css-loader/index.js!./../../node_modules/autoprefixer-loader/index.js?browsers=last 2 version!./../../node_modules/sass-loader/index.js?outputStyle=expanded&sourceMap=true&sourceMapContents=true!./autoComplete.scss", function() {
+				var newContent = require("!!./../../node_modules/css-loader/index.js!./../../node_modules/autoprefixer-loader/index.js?browsers=last 2 version!./../../node_modules/sass-loader/index.js?outputStyle=expanded&sourceMap=true&sourceMapContents=true!./autoComplete.scss");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 466 */
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(258)();
+	// imports
+
+
+	// module
+	exports.push([module.id, ".auto-complete-container {\n  height: 0;\n  overflow: hidden;\n  z-index: 1;\n}\n\n.auto-complete-container.open {\n  height: 100px;\n  overflow: initial;\n}\n\n.dropdown-container {\n  border-radius: 2px;\n  background-color: #fff;\n  box-shadow: rgba(0, 0, 0, 0.117647) 0px 1px 6px, rgba(0, 0, 0, 0.239216) 0px 1px 4px;\n  padding: 1em 0;\n}\n\n.dropdown-choice:hover {\n  cursor: pointer;\n}\n\n.endorser-choice {\n  transition: background .2s ease;\n  background-color: transparent;\n}\n\n.endorser-choice .endorser-choice-name {\n  margin-left: 20;\n  border-bottom: 1px solid #e0e0e0;\n  padding: 1em 0;\n}\n\n.tags-container {\n  padding: 10px;\n}\n\n.highlighted .endorser-choice {\n  background-color: rgba(100, 100, 100, 0.1);\n}\n\n.dropdown-choice:last-child .endorser-choice-name {\n  border: none;\n}\n\n.tag-choice {\n  background-color: #E2CFEA;\n  border-radius: 2px;\n  padding: .2em .5em;\n  margin: .5em .2em;\n  border: 1px solid transparent;\n  transition: background .2s ease, border .2s ease;\n}\n\n.tag-choice:hover {\n  cursor: pointer;\n}\n\n.selected .tag-choice {\n  background-color: #A06CD5;\n  color: rgba(255, 255, 255, 0.9);\n}\n\n.highlighted .tag-choice {\n  border: 1px solid #8F2CD8;\n}\n\n.input-error-message {\n  transition: opacity .2s ease, -webkit-transform .3s ease;\n  transition: opacity .2s ease, transform .3s ease;\n  transition: opacity .2s ease, transform .3s ease, -webkit-transform .3s ease;\n  opacity: 0;\n  -webkit-transform: translateY(-20px);\n          transform: translateY(-20px);\n  position: absolute;\n  pointer-events: none;\n  top: -.5em;\n  left: 0;\n  font-size: .7em;\n}\n\n.input-error-message.show {\n  -webkit-transform: translateY(0px);\n          transform: translateY(0px);\n  opacity: 1;\n}\n\n@media (min-width: 415px) {\n  .tag-choice:hover {\n    background-color: #A06CD5;\n  }\n  .selected:hover {\n    background-color: #E2CFEA;\n    color: rgba(0, 0, 0, 0.8);\n  }\n}\n", ""]);
+
+	// exports
+
+
+/***/ },
+/* 467 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	var colors = exports.colors = {
+	  lightBarney: '#A06CD5',
+	  barney: '#8F2CD8',
+	  grey: '#e0e0e0'
+	};
+
+/***/ },
+/* 468 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _autoCompleteSelector = __webpack_require__(464);
+
+	var _autoCompleteSelector2 = _interopRequireDefault(_autoCompleteSelector);
+
+	var _avatar = __webpack_require__(255);
+
+	var _avatar2 = _interopRequireDefault(_avatar);
+
+	var _reactRedux = __webpack_require__(219);
+
+	var _endorserActions = __webpack_require__(469);
+
+	var _inlineConstants = __webpack_require__(467);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var grey = _inlineConstants.colors.grey;
+
+	function selectData(state, props) {
+	  var endorsers = state.endorsers;
+
+	  return { endorsers: endorsers };
+	}
+
+	var EndorserSelection = (function (_Component) {
+	  _inherits(EndorserSelection, _Component);
+
+	  function EndorserSelection() {
+	    var _Object$getPrototypeO;
+
+	    var _temp, _this, _ret;
+
+	    _classCallCheck(this, EndorserSelection);
+
+	    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+	      args[_key] = arguments[_key];
+	    }
+
+	    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_Object$getPrototypeO = Object.getPrototypeOf(EndorserSelection)).call.apply(_Object$getPrototypeO, [this].concat(args))), _this), _this.handleSelection = function (choice) {
+	      //check if it is a duplicate
+	      if (_this.props.selectedData.find(function (selectedRecord) {
+	        return selectedRecord.END_ID === choice.id;
+	      })) {
+	        null;
+	      } else {
+	        _this.props.handleSelection(_this.props.endorsers.find(function (endorser) {
+	          return endorser.END_ID === choice.id;
+	        }));
+	      }
+	    }, _temp), _possibleConstructorReturn(_this, _ret);
+	  }
+
+	  _createClass(EndorserSelection, [{
+	    key: 'componentWillMount',
+	    value: function componentWillMount() {
+	      this.props.dispatch((0, _endorserActions.getEndorsersIfNeeded)());
+	    }
+	  }, {
+	    key: 'enterHandler',
+	    value: function enterHandler() {
+	      console.log('call endorser selection');
+	    }
+	  }, {
+	    key: 'renderNoChoices',
+	    value: function renderNoChoices() {
+	      return _react2.default.createElement(
+	        'div',
+	        { className: 'endorser-choice',
+	          style: {
+	            padding: '0 1em'
+	          } },
+	        _react2.default.createElement(
+	          'div',
+	          { style: {
+	              fontSize: '.8em',
+	              color: grey,
+	              margin: '1em 0'
+	            } },
+	          'no matches exist'
+	        ),
+	        _react2.default.createElement(
+	          'div',
+	          null,
+	          'press ',
+	          _react2.default.createElement(
+	            'span',
+	            { className: 'key-block' },
+	            'enter'
+	          ),
+	          'to create a new endorser'
+	        )
+	      );
+	    }
+	  }, {
+	    key: 'renderChoice',
+	    value: function renderChoice(choice) {
+	      return _react2.default.createElement(
+	        'div',
+	        { className: 'flex-parent-row endorser-choice',
+	          style: {
+	            padding: '0 1em'
+	          } },
+	        _react2.default.createElement(_avatar2.default, { size: 30,
+	          url: choice.avatar }),
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'flex-child-expand endorser-choice-name' },
+	          choice.value
+	        )
+	      );
+	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      return _react2.default.createElement(_autoCompleteSelector2.default, { inputPlaceholder: 'Search for Endorser',
+	        renderChoice: this.renderChoice,
+	        renderNoChoices: this.renderNoChoices,
+	        closeOnSelect: true,
+	        onEnter: this.enterHandler,
+	        selectionHandler: this.handleSelection,
+	        selected: this.props.selectedData,
+	        choices: this.props.endorsers.map(function (endorser) {
+	          return {
+	            value: endorser.NAME,
+	            id: endorser.END_ID,
+	            avatar: endorser.AVATAR
+	          };
+	        }) });
+	    }
+	  }]);
+
+	  return EndorserSelection;
+	})(_react.Component);
+
+	exports.default = (0, _reactRedux.connect)(selectData)(EndorserSelection);
+
+/***/ },
+/* 469 */
+/***/ function(module, exports, __webpack_require__) {
+
 	'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
@@ -50478,7 +50793,7 @@
 	exports.getEndorsersIfNeeded = getEndorsersIfNeeded;
 	exports.saveEndorserEdits = saveEndorserEdits;
 
-	var _endorserTypes = __webpack_require__(466);
+	var _endorserTypes = __webpack_require__(470);
 
 	var _snackbarActions = __webpack_require__(265);
 
@@ -50515,7 +50830,7 @@
 	}
 
 /***/ },
-/* 466 */
+/* 470 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -50527,458 +50842,13 @@
 	var RECEIVE_ENDORSERS = exports.RECEIVE_ENDORSERS = 'RECEIVE_ENDORSERS';
 
 /***/ },
-/* 467 */
-/***/ function(module, exports) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	var colors = exports.colors = {
-	  lightBarney: '#A06CD5',
-	  barney: '#8F2CD8',
-	  grey: '#e0e0e0'
-	};
-
-/***/ },
-/* 468 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
-
-	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-
-	var _react = __webpack_require__(1);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	var _classnames = __webpack_require__(261);
-
-	var _classnames2 = _interopRequireDefault(_classnames);
-
-	var _autoCompleteDropdown = __webpack_require__(469);
-
-	var _autoCompleteDropdown2 = _interopRequireDefault(_autoCompleteDropdown);
-
-	var _tagActions = __webpack_require__(377);
-
-	var _reactRedux = __webpack_require__(219);
-
-	__webpack_require__(470);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-	var ENTER_KEY = 13;
-
-	function selectData(state, props) {
-	  var tags = state.tags;
-
-	  var augmentedTags = tags.map(function (tag) {
-	    var exists = props.selectedTags.find(function (selectedTag) {
-	      return selectedTag.id === tag.id;
-	    });
-	    var isSelected = false;
-	    if (exists) {
-	      isSelected = true;
-	    }
-	    return _extends({}, tag, { isSelected: isSelected });
-	  });
-	  return { tags: augmentedTags };
-	}
-
-	var TagInput = (function (_Component) {
-	  _inherits(TagInput, _Component);
-
-	  function TagInput(props) {
-	    _classCallCheck(this, TagInput);
-
-	    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(TagInput).call(this, props));
-
-	    _this.handleAutoCompCloseClick = function () {
-	      _this.setState({ showChoices: false });
-	    };
-
-	    _this.state = {
-	      searchTerm: '',
-	      showChoices: false,
-	      duplicateTag: false
-	    };
-	    return _this;
-	  }
-
-	  _createClass(TagInput, [{
-	    key: 'isDuplicateTag',
-	    value: function isDuplicateTag(tagName) {
-	      var lowercaseTagName = tagName.toLowerCase();
-	      return this.props.tags.find(function (tag) {
-	        return tag.value === lowercaseTagName;
-	      });
-	    }
-	  }, {
-	    key: 'setDuplicateTag',
-	    value: function setDuplicateTag(isDupe) {
-	      this.setState({ duplicateTag: isDupe });
-	    }
-	  }, {
-	    key: 'handleTagInputChange',
-	    value: function handleTagInputChange(term) {
-	      this.setState({ searchTerm: term,
-	        duplicateTag: false });
-	    }
-	  }, {
-	    key: 'handleClearClick',
-	    value: function handleClearClick() {
-	      this.setState({ searchTerm: '' });
-	    }
-	  }, {
-	    key: 'handleTagEnter',
-	    value: function handleTagEnter(ev) {
-	      var newTag = ev.target.value;
-	      if (ev.which === ENTER_KEY && newTag) {
-	        var duplicateTag = this.isDuplicateTag(newTag);
-	        if (duplicateTag) {
-	          this.props.selectionHandler(duplicateTag, true);
-	        } else {
-	          var addTagAction = (0, _tagActions.addTag)(newTag);
-	          this.props.dispatch(addTagAction);
-	          this.props.selectionHandler(addTagAction.tag, true);
-	        }
-	        ev.target.select();
-	      }
-	    }
-	  }, {
-	    key: 'componentWillMount',
-	    value: function componentWillMount() {
-	      this.props.dispatch((0, _tagActions.getTags)());
-	    }
-	  }, {
-	    key: 'renderAutoComplete',
-	    value: function renderAutoComplete() {
-	      return _react2.default.createElement(_autoCompleteDropdown2.default, { choices: this.props.tags,
-	        filter: this.state.searchTerm,
-	        closeClickHandler: this.handleAutoCompCloseClick,
-	        selectionClickHandler: this.props.selectionHandler });
-	    }
-	  }, {
-	    key: 'renderSelectedTags',
-	    value: function renderSelectedTags() {
-	      var _this2 = this;
-
-	      return this.props.selectedTags.map(function (tag) {
-	        return _react2.default.createElement(
-	          'div',
-	          { key: tag.id,
-	            className: 'flex-parent-row tag-choice selected',
-	            onClick: function onClick() {
-	              _this2.props.selectionHandler(tag, !tag.isSelected);
-	            } },
-	          _react2.default.createElement(
-	            'span',
-	            null,
-	            tag.value
-	          ),
-	          _react2.default.createElement('span', { className: 'icon-close' })
-	        );
-	      });
-	    }
-	  }, {
-	    key: 'render',
-	    value: function render() {
-	      var _this3 = this;
-
-	      var _state = this.state;
-	      var searchTerm = _state.searchTerm;
-	      var showChoices = _state.showChoices;
-	      var duplicateTag = _state.duplicateTag;
-
-	      var closeIconClasses = (0, _classnames2.default)("btn-naked", "no-border", "icon-close", "fader", { faded: !searchTerm });
-	      var dupeClasses = (0, _classnames2.default)("input-error-message", { show: duplicateTag });
-	      var autoCompleteClasses = (0, _classnames2.default)("auto-complete-container", { open: showChoices });
-	      return _react2.default.createElement(
-	        'div',
-	        { style: { position: 'relative' } },
-	        _react2.default.createElement(
-	          'div',
-	          { className: 'search-input-holder', style: { position: 'relative' } },
-	          _react2.default.createElement('button', { className: closeIconClasses,
-	            style: {
-	              position: 'absolute',
-	              right: 0,
-	              top: '0.8em'
-	            },
-	            onClick: function onClick() {
-	              _this3.handleClearClick();
-	            } }),
-	          _react2.default.createElement('input', { type: 'text',
-	            style: { paddingRight: '1em' },
-	            placeholder: 'Search for tag',
-	            value: searchTerm,
-	            onFocus: function onFocus(ev) {
-	              _this3.setState({ showChoices: true });
-	            },
-	            onKeyPress: function onKeyPress(ev) {
-	              _this3.handleTagEnter(ev);
-	            },
-	            onChange: function onChange(ev) {
-	              _this3.handleTagInputChange(ev.target.value);
-	            } }),
-	          _react2.default.createElement(
-	            'div',
-	            { className: dupeClasses },
-	            'this tag already exists'
-	          ),
-	          _react2.default.createElement(
-	            'div',
-	            { className: autoCompleteClasses,
-	              style: { position: 'absolute',
-	                top: '3em',
-	                left: 0,
-	                width: '100%'
-	              } },
-	            showChoices ? this.renderAutoComplete() : ''
-	          ),
-	          _react2.default.createElement(
-	            'div',
-	            { className: 'selected-tags flex-parent-row wrap',
-	              style: {
-	                margin: '0 -.2em'
-	              } },
-	            this.renderSelectedTags()
-	          )
-	        )
-	      );
-	    }
-	  }]);
-
-	  return TagInput;
-	})(_react.Component);
-
-	exports.default = (0, _reactRedux.connect)(selectData)(TagInput);
-
-/***/ },
-/* 469 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-
-	var _react = __webpack_require__(1);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	var _classnames = __webpack_require__(261);
-
-	var _classnames2 = _interopRequireDefault(_classnames);
-
-	var _function = __webpack_require__(368);
-
-	var _function2 = _interopRequireDefault(_function);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-	var ESC_KEY = 27;
-
-	var AutoCompleteDropdown = (function (_Component) {
-	  _inherits(AutoCompleteDropdown, _Component);
-
-	  function AutoCompleteDropdown() {
-	    var _Object$getPrototypeO;
-
-	    var _temp, _this, _ret;
-
-	    _classCallCheck(this, AutoCompleteDropdown);
-
-	    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
-	      args[_key] = arguments[_key];
-	    }
-
-	    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_Object$getPrototypeO = Object.getPrototypeOf(AutoCompleteDropdown)).call.apply(_Object$getPrototypeO, [this].concat(args))), _this), _this.shouldComponentUpdate = _function2.default, _this.closeOnEsc = function (ev) {
-	      if (ev.which === ESC_KEY) {
-	        _this.props.closeClickHandler();
-	        ev.target.blur();
-	      }
-	    }, _this.callClose = function (ev) {
-	      ev.preventDefault();
-	      ev.stopPropagation();
-	      _this.props.closeClickHandler();
-	    }, _temp), _possibleConstructorReturn(_this, _ret);
-	  }
-
-	  _createClass(AutoCompleteDropdown, [{
-	    key: 'componentDidMount',
-	    value: function componentDidMount() {
-	      document.body.addEventListener('keydown', this.closeOnEsc, false);
-	    }
-	  }, {
-	    key: 'componentWillUnmount',
-	    value: function componentWillUnmount() {
-	      document.body.removeEventListener('keydown', this.closeOnEsc, false);
-	    }
-	  }, {
-	    key: 'renderChoices',
-	    value: function renderChoices() {
-	      var _this2 = this;
-
-	      console.log(this.props.choices);
-	      var regExFilter = '';
-	      var _props = this.props;
-	      var filter = _props.filter;
-	      var choices = _props.choices;
-
-	      switch (filter.length) {
-	        case 0:
-	          break;
-	        case 1:
-	          regExFilter = '^' + filter;
-	          break;
-	        default:
-	          regExFilter = '' + filter;
-	      }
-	      return choices.filter(function (tag) {
-	        return tag.value.match(new RegExp(regExFilter, 'i')) ? true : false;
-	      }).map(function (choice) {
-	        var tagClasses = (0, _classnames2.default)("dropdown-choice", "tag-choice", { selected: choice.isSelected });
-	        return _react2.default.createElement(
-	          'div',
-	          { className: tagClasses,
-	            key: choice.value,
-	            onClick: function onClick(ev) {
-	              ev.stopPropagation();
-	              _this2.props.selectionClickHandler(choice, !choice.isSelected);
-	            } },
-	          choice.value
-	        );
-	      });
-	    }
-	  }, {
-	    key: 'render',
-	    value: function render() {
-	      return _react2.default.createElement(
-	        'div',
-	        { className: 'dropdown-container',
-	          onClick: this.callClose,
-	          onKeyPress: function onKeyPress(ev) {
-	            console.log(ev);
-	          } },
-	        _react2.default.createElement(
-	          'button',
-	          { className: 'btn-default btn-naked no-border',
-	            style: {
-	              position: 'absolute',
-	              right: '-3em',
-	              top: 0
-	            },
-	            onClick: this.callClose },
-	          _react2.default.createElement('span', { className: 'icon-close icon-lg' })
-	        ),
-	        _react2.default.createElement(
-	          'div',
-	          { className: 'esc-hint', style: {
-	              fontSize: '.8em',
-	              margin: '0 .2em 1em'
-	            } },
-	          _react2.default.createElement(
-	            'span',
-	            { style: {
-	                backgroundColor: 'rgba(0,0,0,0.2)',
-	                borderRadius: 2,
-	                marginRight: '.5em',
-	                padding: '1px 4px'
-	              } },
-	            'esc'
-	          ),
-	          _react2.default.createElement(
-	            'span',
-	            null,
-	            'to close'
-	          )
-	        ),
-	        _react2.default.createElement(
-	          'div',
-	          { className: 'flex-parent-row wrap' },
-	          this.renderChoices()
-	        )
-	      );
-	    }
-	  }]);
-
-	  return AutoCompleteDropdown;
-	})(_react.Component);
-
-	exports.default = AutoCompleteDropdown;
-
-/***/ },
-/* 470 */
-/***/ function(module, exports, __webpack_require__) {
-
-	// style-loader: Adds some css to the DOM by adding a <style> tag
-
-	// load the styles
-	var content = __webpack_require__(471);
-	if(typeof content === 'string') content = [[module.id, content, '']];
-	// add the styles to the DOM
-	var update = __webpack_require__(259)(content, {});
-	if(content.locals) module.exports = content.locals;
-	// Hot Module Replacement
-	if(false) {
-		// When the styles change, update the <style> tags
-		if(!content.locals) {
-			module.hot.accept("!!./../../node_modules/css-loader/index.js!./../../node_modules/autoprefixer-loader/index.js?browsers=last 2 version!./../../node_modules/sass-loader/index.js?outputStyle=expanded&sourceMap=true&sourceMapContents=true!./autoComplete.scss", function() {
-				var newContent = require("!!./../../node_modules/css-loader/index.js!./../../node_modules/autoprefixer-loader/index.js?browsers=last 2 version!./../../node_modules/sass-loader/index.js?outputStyle=expanded&sourceMap=true&sourceMapContents=true!./autoComplete.scss");
-				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-				update(newContent);
-			});
-		}
-		// When the module is disposed, remove the <style> tags
-		module.hot.dispose(function() { update(); });
-	}
-
-/***/ },
 /* 471 */
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(258)();
-	// imports
-
-
-	// module
-	exports.push([module.id, ".auto-complete-container {\n  height: 0;\n  overflow: hidden;\n  z-index: 1;\n}\n\n.auto-complete-container.open {\n  height: 100px;\n  overflow: initial;\n}\n\n.dropdown-container {\n  border-radius: 2px;\n  background-color: #fff;\n  box-shadow: rgba(0, 0, 0, 0.117647) 0px 1px 6px, rgba(0, 0, 0, 0.239216) 0px 1px 4px;\n  padding: 1em 0;\n}\n\n.dropdown-choice:hover {\n  cursor: pointer;\n}\n\n.endorser-choice {\n  transition: background .2s ease;\n  background-color: transparent;\n}\n\n.endorser-choice .endorser-choice-name {\n  margin-left: 20;\n  border-bottom: 1px solid #e0e0e0;\n  padding: 1em 0;\n}\n\n.highlighted .endorser-choice {\n  background-color: rgba(100, 100, 100, 0.1);\n}\n\n.dropdown-choice:last-child .endorser-choice-name {\n  border: none;\n}\n\n.tag-choice {\n  background-color: #E2CFEA;\n  border-radius: 2px;\n  padding: .2em .5em;\n  margin: .5em .2em;\n  transition: background .2s ease;\n}\n\n.tag-choice:hover {\n  cursor: pointer;\n}\n\n.tag-choice.selected {\n  background-color: #A06CD5;\n  color: rgba(255, 255, 255, 0.9);\n}\n\n.input-error-message {\n  transition: opacity .2s ease, -webkit-transform .3s ease;\n  transition: opacity .2s ease, transform .3s ease;\n  transition: opacity .2s ease, transform .3s ease, -webkit-transform .3s ease;\n  opacity: 0;\n  -webkit-transform: translateY(-20px);\n          transform: translateY(-20px);\n  position: absolute;\n  pointer-events: none;\n  top: -.5em;\n  left: 0;\n  font-size: .7em;\n}\n\n.input-error-message.show {\n  -webkit-transform: translateY(0px);\n          transform: translateY(0px);\n  opacity: 1;\n}\n\n@media (min-width: 415px) {\n  .tag-choice:hover {\n    background-color: #A06CD5;\n  }\n  .selected:hover {\n    background-color: #E2CFEA;\n    color: rgba(0, 0, 0, 0.8);\n  }\n}\n", ""]);
-
-	// exports
-
-
-/***/ },
-/* 472 */
-/***/ function(module, exports, __webpack_require__) {
-
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(473);
+	var content = __webpack_require__(472);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(259)(content, {});
@@ -50998,7 +50868,7 @@
 	}
 
 /***/ },
-/* 473 */
+/* 472 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(258)();
@@ -51006,13 +50876,13 @@
 
 
 	// module
-	exports.push([module.id, "label {\n  display: inline-block;\n}\n\nlabel.non-mui {\n  margin: 1em 0 .5em 0;\n}\n\ninput[type=\"text\"] {\n  width: 100%;\n  border-style: none none solid;\n  border-width: 1px;\n  border-color: #e0e0e0;\n  margin-bottom: 1em;\n  padding: .5em 0;\n  -webkit-appearance: none;\n  border-radius: 0;\n  background-color: transparent;\n  white-space: nowrap;\n  overflow: hidden;\n  text-overflow: ellipsis;\n}\n\ninput[type=\"text\"]:focus {\n  outline: none;\n}\n\n.key-block {\n  background-color: rgba(0, 0, 0, 0.2);\n  border-radius: 2px;\n  margin-right: .5em;\n  padding: 1px 4px;\n}\n\n.check-box {\n  padding: .5em 0 .5em .2em;\n}\n\n.check-box:hover {\n  cursor: pointer;\n}\n\n.form-check-box {\n  display: inline-block;\n  padding: 0 .5em 0 .6em;\n  border-radius: 2px;\n  border: 1px solid rgba(0, 0, 0, 0.4);\n}\n\n.form-check-box.checked {\n  border-color: #A06CD5;\n  background-color: #A06CD5;\n  color: #E2CFEA;\n}\n\n.check-box-label:hover {\n  cursor: pointer;\n}\n\nselect {\n  background-color: transparent;\n  border: none;\n  border-bottom: 1px solid #e0e0e0;\n  overflow: hidden;\n  outline: none;\n  border-radius: 20px;\n  -webkit-appearance: none;\n  -webkit-border-radius: 0px;\n  padding: .5em 0;\n  width: 100%;\n}\n\n.form-select {\n  position: relative;\n}\n\n.form-select:after {\n  font-family: \"fontello\";\n  -webkit-transform: rotateZ(90deg);\n          transform: rotateZ(90deg);\n  content: '\\E804';\n  width: 1em;\n  height: 1em;\n  position: absolute;\n  top: .7em;\n  right: 0;\n  pointer-events: none;\n}\n\n.form-contents {\n  padding: 0 20px;\n}\n\n.icon-btn-form {\n  margin: 0;\n  margin-right: -.4em;\n}\n\n.input-field {\n  margin-bottom: 1em;\n}\n\n.input-center {\n  text-align: center;\n}\n\n.input-center:focus {\n  text-align: left;\n}\n\n.input-group {\n  margin-bottom: 3em;\n}\n\n@media (min-width: 415px) {\n  .form-container {\n    margin-top: 10%;\n  }\n  .form-contents {\n    padding: 0;\n  }\n}\n", ""]);
+	exports.push([module.id, "label {\n  display: inline-block;\n}\n\nlabel.non-mui {\n  margin: 1em 0 .5em 0;\n}\n\ninput[type=\"text\"] {\n  width: 100%;\n  border-style: none none solid;\n  border-width: 1px;\n  border-color: #e0e0e0;\n  margin-bottom: 1em;\n  padding: .5em 0;\n  -webkit-appearance: none;\n  border-radius: 0;\n  background-color: transparent;\n  white-space: nowrap;\n  overflow: hidden;\n  text-overflow: ellipsis;\n}\n\ninput[type=\"text\"]:focus {\n  outline: none;\n}\n\n.key-block {\n  background-color: rgba(0, 0, 0, 0.2);\n  border-radius: 2px;\n  margin-right: .5em;\n  padding: 1px 4px;\n}\n\n.check-box {\n  padding: .5em 0 .5em .2em;\n}\n\n.check-box:hover {\n  cursor: pointer;\n}\n\n.form-check-box {\n  display: inline-block;\n  padding: 0 .5em 0 .6em;\n  border-radius: 2px;\n  border: 1px solid rgba(0, 0, 0, 0.4);\n}\n\n.form-check-box.checked {\n  border-color: #A06CD5;\n  background-color: #A06CD5;\n  color: #E2CFEA;\n}\n\n.check-box-label:hover {\n  cursor: pointer;\n}\n\nselect {\n  background-color: transparent;\n  border: none;\n  border-bottom: 1px solid #e0e0e0;\n  overflow: hidden;\n  outline: none;\n  border-radius: 20px;\n  -webkit-appearance: none;\n  -webkit-border-radius: 0px;\n  padding: .5em 0;\n  width: 100%;\n}\n\n.form-select {\n  position: relative;\n}\n\n.form-select:after {\n  font-family: \"fontello\";\n  -webkit-transform: rotateZ(90deg);\n          transform: rotateZ(90deg);\n  content: '\\E804';\n  width: 1em;\n  height: 1em;\n  position: absolute;\n  top: .7em;\n  right: 0;\n  pointer-events: none;\n}\n\n.form-contents {\n  padding: 0 20px;\n}\n\n.icon-btn-form {\n  margin: 0;\n  margin-right: -.4em;\n}\n\n.input-field {\n  margin-bottom: 1em;\n}\n\n.input-center {\n  text-align: center;\n}\n\n.input-center:focus {\n  text-align: left;\n}\n\n.input-group {\n  margin-bottom: 3em;\n}\n\n.existing-endorser-info {\n  -webkit-flex: 1 1 300px;\n      -ms-flex: 1 1 300px;\n          flex: 1 1 300px;\n}\n\n@media (min-width: 415px) {\n  .form-container {\n    margin-top: 10%;\n  }\n  .form-contents {\n    padding: 0;\n  }\n  .existing-endorser-info {\n    -webkit-flex: 1 1 500px;\n        -ms-flex: 1 1 500px;\n            flex: 1 1 500px;\n  }\n}\n", ""]);
 
 	// exports
 
 
 /***/ },
-/* 474 */
+/* 473 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -51025,7 +50895,7 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	__webpack_require__(475);
+	__webpack_require__(474);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -51048,13 +50918,13 @@
 	exports.default = LoadingIndicator;
 
 /***/ },
-/* 475 */
+/* 474 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(476);
+	var content = __webpack_require__(475);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(259)(content, {});
@@ -51074,13 +50944,13 @@
 	}
 
 /***/ },
-/* 476 */
+/* 475 */
 /***/ function(module, exports) {
 
 	module.exports = ".sk-folding-cube {\n  margin: 20px auto;\n  width: 40px;\n  height: 40px;\n  position: relative;\n  -webkit-transform: rotateZ(45deg);\n          transform: rotateZ(45deg);\n}\n\n.sk-folding-cube .sk-cube {\n  float: left;\n  width: 50%;\n  height: 50%;\n  position: relative;\n  -webkit-transform: scale(1.1);\n      -ms-transform: scale(1.1);\n          transform: scale(1.1);\n}\n.sk-folding-cube .sk-cube:before {\n  content: '';\n  position: absolute;\n  top: 0;\n  left: 0;\n  width: 100%;\n  height: 100%;\n  background-color: purple;\n  -webkit-animation: sk-foldCubeAngle 2.4s infinite linear both;\n          animation: sk-foldCubeAngle 2.4s infinite linear both;\n  -webkit-transform-origin: 100% 100%;\n      -ms-transform-origin: 100% 100%;\n          transform-origin: 100% 100%;\n}\n.sk-folding-cube .sk-cube2 {\n  -webkit-transform: scale(1.1) rotateZ(90deg);\n          transform: scale(1.1) rotateZ(90deg);\n}\n.sk-folding-cube .sk-cube3 {\n  -webkit-transform: scale(1.1) rotateZ(180deg);\n          transform: scale(1.1) rotateZ(180deg);\n}\n.sk-folding-cube .sk-cube4 {\n  -webkit-transform: scale(1.1) rotateZ(270deg);\n          transform: scale(1.1) rotateZ(270deg);\n}\n.sk-folding-cube .sk-cube2:before {\n  -webkit-animation-delay: 0.3s;\n          animation-delay: 0.3s;\n}\n.sk-folding-cube .sk-cube3:before {\n  -webkit-animation-delay: 0.6s;\n          animation-delay: 0.6s;\n}\n.sk-folding-cube .sk-cube4:before {\n  -webkit-animation-delay: 0.9s;\n          animation-delay: 0.9s;\n}\n@-webkit-keyframes sk-foldCubeAngle {\n  0%, 10% {\n    -webkit-transform: perspective(140px) rotateX(-180deg);\n            transform: perspective(140px) rotateX(-180deg);\n    opacity: 0;\n  } 25%, 75% {\n    -webkit-transform: perspective(140px) rotateX(0deg);\n            transform: perspective(140px) rotateX(0deg);\n    opacity: 1;\n  } 90%, 100% {\n    -webkit-transform: perspective(140px) rotateY(180deg);\n            transform: perspective(140px) rotateY(180deg);\n    opacity: 0;\n  }\n}\n\n@keyframes sk-foldCubeAngle {\n  0%, 10% {\n    -webkit-transform: perspective(140px) rotateX(-180deg);\n            transform: perspective(140px) rotateX(-180deg);\n    opacity: 0;\n  } 25%, 75% {\n    -webkit-transform: perspective(140px) rotateX(0deg);\n            transform: perspective(140px) rotateX(0deg);\n    opacity: 1;\n  } 90%, 100% {\n    -webkit-transform: perspective(140px) rotateY(180deg);\n            transform: perspective(140px) rotateY(180deg);\n    opacity: 0;\n  }\n}\n"
 
 /***/ },
-/* 477 */
+/* 476 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -51099,7 +50969,7 @@
 
 	var _classnames2 = _interopRequireDefault(_classnames);
 
-	__webpack_require__(478);
+	__webpack_require__(477);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -51161,13 +51031,13 @@
 	exports.default = ModalWrapper;
 
 /***/ },
-/* 478 */
+/* 477 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(479);
+	var content = __webpack_require__(478);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(259)(content, {});
@@ -51187,7 +51057,7 @@
 	}
 
 /***/ },
-/* 479 */
+/* 478 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(258)();
@@ -51201,7 +51071,7 @@
 
 
 /***/ },
-/* 480 */
+/* 479 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -51216,7 +51086,7 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _formControls = __webpack_require__(481);
+	var _formControls = __webpack_require__(480);
 
 	var _formControls2 = _interopRequireDefault(_formControls);
 
@@ -51284,7 +51154,7 @@
 	exports.default = FormContainer;
 
 /***/ },
-/* 481 */
+/* 480 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -51366,7 +51236,7 @@
 	exports.default = FormControls;
 
 /***/ },
-/* 482 */
+/* 481 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -51377,7 +51247,7 @@
 	exports.fetchTweetsIfNeeded = fetchTweetsIfNeeded;
 	exports.requestTweetDelete = requestTweetDelete;
 
-	var _tweetTypes = __webpack_require__(483);
+	var _tweetTypes = __webpack_require__(482);
 
 	var ACTION_TYPES = _interopRequireWildcard(_tweetTypes);
 
@@ -51453,7 +51323,7 @@
 	}
 
 /***/ },
-/* 483 */
+/* 482 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -51468,7 +51338,7 @@
 	var UNDELETE_TWEET = exports.UNDELETE_TWEET = 'DELETE_TWEET_FAIL';
 
 /***/ },
-/* 484 */
+/* 483 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -51487,27 +51357,27 @@
 
 	var _candidateActions = __webpack_require__(373);
 
-	var _candidateList = __webpack_require__(485);
+	var _candidateList = __webpack_require__(484);
 
 	var _candidateList2 = _interopRequireDefault(_candidateList);
 
-	var _addButton = __webpack_require__(486);
+	var _addButton = __webpack_require__(485);
 
 	var _addButton2 = _interopRequireDefault(_addButton);
 
-	var _modalWrapper = __webpack_require__(477);
+	var _modalWrapper = __webpack_require__(476);
 
 	var _modalWrapper2 = _interopRequireDefault(_modalWrapper);
 
-	var _addCandidateForm = __webpack_require__(493);
+	var _addCandidateForm = __webpack_require__(492);
 
 	var _addCandidateForm2 = _interopRequireDefault(_addCandidateForm);
 
-	var _formContainer = __webpack_require__(480);
+	var _formContainer = __webpack_require__(479);
 
 	var _formContainer2 = _interopRequireDefault(_formContainer);
 
-	var _candidateFormActions = __webpack_require__(499);
+	var _candidateFormActions = __webpack_require__(498);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -51586,7 +51456,7 @@
 	exports.default = (0, _reactRedux.connect)(selectCandidates)(CandidateTab);
 
 /***/ },
-/* 485 */
+/* 484 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -51681,7 +51551,7 @@
 	exports.default = CandidateList;
 
 /***/ },
-/* 486 */
+/* 485 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -51696,11 +51566,11 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _floatingActionButton = __webpack_require__(487);
+	var _floatingActionButton = __webpack_require__(486);
 
 	var _floatingActionButton2 = _interopRequireDefault(_floatingActionButton);
 
-	var _fontIcon = __webpack_require__(492);
+	var _fontIcon = __webpack_require__(491);
 
 	var _fontIcon2 = _interopRequireDefault(_fontIcon);
 
@@ -51747,7 +51617,7 @@
 	exports.default = AddButton;
 
 /***/ },
-/* 487 */
+/* 486 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
@@ -51778,11 +51648,11 @@
 
 	var _colorManipulator2 = _interopRequireDefault(_colorManipulator);
 
-	var _enhancedButton = __webpack_require__(488);
+	var _enhancedButton = __webpack_require__(487);
 
 	var _enhancedButton2 = _interopRequireDefault(_enhancedButton);
 
-	var _fontIcon = __webpack_require__(492);
+	var _fontIcon = __webpack_require__(491);
 
 	var _fontIcon2 = _interopRequireDefault(_fontIcon);
 
@@ -51790,7 +51660,7 @@
 
 	var _paper2 = _interopRequireDefault(_paper);
 
-	var _children = __webpack_require__(489);
+	var _children = __webpack_require__(488);
 
 	var _children2 = _interopRequireDefault(_children);
 
@@ -52044,7 +51914,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4)))
 
 /***/ },
-/* 488 */
+/* 487 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -52071,7 +51941,7 @@
 
 	var _colors2 = _interopRequireDefault(_colors);
 
-	var _children = __webpack_require__(489);
+	var _children = __webpack_require__(488);
 
 	var _children2 = _interopRequireDefault(_children);
 
@@ -52382,7 +52252,7 @@
 	exports.default = EnhancedButton;
 
 /***/ },
-/* 489 */
+/* 488 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -52395,7 +52265,7 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _reactAddonsCreateFragment = __webpack_require__(490);
+	var _reactAddonsCreateFragment = __webpack_require__(489);
 
 	var _reactAddonsCreateFragment2 = _interopRequireDefault(_reactAddonsCreateFragment);
 
@@ -52436,13 +52306,13 @@
 	};
 
 /***/ },
-/* 490 */
+/* 489 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = __webpack_require__(491).create;
+	module.exports = __webpack_require__(490).create;
 
 /***/ },
-/* 491 */
+/* 490 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {/**
@@ -52512,7 +52382,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4)))
 
 /***/ },
-/* 492 */
+/* 491 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -52639,7 +52509,7 @@
 	exports.default = FontIcon;
 
 /***/ },
-/* 493 */
+/* 492 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -52656,7 +52526,7 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _formControls = __webpack_require__(481);
+	var _formControls = __webpack_require__(480);
 
 	var _formControls2 = _interopRequireDefault(_formControls);
 
@@ -52666,13 +52536,13 @@
 
 	var _reactRedux = __webpack_require__(219);
 
-	var _radioGroup = __webpack_require__(494);
+	var _radioGroup = __webpack_require__(493);
 
 	var _radioGroup2 = _interopRequireDefault(_radioGroup);
 
-	var _candidateFormActions = __webpack_require__(499);
+	var _candidateFormActions = __webpack_require__(498);
 
-	var _util = __webpack_require__(501);
+	var _util = __webpack_require__(500);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -52813,7 +52683,7 @@
 	exports.default = (0, _reactRedux.connect)(selectCandidateFormData)(AddCandidateForm);
 
 /***/ },
-/* 494 */
+/* 493 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -52826,11 +52696,11 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _radioButton = __webpack_require__(495);
+	var _radioButton = __webpack_require__(494);
 
 	var _radioButton2 = _interopRequireDefault(_radioButton);
 
-	var _radioButtonGroup = __webpack_require__(498);
+	var _radioButtonGroup = __webpack_require__(497);
 
 	var _radioButtonGroup2 = _interopRequireDefault(_radioButtonGroup);
 
@@ -52865,7 +52735,7 @@
 	exports.default = RadioGroup;
 
 /***/ },
-/* 495 */
+/* 494 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -52892,11 +52762,11 @@
 
 	var _enhancedSwitch2 = _interopRequireDefault(_enhancedSwitch);
 
-	var _radioButtonUnchecked = __webpack_require__(496);
+	var _radioButtonUnchecked = __webpack_require__(495);
 
 	var _radioButtonUnchecked2 = _interopRequireDefault(_radioButtonUnchecked);
 
-	var _radioButtonChecked = __webpack_require__(497);
+	var _radioButtonChecked = __webpack_require__(496);
 
 	var _radioButtonChecked2 = _interopRequireDefault(_radioButtonChecked);
 
@@ -53059,7 +52929,7 @@
 	exports.default = RadioButton;
 
 /***/ },
-/* 496 */
+/* 495 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -53099,7 +52969,7 @@
 	exports.default = ToggleRadioButtonUnchecked;
 
 /***/ },
-/* 497 */
+/* 496 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -53139,7 +53009,7 @@
 	exports.default = ToggleRadioButtonChecked;
 
 /***/ },
-/* 498 */
+/* 497 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
@@ -53154,7 +53024,7 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _radioButton = __webpack_require__(495);
+	var _radioButton = __webpack_require__(494);
 
 	var _radioButton2 = _interopRequireDefault(_radioButton);
 
@@ -53311,7 +53181,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4)))
 
 /***/ },
-/* 499 */
+/* 498 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -53323,7 +53193,7 @@
 	exports.resetCandidateForm = resetCandidateForm;
 	exports.requestAddCandidate = requestAddCandidate;
 
-	var _candidateFormTypes = __webpack_require__(500);
+	var _candidateFormTypes = __webpack_require__(499);
 
 	var _snackbarActions = __webpack_require__(265);
 
@@ -53367,7 +53237,7 @@
 	}
 
 /***/ },
-/* 500 */
+/* 499 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -53381,7 +53251,7 @@
 	var RESET_CANDIDATE_FORM = exports.RESET_CANDIDATE_FORM = "RESET_CANDIDATE_FORM";
 
 /***/ },
-/* 501 */
+/* 500 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -53405,7 +53275,7 @@
 	}
 
 /***/ },
-/* 502 */
+/* 501 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -53424,23 +53294,23 @@
 
 	var _reactRedux = __webpack_require__(219);
 
-	var _endorserList = __webpack_require__(503);
+	var _endorserList = __webpack_require__(502);
 
 	var _endorserList2 = _interopRequireDefault(_endorserList);
 
-	var _formContainer = __webpack_require__(480);
+	var _formContainer = __webpack_require__(479);
 
 	var _formContainer2 = _interopRequireDefault(_formContainer);
 
-	var _editEndorserForm = __webpack_require__(504);
+	var _editEndorserForm = __webpack_require__(503);
 
 	var _editEndorserForm2 = _interopRequireDefault(_editEndorserForm);
 
-	var _modalWrapper = __webpack_require__(477);
+	var _modalWrapper = __webpack_require__(476);
 
 	var _modalWrapper2 = _interopRequireDefault(_modalWrapper);
 
-	var _endorserActions = __webpack_require__(465);
+	var _endorserActions = __webpack_require__(469);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -53589,7 +53459,7 @@
 	exports.default = (0, _reactRedux.connect)(selectData)(EndorserTab);
 
 /***/ },
-/* 503 */
+/* 502 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -53682,7 +53552,7 @@
 	exports.default = EndorserList;
 
 /***/ },
-/* 504 */
+/* 503 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -53766,7 +53636,7 @@
 	exports.default = EditEndorserForm;
 
 /***/ },
-/* 505 */
+/* 504 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -53783,15 +53653,15 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _addButton = __webpack_require__(486);
+	var _addButton = __webpack_require__(485);
 
 	var _addButton2 = _interopRequireDefault(_addButton);
 
-	var _formContainer = __webpack_require__(480);
+	var _formContainer = __webpack_require__(479);
 
 	var _formContainer2 = _interopRequireDefault(_formContainer);
 
-	var _modalWrapper = __webpack_require__(477);
+	var _modalWrapper = __webpack_require__(476);
 
 	var _modalWrapper2 = _interopRequireDefault(_modalWrapper);
 
@@ -53799,11 +53669,11 @@
 
 	var _addEndorsementForm2 = _interopRequireDefault(_addEndorsementForm);
 
-	var _editEndorsementForm = __webpack_require__(506);
+	var _editEndorsementForm = __webpack_require__(505);
 
 	var _editEndorsementForm2 = _interopRequireDefault(_editEndorsementForm);
 
-	var _endorsementList = __webpack_require__(507);
+	var _endorsementList = __webpack_require__(506);
 
 	var _endorsementList2 = _interopRequireDefault(_endorsementList);
 
@@ -53959,7 +53829,7 @@
 	exports.default = (0, _reactRedux.connect)(selectData)(EndorsementsTab);
 
 /***/ },
-/* 506 */
+/* 505 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -53980,7 +53850,7 @@
 
 	var _avatar2 = _interopRequireDefault(_avatar);
 
-	var _util = __webpack_require__(501);
+	var _util = __webpack_require__(500);
 
 	var _inlineConstants = __webpack_require__(467);
 
@@ -54145,7 +54015,7 @@
 	exports.default = EditEndorsementForm;
 
 /***/ },
-/* 507 */
+/* 506 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -54287,7 +54157,7 @@
 	exports.default = EndorsementList;
 
 /***/ },
-/* 508 */
+/* 507 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -54336,7 +54206,7 @@
 	exports.default = TagsTab;
 
 /***/ },
-/* 509 */
+/* 508 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -54358,7 +54228,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 510 */
+/* 509 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -54367,7 +54237,7 @@
 	  value: true
 	});
 
-	var _tweets = __webpack_require__(511);
+	var _tweets = __webpack_require__(510);
 
 	Object.defineProperty(exports, 'tweets', {
 	  enumerable: true,
@@ -54376,7 +54246,7 @@
 	  }
 	});
 
-	var _login = __webpack_require__(512);
+	var _login = __webpack_require__(511);
 
 	Object.defineProperty(exports, 'loginInfo', {
 	  enumerable: true,
@@ -54385,7 +54255,7 @@
 	  }
 	});
 
-	var _candidates = __webpack_require__(513);
+	var _candidates = __webpack_require__(512);
 
 	Object.defineProperty(exports, 'candidates', {
 	  enumerable: true,
@@ -54394,7 +54264,7 @@
 	  }
 	});
 
-	var _endorsementFormData = __webpack_require__(514);
+	var _endorsementFormData = __webpack_require__(513);
 
 	Object.defineProperty(exports, 'endorsementFormData', {
 	  enumerable: true,
@@ -54403,7 +54273,7 @@
 	  }
 	});
 
-	var _candidateFormData = __webpack_require__(515);
+	var _candidateFormData = __webpack_require__(514);
 
 	Object.defineProperty(exports, 'candidateFormData', {
 	  enumerable: true,
@@ -54412,7 +54282,7 @@
 	  }
 	});
 
-	var _snackbarData = __webpack_require__(516);
+	var _snackbarData = __webpack_require__(515);
 
 	Object.defineProperty(exports, 'snackbarData', {
 	  enumerable: true,
@@ -54421,7 +54291,7 @@
 	  }
 	});
 
-	var _tags = __webpack_require__(517);
+	var _tags = __webpack_require__(516);
 
 	Object.defineProperty(exports, 'tags', {
 	  enumerable: true,
@@ -54430,7 +54300,7 @@
 	  }
 	});
 
-	var _endorsers = __webpack_require__(518);
+	var _endorsers = __webpack_require__(517);
 
 	Object.defineProperty(exports, 'endorsers', {
 	  enumerable: true,
@@ -54439,7 +54309,7 @@
 	  }
 	});
 
-	var _endorsements = __webpack_require__(519);
+	var _endorsements = __webpack_require__(518);
 
 	Object.defineProperty(exports, 'endorsements', {
 	  enumerable: true,
@@ -54449,7 +54319,7 @@
 	});
 
 /***/ },
-/* 511 */
+/* 510 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -54459,7 +54329,7 @@
 	});
 	exports.default = tweets;
 
-	var _tweetTypes = __webpack_require__(483);
+	var _tweetTypes = __webpack_require__(482);
 
 	var initialState = [];
 
@@ -54480,7 +54350,7 @@
 	}
 
 /***/ },
-/* 512 */
+/* 511 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -54509,7 +54379,7 @@
 	}
 
 /***/ },
-/* 513 */
+/* 512 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -54538,7 +54408,7 @@
 	}
 
 /***/ },
-/* 514 */
+/* 513 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -54568,7 +54438,8 @@
 	    IS_ORG: false,
 	    END_ID: new Date().valueOf().toString(),
 	    AVATAR: null,
-	    IS_NEW: true
+	    IS_NEW: true,
+	    TAGS: []
 	  };
 	}
 
@@ -54590,6 +54461,8 @@
 	    case _endorsementFormTypes.UPDATE_ENDORSEMENT_FORM:
 	      return _extends({}, state, action.data);
 	    case _endorsementFormTypes.ADD_ENDORSER:
+	      return _extends({}, state, { endorsers: [action.data].concat(_toConsumableArray(state.endorsers)) });
+	    case _endorsementFormTypes.ADD_EMPTY_ENDORSER:
 	      var endorsers = state.endorsers;
 
 	      var newEndorsers = [makeEmptyEndorser()].concat(_toConsumableArray(endorsers));
@@ -54626,7 +54499,7 @@
 	}
 
 /***/ },
-/* 515 */
+/* 514 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -54638,7 +54511,7 @@
 	});
 	exports.default = candidateFormData;
 
-	var _candidateFormTypes = __webpack_require__(500);
+	var _candidateFormTypes = __webpack_require__(499);
 
 	var initialState = {
 	  AVATAR: null,
@@ -54666,7 +54539,7 @@
 	}
 
 /***/ },
-/* 516 */
+/* 515 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -54708,7 +54581,7 @@
 	}
 
 /***/ },
-/* 517 */
+/* 516 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -54741,7 +54614,7 @@
 	}
 
 /***/ },
-/* 518 */
+/* 517 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -54751,7 +54624,7 @@
 	});
 	exports.default = endorsers;
 
-	var _endorserTypes = __webpack_require__(466);
+	var _endorserTypes = __webpack_require__(470);
 
 	function endorsers() {
 	  var state = arguments.length <= 0 || arguments[0] === undefined ? [] : arguments[0];
@@ -54766,7 +54639,7 @@
 	}
 
 /***/ },
-/* 519 */
+/* 518 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';

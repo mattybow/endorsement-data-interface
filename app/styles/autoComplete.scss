@@ -29,6 +29,10 @@
   }
 }
 
+.tags-container{
+  padding:10px;
+}
+
 .highlighted .endorser-choice{
   background-color:rgba(100,100,100,.1);
 }
@@ -42,14 +46,20 @@
   border-radius:2px;
   padding:.2em .5em;
   margin: .5em .2em;
-  transition:background .2s ease;
+  border: 1px solid transparent;
+  transition:background .2s ease, border .2s ease;
   &:hover{
     cursor:pointer;
   }
-  &.selected{
-    background-color:$lightBarney;
-    color:rgba(255,255,255,.9);
-  }
+}
+
+.selected .tag-choice{
+  background-color:$lightBarney;
+  color:rgba(255,255,255,.9);
+}
+
+.highlighted .tag-choice{
+  border: 1px solid $barney;
 }
 
 .input-error-message{
