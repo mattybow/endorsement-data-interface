@@ -131,8 +131,8 @@ router.get('/tags',(req,res) => {
 
 router.post('/addCandidate', (req,res) => {
   if(req.session.passport){
-    const {CAN_ID,FIRST_NAME,MIDDLE_NAME,LAST_NAME,PARTY,GENDER,DOB,AVATAR} = req.body;
-    const argList = [CAN_ID,FIRST_NAME,MIDDLE_NAME,LAST_NAME,PARTY,GENDER,DOB,AVATAR];
+    const {canId,firstName,middleName,lastName,party,gender,dob,avatar} = req.body;
+    const argList = [canId,firstName,middleName,lastName,party,gender,dob,avatar];
     transaction.executeProcedure('ADD_CANDIDATE', argList).then(
       result => {
         const { code, ok } = result;
@@ -144,34 +144,33 @@ router.post('/addCandidate', (req,res) => {
 
 router.post('/addEndorsements', (req,res) => {
   if(req.session.passport){
-    const { newTags, endorsers, selectedCandidate, source, date } = req.body;
+    const { newTags, endorsers, selectedCandidate, source, date, tweetText } = req.body;
     const txn = transaction.create();
     //if there are any new tags, insert them
     newTags.map(tag => {
         txn.insertIntoTable('TAGS',[tag.id, tag.value]);
     });
-
     endorsers.map(endorser => {
-      const { END_ID, DESCRIPT, NAME, IS_ORG, AVATAR, WIKI_LINK, TAGS=[], IS_NEW } = endorser;
+      const { id, descript, name, isOrg, avatar, wikiLink, tags=[], isNew } = endorser;
       //create the endorsers
-      if(IS_NEW){
-        txn.insertIntoTable('ENDORSERS',[END_ID, DESCRIPT, NAME, IS_ORG, WIKI_LINK, AVATAR, new Date()]);
+      if(isNew){
+        txn.insertIntoTable('ENDORSERS',[id, descript, name, isOrg, wikiLink, avatar, new Date()]);
       }
       //tie endorsers to tags
-      TAGS.map( tag => {
-        txn.insertIntoTable('ENDORSER_TAGS',[END_ID,tag.id]);
+      tags.map( tag => {
+        txn.insertIntoTable('ENDORSER_TAGS',[id,tag.id]);
       });
       //tie endorser to candidate
       txn.insertIntoTable('ENDORSEMENTS',
         ['CAN_ID', 'END_ID', 'DATE', 'SOURCE', 'CREATED', 'MODIFIED', 'CONFIRMED', 'QUOTE'],
-        [selectedCandidate, END_ID, date, source, new Date(), new Date(), 0, null]
+        [selectedCandidate, id, date, source, new Date(), new Date(), 0, tweetText]
       );
     });
 
     txn.execute()
        .then( result => {
-         const { code, ok } = result;
-         res.status(code).json({ok});
+         const { code, ok, err } = result;
+         res.status(code).json({ok, err});
        });
     // res.json({ok:true});
     // transaction.create()

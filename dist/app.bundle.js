@@ -41518,7 +41518,7 @@
 	  var endorserNameNull = undefined;
 	  if (hasEndorsers) {
 	    endorserNameNull = data.endorsers.find(function (endorser) {
-	      return endorser.NAME === null;
+	      return endorser.name === null;
 	    });
 	    if (endorserNameNull) {
 	      return { ok: ok,

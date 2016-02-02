@@ -120,7 +120,7 @@ function checkEndorsementData(data){
   }
   let endorserNameNull;
   if(hasEndorsers){
-    endorserNameNull = data.endorsers.find( endorser => endorser.NAME === null );
+    endorserNameNull = data.endorsers.find( endorser => endorser.name === null );
     if(endorserNameNull){
       return {ok,
         msg:'an endorser needs a name'
