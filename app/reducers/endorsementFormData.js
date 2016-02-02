@@ -51,7 +51,7 @@ export default function endorsementFormData(state=getInitialState(), action){
         if (endorsement.id === action.id){
           acc.push({...endorsement, ...{
             id:newIdByDateTime(),
-            NAME:`Copy of ${endorsement.NAME}`
+            NAME:`Copy of ${endorsement.name}`
           }});
         }
         acc.push(endorsement);
@@ -64,7 +64,7 @@ export default function endorsementFormData(state=getInitialState(), action){
       const newEndorsers = [makeEmptyEndorser(),...endorsers];
       return {...state, ...{endorsers:newEndorsers} };
     case ADD_EMPTY_ENDORSER_WITH_NAME:
-      return {...state, ...{endorsers:[{...makeEmptyEndorser(),...{NAME:action.name}},...state.endorsers]} };
+      return {...state, ...{endorsers:[{...makeEmptyEndorser(),...{name:action.name}},...state.endorsers]} };
     case UPDATE_ENDORSER:
       const { id, data } = action;
       const updatedEndorsers = state.endorsers.map(endorser =>

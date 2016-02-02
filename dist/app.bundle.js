@@ -42702,9 +42702,9 @@
 	        selected: this.props.selectedData,
 	        choices: this.props.endorsers.map(function (endorser) {
 	          return {
-	            value: endorser.NAME,
+	            value: endorser.name,
 	            id: endorser.id,
-	            avatar: endorser.AVATAR
+	            avatar: endorser.avatar
 	          };
 	        }) });
 	    }
@@ -53130,7 +53130,7 @@
 	        if (endorsement.id === action.id) {
 	          acc.push(_extends({}, endorsement, {
 	            id: newIdByDateTime(),
-	            NAME: 'Copy of ' + endorsement.NAME
+	            NAME: 'Copy of ' + endorsement.name
 	          }));
 	        }
 	        acc.push(endorsement);
@@ -53144,7 +53144,7 @@
 	      var newEndorsers = [makeEmptyEndorser()].concat(_toConsumableArray(endorsers));
 	      return _extends({}, state, { endorsers: newEndorsers });
 	    case _endorsementFormTypes.ADD_EMPTY_ENDORSER_WITH_NAME:
-	      return _extends({}, state, { endorsers: [_extends({}, makeEmptyEndorser(), { NAME: action.name })].concat(_toConsumableArray(state.endorsers)) });
+	      return _extends({}, state, { endorsers: [_extends({}, makeEmptyEndorser(), { name: action.name })].concat(_toConsumableArray(state.endorsers)) });
 	    case _endorsementFormTypes.UPDATE_ENDORSER:
 	      var id = action.id;
 	      var data = action.data;

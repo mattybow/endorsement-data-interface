@@ -60,9 +60,9 @@ class EndorserSelection extends Component{
                                  selectionHandler={this.handleSelection}
                                  selected={this.props.selectedData}
                                  choices={this.props.endorsers.map(endorser => ({
-                                   value:endorser.NAME,
+                                   value:endorser.name,
                                    id:endorser.id,
-                                   avatar:endorser.AVATAR
+                                   avatar:endorser.avatar
                                  }))}/>;
   }
 }
