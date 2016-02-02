@@ -18,11 +18,11 @@ class EndorserSelection extends Component{
   }
   handleSelection = (choice) => {
     //check if it is a duplicate
-    if(this.props.selectedData.find(selectedRecord => selectedRecord.END_ID === choice.id)){
+    if(this.props.selectedData.find(selectedRecord => selectedRecord.id === choice.id)){
       null;
     } else {
       this.props.handleSelection(this.props.endorsers.find( endorser =>
-      endorser.END_ID === choice.id ))
+      endorser.id === choice.id ))
     }
   }
   renderNoChoices(){
@@ -61,7 +61,7 @@ class EndorserSelection extends Component{
                                  selected={this.props.selectedData}
                                  choices={this.props.endorsers.map(endorser => ({
                                    value:endorser.NAME,
-                                   id:endorser.END_ID,
+                                   id:endorser.id,
                                    avatar:endorser.AVATAR
                                  }))}/>;
   }

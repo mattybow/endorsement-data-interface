@@ -1,26 +1,27 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 
 export default class CandidateList extends Component{
   renderCandidates(){
-    const { candidates } = this.props;
-    return candidates.map(candidate => {
-      const { FIRST_NAME, LAST_NAME, AVATAR, CAN_ID } = candidate;
-      return (
-        <div className="flex-parent-row list-item-spacing" key={CAN_ID}>
+    const { candidates, editClickHandler } = this.props;
+    return candidates.map( candidate => {
+      const { firstName, lastName, avatar, id } = candidate;
+      return <div className="flex-parent-row list-item-spacing" key={id}>
           <div>
-            <img src={AVATAR} alt="" style={{maxWidth:60}}/>
+            <img src={avatar} alt="" style={{maxWidth:60}}/>
           </div>
           <div style={{borderBottom:'1px solid #E7E7EC', marginLeft:20, padding:'20px 0'}} className="flex-parent-row flex-child-expand">
             <div className="flex-child-expand">
-              <span>{FIRST_NAME}&nbsp;</span>
-              <span>{LAST_NAME}</span>
+              <span>{firstName}&nbsp;</span>
+              <span>{lastName}</span>
             </div>
-            <button className="btn-default no-border">
+            <button className="btn-default no-border"
+                    onClick={() => {
+                      editClickHandler(id);
+                    }}>
               edit
             </button>
           </div>
-        </div>
-      );
+        </div>;
     });
   }
   render(){

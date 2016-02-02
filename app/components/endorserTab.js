@@ -34,7 +34,7 @@ class EndorserTab extends Component{
   }
   getEndorserById(id){
     return this.props.endorsers.find(
-      endorser => endorser.END_ID === id
+      endorser => endorser.id === id
     )
   }
   updateEditForm = (id, data) => {
@@ -48,8 +48,8 @@ class EndorserTab extends Component{
     this.setState({formOpen:false});
   }
   saveEdits = () => {
-    const {END_ID} = this.state.formData;
-    var original = this.getEndorserById(END_ID);
+    const {id} = this.state.formData;
+    var original = this.getEndorserById(id);
     if (JSON.stringify(this.state.formData) !== JSON.stringify(original)){
       const { id, date, source, confirmed, quote } = this.state.formData;
       this.props.dispatch(saveEndorserEdits({

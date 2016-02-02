@@ -1,14 +1,15 @@
 import { UPDATE_CANDIDATE, RECEIVE_CANDIDATE_DATA, REQUEST_CANDIDATE_SAVE, RESET_CANDIDATE_FORM } from '../constants/candidateFormTypes';
 
 const initialState = {
-  AVATAR: null,
-  CAN_ID: null,
-  DOB: null,
-  FIRST_NAME: null,
-  GENDER: 'M',
-  LAST_NAME: null,
-  MIDDLE_NAME: null,
-  PARTY: 'R'
+  avatar: null,
+  id: null,
+  dob: null,
+  firstName: null,
+  gender: 'M',
+  lastName: null,
+  middleName: null,
+  party: 'R',
+  active: true
 }
 
 export default function candidateFormData(state=initialState,action){

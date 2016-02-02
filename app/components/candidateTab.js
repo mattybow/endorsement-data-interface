@@ -6,7 +6,7 @@ import AddButton from './addButton';
 import ModalWrapper from './modalWrapper';
 import AddCandidateForm from './addCandidateForm';
 import FormContainer from './formContainer';
-import { requestAddCandidate } from '../actions/candidateFormActions';
+import { requestAddCandidate, updateCandidateForm, resetCandidateForm } from '../actions/candidateFormActions';
 
 function selectCandidates(state){
   const { candidates } = state;
@@ -20,31 +20,58 @@ class CandidateTab extends Component{
       formOpen: false
     }
   }
-  openForm = () => {
-    this.setState({formOpen:true});
+  openEditForm = (id) => {
+    this.props.dispatch(updateCandidateForm(this.props.candidates.find(
+      candidate => candidate.id === id
+    )));
+    this.setState({
+      formOpen:true,
+      formName:'Edit Candidate'
+    })
+  }
+  openAddForm = () => {
+    this.props.dispatch(resetCandidateForm());
+    this.setState({
+      formOpen:true,
+      formName:'Add Candidate'
+    });
   }
   closeForm = () => {
     this.setState({formOpen:false});
   }
-  saveForm = () => {
+  saveEdits = () => {
+    console.log('save edits');
+  }
+  saveAddForm = () => {
     console.log('save form');
     this.props.dispatch(requestAddCandidate());
   }
   componentWillMount(){
     this.props.dispatch(fetchCandidatesIfNeeded());
   }
-  render(){
-    const addForm = <FormContainer closeHandler={this.closeForm}
-                                   saveHandler = {this.saveForm}
-                                   formName="Add Candidate">
+  renderForm(){
+    const isAddForm = this.state.formName === 'Add Candidate';
+    return isAddForm ?
+    <FormContainer closeHandler={this.closeForm}
+                   saveHandler = {this.saveAddForm}
+                   clearHandler = {this.clearForm}
+                   formName={this.state.formName}>
+      <AddCandidateForm />
+    </FormContainer> :
+    <FormContainer closeHandler={this.closeForm}
+                   saveHandler = {this.saveEdits}
+                   formName={this.state.formName}>
       <AddCandidateForm />
     </FormContainer>
+  }
+  render(){
     return <div>
-      <AddButton clickHandler={this.openForm}
+      <AddButton clickHandler={this.openAddForm}
                  buttonText = 'Add Candidate'/>
-      <CandidateList candidates={this.props.candidates}/>
+      <CandidateList candidates={this.props.candidates}
+                     editClickHandler={this.openEditForm}/>
       <ModalWrapper isOpen={this.state.formOpen}>
-        { this.state.formOpen ? addForm : '' }
+        { this.state.formOpen ? this.renderForm() : '' }
       </ModalWrapper>
     </div>;
   }

@@ -15,14 +15,14 @@ function newIdByDateTime(){
 
 function makeEmptyEndorser(){
   return {
-    NAME:null,
-    DESCRIPT: null,
-    WIKI_LINK: null,
-    IS_ORG: false,
-    END_ID:newIdByDateTime(),
-    AVATAR:null,
-    IS_NEW:true,
-    TAGS:[]
+    name:null,
+    descript: null,
+    wikiLink: null,
+    isOrg: false,
+    id:newIdByDateTime(),
+    avatar:null,
+    isNew:true,
+    tags:[]
   }
 }
 
@@ -48,9 +48,9 @@ export default function endorsementFormData(state=getInitialState(), action){
     case ADD_COPY_OF_ENDORSER:
       console.log(action);
       const endorsersWithCopy = state.endorsers.reduce((acc,endorsement) => {
-        if (endorsement.END_ID === action.id){
+        if (endorsement.id === action.id){
           acc.push({...endorsement, ...{
-            END_ID:newIdByDateTime(),
+            id:newIdByDateTime(),
             NAME:`Copy of ${endorsement.NAME}`
           }});
         }
@@ -68,13 +68,13 @@ export default function endorsementFormData(state=getInitialState(), action){
     case UPDATE_ENDORSER:
       const { id, data } = action;
       const updatedEndorsers = state.endorsers.map(endorser =>
-        endorser.END_ID === id ?
+        endorser.id === id ?
           {...endorser, ...data} :
           endorser
         );
       return {...state, ...{endorsers:updatedEndorsers}};
     case REMOVE_ENDORSER:
-      return {...state, ...{endorsers:state.endorsers.filter( endorser => endorser.END_ID !== action.id )}};
+      return {...state, ...{endorsers:state.endorsers.filter( endorser => endorser.id !== action.id )}};
     case UPDATE_ENDORSER_TAGS:
       const {tag, selected} = action;
       console.log('ADD SELECTED TAG',tag)

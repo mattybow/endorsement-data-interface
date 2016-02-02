@@ -32,7 +32,7 @@ class AddEndorsementForm extends Component{
   }
   renderEndorserInputs(endorsers){
     return endorsers.map((endorser,i) => {
-      return <EndorserInput key={endorser.END_ID}
+      return <EndorserInput key={endorser.id}
                             handleSelection= {this.handleTagSelection}
                             copyHandler = {this.handleCopyClick}
                             inputChangeHandler= {this.endorserChangeHandler}
@@ -44,22 +44,22 @@ class AddEndorsementForm extends Component{
     return endorsers.map(endorser=><div style={{
       margin:'1em 0'
     }}
-    key={endorser.END_ID}>
+    key={endorser.id}>
       <div className="flex-parent-row">
         <Avatar size={60}
-                url={endorser.AVATAR}/>
+                url={endorser.avatar}/>
           <div className="existing-endorser-info"
                 style={{
             marginLeft:20
           }}>
-          <div>{endorser.NAME}</div>
+          <div>{endorser.name}</div>
           <div style={{
             fontSize:'.8em'
-          }}>{endorser.DESCRIPT}</div>
+          }}>{endorser.descript}</div>
         </div>
         <button className="btn-default no-border btn-naked"
                 onClick={ () => {
-                  this.endorserRemoveHandler(endorser.END_ID);
+                  this.endorserRemoveHandler(endorser.id);
                 }}>
           <span className="icon-trash-bin icon-lg icon-naked icon-btn-form"></span>
         </button>
@@ -139,9 +139,9 @@ class AddEndorsementForm extends Component{
                   value={selectedCandidate}>
             <option value="" key="null">Select a candidate</option>
             {candidates.map( candidate => (
-              <option value={candidate.CAN_ID}
-                      key={candidate.CAN_ID}>
-                      {candidate.FIRST_NAME} {candidate.LAST_NAME}
+              <option value={candidate.id}
+                      key={candidate.id}>
+                      {candidate.firstName} {candidate.lastName}
               </option>))}
           </select>
         </div>
@@ -157,8 +157,8 @@ class AddEndorsementForm extends Component{
       <EndorserSelection selectedData={endorsers}
                          handleSelection={this.handleEndorserSelection}
                          onEnterHandler={this.handleNewEndorserSelection}/>
-      { this.renderExistingEndorser(endorsers.filter(endorser => !endorser.IS_NEW))}
-      { this.renderEndorserInputs(endorsers.filter(endorser => endorser.IS_NEW)) }
+      { this.renderExistingEndorser(endorsers.filter(endorser => !endorser.isNew))}
+      { this.renderEndorserInputs(endorsers.filter(endorser => endorser.isNew)) }
       <div className="endorser-tags"
         style={{
           paddingBottom:400

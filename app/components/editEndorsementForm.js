@@ -3,6 +3,7 @@ import TextInputField from './textInputField';
 import Avatar from './avatar';
 import { convertDate } from '../util';
 import { colors } from '../styles/inlineConstants';
+import CheckBox from './checkBox';
 import moment from 'moment';
 
 const {barney} = colors;
@@ -59,27 +60,14 @@ var EditEndorsementForm = (props) => {
         </button>
       </div>
 
-    <div>
     <div className="flex-parent-row flex-row-end">
-      <div>{confirmed ? 'Confirmed' : 'Not Confirmed'}</div>
-      <div className="box flex-parent-row flex-row-center"
-           style={{
-             marginLeft:10,
-             width:30,
-             height:30,
-             borderWidth:1,
-             borderStyle:'solid',
-             borderColor: confirmed ? barney :  'rgba(0,0,0,.3)'
-           }}
-           onClick={ () => {
-             props.changeHandler({confirmed:!confirmed});
-           }}>
-           {confirmed ? <span className="icon-check-mark"
-             style={{
-               color: confirmed ? barney :  'inherit'
-             }}></span> : ''}
-      </div>
-    </div>
+    <CheckBox label="Confirmed"
+              uncheckedLabel="Not Confirmed"
+              labelLeft={true}
+              checked={confirmed}
+              changeHandler={ () => {
+                props.changeHandler({confirmed:!confirmed});
+              }}/>
     </div>
 
     <TextInputField label='Date'

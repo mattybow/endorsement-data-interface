@@ -7,17 +7,18 @@ import moment from 'moment';
 const {barney} = colors;
 
 var EditEndorserForm = (props) => {
+  console.log('----------',props);
   return <div className="form-contents">
     <div className="flex-parent-row"
         style={{
           margin:'20px 0 30px'
         }}>
-      <Avatar url={props.AVATAR}/>
+      <Avatar url={props.avatar}/>
       <div className="flex-child-expand"
             style={{
                 marginLeft:30
               }}>
-        <div>{props.NAME}</div>
+        <div>{props.name}</div>
         <div
           style={{
               fontSize:'.8em',

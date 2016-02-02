@@ -21,7 +21,16 @@ router.get('/tweets',(req,res) => {
 
 router.get('/candidates',(req,res) => {
   if(req.session.passport){
-    mysqldb.query('SELECT * FROM CANDIDATES;', (err,results) => {
+    mysqldb.query(`SELECT CAN_ID as id,
+                      FIRST_NAME as firstName,
+                      MIDDLE_NAME as middleName,
+                      LAST_NAME as lastName,
+                      PARTY as party,
+                      GENDER as gender,
+                      DOB as dob,
+                      AVATAR as avatar,
+                      ACTIVE as active
+                      FROM CANDIDATES;`, (err,results) => {
       res.json(results);
     });
   } else {
@@ -41,7 +50,19 @@ router.get('/candidate',(req,res) => {
 
 router.get('/endorsers',(req,res) => {
   if(req.session.passport){
-    mysqldb.query('SELECT * FROM ENDORSERS ORDER BY END_ID DESC;', (err,results) => {
+    mysqldb.query(`SELECT AVATAR as avatar,
+                    NAME as name,
+                    e.END_ID as id,
+                    DESCRIPT as descript,
+                    IS_ORG as isOrg,
+                    WIKI_LINK as wikiLink,
+                    modified,
+                    group_concat(t.id) as tagIds,
+                    group_concat(t.tag_name) as tags
+                  FROM ENDORSERS e join ENDORSER_TAGS et on e.end_id = et.end_id
+                  join TAGS t on et.tag_id = t.id
+                  group by e.END_ID
+                  ORDER BY e.END_ID DESC;`, (err,results) => {
       res.json(results);
     });
   } else {

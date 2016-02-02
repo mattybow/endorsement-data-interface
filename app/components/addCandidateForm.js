@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import FormControls from './formControls';
 import TextInputField from './textInputField';
+import CheckBox from './checkBox';
 import { connect } from 'react-redux';
 import RadioGroup from './radioGroup';
 import { updateCandidateForm } from '../actions/candidateFormActions';
@@ -31,42 +32,42 @@ class AddCandidateForm extends Component{
     this.props.dispatch(updateCandidateForm(data));
   }
   render(){
-    const { formData: {CAN_ID, FIRST_NAME, MIDDLE_NAME, LAST_NAME, DOB, GENDER, PARTY, AVATAR} } = this.props;
+    const { formData: {id, firstName, middleName, lastName, dob, gender, party, avatar, active} } = this.props;
     return <div className="form-contents">
       <TextInputField label='FEC Id'
-                      value = {CAN_ID}
-                      id={CAN_ID}
+                      value = {id}
+                      id={id}
                       changeHandler = {ev => {
-                        this.inputChangeHandler({CAN_ID:ev.target.value})
+                        this.inputChangeHandler({id:ev.target.value})
                       }}
                       {...this.props}/>
       <TextInputField label='First Name'
-                      value = {FIRST_NAME}
-                      id={CAN_ID}
+                      value = {firstName}
+                      id={id}
                       changeHandler = {ev => {
-                        this.inputChangeHandler({FIRST_NAME:ev.target.value})
+                        this.inputChangeHandler({firstName:ev.target.value})
                       }}
                       {...this.props}/>
       <TextInputField label='Middle Name'
-                      value = {MIDDLE_NAME}
-                      id={CAN_ID}
+                      value = {middleName}
+                      id={id}
                       changeHandler = {ev => {
-                        this.inputChangeHandler({MIDDLE_NAME:ev.target.value})
+                        this.inputChangeHandler({middleName:ev.target.value})
                       }}
                       {...this.props}/>
       <TextInputField label='Last Name'
-                      value = {LAST_NAME}
-                      id={CAN_ID}
+                      value = {lastName}
+                      id={id}
                       changeHandler = {ev => {
-                        this.inputChangeHandler({LAST_NAME:ev.target.value})
+                        this.inputChangeHandler({lastName:ev.target.value})
                       }}
                       {...this.props}/>
       <div className="input-field">
         <label className="non-mui">Party</label>
         <RadioGroup name="party"
-                    value={PARTY}
+                    value={party}
                     changeHandler = {ev => {
-                      this.inputChangeHandler({PARTY:ev.target.value})
+                      this.inputChangeHandler({party:ev.target.value})
                     }}
                     choices = {PARTY_CHOICES}
                     style={{marginBottom:'.5em', width:'50%', display:'inline-block', height:'1em'}}/>
@@ -74,29 +75,35 @@ class AddCandidateForm extends Component{
       <div className="input-field">
         <label className="non-mui">Gender</label>
         <RadioGroup name="gender"
-                    value={GENDER}
+                    value={gender}
                     changeHandler = {ev => {
-                      this.inputChangeHandler({PARTY:ev.target.value})
+                      this.inputChangeHandler({gender:ev.target.value})
                     }}
                     choices = {GENDER_CHOICES}
                     style={{marginBottom:'.5em', width:'50%', display:'inline-block', height:'1em'}}/>
       </div>
       <TextInputField label='Birthdate'
                       placeholder="YYYY-MM-DD"
-                      value={convertDate(DOB)}
-                      id={CAN_ID}
+                      value={convertDate(dob)}
+                      id={id}
                       changeHandler = {ev => {
-                        this.inputChangeHandler({DOB:ev.target.value})
+                        this.inputChangeHandler({dob:ev.target.value})
                       }}
                       {...this.props}/>
 
       <TextInputField label='Avatar Link'
-                      value={AVATAR}
-                      id={CAN_ID}
+                      value={avatar}
+                      id={id}
                       changeHandler = {ev => {
-                        this.inputChangeHandler({AVATAR:ev.target.value})
+                        this.inputChangeHandler({avatar:ev.target.value})
                       }}
                       {...this.props}/>
+      <CheckBox label="active"
+                uncheckedLabel = "not active"
+                checked={active}
+                changeHandler={ () => {
+                  this.inputChangeHandler({active:!active});
+                }}/>
     </div>
   }
 }

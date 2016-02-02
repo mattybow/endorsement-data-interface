@@ -1,5 +1,4 @@
 import React from 'react';
-import TextField from 'material-ui/lib/text-field';
 
 const TextInputField = (props) => {
   const {id, label, changeHandler, value, type, placeholder} = props;

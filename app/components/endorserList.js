@@ -4,16 +4,16 @@ import Avatar from './avatar';
 export default class EndorserList extends Component{
   renderEndorsers(){
     return this.props.endorsers.filter(
-      endorser => endorser.NAME.match(new RegExp(`${this.props.filter}`,'i')) ? true : false
+      endorser => endorser.name.match(new RegExp(`${this.props.filter}`,'i')) ? true : false
     ).map(endorser => (
-      <div className="flex-parent-row list-item-spacing" key={endorser.END_ID}>
-        <Avatar url={endorser.AVATAR}/>
+      <div className="flex-parent-row list-item-spacing" key={endorser.id}>
+        <Avatar url={endorser.avatar}/>
         <div style={{borderBottom:'1px solid #E7E7EC', marginLeft:20, padding:'20px 0'}} className="flex-parent-row flex-child-expand">
           <div className="flex-child-expand">
-            <span>{endorser.NAME}</span>
+            <span>{endorser.name}</span>
           </div>
           <button className="btn-default no-border" onClick={() => {
-              this.props.editClickHandler(endorser.END_ID);
+              this.props.editClickHandler(endorser.id);
             }}>
             edit
           </button>
