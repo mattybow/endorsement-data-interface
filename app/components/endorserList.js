@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Avatar from './avatar';
+import '../styles/endorserList.scss'
 
 export default class EndorserList extends Component{
   renderEndorsers(){
@@ -9,8 +10,25 @@ export default class EndorserList extends Component{
       <div className="flex-parent-row list-item-spacing" key={endorser.id}>
         <Avatar url={endorser.avatar}/>
         <div style={{borderBottom:'1px solid #E7E7EC', marginLeft:20, padding:'20px 0'}} className="flex-parent-row flex-child-expand">
-          <div className="flex-child-expand">
-            <span>{endorser.name}</span>
+          <div className="flex-child-expand endorser-list-info">
+            <div>{endorser.name}</div>
+            <div style={{
+                width:'100%',
+                fontSize:'.8em',
+                whiteSpace:'nowrap',
+                textOverflow:'ellipsis',
+                overflow:'hidden'
+              }}>{endorser.descript}</div>
+            <div className="desktop-only"
+                 style={{
+                  marginTop:5
+                 }}>{endorser.tags.map(tag => {
+                console.log(tag.value);
+                return <span className="endorser-list-tag"
+                             key={tag.id}>
+                          {tag.value}
+                       </span>;
+              })}</div>
           </div>
           <button className="btn-default no-border" onClick={() => {
               this.props.editClickHandler(endorser.id);

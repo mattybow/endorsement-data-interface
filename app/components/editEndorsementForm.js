@@ -1,5 +1,6 @@
 import React from 'react';
 import TextInputField from './textInputField';
+import TextAreaInputField from './textareaInputField';
 import Avatar from './avatar';
 import { convertDate } from '../util';
 import { colors } from '../styles/inlineConstants';
@@ -83,7 +84,7 @@ var EditEndorsementForm = (props) => {
                     changeHandler = {ev => {
                       props.changeHandler({source:ev.target.value});
                     }}/>
-    <TextInputField label='Quote'
+    <TextAreaInputField label='Quote'
                       value = {quote}
                       id={id}
                       changeHandler = {ev => {

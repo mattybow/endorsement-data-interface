@@ -20818,11 +20818,11 @@
 
 	var _redux = __webpack_require__(226);
 
-	var _reduxThunk = __webpack_require__(496);
+	var _reduxThunk = __webpack_require__(499);
 
 	var _reduxThunk2 = _interopRequireDefault(_reduxThunk);
 
-	var _reducers = __webpack_require__(497);
+	var _reducers = __webpack_require__(500);
 
 	var reducers = _interopRequireWildcard(_reducers);
 
@@ -25718,11 +25718,11 @@
 
 	var _endorserTab2 = _interopRequireDefault(_endorserTab);
 
-	var _endorsementsTab = __webpack_require__(492);
+	var _endorsementsTab = __webpack_require__(494);
 
 	var _endorsementsTab2 = _interopRequireDefault(_endorsementsTab);
 
-	var _tagsTab = __webpack_require__(495);
+	var _tagsTab = __webpack_require__(498);
 
 	var _tagsTab2 = _interopRequireDefault(_tagsTab);
 
@@ -42840,7 +42840,7 @@
 
 
 	// module
-	exports.push([module.id, "label {\n  display: inline-block;\n}\n\nlabel.non-mui {\n  margin: 1em 0 .5em 0;\n}\n\ninput[type=\"text\"] {\n  width: 100%;\n  border-style: none none solid;\n  border-width: 1px;\n  border-color: #e0e0e0;\n  margin-bottom: 1em;\n  padding: .5em 0;\n  -webkit-appearance: none;\n  border-radius: 0;\n  background-color: transparent;\n  white-space: nowrap;\n  overflow: hidden;\n  text-overflow: ellipsis;\n}\n\ninput[type=\"text\"]:focus {\n  outline: none;\n}\n\n.key-block {\n  background-color: rgba(0, 0, 0, 0.2);\n  border-radius: 2px;\n  margin-right: .5em;\n  padding: 1px 4px;\n}\n\n.check-box {\n  padding: .5em 0 .5em .2em;\n}\n\n.check-box:hover {\n  cursor: pointer;\n}\n\n.form-check-box {\n  display: inline-block;\n  padding: 0 .5em 0 .6em;\n  border-radius: 2px;\n  border: 1px solid rgba(0, 0, 0, 0.4);\n}\n\n.form-check-box.checked {\n  border-color: #A06CD5;\n  background-color: #A06CD5;\n  color: #E2CFEA;\n}\n\n.check-box-label:hover {\n  cursor: pointer;\n}\n\nselect {\n  background-color: transparent;\n  border: none;\n  border-bottom: 1px solid #e0e0e0;\n  overflow: hidden;\n  outline: none;\n  border-radius: 20px;\n  -webkit-appearance: none;\n  -webkit-border-radius: 0px;\n  padding: .5em 0;\n  width: 100%;\n}\n\n.form-select {\n  position: relative;\n}\n\n.form-select:after {\n  font-family: \"fontello\";\n  -webkit-transform: rotateZ(90deg);\n          transform: rotateZ(90deg);\n  content: '\\E804';\n  width: 1em;\n  height: 1em;\n  position: absolute;\n  top: .7em;\n  right: 0;\n  pointer-events: none;\n}\n\n.form-contents {\n  padding: 0 20px;\n}\n\n.icon-btn-form {\n  margin: 0;\n  margin-right: -.4em;\n}\n\n.input-field {\n  margin-bottom: 1em;\n}\n\n.input-center {\n  text-align: center;\n}\n\n.input-center:focus {\n  text-align: left;\n}\n\n.input-group {\n  margin-bottom: 3em;\n}\n\n.existing-endorser-info {\n  -webkit-flex: 1 1 300px;\n      -ms-flex: 1 1 300px;\n          flex: 1 1 300px;\n}\n\n@media (min-width: 415px) {\n  .form-container {\n    margin-top: 10%;\n  }\n  .form-contents {\n    padding: 0;\n  }\n  .existing-endorser-info {\n    -webkit-flex: 1 1 500px;\n        -ms-flex: 1 1 500px;\n            flex: 1 1 500px;\n  }\n}\n", ""]);
+	exports.push([module.id, "label {\n  display: inline-block;\n}\n\nlabel.non-mui {\n  margin: 1em 0 .5em 0;\n}\n\ninput[type=\"text\"] {\n  width: 100%;\n  border-style: none none solid;\n  border-width: 1px;\n  border-color: #e0e0e0;\n  margin-bottom: 1em;\n  padding: .5em 0;\n  -webkit-appearance: none;\n  border-radius: 0;\n  background-color: transparent;\n  white-space: nowrap;\n  overflow: hidden;\n  text-overflow: ellipsis;\n}\n\ninput[type=\"text\"]:focus {\n  outline: none;\n}\n\n.key-block {\n  background-color: rgba(0, 0, 0, 0.2);\n  border-radius: 2px;\n  margin-right: .5em;\n  padding: 1px 4px;\n}\n\n.check-box {\n  padding: .5em 0 .5em .2em;\n}\n\n.check-box:hover {\n  cursor: pointer;\n}\n\n.form-check-box {\n  display: inline-block;\n  padding: 0 .5em 0 .6em;\n  border-radius: 2px;\n  border: 1px solid rgba(0, 0, 0, 0.4);\n}\n\n.form-check-box.checked {\n  border-color: #A06CD5;\n  background-color: #A06CD5;\n  color: #E2CFEA;\n}\n\ntextarea {\n  width: 100%;\n  height: 4.5em;\n  resize: none;\n  outline: none;\n  border: none;\n  border-bottom: 1px solid #e0e0e0;\n  margin-top: .5em;\n}\n\n.check-box-label:hover {\n  cursor: pointer;\n}\n\nselect {\n  background-color: transparent;\n  border: none;\n  border-bottom: 1px solid #e0e0e0;\n  overflow: hidden;\n  outline: none;\n  border-radius: 20px;\n  -webkit-appearance: none;\n  -webkit-border-radius: 0px;\n  padding: .5em 0;\n  width: 100%;\n}\n\n.form-select {\n  position: relative;\n}\n\n.form-select:after {\n  font-family: \"fontello\";\n  -webkit-transform: rotateZ(90deg);\n          transform: rotateZ(90deg);\n  content: '\\E804';\n  width: 1em;\n  height: 1em;\n  position: absolute;\n  top: .7em;\n  right: 0;\n  pointer-events: none;\n}\n\n.form-contents {\n  padding: 0 20px;\n}\n\n.icon-btn-form {\n  margin: 0;\n  margin-right: -.4em;\n}\n\n.input-field {\n  margin-bottom: 1em;\n}\n\n.input-center {\n  text-align: center;\n}\n\n.input-center:focus {\n  text-align: left;\n}\n\n.input-group {\n  margin-bottom: 3em;\n}\n\n.existing-endorser-info {\n  -webkit-flex: 1 1 300px;\n      -ms-flex: 1 1 300px;\n          flex: 1 1 300px;\n}\n\n@media (min-width: 415px) {\n  .form-container {\n    margin-top: 10%;\n  }\n  .form-contents {\n    padding: 0;\n  }\n  .existing-endorser-info {\n    -webkit-flex: 1 1 500px;\n        -ms-flex: 1 1 500px;\n            flex: 1 1 500px;\n  }\n}\n", ""]);
 
 	// exports
 
@@ -52061,7 +52061,7 @@
 
 	var _formContainer2 = _interopRequireDefault(_formContainer);
 
-	var _editEndorserForm = __webpack_require__(491);
+	var _editEndorserForm = __webpack_require__(493);
 
 	var _editEndorserForm2 = _interopRequireDefault(_editEndorserForm);
 
@@ -52252,6 +52252,8 @@
 
 	var _avatar2 = _interopRequireDefault(_avatar);
 
+	__webpack_require__(491);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -52286,11 +52288,38 @@
 	            { style: { borderBottom: '1px solid #E7E7EC', marginLeft: 20, padding: '20px 0' }, className: 'flex-parent-row flex-child-expand' },
 	            _react2.default.createElement(
 	              'div',
-	              { className: 'flex-child-expand' },
+	              { className: 'flex-child-expand endorser-list-info' },
 	              _react2.default.createElement(
-	                'span',
+	                'div',
 	                null,
 	                endorser.name
+	              ),
+	              _react2.default.createElement(
+	                'div',
+	                { style: {
+	                    width: '100%',
+	                    fontSize: '.8em',
+	                    whiteSpace: 'nowrap',
+	                    textOverflow: 'ellipsis',
+	                    overflow: 'hidden'
+	                  } },
+	                endorser.descript
+	              ),
+	              _react2.default.createElement(
+	                'div',
+	                { className: 'desktop-only',
+	                  style: {
+	                    marginTop: 5
+	                  } },
+	                endorser.tags.map(function (tag) {
+	                  console.log(tag.value);
+	                  return _react2.default.createElement(
+	                    'span',
+	                    { className: 'endorser-list-tag',
+	                      key: tag.id },
+	                    tag.value
+	                  );
+	                })
 	              )
 	            ),
 	            _react2.default.createElement(
@@ -52327,6 +52356,46 @@
 
 /***/ },
 /* 491 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+
+	// load the styles
+	var content = __webpack_require__(492);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(259)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!./../../node_modules/css-loader/index.js!./../../node_modules/autoprefixer-loader/index.js?browsers=last 2 version!./../../node_modules/sass-loader/index.js?outputStyle=expanded&sourceMap=true&sourceMapContents=true!./endorserList.scss", function() {
+				var newContent = require("!!./../../node_modules/css-loader/index.js!./../../node_modules/autoprefixer-loader/index.js?browsers=last 2 version!./../../node_modules/sass-loader/index.js?outputStyle=expanded&sourceMap=true&sourceMapContents=true!./endorserList.scss");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 492 */
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(258)();
+	// imports
+
+
+	// module
+	exports.push([module.id, ".endorser-list-info {\n  width: 400px;\n}\n\n.endorser-list-tag {\n  font-size: .8em;\n  padding: .1em .5em;\n  margin-right: .2em;\n  background-color: #E2CFEA;\n  border-radius: 2px;\n}\n\n@media (max-width: 414px) {\n  .endorser-list-info {\n    width: 210px;\n  }\n}\n", ""]);
+
+	// exports
+
+
+/***/ },
+/* 493 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -52410,7 +52479,7 @@
 	exports.default = EditEndorserForm;
 
 /***/ },
-/* 492 */
+/* 494 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -52443,11 +52512,11 @@
 
 	var _addEndorsementForm2 = _interopRequireDefault(_addEndorsementForm);
 
-	var _editEndorsementForm = __webpack_require__(493);
+	var _editEndorsementForm = __webpack_require__(495);
 
 	var _editEndorsementForm2 = _interopRequireDefault(_editEndorsementForm);
 
-	var _endorsementList = __webpack_require__(494);
+	var _endorsementList = __webpack_require__(497);
 
 	var _endorsementList2 = _interopRequireDefault(_endorsementList);
 
@@ -52603,7 +52672,7 @@
 	exports.default = (0, _reactRedux.connect)(selectData)(EndorsementsTab);
 
 /***/ },
-/* 493 */
+/* 495 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -52619,6 +52688,10 @@
 	var _textInputField = __webpack_require__(384);
 
 	var _textInputField2 = _interopRequireDefault(_textInputField);
+
+	var _textareaInputField = __webpack_require__(496);
+
+	var _textareaInputField2 = _interopRequireDefault(_textareaInputField);
 
 	var _avatar = __webpack_require__(255);
 
@@ -52760,7 +52833,7 @@
 	      changeHandler: function changeHandler(ev) {
 	        props.changeHandler({ source: ev.target.value });
 	      } }),
-	    _react2.default.createElement(_textInputField2.default, { label: 'Quote',
+	    _react2.default.createElement(_textareaInputField2.default, { label: 'Quote',
 	      value: quote,
 	      id: id,
 	      changeHandler: function changeHandler(ev) {
@@ -52772,7 +52845,49 @@
 	exports.default = EditEndorsementForm;
 
 /***/ },
-/* 494 */
+/* 496 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var TextInputField = function TextInputField(props) {
+	  var id = props.id;
+	  var label = props.label;
+	  var changeHandler = props.changeHandler;
+	  var value = props.value;
+	  var type = props.type;
+	  var placeholder = props.placeholder;
+
+	  return _react2.default.createElement(
+	    'div',
+	    { className: 'form-input' },
+	    _react2.default.createElement(
+	      'label',
+	      { htmlFor: id + label },
+	      label
+	    ),
+	    _react2.default.createElement('textarea', { type: type || 'text',
+	      value: value,
+	      placeholder: placeholder,
+	      onChange: changeHandler,
+	      id: id + label })
+	  );
+	};
+
+	exports.default = TextInputField;
+
+/***/ },
+/* 497 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -52914,7 +53029,7 @@
 	exports.default = EndorsementList;
 
 /***/ },
-/* 495 */
+/* 498 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -52963,7 +53078,7 @@
 	exports.default = TagsTab;
 
 /***/ },
-/* 496 */
+/* 499 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -52985,7 +53100,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 497 */
+/* 500 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -52994,7 +53109,7 @@
 	  value: true
 	});
 
-	var _tweets = __webpack_require__(498);
+	var _tweets = __webpack_require__(501);
 
 	Object.defineProperty(exports, 'tweets', {
 	  enumerable: true,
@@ -53003,7 +53118,7 @@
 	  }
 	});
 
-	var _login = __webpack_require__(499);
+	var _login = __webpack_require__(502);
 
 	Object.defineProperty(exports, 'loginInfo', {
 	  enumerable: true,
@@ -53012,7 +53127,7 @@
 	  }
 	});
 
-	var _candidates = __webpack_require__(500);
+	var _candidates = __webpack_require__(503);
 
 	Object.defineProperty(exports, 'candidates', {
 	  enumerable: true,
@@ -53021,7 +53136,7 @@
 	  }
 	});
 
-	var _endorsementFormData = __webpack_require__(501);
+	var _endorsementFormData = __webpack_require__(504);
 
 	Object.defineProperty(exports, 'endorsementFormData', {
 	  enumerable: true,
@@ -53030,7 +53145,7 @@
 	  }
 	});
 
-	var _candidateFormData = __webpack_require__(502);
+	var _candidateFormData = __webpack_require__(505);
 
 	Object.defineProperty(exports, 'candidateFormData', {
 	  enumerable: true,
@@ -53039,7 +53154,7 @@
 	  }
 	});
 
-	var _snackbarData = __webpack_require__(503);
+	var _snackbarData = __webpack_require__(506);
 
 	Object.defineProperty(exports, 'snackbarData', {
 	  enumerable: true,
@@ -53048,7 +53163,7 @@
 	  }
 	});
 
-	var _tags = __webpack_require__(504);
+	var _tags = __webpack_require__(507);
 
 	Object.defineProperty(exports, 'tags', {
 	  enumerable: true,
@@ -53057,7 +53172,7 @@
 	  }
 	});
 
-	var _endorsers = __webpack_require__(505);
+	var _endorsers = __webpack_require__(508);
 
 	Object.defineProperty(exports, 'endorsers', {
 	  enumerable: true,
@@ -53066,7 +53181,7 @@
 	  }
 	});
 
-	var _endorsements = __webpack_require__(506);
+	var _endorsements = __webpack_require__(509);
 
 	Object.defineProperty(exports, 'endorsements', {
 	  enumerable: true,
@@ -53076,7 +53191,7 @@
 	});
 
 /***/ },
-/* 498 */
+/* 501 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -53107,7 +53222,7 @@
 	}
 
 /***/ },
-/* 499 */
+/* 502 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -53136,7 +53251,7 @@
 	}
 
 /***/ },
-/* 500 */
+/* 503 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -53165,7 +53280,7 @@
 	}
 
 /***/ },
-/* 501 */
+/* 504 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -53275,7 +53390,7 @@
 	}
 
 /***/ },
-/* 502 */
+/* 505 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -53316,7 +53431,7 @@
 	}
 
 /***/ },
-/* 503 */
+/* 506 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -53358,7 +53473,7 @@
 	}
 
 /***/ },
-/* 504 */
+/* 507 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -53391,7 +53506,7 @@
 	}
 
 /***/ },
-/* 505 */
+/* 508 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -53426,7 +53541,7 @@
 	}
 
 /***/ },
-/* 506 */
+/* 509 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';

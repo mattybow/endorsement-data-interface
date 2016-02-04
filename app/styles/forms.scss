@@ -46,6 +46,16 @@ input[type="text"]{
   }
 }
 
+textarea{
+  width:100%;
+  height:4.5em;
+  resize:none;
+  outline:none;
+  border:none;
+  border-bottom:1px solid $grey;
+  margin-top:.5em;
+}
+
 .check-box-label:hover{
   cursor:pointer;
 }
