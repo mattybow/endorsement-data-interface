@@ -16,6 +16,19 @@ export function fetchCandidatesIfNeeded(){
   }
 }
 
+export function refetchCandidates(){
+  return (dispatch, getState) => {
+    api.getCandidates().then(
+      data => {
+        dispatch(receiveCandidates(data.data));
+      },
+      () => {
+        console.log('RECEIVE CANDIDATES FAIL');
+      }
+    )
+  }
+}
+
 function requestCandidates(){
   return {
     type: REQUEST_CANDIDATES

@@ -14,7 +14,7 @@ export default class App extends Component{
       <div id="tab-contents">
         {this.props.children}
       </div>
-      <Snackbar duration={5000}/>
+      <Snackbar duration={3000}/>
     </div>;
   }
 }

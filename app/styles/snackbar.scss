@@ -25,6 +25,10 @@
 
 }
 
+.error .snackbar-content{
+  background-color:rgba(205,32,13,.8);
+}
+
 .open .snackbar-content{
   transform:translateY(0);
 }
@@ -35,6 +39,10 @@
     color:white;
     cursor:pointer;
   }
+}
+
+.error .snackbar-action{
+  color:rgba(0,0,0,.8);
 }
 
 @media(max-width:414px){

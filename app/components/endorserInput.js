@@ -58,7 +58,9 @@ class EndorserInput extends Component{
       <div className="flex-parent-row wrap">
         {this.renderSelectedTags(id, tags)}
       </div>
-      <div className="flex-parent-row">
+      <div className="flex-parent-row" style={{
+          margin:'1em 0'
+        }}>
        <div className="flex-child-expand">
          <CheckBox label="is organization"
                    checked={isOrg}
@@ -66,18 +68,19 @@ class EndorserInput extends Component{
                      inputChangeHandler(id, {isOrg:!isOrg});
                    }}/>
        </div>
-       <button className="btn-default no-border"
+       {copyHandler ? <button className="btn-default no-border"
                onClick={ () => {
                  copyHandler(id);
                }}>
          <span className="icon-blank icon-lg icon-naked icon-btn-form"></span>
-       </button>
-       <button className="btn-default no-border btn-naked"
+       </button> : ''}
+
+       {removeHandler ? <button className="btn-default no-border btn-naked"
                onClick={ () => {
                  removeHandler(id);
                }}>
          <span className="icon-trash-bin icon-lg icon-naked icon-btn-form"></span>
-       </button>
+       </button> : ''}
       </div>
     </div>
   }

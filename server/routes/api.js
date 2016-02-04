@@ -30,7 +30,8 @@ router.get('/candidates',(req,res) => {
                       DOB as dob,
                       AVATAR as avatar,
                       ACTIVE as active
-                      FROM CANDIDATES;`, (err,results) => {
+                      FROM CANDIDATES
+                    ORDER BY FIRST_NAME;`, (err,results) => {
       res.json(results);
     });
   } else {
@@ -101,6 +102,91 @@ router.get('/endorsements',(req,res) => {
        .json([]);
   }
 });
+
+router.post('/updateCandidate',(req,res) => {
+  if(req.session.passport){
+    const txn = transaction.create();
+    const jsKeysToMysqlFields = {
+      dob:'DOB',
+      firstName:'FIRST_NAME',
+      middleName:'MIDDLE_NAME',
+      lastName:'LAST_NAME',
+      party:'PARTY',
+      gender:'GENDER',
+      active:'ACTIVE',
+      avatar:'AVATAR'
+    }
+    const setStatement = Object.keys(req.body).reduce((acc,key) => {
+      if(key==='dob'){
+        acc += `DOB=${mysqldb.escape(new Date(req.body[key]))}, `;
+      } else if (key in jsKeysToMysqlFields){
+        acc += `${jsKeysToMysqlFields[key]}=${mysqldb.escape(req.body[key])}, `;
+      }
+      return acc;
+    }, '').replace(/(,\s)$/,'');
+
+    txn.addTo(`UPDATE CANDIDATES
+                SET ${setStatement}
+                WHERE CAN_ID=${mysqldb.escape(req.body.id)};`)
+        .execute()
+        .then( result => {
+          const { code, ok } = result;
+          res.status(code).json({ok});
+        });
+  } else {
+    res.status(401)
+       .json([]);
+  }
+});
+
+router.post('/updateEndorser',(req,res)=> {
+  const txn = transaction.create();
+  const {id} = req.body;
+  const jsKeysToMysqlFields = {
+    name:'NAME',
+    descript:'DESCRIPT',
+    isOrg:'IS_ORG',
+    wikiLink:'WIKI_LINK',
+    avatar:'AVATAR'
+  }
+  if(req.session.passport){
+    const setStatement = Object.keys(req.body).reduce((acc,key) => {
+      if(key === 'tags'){
+        const tags = req.body[key];
+        //this is the simplest solution for right now, delete all records for the endorserId
+        txn.addTo(`DELETE
+                    FROM ENDORSER_TAGS
+                    WHERE END_ID=${mysqldb.escape(id)};`);
+        //extract and add any new tags
+        tags.filter(tag => tag.isNew).map(newTag => {
+          txn.insertIntoTable('TAGS',[newTag.id, newTag.value]);
+        });
+        //insert associations
+        tags.map(tag => {
+          txn.insertIntoTable('ENDORSER_TAGS',[id,tag.id]);
+        });
+      } else if (key in jsKeysToMysqlFields){
+        acc += `${jsKeysToMysqlFields[key]}=${mysqldb.escape(req.body[key])}, `;
+      }
+      return acc;
+    },'').replace(/(,\s)$/,'');
+    if(setStatement){
+      txn.addTo(`UPDATE ENDORSERS
+                  SET ${setStatement}
+                  WHERE END_ID=${mysqldb.escape(id)};`);
+    }
+
+     txn.showCall()
+        .execute()
+        .then( result => {
+          const { code, ok } = result;
+          res.status(code).json({ok});
+        });
+  } else {
+    res.status(401)
+       .json([]);
+  }
+})
 
 router.post('/updateEndorsement',(req,res) => {
   if(req.session.passport){

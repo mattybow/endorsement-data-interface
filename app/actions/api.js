@@ -1,5 +1,9 @@
 import axios from 'axios';
 
+export function dummy(){
+  return axios.get('');
+}
+
 export function getTweets(){
   return axios.get('/api/tweets');
 }
@@ -25,6 +29,11 @@ export function saveEndorsementEdits(data){
 export function saveEndorserEdits(data){
   return axios.post('/api/updateEndorser',data);
 }
+
+export function saveCandidateEdits(data){
+  return axios.post('/api/updateCandidate',data);
+}
+
 
 export function checkAuth(){
   return axios.post('/auth/check');

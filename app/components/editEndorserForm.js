@@ -7,7 +7,6 @@ import moment from 'moment';
 const {barney} = colors;
 
 var EditEndorserForm = (props) => {
-  console.log('----------',props);
   return <div className="form-contents">
     <div className="flex-parent-row"
         style={{

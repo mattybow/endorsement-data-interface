@@ -25802,7 +25802,7 @@
 	          { id: 'tab-contents' },
 	          this.props.children
 	        ),
-	        _react2.default.createElement(_snackbar2.default, { duration: 5000 })
+	        _react2.default.createElement(_snackbar2.default, { duration: 3000 })
 	      );
 	    }
 	  }]);
@@ -27147,12 +27147,14 @@
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
+	exports.dummy = dummy;
 	exports.getTweets = getTweets;
 	exports.deleteTweet = deleteTweet;
 	exports.addCandidate = addCandidate;
 	exports.addEndorsements = addEndorsements;
 	exports.saveEndorsementEdits = saveEndorsementEdits;
 	exports.saveEndorserEdits = saveEndorserEdits;
+	exports.saveCandidateEdits = saveCandidateEdits;
 	exports.checkAuth = checkAuth;
 	exports.getCandidates = getCandidates;
 	exports.getEndorsements = getEndorsements;
@@ -27165,6 +27167,10 @@
 	var _axios2 = _interopRequireDefault(_axios);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function dummy() {
+	  return _axios2.default.get('');
+	}
 
 	function getTweets() {
 	  return _axios2.default.get('/api/tweets');
@@ -27190,6 +27196,10 @@
 
 	function saveEndorserEdits(data) {
 	  return _axios2.default.post('/api/updateEndorser', data);
+	}
+
+	function saveCandidateEdits(data) {
+	  return _axios2.default.post('/api/updateCandidate', data);
 	}
 
 	function checkAuth() {
@@ -28932,7 +28942,14 @@
 	    value: function render() {
 	      var _this2 = this;
 
-	      var snackbarClasses = (0, _classnames2.default)("snackbar-container", { open: this.props.open });
+	      var _props = this.props;
+	      var open = _props.open;
+	      var mode = _props.mode;
+	      var msg = _props.msg;
+
+	      var snackbarClasses = (0, _classnames2.default)("snackbar-container", { open: open,
+	        error: mode !== 'SUCCESS'
+	      });
 	      return _react2.default.createElement(
 	        'div',
 	        { className: snackbarClasses },
@@ -28942,7 +28959,7 @@
 	          _react2.default.createElement(
 	            'div',
 	            { className: 'snackbar-msg' },
-	            this.props.msg
+	            msg
 	          ),
 	          _react2.default.createElement(
 	            'div',
@@ -29041,7 +29058,7 @@
 
 
 	// module
-	exports.push([module.id, ".snackbar-container {\n  position: fixed;\n  bottom: 0;\n  right: 0;\n  left: 0;\n  height: 3em;\n  overflow: hidden;\n  pointer-events: none;\n}\n\n.snackbar-container.open {\n  pointer-events: auto;\n}\n\n.snackbar-content {\n  background-color: rgba(0, 0, 0, 0.8);\n  color: white;\n  height: 3em;\n  padding: 0 1em;\n  margin: auto;\n  width: 50%;\n  -webkit-transform: translateY(3em);\n          transform: translateY(3em);\n  transition: -webkit-transform .3s ease;\n  transition: transform .3s ease;\n  transition: transform .3s ease, -webkit-transform .3s ease;\n}\n\n.open .snackbar-content {\n  -webkit-transform: translateY(0);\n          transform: translateY(0);\n}\n\n.snackbar-action {\n  color: #A06CD5;\n}\n\n.snackbar-action:hover {\n  color: white;\n  cursor: pointer;\n}\n\n@media (max-width: 414px) {\n  .snackbar-content {\n    width: auto;\n  }\n  .snackbar-container {\n    top: 0;\n  }\n  .snackbar-content {\n    -webkit-transform: translateY(-3em);\n            transform: translateY(-3em);\n  }\n}\n", ""]);
+	exports.push([module.id, ".snackbar-container {\n  position: fixed;\n  bottom: 0;\n  right: 0;\n  left: 0;\n  height: 3em;\n  overflow: hidden;\n  pointer-events: none;\n}\n\n.snackbar-container.open {\n  pointer-events: auto;\n}\n\n.snackbar-content {\n  background-color: rgba(0, 0, 0, 0.8);\n  color: white;\n  height: 3em;\n  padding: 0 1em;\n  margin: auto;\n  width: 50%;\n  -webkit-transform: translateY(3em);\n          transform: translateY(3em);\n  transition: -webkit-transform .3s ease;\n  transition: transform .3s ease;\n  transition: transform .3s ease, -webkit-transform .3s ease;\n}\n\n.error .snackbar-content {\n  background-color: rgba(205, 32, 13, 0.8);\n}\n\n.open .snackbar-content {\n  -webkit-transform: translateY(0);\n          transform: translateY(0);\n}\n\n.snackbar-action {\n  color: #A06CD5;\n}\n\n.snackbar-action:hover {\n  color: white;\n  cursor: pointer;\n}\n\n.error .snackbar-action {\n  color: rgba(0, 0, 0, 0.8);\n}\n\n@media (max-width: 414px) {\n  .snackbar-content {\n    width: auto;\n  }\n  .snackbar-container {\n    top: 0;\n  }\n  .snackbar-content {\n    -webkit-transform: translateY(-3em);\n            transform: translateY(-3em);\n  }\n}\n", ""]);
 
 	// exports
 
@@ -41318,6 +41335,7 @@
 	  value: true
 	});
 	exports.fetchCandidatesIfNeeded = fetchCandidatesIfNeeded;
+	exports.refetchCandidates = refetchCandidates;
 	exports.addCandidate = addCandidate;
 
 	var _candidateTypes = __webpack_require__(374);
@@ -41337,6 +41355,16 @@
 	        console.log('RECEIVE CANDIDATES FAIL');
 	      });
 	    }
+	  };
+	}
+
+	function refetchCandidates() {
+	  return function (dispatch, getState) {
+	    api.getCandidates().then(function (data) {
+	      dispatch(receiveCandidates(data.data));
+	    }, function () {
+	      console.log('RECEIVE CANDIDATES FAIL');
+	    });
 	  };
 	}
 
@@ -41844,7 +41872,9 @@
 	        ),
 	        _react2.default.createElement(
 	          'div',
-	          { className: 'flex-parent-row' },
+	          { className: 'flex-parent-row', style: {
+	              margin: '1em 0'
+	            } },
 	          _react2.default.createElement(
 	            'div',
 	            { className: 'flex-child-expand' },
@@ -41854,22 +41884,22 @@
 	                inputChangeHandler(id, { isOrg: !isOrg });
 	              } })
 	          ),
-	          _react2.default.createElement(
+	          copyHandler ? _react2.default.createElement(
 	            'button',
 	            { className: 'btn-default no-border',
 	              onClick: function onClick() {
 	                copyHandler(id);
 	              } },
 	            _react2.default.createElement('span', { className: 'icon-blank icon-lg icon-naked icon-btn-form' })
-	          ),
-	          _react2.default.createElement(
+	          ) : '',
+	          removeHandler ? _react2.default.createElement(
 	            'button',
 	            { className: 'btn-default no-border btn-naked',
 	              onClick: function onClick() {
 	                removeHandler(id);
 	              } },
 	            _react2.default.createElement('span', { className: 'icon-trash-bin icon-lg icon-naked icon-btn-form' })
-	          )
+	          ) : ''
 	        )
 	      );
 	    }
@@ -42754,9 +42784,9 @@
 	  };
 	}
 
-	function saveEndorserEdits() {
+	function saveEndorserEdits(data) {
 	  return function (dispatch, getState) {
-	    return api.saveEndorserEdits().then(function (data) {
+	    return api.saveEndorserEdits(data).then(function (response) {
 	      dispatch((0, _snackbarActions.openSnackbar)('SUCCESS', 'Changes Saved'));
 	      dispatch(getEndorsersIfNeeded());
 	    }, console.log);
@@ -43358,6 +43388,9 @@
 	    };
 
 	    _this.saveEdits = function () {
+	      _this.props.dispatch((0, _candidateFormActions.saveCandidateEdits)()).then(function (ok) {
+	        if (ok) _this.closeForm();
+	      });
 	      console.log('save edits');
 	    };
 
@@ -43393,7 +43426,7 @@
 	        { closeHandler: this.closeForm,
 	          saveHandler: this.saveEdits,
 	          formName: this.state.formName },
-	        _react2.default.createElement(_addCandidateForm2.default, null)
+	        _react2.default.createElement(_addCandidateForm2.default, { isEditMode: true })
 	      );
 	    }
 	  }, {
@@ -50301,10 +50334,6 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _formControls = __webpack_require__(401);
-
-	var _formControls2 = _interopRequireDefault(_formControls);
-
 	var _textInputField = __webpack_require__(384);
 
 	var _textInputField2 = _interopRequireDefault(_textInputField);
@@ -50364,7 +50393,8 @@
 	    value: function render() {
 	      var _this2 = this;
 
-	      var _props$formData = this.props.formData;
+	      var _props = this.props;
+	      var _props$formData = _props.formData;
 	      var id = _props$formData.id;
 	      var firstName = _props$formData.firstName;
 	      var middleName = _props$formData.middleName;
@@ -50374,6 +50404,7 @@
 	      var party = _props$formData.party;
 	      var avatar = _props$formData.avatar;
 	      var active = _props$formData.active;
+	      var isEditMode = _props.isEditMode;
 
 	      return _react2.default.createElement(
 	        'div',
@@ -50382,7 +50413,9 @@
 	          value: id,
 	          id: id,
 	          changeHandler: function changeHandler(ev) {
-	            _this2.inputChangeHandler({ id: ev.target.value });
+	            if (!isEditMode) {
+	              _this2.inputChangeHandler({ id: ev.target.value });
+	            }
 	          }
 	        }, this.props)),
 	        _react2.default.createElement(_textInputField2.default, _extends({ label: 'First Name',
@@ -51861,12 +51894,15 @@
 
 	'use strict';
 
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
 	exports.updateCandidateForm = updateCandidateForm;
 	exports.resetCandidateForm = resetCandidateForm;
 	exports.requestAddCandidate = requestAddCandidate;
+	exports.saveCandidateEdits = saveCandidateEdits;
 
 	var _candidateFormTypes = __webpack_require__(487);
 
@@ -51911,6 +51947,48 @@
 	  };
 	}
 
+	function requestCandidateAdd() {
+	  return {
+	    type: _candidateFormTypes.REQUEST_CANDIDATE_ADD
+	  };
+	}
+
+	function saveCandidateEdits() {
+	  return function (dispatch, getState) {
+	    var _getState2 = getState();
+
+	    var candidateFormData = _getState2.candidateFormData;
+	    var candidates = _getState2.candidates;
+
+	    var prevCandidateData = candidates.find(function (candidate) {
+	      return candidate.id === candidateFormData.id;
+	    });
+	    var diffs = Object.keys(candidateFormData).reduce(function (acc, key) {
+	      if (candidateFormData[key] !== prevCandidateData[key]) {
+	        acc[key] = candidateFormData[key];
+	      }
+	      return acc;
+	    }, {});
+	    if (Object.keys(diffs).length) {
+	      dispatch(requestSaveCandidate());
+	      return api.saveCandidateEdits(_extends({}, diffs, { id: candidateFormData.id })).then(function () {
+	        dispatch((0, _candidateActions.refetchCandidates)());
+	        dispatch((0, _snackbarActions.openSnackbar)('SUCCESS', 'Candidate Edited'));
+	        return true;
+	      }, function () {
+	        dispatch((0, _snackbarActions.openSnackbar)('FAILURE', 'Server Error'));
+	      });
+	    }
+	    return api.dummy();
+	  };
+	}
+
+	function requestSaveCandidate() {
+	  return {
+	    type: _candidateFormTypes.REQUEST_CANDIDATE_EDIT
+	  };
+	}
+
 /***/ },
 /* 487 */
 /***/ function(module, exports) {
@@ -51922,7 +52000,8 @@
 	});
 	var UPDATE_CANDIDATE = exports.UPDATE_CANDIDATE = "UPDATE_CANDIDATE";
 	var RECEIVE_CANDIDATE_DATA = exports.RECEIVE_CANDIDATE_DATA = "RECEIVE_CANDIDATE_DATA";
-	var REQUEST_CANDIDATE_SAVE = exports.REQUEST_CANDIDATE_SAVE = "REQUEST_CANDIDATE_SAVE";
+	var REQUEST_CANDIDATE_ADD = exports.REQUEST_CANDIDATE_ADD = "REQUEST_CANDIDATE_ADD";
+	var REQUEST_CANDIDATE_EDIT = exports.REQUEST_CANDIDATE_EDIT = "REQUEST_CANDIDATE_EDIT";
 	var RESET_CANDIDATE_FORM = exports.RESET_CANDIDATE_FORM = "RESET_CANDIDATE_FORM";
 
 /***/ },
@@ -51935,6 +52014,7 @@
 	  value: true
 	});
 	exports.convertDate = convertDate;
+	exports.isListSame = isListSame;
 
 	var _moment = __webpack_require__(280);
 
@@ -51947,6 +52027,10 @@
 	    return (0, _moment2.default)(new Date(date)).format('YYYY-MM-DD');
 	  }
 	  return date;
+	}
+
+	function isListSame(array1, array2) {
+	  return JSON.stringify(array1.sort()) === JSON.stringify(array2.sort());
 	}
 
 /***/ },
@@ -51987,6 +52071,8 @@
 
 	var _endorserActions = __webpack_require__(390);
 
+	var _util = __webpack_require__(488);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -51995,10 +52081,31 @@
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
+	function _typeof(obj) { return obj && typeof Symbol !== "undefined" && obj.constructor === Symbol ? "symbol" : typeof obj; }
+
 	function selectData(state, props) {
 	  var endorsers = state.endorsers;
 
 	  return { endorsers: endorsers };
+	}
+
+	function getObjectDiff(original, copy) {
+	  return Object.keys(copy).reduce(function (acc, key) {
+	    var origVal = original[key];
+	    var copyVal = copy[key];
+	    if (Array.isArray(copyVal)) {
+	      if (!(0, _util.isListSame)(origVal, copyVal)) {
+	        acc[key] = copyVal;
+	      }
+	    } else if ((typeof copyVal === 'undefined' ? 'undefined' : _typeof(copyVal)) === 'object') {
+	      alert('object comparison');
+	    } else {
+	      if (origVal !== copyVal) {
+	        acc[key] = copyVal;
+	      }
+	    }
+	    return acc;
+	  }, {});
 	}
 
 	var EndorserTab = (function (_Component) {
@@ -52033,17 +52140,9 @@
 	      var id = _this.state.formData.id;
 
 	      var original = _this.getEndorserById(id);
-	      if (JSON.stringify(_this.state.formData) !== JSON.stringify(original)) {
-	        var _this$state$formData = _this.state.formData;
-	        var _id = _this$state$formData.id;
-	        var date = _this$state$formData.date;
-	        var source = _this$state$formData.source;
-	        var confirmed = _this$state$formData.confirmed;
-	        var quote = _this$state$formData.quote;
-
-	        _this.props.dispatch((0, _endorserActions.saveEndorserEdits)({
-	          id: _id, date: date, source: source, confirmed: confirmed, quote: quote
-	        })).then(function () {
+	      var diffs = getObjectDiff(original, _this.state.formData);
+	      if (Object.keys(diffs).length) {
+	        _this.props.dispatch((0, _endorserActions.saveEndorserEdits)(_extends({}, diffs, { id: id }))).then(function () {
 	          _this.closeForm();
 	        });
 	      } else {
@@ -52261,7 +52360,6 @@
 	var barney = _inlineConstants.colors.barney;
 
 	var EditEndorserForm = function EditEndorserForm(props) {
-	  console.log('----------', props);
 	  return _react2.default.createElement(
 	    'div',
 	    { className: 'form-contents' },

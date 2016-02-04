@@ -18,10 +18,14 @@ class SnackBar extends Component{
     }
   }
   render(){
-    const snackbarClasses = cx("snackbar-container", {open: this.props.open})
+    const {open, mode, msg} = this.props
+    const snackbarClasses = cx("snackbar-container",
+    { open: open,
+      error: mode !== 'SUCCESS'
+    })
     return <div className={snackbarClasses}>
       <div className="snackbar-content flex-parent-row">
-        <div className="snackbar-msg">{this.props.msg}</div>
+        <div className="snackbar-msg">{msg}</div>
         <div className="flex-child-expand" style={{textAlign:'right'}}>
           <button className="snackbar-action no-border"
                   onClick={ev => {

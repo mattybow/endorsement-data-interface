@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import FormControls from './formControls';
 import TextInputField from './textInputField';
 import CheckBox from './checkBox';
 import { connect } from 'react-redux';
@@ -32,13 +31,15 @@ class AddCandidateForm extends Component{
     this.props.dispatch(updateCandidateForm(data));
   }
   render(){
-    const { formData: {id, firstName, middleName, lastName, dob, gender, party, avatar, active} } = this.props;
+    const { formData: {id, firstName, middleName, lastName, dob, gender, party, avatar, active}, isEditMode } = this.props;
     return <div className="form-contents">
       <TextInputField label='FEC Id'
                       value = {id}
                       id={id}
                       changeHandler = {ev => {
-                        this.inputChangeHandler({id:ev.target.value})
+                        if(!isEditMode){
+                          this.inputChangeHandler({id:ev.target.value})
+                        }
                       }}
                       {...this.props}/>
       <TextInputField label='First Name'

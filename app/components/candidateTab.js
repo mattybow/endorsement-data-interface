@@ -6,7 +6,7 @@ import AddButton from './addButton';
 import ModalWrapper from './modalWrapper';
 import AddCandidateForm from './addCandidateForm';
 import FormContainer from './formContainer';
-import { requestAddCandidate, updateCandidateForm, resetCandidateForm } from '../actions/candidateFormActions';
+import { requestAddCandidate, updateCandidateForm, resetCandidateForm, saveCandidateEdits } from '../actions/candidateFormActions';
 
 function selectCandidates(state){
   const { candidates } = state;
@@ -40,6 +40,11 @@ class CandidateTab extends Component{
     this.setState({formOpen:false});
   }
   saveEdits = () => {
+    this.props.dispatch(saveCandidateEdits()).then(
+      ok => {
+        if(ok) this.closeForm();
+      }
+    );
     console.log('save edits');
   }
   saveAddForm = () => {
@@ -61,7 +66,7 @@ class CandidateTab extends Component{
     <FormContainer closeHandler={this.closeForm}
                    saveHandler = {this.saveEdits}
                    formName={this.state.formName}>
-      <AddCandidateForm />
+      <AddCandidateForm isEditMode={true}/>
     </FormContainer>
   }
   render(){

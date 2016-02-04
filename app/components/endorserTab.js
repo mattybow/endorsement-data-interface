@@ -5,10 +5,30 @@ import FormContainer from './formContainer';
 import EditEndorserForm from './editEndorserForm';
 import ModalWrapper from './modalWrapper';
 import { getEndorsersIfNeeded, saveEndorserEdits } from '../actions/endorserActions';
+import {isListSame} from '../util';
 
 function selectData(state,props){
   const {endorsers} = state;
   return {endorsers};
+}
+
+function getObjectDiff(original, copy){
+  return Object.keys(copy).reduce((acc,key) => {
+    const origVal = original[key];
+    const copyVal = copy[key];
+    if(Array.isArray(copyVal)){
+      if(!isListSame(origVal, copyVal)){
+        acc[key] = copyVal;
+      }
+    } else if (typeof copyVal === 'object'){
+      alert('object comparison');
+    } else {
+      if(origVal !== copyVal){
+        acc[key] = copyVal;
+      }
+    }
+    return acc;
+  },{})
 }
 
 class EndorserTab extends Component{
@@ -49,12 +69,10 @@ class EndorserTab extends Component{
   }
   saveEdits = () => {
     const {id} = this.state.formData;
-    var original = this.getEndorserById(id);
-    if (JSON.stringify(this.state.formData) !== JSON.stringify(original)){
-      const { id, date, source, confirmed, quote } = this.state.formData;
-      this.props.dispatch(saveEndorserEdits({
-        id,date,source,confirmed, quote
-      })).then(
+    const original = this.getEndorserById(id);
+    const diffs = getObjectDiff(original, this.state.formData);
+    if (Object.keys(diffs).length){
+      this.props.dispatch(saveEndorserEdits({...diffs, id})).then(
         () => {
           this.closeForm();
         }

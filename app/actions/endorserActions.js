@@ -23,10 +23,10 @@ function receiveEndorsers(data){
 }
 
 
-export function saveEndorserEdits(){
+export function saveEndorserEdits(data){
   return (dispatch, getState) => {
-    return api.saveEndorserEdits().then(
-      data => {
+    return api.saveEndorserEdits(data).then(
+      response => {
         dispatch(openSnackbar('SUCCESS','Changes Saved'));
         dispatch(getEndorsersIfNeeded());
       },

@@ -1,4 +1,8 @@
-import { UPDATE_CANDIDATE, RECEIVE_CANDIDATE_DATA, REQUEST_CANDIDATE_SAVE, RESET_CANDIDATE_FORM } from '../constants/candidateFormTypes';
+import { UPDATE_CANDIDATE,
+         RECEIVE_CANDIDATE_DATA,
+         REQUEST_CANDIDATE_ADD,
+         REQUEST_CANDIDATE_EDIT,
+         RESET_CANDIDATE_FORM } from '../constants/candidateFormTypes';
 
 const initialState = {
   avatar: null,
