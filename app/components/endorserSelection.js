@@ -25,18 +25,15 @@ class EndorserSelection extends Component{
       endorser.id === choice.id ))
     }
   }
-  renderNoChoices(){
+  renderNoChoices(term){
     return <div className="endorser-choice"
                 style={{
-                  padding:'0 1em'
+                  padding:'1em'
                 }}>
-      <div style={{
-          fontSize:'.8em',
-          color:grey,
-          margin:'1em 0'
-        }}>no matches exist</div>
-
-      <div>press <span className="key-block">enter</span>to create a new endorser</div>
+      <div className="flex-parent-row">
+        <span className="icon-plus icon-md"></span>
+        {term}
+      </div>
     </div>;
   }
   renderChoice(choice){

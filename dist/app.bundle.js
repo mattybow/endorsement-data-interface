@@ -42127,25 +42127,19 @@
 	    }
 	  }, {
 	    key: 'renderNoChoices',
-	    value: function renderNoChoices() {
+	    value: function renderNoChoices(term) {
 	      return _react2.default.createElement(
 	        'div',
-	        { style: {
-	            padding: '5px',
-	            fontSize: '.8em',
-	            width: '100%'
-	          } },
-	        _react2.default.createElement('hr', null),
+	        { className: 'new-choice-tag' },
 	        _react2.default.createElement(
 	          'div',
 	          null,
-	          'press ',
+	          'new tag: ',
 	          _react2.default.createElement(
 	            'span',
-	            { className: 'key-block' },
-	            'enter'
-	          ),
-	          'to create a new tag'
+	            { className: 'tag-choice' },
+	            term
+	          )
 	        )
 	      );
 	    }
@@ -42263,11 +42257,10 @@
 	              ev.stopPropagation();
 	              _this2.props.selectionClickHandler(choice);
 	            } },
-	          _this2.props.renderChoice(choice)
+	          choice.isNoChoice ? _this2.props.renderNoChoices(_this2.props.enteredText) : _this2.props.renderChoice(choice)
 	        );
 	      });
-
-	      return renderedChoices.length ? renderedChoices : this.props.renderNoChoices();
+	      return renderedChoices;
 	    }
 	  }, {
 	    key: 'render',
@@ -42383,11 +42376,11 @@
 	            return choice.isHighlighted;
 	          });
 
-	          if (selectedChoice) {
-	            this.props.selectionHandler(selectedChoice);
-	          } else {
-	            console.log('enter handler');
+	          if (selectedChoice.isNoChoice) {
+	            ev.target.select();
 	            newValue && onEnter && onEnter(newValue);
+	          } else {
+	            this.props.selectionHandler(selectedChoice);
 	          }
 
 	          if (closeOnSelect) {
@@ -42467,10 +42460,16 @@
 	        default:
 	          regExFilter = '' + searchTerm;
 	      }
-	      console.log(this.props.choices);
 	      var filteredChoices = this.props.choices.filter(function (choice) {
 	        return choice.value.match(new RegExp(regExFilter, 'i')) ? true : false;
 	      });
+
+	      if (this.state.searchTerm) {
+	        filteredChoices.push({
+	          id: '0000',
+	          isNoChoice: true
+	        });
+	      }
 
 	      var highlightedIndex = this.getIndex(this.state.highlightedIndex, filteredChoices.length);
 
@@ -42488,6 +42487,7 @@
 	    value: function renderAutoComplete() {
 	      return _react2.default.createElement(AutoCompleteDropdown, _extends({ closeClickHandler: this.handleAutoCompCloseClick
 	      }, this.props, {
+	        enteredText: this.state.searchTerm,
 	        choices: this.getFilteredChoices(),
 	        selectionClickHandler: this.handleSelectionClick }));
 	    }
@@ -42587,7 +42587,7 @@
 
 
 	// module
-	exports.push([module.id, ".auto-complete-container {\n  height: 0;\n  overflow: hidden;\n  z-index: 1;\n}\n\n.auto-complete-container.open {\n  height: 100px;\n  overflow: initial;\n}\n\n.dropdown-container {\n  border-radius: 2px;\n  background-color: #fff;\n  box-shadow: rgba(0, 0, 0, 0.117647) 0px 1px 6px, rgba(0, 0, 0, 0.239216) 0px 1px 4px;\n  padding: 1em 0;\n}\n\n.dropdown-choice:hover {\n  cursor: pointer;\n}\n\n.endorser-choice {\n  transition: background .2s ease;\n  background-color: transparent;\n}\n\n.endorser-choice .endorser-choice-name {\n  margin-left: 20;\n  border-bottom: 1px solid #e0e0e0;\n  padding: 1em 0;\n}\n\n.tags-container {\n  padding: 10px;\n}\n\n.highlighted .endorser-choice {\n  background-color: rgba(100, 100, 100, 0.1);\n}\n\n.dropdown-choice:last-child .endorser-choice-name {\n  border: none;\n}\n\n.tag-choice {\n  background-color: #E2CFEA;\n  border-radius: 2px;\n  padding: .2em .5em;\n  margin: .5em .2em;\n  border: 1px solid transparent;\n  transition: background .2s ease, border .2s ease;\n}\n\n.tag-choice:hover {\n  cursor: pointer;\n}\n\n.selected .tag-choice {\n  background-color: #A06CD5;\n  color: rgba(255, 255, 255, 0.9);\n}\n\n.highlighted .tag-choice {\n  border: 1px solid #8F2CD8;\n}\n\n.input-error-message {\n  transition: opacity .2s ease, -webkit-transform .3s ease;\n  transition: opacity .2s ease, transform .3s ease;\n  transition: opacity .2s ease, transform .3s ease, -webkit-transform .3s ease;\n  opacity: 0;\n  -webkit-transform: translateY(-20px);\n          transform: translateY(-20px);\n  position: absolute;\n  pointer-events: none;\n  top: -.5em;\n  left: 0;\n  font-size: .7em;\n}\n\n.input-error-message.show {\n  -webkit-transform: translateY(0px);\n          transform: translateY(0px);\n  opacity: 1;\n}\n\n@media (min-width: 415px) {\n  .tag-choice:hover {\n    background-color: #A06CD5;\n  }\n  .selected:hover {\n    background-color: #E2CFEA;\n    color: rgba(0, 0, 0, 0.8);\n  }\n}\n", ""]);
+	exports.push([module.id, ".auto-complete-container {\n  height: 0;\n  overflow: hidden;\n  z-index: 1;\n}\n\n.auto-complete-container.open {\n  height: 100px;\n  overflow: initial;\n}\n\n.dropdown-container {\n  border-radius: 2px;\n  background-color: #fff;\n  box-shadow: rgba(0, 0, 0, 0.117647) 0px 1px 6px, rgba(0, 0, 0, 0.239216) 0px 1px 4px;\n  padding: 1em 0;\n}\n\n.dropdown-choice:hover {\n  cursor: pointer;\n}\n\n.endorser-choice {\n  transition: background .2s ease;\n  background-color: transparent;\n}\n\n.endorser-choice .endorser-choice-name {\n  margin-left: 20;\n  border-bottom: 1px solid #e0e0e0;\n  padding: 1em 0;\n}\n\n.tags-container {\n  padding: 10px;\n}\n\n.highlighted .endorser-choice {\n  background-color: rgba(100, 100, 100, 0.1);\n}\n\n.dropdown-choice:last-child .endorser-choice-name {\n  border: none;\n}\n\n.new-choice-tag {\n  border-radius: 2px;\n  padding: 5px;\n  font-size: .8em;\n  width: 100%;\n}\n\n.tag-choice {\n  background-color: #E2CFEA;\n  border-radius: 2px;\n  padding: .2em .5em;\n  margin: .5em .2em;\n  border: 1px solid transparent;\n  transition: background .2s ease, border .2s ease;\n}\n\n.tag-choice:hover {\n  cursor: pointer;\n}\n\n.selected .tag-choice {\n  background-color: #A06CD5;\n  color: rgba(255, 255, 255, 0.9);\n}\n\n.highlighted .tag-choice {\n  border: 1px solid #8F2CD8;\n}\n\n.input-error-message {\n  transition: opacity .2s ease, -webkit-transform .3s ease;\n  transition: opacity .2s ease, transform .3s ease;\n  transition: opacity .2s ease, transform .3s ease, -webkit-transform .3s ease;\n  opacity: 0;\n  -webkit-transform: translateY(-20px);\n          transform: translateY(-20px);\n  position: absolute;\n  pointer-events: none;\n  top: -.5em;\n  left: 0;\n  font-size: .7em;\n}\n\n.input-error-message.show {\n  -webkit-transform: translateY(0px);\n          transform: translateY(0px);\n  opacity: 1;\n}\n\n@media (min-width: 415px) {\n  .tag-choice:hover {\n    background-color: #A06CD5;\n  }\n  .selected:hover {\n    background-color: #E2CFEA;\n    color: rgba(0, 0, 0, 0.8);\n  }\n}\n", ""]);
 
 	// exports
 
@@ -42673,32 +42673,18 @@
 	    }
 	  }, {
 	    key: 'renderNoChoices',
-	    value: function renderNoChoices() {
+	    value: function renderNoChoices(term) {
 	      return _react2.default.createElement(
 	        'div',
 	        { className: 'endorser-choice',
 	          style: {
-	            padding: '0 1em'
+	            padding: '1em'
 	          } },
 	        _react2.default.createElement(
 	          'div',
-	          { style: {
-	              fontSize: '.8em',
-	              color: grey,
-	              margin: '1em 0'
-	            } },
-	          'no matches exist'
-	        ),
-	        _react2.default.createElement(
-	          'div',
-	          null,
-	          'press ',
-	          _react2.default.createElement(
-	            'span',
-	            { className: 'key-block' },
-	            'enter'
-	          ),
-	          'to create a new endorser'
+	          { className: 'flex-parent-row' },
+	          _react2.default.createElement('span', { className: 'icon-plus icon-md' }),
+	          term
 	        )
 	      );
 	    }

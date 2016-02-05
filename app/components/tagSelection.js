@@ -29,14 +29,9 @@ class TagSelection extends Component{
       this.props.handleSelection(choice)
     }
   }
-  renderNoChoices(){
-    return <div style={{
-                  padding:'5px',
-                  fontSize:'.8em',
-                  width:'100%'
-                }}>
-      <hr/>
-      <div>press <span className="key-block">enter</span>to create a new tag</div>
+  renderNoChoices(term){
+    return <div className="new-choice-tag">
+      <div>new tag: <span className='tag-choice'>{term}</span></div>
     </div>;
   }
   renderChoice = (choice) => {

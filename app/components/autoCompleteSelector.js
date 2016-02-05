@@ -37,11 +37,10 @@ class AutoCompleteDropdown extends Component{
              ev.stopPropagation();
              this.props.selectionClickHandler(choice);
            }}>
-        {this.props.renderChoice(choice)}
+        {choice.isNoChoice ? this.props.renderNoChoices(this.props.enteredText) : this.props.renderChoice(choice) }
       </div>
     });
-
-    return renderedChoices.length ?  renderedChoices : this.props.renderNoChoices()
+    return renderedChoices;
   }
   render(){
     return <div className="dropdown-container"
@@ -101,11 +100,12 @@ export default class AutoCompleteSelector extends Component{
         const { onEnter, closeOnSelect } = this.props;
         const selectedChoice = this.getFilteredChoices().find( choice => choice.isHighlighted );
 
-        if(selectedChoice){
-          this.props.selectionHandler(selectedChoice);
+        if(selectedChoice.isNoChoice){
+          ev.target.select();
+          newValue && onEnter && onEnter(newValue);
+
         } else {
-          console.log('enter handler');
-          newValue && onEnter  && onEnter(newValue);
+          this.props.selectionHandler(selectedChoice);
         }
 
         if(closeOnSelect){
@@ -187,10 +187,16 @@ export default class AutoCompleteSelector extends Component{
       default:
         regExFilter = `${searchTerm}`;
     }
-    console.log(this.props.choices);
     const filteredChoices = this.props.choices.filter( choice => {
       return choice.value.match(new RegExp(regExFilter, 'i')) ? true : false;
     })
+
+    if(this.state.searchTerm){
+      filteredChoices.push({
+        id:'0000',
+        isNoChoice:true
+      });
+    }
 
     const highlightedIndex = this.getIndex(this.state.highlightedIndex,filteredChoices.length);
 
@@ -205,6 +211,7 @@ export default class AutoCompleteSelector extends Component{
   renderAutoComplete(){
     return <AutoCompleteDropdown closeClickHandler = {this.handleAutoCompCloseClick}
                                  {...this.props}
+                                 enteredText={this.state.searchTerm}
                                  choices={this.getFilteredChoices()}
                                  selectionClickHandler= {this.handleSelectionClick}/>;
   }
