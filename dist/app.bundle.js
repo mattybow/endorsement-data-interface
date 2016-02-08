@@ -52158,7 +52158,6 @@
 	  }, {
 	    key: 'renderForm',
 	    value: function renderForm() {
-	      console.log(this.state.formData);
 	      return _react2.default.createElement(
 	        _formContainer2.default,
 	        { closeHandler: this.closeForm,
@@ -52298,7 +52297,6 @@
 	                    marginTop: 5
 	                  } },
 	                endorser.tags.map(function (tag) {
-	                  console.log(tag.value);
 	                  return _react2.default.createElement(
 	                    'span',
 	                    { className: 'endorser-list-tag',

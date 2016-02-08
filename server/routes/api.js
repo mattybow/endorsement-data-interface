@@ -82,7 +82,7 @@ router.get('/endorsements',(req,res) => {
                         CONCAT(c.first_name, ' ', c.last_name) candidate,
                         c.can_id,
                         c.avatar can_avatar,
-                        e.date,
+                        CONVERT_TZ(e.date,'+00:00','+06:00') date,
                         e.source,
                         e.confirmed,
                         e.modified,

@@ -82,7 +82,6 @@ class EndorserTab extends Component{
     }
   }
   renderForm(){
-    console.log(this.state.formData);
     return <FormContainer closeHandler={this.closeForm}
                    saveHandler = {this.saveEdits}
                    formName={this.state.formName}>

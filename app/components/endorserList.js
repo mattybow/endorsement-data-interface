@@ -23,7 +23,6 @@ export default class EndorserList extends Component{
                  style={{
                   marginTop:5
                  }}>{endorser.tags.map(tag => {
-                console.log(tag.value);
                 return <span className="endorser-list-tag"
                              key={tag.id}>
                           {tag.value}
